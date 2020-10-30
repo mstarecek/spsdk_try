@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.sdp.commands API documentation</title>
+<meta name="description" content="Commands and responses used by SDP module." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.sdp.commands</code></h1>
+</header>
+<section id="section-intro">
+<p>Commands and responses used by SDP module.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2017-2018 Martin Olejar
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Commands and responses used by SDP module.&#34;&#34;&#34;
+
+from struct import pack, unpack_from
+
+from spsdk.utils.easy_enum import Enum
+
+
+########################################################################################################################
+# SDP Command Tags
+########################################################################################################################
+class CommandTag(Enum):
+    &#34;&#34;&#34;SDP Commands.&#34;&#34;&#34;
+
+    READ_REGISTER = (0x0101, &#39;ReadRegister&#39;, &#39;Read data from memory or registers&#39;)
+    WRITE_REGISTER = (0x0202, &#39;WriteRegister&#39;, &#39;Write one word (max 4 bytes) into memory or register&#39;)
+    WRITE_FILE = (0x0404, &#39;WriteFile&#39;, &#39;Write file (boot image) into memory&#39;)
+    ERROR_STATUS = (0x0505, &#39;ErrorStatus&#39;, &#39;Read error code&#39;)
+    WRITE_CSF = (0x0606, &#39;WriteCsf&#39;, &#39;Write CSF data into target&#39;)
+    WRITE_DCD = (0x0A0A, &#39;WriteDcd&#39;, &#39;Write DCD data into target&#39;)
+    SKIP_DCD_HEADER = (0x0C0C, &#39;SkipDcdHeader&#39;, &#39;Skip DCD content from loaded image&#39;)
+    JUMP_ADDRESS = (0x0B0B, &#39;JumpAddress&#39;, &#39;Jump to specified address and run&#39;)
+    SET_BAUDRATE = (0x0D0D, &#39;SetBaudrate&#39;)
+    PING = (0x5AA6, &#39;Ping&#39;)
+
+
+########################################################################################################################
+# SDP Response Values
+########################################################################################################################
+class ResponseValue(Enum):
+    &#34;&#34;&#34;SDP Response Values.&#34;&#34;&#34;
+
+    WRITE_DATA_OK = (0x128A8A12, &#39;Write Data Success&#39;)
+    WRITE_FILE_OK = (0x88888888, &#39;Write File Success&#39;)
+    SKIP_DCD_HEADER_OK = (0x900DD009, &#39;Skip DCD Header Success&#39;)
+
+    LOCKED = (0x12343412, &#39;HAB Is Enabled (Locked)&#39;)
+    UNLOCKED = (0x56787856, &#39;Hab Is Disabled (Unlocked)&#39;)
+
+    HAB_SUCCESS = (0xF0F0F0F0, &#39;HAB_Success&#39;, &#39;HAB Success&#39;)
+
+
+########################################################################################################################
+# SDP Command and Response packet classes
+########################################################################################################################
+
+class CmdPacket:
+    &#34;&#34;&#34;Class representing a command packet to be sent to device.&#34;&#34;&#34;
+
+    FORMAT = &#39;&gt;HIB2IB&#39;
+    EMPTY_VALUE = 0x00
+
+    def __init__(self, tag: CommandTag, address: int, pformat: int, count: int, value: int = 0):
+        &#34;&#34;&#34;Initialize the struct.
+
+        :param tag: Tag number representing the command
+        :param address: Address used by the command
+        :param pformat: Format of the data: 8 = byte, 16 = half-word, 32 = word
+        :param count: Count used by individual command
+        :param value: Value to use in a particular command, defaults to 0
+        :type value: int, optional
+        &#34;&#34;&#34;
+        self.tag = tag
+        self.address = address
+        self.format = pformat
+        self.count = count
+        self.value = value
+
+    def __str__(self) -&gt; str:
+        return &#39;&lt;&#39; + self.info() + &#39;&gt;&#39;
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;String representation of the command packet.&#34;&#34;&#34;
+        return &#34;Tag={tag}, Address=0x{address:04X}, Format={format}, Count={count}, Value=0x{value:08X}&#34;.format(
+            tag=CommandTag.get(self.tag, f&#39;0x{self.tag:04X}&#39;),
+            address=self.address,
+            format=self.format,
+            count=self.count,
+            value=self.value
+        )
+
+    def to_bytes(self) -&gt; bytes:
+        &#34;&#34;&#34;Return command packet as bytes.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.tag, self.address, self.format, self.count, self.value, 0)
+
+
+class CmdResponse:
+    &#34;&#34;&#34;Response on the previously issued command.&#34;&#34;&#34;
+
+    @property
+    def value(self) -&gt; int:
+        &#34;&#34;&#34;Return a integer representation of the response.&#34;&#34;&#34;
+        return unpack_from(&#39;&gt;I&#39;, self.raw_data)[0]
+
+    def __init__(self, hab: bool, raw_data: bytes):
+        &#34;&#34;&#34;Initialize the response object.
+
+        :param hab: HAB status response
+        :param raw_data: Data sent by the device
+        &#34;&#34;&#34;
+        self.hab = hab
+        self.raw_data = raw_data
+
+    def __str__(self) -&gt; str:
+        return &#39;&lt;&#39; + self.info() + &#39;&gt;&#39;
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return stringified information about the command response.&#34;&#34;&#34;
+        return f&#34;Response: {ResponseValue.get(self.value, f&#39;0x{self.value:08X}&#39;)}&#34;</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.sdp.commands.CmdPacket"><code class="flex name class">
+<span>class <span class="ident">CmdPacket</span></span>
+<span>(</span><span>tag: <a title="spsdk.sdp.commands.CommandTag" href="#spsdk.sdp.commands.CommandTag">CommandTag</a>, address: int, pformat: int, count: int, value: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class representing a command packet to be sent to device.</p>
+<p>Initialize the struct.</p>
+<p>:param tag: Tag number representing the command
+:param address: Address used by the command
+:param pformat: Format of the data: 8 = byte, 16 = half-word, 32 = word
+:param count: Count used by individual command
+:param value: Value to use in a particular command, defaults to 0
+:type value: int, optional</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdPacket:
+    &#34;&#34;&#34;Class representing a command packet to be sent to device.&#34;&#34;&#34;
+
+    FORMAT = &#39;&gt;HIB2IB&#39;
+    EMPTY_VALUE = 0x00
+
+    def __init__(self, tag: CommandTag, address: int, pformat: int, count: int, value: int = 0):
+        &#34;&#34;&#34;Initialize the struct.
+
+        :param tag: Tag number representing the command
+        :param address: Address used by the command
+        :param pformat: Format of the data: 8 = byte, 16 = half-word, 32 = word
+        :param count: Count used by individual command
+        :param value: Value to use in a particular command, defaults to 0
+        :type value: int, optional
+        &#34;&#34;&#34;
+        self.tag = tag
+        self.address = address
+        self.format = pformat
+        self.count = count
+        self.value = value
+
+    def __str__(self) -&gt; str:
+        return &#39;&lt;&#39; + self.info() + &#39;&gt;&#39;
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;String representation of the command packet.&#34;&#34;&#34;
+        return &#34;Tag={tag}, Address=0x{address:04X}, Format={format}, Count={count}, Value=0x{value:08X}&#34;.format(
+            tag=CommandTag.get(self.tag, f&#39;0x{self.tag:04X}&#39;),
+            address=self.address,
+            format=self.format,
+            count=self.count,
+            value=self.value
+        )
+
+    def to_bytes(self) -&gt; bytes:
+        &#34;&#34;&#34;Return command packet as bytes.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.tag, self.address, self.format, self.count, self.value, 0)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sdp.commands.CmdPacket.EMPTY_VALUE"><code class="name">var <span class="ident">EMPTY_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CmdPacket.FORMAT"><code class="name">var <span class="ident">FORMAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sdp.commands.CmdPacket.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>String representation of the command packet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;String representation of the command packet.&#34;&#34;&#34;
+    return &#34;Tag={tag}, Address=0x{address:04X}, Format={format}, Count={count}, Value=0x{value:08X}&#34;.format(
+        tag=CommandTag.get(self.tag, f&#39;0x{self.tag:04X}&#39;),
+        address=self.address,
+        format=self.format,
+        count=self.count,
+        value=self.value
+    )</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sdp.commands.CmdPacket.to_bytes"><code class="name flex">
+<span>def <span class="ident">to_bytes</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return command packet as bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_bytes(self) -&gt; bytes:
+    &#34;&#34;&#34;Return command packet as bytes.&#34;&#34;&#34;
+    return pack(self.FORMAT, self.tag, self.address, self.format, self.count, self.value, 0)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.sdp.commands.CmdResponse"><code class="flex name class">
+<span>class <span class="ident">CmdResponse</span></span>
+<span>(</span><span>hab: bool, raw_data: bytes)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Response on the previously issued command.</p>
+<p>Initialize the response object.</p>
+<p>:param hab: HAB status response
+:param raw_data: Data sent by the device</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdResponse:
+    &#34;&#34;&#34;Response on the previously issued command.&#34;&#34;&#34;
+
+    @property
+    def value(self) -&gt; int:
+        &#34;&#34;&#34;Return a integer representation of the response.&#34;&#34;&#34;
+        return unpack_from(&#39;&gt;I&#39;, self.raw_data)[0]
+
+    def __init__(self, hab: bool, raw_data: bytes):
+        &#34;&#34;&#34;Initialize the response object.
+
+        :param hab: HAB status response
+        :param raw_data: Data sent by the device
+        &#34;&#34;&#34;
+        self.hab = hab
+        self.raw_data = raw_data
+
+    def __str__(self) -&gt; str:
+        return &#39;&lt;&#39; + self.info() + &#39;&gt;&#39;
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return stringified information about the command response.&#34;&#34;&#34;
+        return f&#34;Response: {ResponseValue.get(self.value, f&#39;0x{self.value:08X}&#39;)}&#34;</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sdp.commands.CmdResponse.value"><code class="name">var <span class="ident">value</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return a integer representation of the response.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def value(self) -&gt; int:
+    &#34;&#34;&#34;Return a integer representation of the response.&#34;&#34;&#34;
+    return unpack_from(&#39;&gt;I&#39;, self.raw_data)[0]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sdp.commands.CmdResponse.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return stringified information about the command response.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Return stringified information about the command response.&#34;&#34;&#34;
+    return f&#34;Response: {ResponseValue.get(self.value, f&#39;0x{self.value:08X}&#39;)}&#34;</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag"><code class="flex name class">
+<span>class <span class="ident">CommandTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>SDP Commands.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CommandTag(Enum):
+    &#34;&#34;&#34;SDP Commands.&#34;&#34;&#34;
+
+    READ_REGISTER = (0x0101, &#39;ReadRegister&#39;, &#39;Read data from memory or registers&#39;)
+    WRITE_REGISTER = (0x0202, &#39;WriteRegister&#39;, &#39;Write one word (max 4 bytes) into memory or register&#39;)
+    WRITE_FILE = (0x0404, &#39;WriteFile&#39;, &#39;Write file (boot image) into memory&#39;)
+    ERROR_STATUS = (0x0505, &#39;ErrorStatus&#39;, &#39;Read error code&#39;)
+    WRITE_CSF = (0x0606, &#39;WriteCsf&#39;, &#39;Write CSF data into target&#39;)
+    WRITE_DCD = (0x0A0A, &#39;WriteDcd&#39;, &#39;Write DCD data into target&#39;)
+    SKIP_DCD_HEADER = (0x0C0C, &#39;SkipDcdHeader&#39;, &#39;Skip DCD content from loaded image&#39;)
+    JUMP_ADDRESS = (0x0B0B, &#39;JumpAddress&#39;, &#39;Jump to specified address and run&#39;)
+    SET_BAUDRATE = (0x0D0D, &#39;SetBaudrate&#39;)
+    PING = (0x5AA6, &#39;Ping&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sdp.commands.CommandTag.ERROR_STATUS"><code class="name">var <span class="ident">ERROR_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.JUMP_ADDRESS"><code class="name">var <span class="ident">JUMP_ADDRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.PING"><code class="name">var <span class="ident">PING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.READ_REGISTER"><code class="name">var <span class="ident">READ_REGISTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.SET_BAUDRATE"><code class="name">var <span class="ident">SET_BAUDRATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.SKIP_DCD_HEADER"><code class="name">var <span class="ident">SKIP_DCD_HEADER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_CSF"><code class="name">var <span class="ident">WRITE_CSF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_DCD"><code class="name">var <span class="ident">WRITE_DCD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_FILE"><code class="name">var <span class="ident">WRITE_FILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_REGISTER"><code class="name">var <span class="ident">WRITE_REGISTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sdp.commands.ResponseValue"><code class="flex name class">
+<span>class <span class="ident">ResponseValue</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>SDP Response Values.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ResponseValue(Enum):
+    &#34;&#34;&#34;SDP Response Values.&#34;&#34;&#34;
+
+    WRITE_DATA_OK = (0x128A8A12, &#39;Write Data Success&#39;)
+    WRITE_FILE_OK = (0x88888888, &#39;Write File Success&#39;)
+    SKIP_DCD_HEADER_OK = (0x900DD009, &#39;Skip DCD Header Success&#39;)
+
+    LOCKED = (0x12343412, &#39;HAB Is Enabled (Locked)&#39;)
+    UNLOCKED = (0x56787856, &#39;Hab Is Disabled (Unlocked)&#39;)
+
+    HAB_SUCCESS = (0xF0F0F0F0, &#39;HAB_Success&#39;, &#39;HAB Success&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sdp.commands.ResponseValue.HAB_SUCCESS"><code class="name">var <span class="ident">HAB_SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.ResponseValue.LOCKED"><code class="name">var <span class="ident">LOCKED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.ResponseValue.SKIP_DCD_HEADER_OK"><code class="name">var <span class="ident">SKIP_DCD_HEADER_OK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.ResponseValue.UNLOCKED"><code class="name">var <span class="ident">UNLOCKED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.ResponseValue.WRITE_DATA_OK"><code class="name">var <span class="ident">WRITE_DATA_OK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sdp.commands.ResponseValue.WRITE_FILE_OK"><code class="name">var <span class="ident">WRITE_FILE_OK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.sdp" href="index.html">spsdk.sdp</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.sdp.commands.CmdPacket" href="#spsdk.sdp.commands.CmdPacket">CmdPacket</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sdp.commands.CmdPacket.EMPTY_VALUE" href="#spsdk.sdp.commands.CmdPacket.EMPTY_VALUE">EMPTY_VALUE</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CmdPacket.FORMAT" href="#spsdk.sdp.commands.CmdPacket.FORMAT">FORMAT</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CmdPacket.info" href="#spsdk.sdp.commands.CmdPacket.info">info</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CmdPacket.to_bytes" href="#spsdk.sdp.commands.CmdPacket.to_bytes">to_bytes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sdp.commands.CmdResponse" href="#spsdk.sdp.commands.CmdResponse">CmdResponse</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sdp.commands.CmdResponse.info" href="#spsdk.sdp.commands.CmdResponse.info">info</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CmdResponse.value" href="#spsdk.sdp.commands.CmdResponse.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sdp.commands.CommandTag" href="#spsdk.sdp.commands.CommandTag">CommandTag</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sdp.commands.CommandTag.ERROR_STATUS" href="#spsdk.sdp.commands.CommandTag.ERROR_STATUS">ERROR_STATUS</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.JUMP_ADDRESS" href="#spsdk.sdp.commands.CommandTag.JUMP_ADDRESS">JUMP_ADDRESS</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.PING" href="#spsdk.sdp.commands.CommandTag.PING">PING</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.READ_REGISTER" href="#spsdk.sdp.commands.CommandTag.READ_REGISTER">READ_REGISTER</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.SET_BAUDRATE" href="#spsdk.sdp.commands.CommandTag.SET_BAUDRATE">SET_BAUDRATE</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.SKIP_DCD_HEADER" href="#spsdk.sdp.commands.CommandTag.SKIP_DCD_HEADER">SKIP_DCD_HEADER</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.WRITE_CSF" href="#spsdk.sdp.commands.CommandTag.WRITE_CSF">WRITE_CSF</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.WRITE_DCD" href="#spsdk.sdp.commands.CommandTag.WRITE_DCD">WRITE_DCD</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.WRITE_FILE" href="#spsdk.sdp.commands.CommandTag.WRITE_FILE">WRITE_FILE</a></code></li>
+<li><code><a title="spsdk.sdp.commands.CommandTag.WRITE_REGISTER" href="#spsdk.sdp.commands.CommandTag.WRITE_REGISTER">WRITE_REGISTER</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sdp.commands.ResponseValue" href="#spsdk.sdp.commands.ResponseValue">ResponseValue</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sdp.commands.ResponseValue.HAB_SUCCESS" href="#spsdk.sdp.commands.ResponseValue.HAB_SUCCESS">HAB_SUCCESS</a></code></li>
+<li><code><a title="spsdk.sdp.commands.ResponseValue.LOCKED" href="#spsdk.sdp.commands.ResponseValue.LOCKED">LOCKED</a></code></li>
+<li><code><a title="spsdk.sdp.commands.ResponseValue.SKIP_DCD_HEADER_OK" href="#spsdk.sdp.commands.ResponseValue.SKIP_DCD_HEADER_OK">SKIP_DCD_HEADER_OK</a></code></li>
+<li><code><a title="spsdk.sdp.commands.ResponseValue.UNLOCKED" href="#spsdk.sdp.commands.ResponseValue.UNLOCKED">UNLOCKED</a></code></li>
+<li><code><a title="spsdk.sdp.commands.ResponseValue.WRITE_DATA_OK" href="#spsdk.sdp.commands.ResponseValue.WRITE_DATA_OK">WRITE_DATA_OK</a></code></li>
+<li><code><a title="spsdk.sdp.commands.ResponseValue.WRITE_FILE_OK" href="#spsdk.sdp.commands.ResponseValue.WRITE_FILE_OK">WRITE_FILE_OK</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

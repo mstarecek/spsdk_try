@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.utils.crypto.cert_blocks API documentation</title>
+<meta name="description" content="Module for handling Certificate block." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.utils.crypto.cert_blocks</code></h1>
+</header>
+<section id="section-intro">
+<p>Module for handling Certificate block.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Module for handling Certificate block.&#34;&#34;&#34;
+
+import re
+from struct import pack, unpack_from, calcsize
+from typing import List, Optional, Union
+
+from spsdk.utils import misc
+from .abstract import BaseClass
+from .backend_internal import internal_backend
+from .certificate import Certificate
+from .common import crypto_backend
+
+
+########################################################################################################################
+# Certificate Block Header Class
+########################################################################################################################
+class CertBlockHeader(BaseClass):
+    &#34;&#34;&#34;Certificate block header.&#34;&#34;&#34;
+
+    FORMAT = &#39;&lt;4s2H6I&#39;
+    SIZE = calcsize(FORMAT)
+    SIGNATURE = b&#39;cert&#39;
+
+    def __init__(self, version: str = &#39;1.0&#39;, flags: int = 0, build_number: int = 0) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param version: Version of the certificate in format n.n
+        :param flags: Flags for the Certificate Header
+        :param build_number: of the certificate
+        &#34;&#34;&#34;
+        assert re.match(r&#39;[0-9]+\.[0-9]+&#39;, version)  # check format of the version: N.N
+        self.version = version
+        self.flags = flags
+        self.build_number = build_number
+        self.image_length = 0
+        self.cert_count = 0
+        self.cert_table_length = 0
+
+    def __str__(self) -&gt; str:
+        nfo = f&#34;CertBlockHeader: V={self.version}, F={self.flags}, BN={self.build_number}, IL={self.image_length}, &#34;
+        nfo += f&#34;CC={self.cert_count}, CTL={self.cert_table_length}&#34;
+        return nfo
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Info of the certificate header in text form.&#34;&#34;&#34;
+        nfo = str()
+        nfo += f&#34; CB Version:           {self.version}\n&#34;
+        nfo += f&#34; CB Flags:             {self.flags}\n&#34;
+        nfo += f&#34; CB Build Number:      {self.build_number}\n&#34;
+        nfo += f&#34; CB Image Length:      {self.image_length}\n&#34;
+        nfo += f&#34; CB Cert. Count:       {self.cert_count}\n&#34;
+        nfo += f&#34; CB Cert. Length:      {self.cert_table_length}\n&#34;
+        return nfo
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Certificate block in binary form.&#34;&#34;&#34;
+        major_version, minor_version = [int(v) for v in self.version.split(&#39;.&#39;)]
+        return pack(self.FORMAT,
+                    self.SIGNATURE,
+                    major_version,
+                    minor_version,
+                    self.SIZE,
+                    self.flags,
+                    self.build_number,
+                    self.image_length,
+                    self.cert_count,
+                    self.cert_table_length)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CertBlockHeader&#39;:
+        &#34;&#34;&#34;Deserialize object from bytes array.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data (default: 0)
+        :return: Certificate Header instance
+        :raises Exception: Unexpected size or signature of data
+        &#34;&#34;&#34;
+        if cls.SIZE &gt; len(data) - offset:
+            raise Exception()
+        (signature, major_version, minor_version, length, flags, build_number, image_length, cert_count,
+         cert_table_length) = unpack_from(cls.FORMAT, data, offset)
+        if signature != cls.SIGNATURE:
+            raise Exception()
+        if length != cls.SIZE:
+            raise Exception()
+        obj = cls(version=f&#39;{major_version}.{minor_version}&#39;, flags=flags, build_number=build_number)
+        obj.image_length = image_length
+        obj.cert_count = cert_count
+        obj.cert_table_length = cert_table_length
+        return obj
+
+
+########################################################################################################################
+# Certificate Block Class
+########################################################################################################################
+class CertBlockV2(BaseClass):
+    &#34;&#34;&#34;Certificate block.
+
+    Shared for SB file and for MasterBootImage
+    &#34;&#34;&#34;
+
+    # size of the hash in bytes (single item in RKH table)
+    RKH_SIZE = 32
+    # number of hashes in RKH table (number of table entries)
+    RKHT_SIZE = 4
+
+    # default size alignment
+    DEFAULT_ALIGNMENT = 16
+
+    @property
+    def header(self) -&gt; CertBlockHeader:
+        &#34;&#34;&#34;Certificate block header.&#34;&#34;&#34;
+        return self._header
+
+    @property
+    def rkh(self) -&gt; List[bytes]:
+        &#34;&#34;&#34;List of root keys hashes (SHA-256), each hash as 32 bytes.&#34;&#34;&#34;
+        return self._root_key_hashes
+
+    @property
+    def rkht(self) -&gt; bytes:
+        &#34;&#34;&#34;32-byte hash (SHA-256) of SHA-256 hashes of up to four root public keys.&#34;&#34;&#34;
+        data = bytes()
+        for rkh in self._root_key_hashes:
+            data += rkh
+        assert len(data) == self.RKH_SIZE * self.RKHT_SIZE
+        return internal_backend.hash(data)
+
+    @property
+    def rkht_fuses(self) -&gt; List[int]:
+        &#34;&#34;&#34;List of RKHT fuses, ordered from highest bit to lowest.
+
+        Note: Returned values are in format that should be passed for blhost
+        &#34;&#34;&#34;
+        result = list()
+        rkht = self.rkht
+        while rkht:
+            fuse = int.from_bytes(rkht[:4], byteorder=&#39;little&#39;)
+            result.append(fuse)
+            rkht = rkht[4:]
+        return result
+
+    @property
+    def certificates(self) -&gt; List[Certificate]:
+        &#34;&#34;&#34;List of certificates in header.
+
+        First certificate is root certificate and followed by optional chain certificates
+        &#34;&#34;&#34;
+        return self._cert
+
+    @property
+    def signature_size(self) -&gt; int:
+        &#34;&#34;&#34;Size of the signature in bytes.&#34;&#34;&#34;
+        return len(self.certificates[0].signature)  # The certificate is self signed, return size of its signature
+
+    @property
+    def rkh_index(self) -&gt; Optional[int]:
+        &#34;&#34;&#34;Index of the hash that matches the certificate; None if does not match.&#34;&#34;&#34;
+        if self._cert:
+            rkh = self._cert[0].public_key_hash
+            for index, value in enumerate(self._root_key_hashes):
+                if rkh == value:
+                    return index
+        return None
+
+    @property
+    def alignment(self) -&gt; int:
+        &#34;&#34;&#34;Alignment of the binary output, by default it is DEFAULT_ALIGNMENT but can be customized.&#34;&#34;&#34;
+        return self._alignment
+
+    @alignment.setter
+    def alignment(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: new alignment
+        &#34;&#34;&#34;
+        assert value &gt; 0
+        self._alignment = value
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Aligned size of the certificate block.&#34;&#34;&#34;
+        size = CertBlockHeader.SIZE
+        size += self._header.cert_table_length
+        size += self.RKH_SIZE * self.RKHT_SIZE
+        return misc.align(size, self.alignment)
+
+    @property
+    def image_length(self) -&gt; int:
+        &#34;&#34;&#34;Image length in bytes.&#34;&#34;&#34;
+        return self._header.image_length
+
+    @image_length.setter
+    def image_length(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: new image length
+        &#34;&#34;&#34;
+        assert value &gt; 0
+        self._header.image_length = value
+
+    def __init__(self, version: str = &#39;1.0&#39;, flags: int = 0, build_number: int = 0) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param version: of the certificate in format n.n
+        :param flags: Flags for the Certificate Block Header
+        :param build_number: of the certificate
+        &#34;&#34;&#34;
+        self._header = CertBlockHeader(version, flags, build_number)
+        self._root_key_hashes = [b&#39;\x00&#39; * self.RKH_SIZE for _ in range(self.RKHT_SIZE)]
+        self._cert: List[Certificate] = []
+        self._alignment = self.DEFAULT_ALIGNMENT
+
+    def __str__(self) -&gt; str:
+        return str(self._header)
+
+    def __len__(self) -&gt; int:
+        return len(self._cert)
+
+    def set_root_key_hash(self, index: int, key_hash: Union[bytes, bytearray, Certificate]) -&gt; None:
+        &#34;&#34;&#34;Add Root Key Hash into RKH at specified index.
+
+        Note: Multiple root public keys are supported to allow for key revocation.
+
+        :param index: The index of Root Key Hash in the table
+        :param key_hash: The Root Key Hash value (32 bytes, SHA-256);
+                        or Certificate where the hash can be created from public key
+        &#34;&#34;&#34;
+        if isinstance(key_hash, Certificate):
+            key_hash = key_hash.public_key_hash
+        assert isinstance(key_hash, (bytes, bytearray))
+        assert 0 &lt;= index &lt; self.RKHT_SIZE
+        assert len(key_hash) == self.RKH_SIZE
+        self._root_key_hashes[index] = bytes(key_hash)
+
+    def add_certificate(self, cert: Union[bytes, Certificate]) -&gt; None:
+        &#34;&#34;&#34;Add certificate.
+
+        First call adds root certificate. Additional calls add chain certificates.
+
+        :param cert: The certificate itself in DER format
+        :raise ValueError: if certificate cannot be added
+        &#34;&#34;&#34;
+        if isinstance(cert, bytes):
+            cert_obj = Certificate(cert)
+        elif isinstance(cert, Certificate):
+            cert_obj = cert
+        else:
+            raise ValueError(&#39;Invalid parameter type (cert)&#39;)
+        if cert_obj.version != &#39;v3&#39;:
+            raise ValueError(&#39;Expected certificate v3 but received: &#39; + cert_obj.version)
+        if self._cert:  # chain certificate?
+            last_cert = self._cert[-1]  # verify that it is signed by parent key
+            if not cert_obj.verify(last_cert.public_key_modulus, last_cert.public_key_exponent):
+                raise ValueError(&#39;Chain certificate cannot be verified using parent public key&#39;)
+        else:  # root certificate
+            if cert_obj.self_signed == &#34;no&#34;:
+                raise ValueError(&#34;Root certificate must be self-signed&#34;)
+        self._cert.append(cert_obj)
+        self._header.cert_count += 1
+        self._header.cert_table_length += cert_obj.raw_size + 4
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text info about certificate block.&#34;&#34;&#34;
+        nfo = self.header.info()
+        nfo += &#34; Public Root Keys Hash e.g. RKH (SHA256):\n&#34;
+        rkh_index = self.rkh_index
+        for index, root_key in enumerate(self._root_key_hashes):
+            nfo += f&#34;  {index}) {root_key.hex().upper()} {&#39;&lt;- Used&#39; if index == rkh_index else &#39;&#39;}\n&#34;
+        rkht = self.rkht
+        nfo += f&#34; RKHT (SHA256): {rkht.hex().upper()}\n&#34;
+        for index, fuse in enumerate(self.rkht_fuses):
+            bit_ofs = (len(rkht) - 4 * index) * 8
+            nfo += f&#34;  - RKHT fuse [{bit_ofs:03}:{bit_ofs - 31:03}]: {fuse:08X}\n&#34;
+        for index, cert in enumerate(self._cert):
+            nfo += &#34; Root Certificate:\n&#34; if index == 0 else f&#34; Certificate {index}:\n&#34;
+            nfo += cert.info()
+        return nfo
+
+    def verify_data(self, signature: bytes, data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Signature verification.
+
+        :param signature: to be verified
+        :param data: that has been signed
+        :return: True if the data signature can be confirmed using the certificate; False otherwise
+        &#34;&#34;&#34;
+        cert = self._cert[-1]
+        return crypto_backend().rsa_verify(cert.public_key_modulus, cert.public_key_exponent, signature, data)
+
+    def verify_private_key(self, private_key_pem_data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Verify that given private key matches the public certificate.
+
+        :param private_key_pem_data: to be tested; decrypted binary data in PEM format
+        :return: True if yes; False otherwise
+        &#34;&#34;&#34;
+        signature = crypto_backend().rsa_sign(private_key_pem_data, bytes())
+        cert = self.certificates[-1]  # last certificate
+        return crypto_backend().rsa_verify(cert.public_key_modulus, cert.public_key_exponent, signature, bytes())
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Serialize Certificate Block V2 object.&#34;&#34;&#34;
+        # At least one certificate must be used
+        if not self._cert:
+            raise ValueError(&#34;At least one certificate must be used&#34;)
+        # The hast of root key certificate must be in RKHT
+        if self.rkh_index is None:
+            raise ValueError(&#34;The HASH of used Root Key must be in RKHT&#34;)
+        # CA: Using a single certificate is allowed. In this case, the sole certificate must be self-signed and must not
+        # be a CA. If multiple certificates are used, the root must be self-signed and all but the last must be CAs.
+        if self._cert[-1].ca:
+            raise ValueError(&#34;The last chain certificate must not be CA&#34;)
+        if not all(cert.ca for cert in self._cert[:-1]):
+            raise ValueError(&#34;All certificates except the last chain certificate must be CA&#34;)
+        # Export
+        data = self.header.export()
+        for cert in self._cert:
+            data += pack(&#39;&lt;I&#39;, cert.raw_size)
+            data += cert.export()
+        for key in self._root_key_hashes:
+            data += bytes(key)
+        data = misc.align_block(data, self.alignment)
+        assert len(data) == self.raw_size
+        return data
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CertBlockV2&#39;:
+        &#34;&#34;&#34;Deserialize CertBlockV2 from binary file.
+
+        :param data: Binary data
+        :param offset: Offset within the data, where the Certificate block begins, defaults to 0
+        :return: Certificate Block instance
+        :raises Exception: Length of the data doesn&#39;t match Certificate Block length
+        &#34;&#34;&#34;
+        header = CertBlockHeader.parse(data, offset)
+        offset += CertBlockHeader.SIZE
+        if (len(data) - offset) &lt; (header.cert_table_length + (cls.RKHT_SIZE * cls.RKH_SIZE)):
+            raise Exception()
+        obj = cls(version=header.version, flags=header.flags, build_number=header.build_number)
+        for i in range(header.cert_count):
+            cert_len = unpack_from(&#39;&lt;I&#39;, data, offset)[0]
+            offset += 4
+            cert_obj = Certificate(data[offset: offset + cert_len])
+            obj.add_certificate(cert_obj)
+            offset += cert_len
+        for i in range(cls.RKHT_SIZE):
+            obj.set_root_key_hash(i, data[offset: offset + cls.RKH_SIZE])
+            offset += cls.RKH_SIZE
+        return obj</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader"><code class="flex name class">
+<span>class <span class="ident">CertBlockHeader</span></span>
+<span>(</span><span>version: str = '1.0', flags: int = 0, build_number: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Certificate block header.</p>
+<p>Constructor.</p>
+<p>:param version: Version of the certificate in format n.n
+:param flags: Flags for the Certificate Header
+:param build_number: of the certificate</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CertBlockHeader(BaseClass):
+    &#34;&#34;&#34;Certificate block header.&#34;&#34;&#34;
+
+    FORMAT = &#39;&lt;4s2H6I&#39;
+    SIZE = calcsize(FORMAT)
+    SIGNATURE = b&#39;cert&#39;
+
+    def __init__(self, version: str = &#39;1.0&#39;, flags: int = 0, build_number: int = 0) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param version: Version of the certificate in format n.n
+        :param flags: Flags for the Certificate Header
+        :param build_number: of the certificate
+        &#34;&#34;&#34;
+        assert re.match(r&#39;[0-9]+\.[0-9]+&#39;, version)  # check format of the version: N.N
+        self.version = version
+        self.flags = flags
+        self.build_number = build_number
+        self.image_length = 0
+        self.cert_count = 0
+        self.cert_table_length = 0
+
+    def __str__(self) -&gt; str:
+        nfo = f&#34;CertBlockHeader: V={self.version}, F={self.flags}, BN={self.build_number}, IL={self.image_length}, &#34;
+        nfo += f&#34;CC={self.cert_count}, CTL={self.cert_table_length}&#34;
+        return nfo
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Info of the certificate header in text form.&#34;&#34;&#34;
+        nfo = str()
+        nfo += f&#34; CB Version:           {self.version}\n&#34;
+        nfo += f&#34; CB Flags:             {self.flags}\n&#34;
+        nfo += f&#34; CB Build Number:      {self.build_number}\n&#34;
+        nfo += f&#34; CB Image Length:      {self.image_length}\n&#34;
+        nfo += f&#34; CB Cert. Count:       {self.cert_count}\n&#34;
+        nfo += f&#34; CB Cert. Length:      {self.cert_table_length}\n&#34;
+        return nfo
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Certificate block in binary form.&#34;&#34;&#34;
+        major_version, minor_version = [int(v) for v in self.version.split(&#39;.&#39;)]
+        return pack(self.FORMAT,
+                    self.SIGNATURE,
+                    major_version,
+                    minor_version,
+                    self.SIZE,
+                    self.flags,
+                    self.build_number,
+                    self.image_length,
+                    self.cert_count,
+                    self.cert_table_length)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CertBlockHeader&#39;:
+        &#34;&#34;&#34;Deserialize object from bytes array.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data (default: 0)
+        :return: Certificate Header instance
+        :raises Exception: Unexpected size or signature of data
+        &#34;&#34;&#34;
+        if cls.SIZE &gt; len(data) - offset:
+            raise Exception()
+        (signature, major_version, minor_version, length, flags, build_number, image_length, cert_count,
+         cert_table_length) = unpack_from(cls.FORMAT, data, offset)
+        if signature != cls.SIGNATURE:
+            raise Exception()
+        if length != cls.SIZE:
+            raise Exception()
+        obj = cls(version=f&#39;{major_version}.{minor_version}&#39;, flags=flags, build_number=build_number)
+        obj.image_length = image_length
+        obj.cert_count = cert_count
+        obj.cert_table_length = cert_table_length
+        return obj</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader.FORMAT"><code class="name">var <span class="ident">FORMAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader.SIGNATURE"><code class="name">var <span class="ident">SIGNATURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader.SIZE"><code class="name">var <span class="ident">SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader">CertBlockHeader</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deserialize object from bytes array.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data (default: 0)
+:return: Certificate Header instance
+:raises Exception: Unexpected size or signature of data</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CertBlockHeader&#39;:
+    &#34;&#34;&#34;Deserialize object from bytes array.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data (default: 0)
+    :return: Certificate Header instance
+    :raises Exception: Unexpected size or signature of data
+    &#34;&#34;&#34;
+    if cls.SIZE &gt; len(data) - offset:
+        raise Exception()
+    (signature, major_version, minor_version, length, flags, build_number, image_length, cert_count,
+     cert_table_length) = unpack_from(cls.FORMAT, data, offset)
+    if signature != cls.SIGNATURE:
+        raise Exception()
+    if length != cls.SIZE:
+        raise Exception()
+    obj = cls(version=f&#39;{major_version}.{minor_version}&#39;, flags=flags, build_number=build_number)
+    obj.image_length = image_length
+    obj.cert_count = cert_count
+    obj.cert_table_length = cert_table_length
+    return obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Certificate block in binary form.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Certificate block in binary form.&#34;&#34;&#34;
+    major_version, minor_version = [int(v) for v in self.version.split(&#39;.&#39;)]
+    return pack(self.FORMAT,
+                self.SIGNATURE,
+                major_version,
+                minor_version,
+                self.SIZE,
+                self.flags,
+                self.build_number,
+                self.image_length,
+                self.cert_count,
+                self.cert_table_length)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockHeader.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Info of the certificate header in text form.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Info of the certificate header in text form.&#34;&#34;&#34;
+    nfo = str()
+    nfo += f&#34; CB Version:           {self.version}\n&#34;
+    nfo += f&#34; CB Flags:             {self.flags}\n&#34;
+    nfo += f&#34; CB Build Number:      {self.build_number}\n&#34;
+    nfo += f&#34; CB Image Length:      {self.image_length}\n&#34;
+    nfo += f&#34; CB Cert. Count:       {self.cert_count}\n&#34;
+    nfo += f&#34; CB Cert. Length:      {self.cert_table_length}\n&#34;
+    return nfo</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2"><code class="flex name class">
+<span>class <span class="ident">CertBlockV2</span></span>
+<span>(</span><span>version: str = '1.0', flags: int = 0, build_number: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Certificate block.</p>
+<p>Shared for SB file and for MasterBootImage</p>
+<p>Constructor.</p>
+<p>:param version: of the certificate in format n.n
+:param flags: Flags for the Certificate Block Header
+:param build_number: of the certificate</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CertBlockV2(BaseClass):
+    &#34;&#34;&#34;Certificate block.
+
+    Shared for SB file and for MasterBootImage
+    &#34;&#34;&#34;
+
+    # size of the hash in bytes (single item in RKH table)
+    RKH_SIZE = 32
+    # number of hashes in RKH table (number of table entries)
+    RKHT_SIZE = 4
+
+    # default size alignment
+    DEFAULT_ALIGNMENT = 16
+
+    @property
+    def header(self) -&gt; CertBlockHeader:
+        &#34;&#34;&#34;Certificate block header.&#34;&#34;&#34;
+        return self._header
+
+    @property
+    def rkh(self) -&gt; List[bytes]:
+        &#34;&#34;&#34;List of root keys hashes (SHA-256), each hash as 32 bytes.&#34;&#34;&#34;
+        return self._root_key_hashes
+
+    @property
+    def rkht(self) -&gt; bytes:
+        &#34;&#34;&#34;32-byte hash (SHA-256) of SHA-256 hashes of up to four root public keys.&#34;&#34;&#34;
+        data = bytes()
+        for rkh in self._root_key_hashes:
+            data += rkh
+        assert len(data) == self.RKH_SIZE * self.RKHT_SIZE
+        return internal_backend.hash(data)
+
+    @property
+    def rkht_fuses(self) -&gt; List[int]:
+        &#34;&#34;&#34;List of RKHT fuses, ordered from highest bit to lowest.
+
+        Note: Returned values are in format that should be passed for blhost
+        &#34;&#34;&#34;
+        result = list()
+        rkht = self.rkht
+        while rkht:
+            fuse = int.from_bytes(rkht[:4], byteorder=&#39;little&#39;)
+            result.append(fuse)
+            rkht = rkht[4:]
+        return result
+
+    @property
+    def certificates(self) -&gt; List[Certificate]:
+        &#34;&#34;&#34;List of certificates in header.
+
+        First certificate is root certificate and followed by optional chain certificates
+        &#34;&#34;&#34;
+        return self._cert
+
+    @property
+    def signature_size(self) -&gt; int:
+        &#34;&#34;&#34;Size of the signature in bytes.&#34;&#34;&#34;
+        return len(self.certificates[0].signature)  # The certificate is self signed, return size of its signature
+
+    @property
+    def rkh_index(self) -&gt; Optional[int]:
+        &#34;&#34;&#34;Index of the hash that matches the certificate; None if does not match.&#34;&#34;&#34;
+        if self._cert:
+            rkh = self._cert[0].public_key_hash
+            for index, value in enumerate(self._root_key_hashes):
+                if rkh == value:
+                    return index
+        return None
+
+    @property
+    def alignment(self) -&gt; int:
+        &#34;&#34;&#34;Alignment of the binary output, by default it is DEFAULT_ALIGNMENT but can be customized.&#34;&#34;&#34;
+        return self._alignment
+
+    @alignment.setter
+    def alignment(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: new alignment
+        &#34;&#34;&#34;
+        assert value &gt; 0
+        self._alignment = value
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Aligned size of the certificate block.&#34;&#34;&#34;
+        size = CertBlockHeader.SIZE
+        size += self._header.cert_table_length
+        size += self.RKH_SIZE * self.RKHT_SIZE
+        return misc.align(size, self.alignment)
+
+    @property
+    def image_length(self) -&gt; int:
+        &#34;&#34;&#34;Image length in bytes.&#34;&#34;&#34;
+        return self._header.image_length
+
+    @image_length.setter
+    def image_length(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: new image length
+        &#34;&#34;&#34;
+        assert value &gt; 0
+        self._header.image_length = value
+
+    def __init__(self, version: str = &#39;1.0&#39;, flags: int = 0, build_number: int = 0) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param version: of the certificate in format n.n
+        :param flags: Flags for the Certificate Block Header
+        :param build_number: of the certificate
+        &#34;&#34;&#34;
+        self._header = CertBlockHeader(version, flags, build_number)
+        self._root_key_hashes = [b&#39;\x00&#39; * self.RKH_SIZE for _ in range(self.RKHT_SIZE)]
+        self._cert: List[Certificate] = []
+        self._alignment = self.DEFAULT_ALIGNMENT
+
+    def __str__(self) -&gt; str:
+        return str(self._header)
+
+    def __len__(self) -&gt; int:
+        return len(self._cert)
+
+    def set_root_key_hash(self, index: int, key_hash: Union[bytes, bytearray, Certificate]) -&gt; None:
+        &#34;&#34;&#34;Add Root Key Hash into RKH at specified index.
+
+        Note: Multiple root public keys are supported to allow for key revocation.
+
+        :param index: The index of Root Key Hash in the table
+        :param key_hash: The Root Key Hash value (32 bytes, SHA-256);
+                        or Certificate where the hash can be created from public key
+        &#34;&#34;&#34;
+        if isinstance(key_hash, Certificate):
+            key_hash = key_hash.public_key_hash
+        assert isinstance(key_hash, (bytes, bytearray))
+        assert 0 &lt;= index &lt; self.RKHT_SIZE
+        assert len(key_hash) == self.RKH_SIZE
+        self._root_key_hashes[index] = bytes(key_hash)
+
+    def add_certificate(self, cert: Union[bytes, Certificate]) -&gt; None:
+        &#34;&#34;&#34;Add certificate.
+
+        First call adds root certificate. Additional calls add chain certificates.
+
+        :param cert: The certificate itself in DER format
+        :raise ValueError: if certificate cannot be added
+        &#34;&#34;&#34;
+        if isinstance(cert, bytes):
+            cert_obj = Certificate(cert)
+        elif isinstance(cert, Certificate):
+            cert_obj = cert
+        else:
+            raise ValueError(&#39;Invalid parameter type (cert)&#39;)
+        if cert_obj.version != &#39;v3&#39;:
+            raise ValueError(&#39;Expected certificate v3 but received: &#39; + cert_obj.version)
+        if self._cert:  # chain certificate?
+            last_cert = self._cert[-1]  # verify that it is signed by parent key
+            if not cert_obj.verify(last_cert.public_key_modulus, last_cert.public_key_exponent):
+                raise ValueError(&#39;Chain certificate cannot be verified using parent public key&#39;)
+        else:  # root certificate
+            if cert_obj.self_signed == &#34;no&#34;:
+                raise ValueError(&#34;Root certificate must be self-signed&#34;)
+        self._cert.append(cert_obj)
+        self._header.cert_count += 1
+        self._header.cert_table_length += cert_obj.raw_size + 4
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text info about certificate block.&#34;&#34;&#34;
+        nfo = self.header.info()
+        nfo += &#34; Public Root Keys Hash e.g. RKH (SHA256):\n&#34;
+        rkh_index = self.rkh_index
+        for index, root_key in enumerate(self._root_key_hashes):
+            nfo += f&#34;  {index}) {root_key.hex().upper()} {&#39;&lt;- Used&#39; if index == rkh_index else &#39;&#39;}\n&#34;
+        rkht = self.rkht
+        nfo += f&#34; RKHT (SHA256): {rkht.hex().upper()}\n&#34;
+        for index, fuse in enumerate(self.rkht_fuses):
+            bit_ofs = (len(rkht) - 4 * index) * 8
+            nfo += f&#34;  - RKHT fuse [{bit_ofs:03}:{bit_ofs - 31:03}]: {fuse:08X}\n&#34;
+        for index, cert in enumerate(self._cert):
+            nfo += &#34; Root Certificate:\n&#34; if index == 0 else f&#34; Certificate {index}:\n&#34;
+            nfo += cert.info()
+        return nfo
+
+    def verify_data(self, signature: bytes, data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Signature verification.
+
+        :param signature: to be verified
+        :param data: that has been signed
+        :return: True if the data signature can be confirmed using the certificate; False otherwise
+        &#34;&#34;&#34;
+        cert = self._cert[-1]
+        return crypto_backend().rsa_verify(cert.public_key_modulus, cert.public_key_exponent, signature, data)
+
+    def verify_private_key(self, private_key_pem_data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Verify that given private key matches the public certificate.
+
+        :param private_key_pem_data: to be tested; decrypted binary data in PEM format
+        :return: True if yes; False otherwise
+        &#34;&#34;&#34;
+        signature = crypto_backend().rsa_sign(private_key_pem_data, bytes())
+        cert = self.certificates[-1]  # last certificate
+        return crypto_backend().rsa_verify(cert.public_key_modulus, cert.public_key_exponent, signature, bytes())
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Serialize Certificate Block V2 object.&#34;&#34;&#34;
+        # At least one certificate must be used
+        if not self._cert:
+            raise ValueError(&#34;At least one certificate must be used&#34;)
+        # The hast of root key certificate must be in RKHT
+        if self.rkh_index is None:
+            raise ValueError(&#34;The HASH of used Root Key must be in RKHT&#34;)
+        # CA: Using a single certificate is allowed. In this case, the sole certificate must be self-signed and must not
+        # be a CA. If multiple certificates are used, the root must be self-signed and all but the last must be CAs.
+        if self._cert[-1].ca:
+            raise ValueError(&#34;The last chain certificate must not be CA&#34;)
+        if not all(cert.ca for cert in self._cert[:-1]):
+            raise ValueError(&#34;All certificates except the last chain certificate must be CA&#34;)
+        # Export
+        data = self.header.export()
+        for cert in self._cert:
+            data += pack(&#39;&lt;I&#39;, cert.raw_size)
+            data += cert.export()
+        for key in self._root_key_hashes:
+            data += bytes(key)
+        data = misc.align_block(data, self.alignment)
+        assert len(data) == self.raw_size
+        return data
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CertBlockV2&#39;:
+        &#34;&#34;&#34;Deserialize CertBlockV2 from binary file.
+
+        :param data: Binary data
+        :param offset: Offset within the data, where the Certificate block begins, defaults to 0
+        :return: Certificate Block instance
+        :raises Exception: Length of the data doesn&#39;t match Certificate Block length
+        &#34;&#34;&#34;
+        header = CertBlockHeader.parse(data, offset)
+        offset += CertBlockHeader.SIZE
+        if (len(data) - offset) &lt; (header.cert_table_length + (cls.RKHT_SIZE * cls.RKH_SIZE)):
+            raise Exception()
+        obj = cls(version=header.version, flags=header.flags, build_number=header.build_number)
+        for i in range(header.cert_count):
+            cert_len = unpack_from(&#39;&lt;I&#39;, data, offset)[0]
+            offset += 4
+            cert_obj = Certificate(data[offset: offset + cert_len])
+            obj.add_certificate(cert_obj)
+            offset += cert_len
+        for i in range(cls.RKHT_SIZE):
+            obj.set_root_key_hash(i, data[offset: offset + cls.RKH_SIZE])
+            offset += cls.RKH_SIZE
+        return obj</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.DEFAULT_ALIGNMENT"><code class="name">var <span class="ident">DEFAULT_ALIGNMENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.RKHT_SIZE"><code class="name">var <span class="ident">RKHT_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.RKH_SIZE"><code class="name">var <span class="ident">RKH_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.utils.crypto.cert_blocks.CertBlockV2" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2">CertBlockV2</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deserialize CertBlockV2 from binary file.</p>
+<p>:param data: Binary data
+:param offset: Offset within the data, where the Certificate block begins, defaults to 0
+:return: Certificate Block instance
+:raises Exception: Length of the data doesn't match Certificate Block length</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CertBlockV2&#39;:
+    &#34;&#34;&#34;Deserialize CertBlockV2 from binary file.
+
+    :param data: Binary data
+    :param offset: Offset within the data, where the Certificate block begins, defaults to 0
+    :return: Certificate Block instance
+    :raises Exception: Length of the data doesn&#39;t match Certificate Block length
+    &#34;&#34;&#34;
+    header = CertBlockHeader.parse(data, offset)
+    offset += CertBlockHeader.SIZE
+    if (len(data) - offset) &lt; (header.cert_table_length + (cls.RKHT_SIZE * cls.RKH_SIZE)):
+        raise Exception()
+    obj = cls(version=header.version, flags=header.flags, build_number=header.build_number)
+    for i in range(header.cert_count):
+        cert_len = unpack_from(&#39;&lt;I&#39;, data, offset)[0]
+        offset += 4
+        cert_obj = Certificate(data[offset: offset + cert_len])
+        obj.add_certificate(cert_obj)
+        offset += cert_len
+    for i in range(cls.RKHT_SIZE):
+        obj.set_root_key_hash(i, data[offset: offset + cls.RKH_SIZE])
+        offset += cls.RKH_SIZE
+    return obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.alignment"><code class="name">var <span class="ident">alignment</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Alignment of the binary output, by default it is DEFAULT_ALIGNMENT but can be customized.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def alignment(self) -&gt; int:
+    &#34;&#34;&#34;Alignment of the binary output, by default it is DEFAULT_ALIGNMENT but can be customized.&#34;&#34;&#34;
+    return self._alignment</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.certificates"><code class="name">var <span class="ident">certificates</span> : List[<a title="spsdk.utils.crypto.certificate.Certificate" href="certificate.html#spsdk.utils.crypto.certificate.Certificate">Certificate</a>]</code></dt>
+<dd>
+<div class="desc"><p>List of certificates in header.</p>
+<p>First certificate is root certificate and followed by optional chain certificates</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def certificates(self) -&gt; List[Certificate]:
+    &#34;&#34;&#34;List of certificates in header.
+
+    First certificate is root certificate and followed by optional chain certificates
+    &#34;&#34;&#34;
+    return self._cert</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.header"><code class="name">var <span class="ident">header</span> : <a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader">CertBlockHeader</a></code></dt>
+<dd>
+<div class="desc"><p>Certificate block header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def header(self) -&gt; CertBlockHeader:
+    &#34;&#34;&#34;Certificate block header.&#34;&#34;&#34;
+    return self._header</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.image_length"><code class="name">var <span class="ident">image_length</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Image length in bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def image_length(self) -&gt; int:
+    &#34;&#34;&#34;Image length in bytes.&#34;&#34;&#34;
+    return self._header.image_length</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Aligned size of the certificate block.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Aligned size of the certificate block.&#34;&#34;&#34;
+    size = CertBlockHeader.SIZE
+    size += self._header.cert_table_length
+    size += self.RKH_SIZE * self.RKHT_SIZE
+    return misc.align(size, self.alignment)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkh"><code class="name">var <span class="ident">rkh</span> : List[bytes]</code></dt>
+<dd>
+<div class="desc"><p>List of root keys hashes (SHA-256), each hash as 32 bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def rkh(self) -&gt; List[bytes]:
+    &#34;&#34;&#34;List of root keys hashes (SHA-256), each hash as 32 bytes.&#34;&#34;&#34;
+    return self._root_key_hashes</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkh_index"><code class="name">var <span class="ident">rkh_index</span> : Union[int, NoneType]</code></dt>
+<dd>
+<div class="desc"><p>Index of the hash that matches the certificate; None if does not match.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def rkh_index(self) -&gt; Optional[int]:
+    &#34;&#34;&#34;Index of the hash that matches the certificate; None if does not match.&#34;&#34;&#34;
+    if self._cert:
+        rkh = self._cert[0].public_key_hash
+        for index, value in enumerate(self._root_key_hashes):
+            if rkh == value:
+                return index
+    return None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkht"><code class="name">var <span class="ident">rkht</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>32-byte hash (SHA-256) of SHA-256 hashes of up to four root public keys.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def rkht(self) -&gt; bytes:
+    &#34;&#34;&#34;32-byte hash (SHA-256) of SHA-256 hashes of up to four root public keys.&#34;&#34;&#34;
+    data = bytes()
+    for rkh in self._root_key_hashes:
+        data += rkh
+    assert len(data) == self.RKH_SIZE * self.RKHT_SIZE
+    return internal_backend.hash(data)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkht_fuses"><code class="name">var <span class="ident">rkht_fuses</span> : List[int]</code></dt>
+<dd>
+<div class="desc"><p>List of RKHT fuses, ordered from highest bit to lowest.</p>
+<p>Note: Returned values are in format that should be passed for blhost</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def rkht_fuses(self) -&gt; List[int]:
+    &#34;&#34;&#34;List of RKHT fuses, ordered from highest bit to lowest.
+
+    Note: Returned values are in format that should be passed for blhost
+    &#34;&#34;&#34;
+    result = list()
+    rkht = self.rkht
+    while rkht:
+        fuse = int.from_bytes(rkht[:4], byteorder=&#39;little&#39;)
+        result.append(fuse)
+        rkht = rkht[4:]
+    return result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.signature_size"><code class="name">var <span class="ident">signature_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Size of the signature in bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def signature_size(self) -&gt; int:
+    &#34;&#34;&#34;Size of the signature in bytes.&#34;&#34;&#34;
+    return len(self.certificates[0].signature)  # The certificate is self signed, return size of its signature</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.add_certificate"><code class="name flex">
+<span>def <span class="ident">add_certificate</span></span>(<span>self, cert: Union[bytes, <a title="spsdk.utils.crypto.certificate.Certificate" href="certificate.html#spsdk.utils.crypto.certificate.Certificate">Certificate</a>]) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add certificate.</p>
+<p>First call adds root certificate. Additional calls add chain certificates.</p>
+<p>:param cert: The certificate itself in DER format
+:raise ValueError: if certificate cannot be added</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_certificate(self, cert: Union[bytes, Certificate]) -&gt; None:
+    &#34;&#34;&#34;Add certificate.
+
+    First call adds root certificate. Additional calls add chain certificates.
+
+    :param cert: The certificate itself in DER format
+    :raise ValueError: if certificate cannot be added
+    &#34;&#34;&#34;
+    if isinstance(cert, bytes):
+        cert_obj = Certificate(cert)
+    elif isinstance(cert, Certificate):
+        cert_obj = cert
+    else:
+        raise ValueError(&#39;Invalid parameter type (cert)&#39;)
+    if cert_obj.version != &#39;v3&#39;:
+        raise ValueError(&#39;Expected certificate v3 but received: &#39; + cert_obj.version)
+    if self._cert:  # chain certificate?
+        last_cert = self._cert[-1]  # verify that it is signed by parent key
+        if not cert_obj.verify(last_cert.public_key_modulus, last_cert.public_key_exponent):
+            raise ValueError(&#39;Chain certificate cannot be verified using parent public key&#39;)
+    else:  # root certificate
+        if cert_obj.self_signed == &#34;no&#34;:
+            raise ValueError(&#34;Root certificate must be self-signed&#34;)
+    self._cert.append(cert_obj)
+    self._header.cert_count += 1
+    self._header.cert_table_length += cert_obj.raw_size + 4</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Serialize Certificate Block V2 object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Serialize Certificate Block V2 object.&#34;&#34;&#34;
+    # At least one certificate must be used
+    if not self._cert:
+        raise ValueError(&#34;At least one certificate must be used&#34;)
+    # The hast of root key certificate must be in RKHT
+    if self.rkh_index is None:
+        raise ValueError(&#34;The HASH of used Root Key must be in RKHT&#34;)
+    # CA: Using a single certificate is allowed. In this case, the sole certificate must be self-signed and must not
+    # be a CA. If multiple certificates are used, the root must be self-signed and all but the last must be CAs.
+    if self._cert[-1].ca:
+        raise ValueError(&#34;The last chain certificate must not be CA&#34;)
+    if not all(cert.ca for cert in self._cert[:-1]):
+        raise ValueError(&#34;All certificates except the last chain certificate must be CA&#34;)
+    # Export
+    data = self.header.export()
+    for cert in self._cert:
+        data += pack(&#39;&lt;I&#39;, cert.raw_size)
+        data += cert.export()
+    for key in self._root_key_hashes:
+        data += bytes(key)
+    data = misc.align_block(data, self.alignment)
+    assert len(data) == self.raw_size
+    return data</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Text info about certificate block.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Text info about certificate block.&#34;&#34;&#34;
+    nfo = self.header.info()
+    nfo += &#34; Public Root Keys Hash e.g. RKH (SHA256):\n&#34;
+    rkh_index = self.rkh_index
+    for index, root_key in enumerate(self._root_key_hashes):
+        nfo += f&#34;  {index}) {root_key.hex().upper()} {&#39;&lt;- Used&#39; if index == rkh_index else &#39;&#39;}\n&#34;
+    rkht = self.rkht
+    nfo += f&#34; RKHT (SHA256): {rkht.hex().upper()}\n&#34;
+    for index, fuse in enumerate(self.rkht_fuses):
+        bit_ofs = (len(rkht) - 4 * index) * 8
+        nfo += f&#34;  - RKHT fuse [{bit_ofs:03}:{bit_ofs - 31:03}]: {fuse:08X}\n&#34;
+    for index, cert in enumerate(self._cert):
+        nfo += &#34; Root Certificate:\n&#34; if index == 0 else f&#34; Certificate {index}:\n&#34;
+        nfo += cert.info()
+    return nfo</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.set_root_key_hash"><code class="name flex">
+<span>def <span class="ident">set_root_key_hash</span></span>(<span>self, index: int, key_hash: Union[bytes, bytearray, <a title="spsdk.utils.crypto.certificate.Certificate" href="certificate.html#spsdk.utils.crypto.certificate.Certificate">Certificate</a>]) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add Root Key Hash into RKH at specified index.</p>
+<p>Note: Multiple root public keys are supported to allow for key revocation.</p>
+<p>:param index: The index of Root Key Hash in the table
+:param key_hash: The Root Key Hash value (32 bytes, SHA-256);
+or Certificate where the hash can be created from public key</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_root_key_hash(self, index: int, key_hash: Union[bytes, bytearray, Certificate]) -&gt; None:
+    &#34;&#34;&#34;Add Root Key Hash into RKH at specified index.
+
+    Note: Multiple root public keys are supported to allow for key revocation.
+
+    :param index: The index of Root Key Hash in the table
+    :param key_hash: The Root Key Hash value (32 bytes, SHA-256);
+                    or Certificate where the hash can be created from public key
+    &#34;&#34;&#34;
+    if isinstance(key_hash, Certificate):
+        key_hash = key_hash.public_key_hash
+    assert isinstance(key_hash, (bytes, bytearray))
+    assert 0 &lt;= index &lt; self.RKHT_SIZE
+    assert len(key_hash) == self.RKH_SIZE
+    self._root_key_hashes[index] = bytes(key_hash)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.verify_data"><code class="name flex">
+<span>def <span class="ident">verify_data</span></span>(<span>self, signature: bytes, data: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Signature verification.</p>
+<p>:param signature: to be verified
+:param data: that has been signed
+:return: True if the data signature can be confirmed using the certificate; False otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_data(self, signature: bytes, data: bytes) -&gt; bool:
+    &#34;&#34;&#34;Signature verification.
+
+    :param signature: to be verified
+    :param data: that has been signed
+    :return: True if the data signature can be confirmed using the certificate; False otherwise
+    &#34;&#34;&#34;
+    cert = self._cert[-1]
+    return crypto_backend().rsa_verify(cert.public_key_modulus, cert.public_key_exponent, signature, data)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.cert_blocks.CertBlockV2.verify_private_key"><code class="name flex">
+<span>def <span class="ident">verify_private_key</span></span>(<span>self, private_key_pem_data: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify that given private key matches the public certificate.</p>
+<p>:param private_key_pem_data: to be tested; decrypted binary data in PEM format
+:return: True if yes; False otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_private_key(self, private_key_pem_data: bytes) -&gt; bool:
+    &#34;&#34;&#34;Verify that given private key matches the public certificate.
+
+    :param private_key_pem_data: to be tested; decrypted binary data in PEM format
+    :return: True if yes; False otherwise
+    &#34;&#34;&#34;
+    signature = crypto_backend().rsa_sign(private_key_pem_data, bytes())
+    cert = self.certificates[-1]  # last certificate
+    return crypto_backend().rsa_verify(cert.public_key_modulus, cert.public_key_exponent, signature, bytes())</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.utils.crypto" href="index.html">spsdk.utils.crypto</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader">CertBlockHeader</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader.FORMAT" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader.FORMAT">FORMAT</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader.SIGNATURE" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader.SIGNATURE">SIGNATURE</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader.SIZE" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader.SIZE">SIZE</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader.export" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader.export">export</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader.info" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader.info">info</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockHeader.parse" href="#spsdk.utils.crypto.cert_blocks.CertBlockHeader.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2">CertBlockV2</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.DEFAULT_ALIGNMENT" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.DEFAULT_ALIGNMENT">DEFAULT_ALIGNMENT</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.RKHT_SIZE" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.RKHT_SIZE">RKHT_SIZE</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.RKH_SIZE" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.RKH_SIZE">RKH_SIZE</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.add_certificate" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.add_certificate">add_certificate</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.alignment" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.alignment">alignment</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.certificates" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.certificates">certificates</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.export" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.export">export</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.header" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.header">header</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.image_length" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.image_length">image_length</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.info" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.info">info</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.parse" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.parse">parse</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.raw_size" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.raw_size">raw_size</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkh" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.rkh">rkh</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkh_index" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.rkh_index">rkh_index</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkht" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.rkht">rkht</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.rkht_fuses" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.rkht_fuses">rkht_fuses</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.set_root_key_hash" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.set_root_key_hash">set_root_key_hash</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.signature_size" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.signature_size">signature_size</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.verify_data" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.verify_data">verify_data</a></code></li>
+<li><code><a title="spsdk.utils.crypto.cert_blocks.CertBlockV2.verify_private_key" href="#spsdk.utils.crypto.cert_blocks.CertBlockV2.verify_private_key">verify_private_key</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

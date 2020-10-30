@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.utils.crypto.certificate API documentation</title>
+<meta name="description" content="Internal representation of a Certificate." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.utils.crypto.certificate</code></h1>
+</header>
+<section id="section-intro">
+<p>Internal representation of a Certificate.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Internal representation of a Certificate.&#34;&#34;&#34;
+
+from datetime import datetime
+from typing import Dict, Set
+
+from asn1crypto import x509
+from oscrypto.asymmetric import rsa_pkcs1v15_verify, load_public_key
+from oscrypto.errors import SignatureError
+
+from .backend_internal import internal_backend
+from .common import crypto_backend
+
+
+class Certificate:
+    &#34;&#34;&#34;Internally used representation of a Certificate.&#34;&#34;&#34;
+
+    @property
+    def version(self) -&gt; str:
+        &#34;&#34;&#34;Version of the Certificate.&#34;&#34;&#34;
+        return self._cert.native[&#39;tbs_certificate&#39;][&#39;version&#39;]
+
+    @property
+    def ca(self) -&gt; bool:   # pylint: disable=invalid-name
+        &#34;&#34;&#34;Certification Authority flag.&#34;&#34;&#34;
+        return self._cert.ca
+
+    @property
+    def self_signed(self) -&gt; str:
+        &#34;&#34;&#34;Indication whether the Certificate is self-signed.
+
+        A unicode string of &#34;no&#34; or &#34;maybe&#34;. The &#34;maybe&#34; result will
+        be returned if the certificate issuer and subject are the same.
+        If a key identifier and authority key identifier are present,
+        they will need to match otherwise &#34;no&#34; will be returned.
+
+        To verify is a certificate is truly self-signed, the signature
+        will need to be verified. See the certvalidator package for
+        one possible solution.
+        &#34;&#34;&#34;
+        return self._cert.self_signed
+
+    @property
+    def self_issued(self) -&gt; bool:
+        &#34;&#34;&#34;Is the Certificate self-issued (subject and issuer are the same).&#34;&#34;&#34;
+        return self._cert.self_issued
+
+    @property
+    def serial_number(self) -&gt; int:
+        &#34;&#34;&#34;Serial number of the Certificate.&#34;&#34;&#34;
+        return self._cert.serial_number
+
+    @property
+    def hash_algo(self) -&gt; str:
+        &#34;&#34;&#34;HASH algorithm used in the Certificate.&#34;&#34;&#34;
+        return self._cert.hash_algo
+
+    @property
+    def public_key_modulus(self) -&gt; int:
+        &#34;&#34;&#34;Modulus of the public key of the certificate.&#34;&#34;&#34;
+        return self._cert.public_key.native[&#39;public_key&#39;][&#39;modulus&#39;]
+
+    @property
+    def public_key_exponent(self) -&gt; int:
+        &#34;&#34;&#34;Exponent of the public key of the certificate.&#34;&#34;&#34;
+        return self._cert.public_key.native[&#39;public_key&#39;][&#39;public_exponent&#39;]
+
+    @property
+    def public_key_hash(self) -&gt; bytes:
+        &#34;&#34;&#34;32 bytes hash (SHA-256) of public key (modulus and exponent).&#34;&#34;&#34;
+        modulus = self._cert.public_key.native[&#39;public_key&#39;][&#39;modulus&#39;]
+        exponent = self._cert.public_key.native[&#39;public_key&#39;][&#39;public_exponent&#39;]
+        modulus_len = (modulus.bit_length() + 7) // 8
+        exponent_len = (exponent.bit_length() + 7) // 8
+        return crypto_backend().hash(modulus.to_bytes(modulus_len, &#34;big&#34;) + exponent.to_bytes(exponent_len, &#34;big&#34;))
+
+    @property
+    def public_key_usage(self) -&gt; Set[str]:
+        &#34;&#34;&#34;Usage of the Certificate.&#34;&#34;&#34;
+        return self._cert.key_usage_value.native
+
+    @property
+    def signature_algo(self) -&gt; str:
+        &#34;&#34;&#34;Certificate signature algorithm.&#34;&#34;&#34;
+        return self._cert.signature_algo
+
+    @property
+    def signature(self) -&gt; bytes:
+        &#34;&#34;&#34;Certificate signature.&#34;&#34;&#34;
+        return self._cert.signature
+
+    @property
+    def max_path_length(self) -&gt; int:
+        &#34;&#34;&#34;Maximum length of derived Certificate chain.&#34;&#34;&#34;
+        if not self.ca:
+            return 0
+        return self._cert.basic_constraints_value[&#39;path_len_constraint&#39;].native
+
+    @property
+    def issuer(self) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;Certificate issuer.&#34;&#34;&#34;
+        return self._cert.issuer.native
+
+    @property
+    def not_valid_before(self) -&gt; datetime:
+        &#34;&#34;&#34;Begging of the Certificate valid period.&#34;&#34;&#34;
+        return self._cert.not_valid_before
+
+    @property
+    def not_valid_after(self) -&gt; datetime:
+        &#34;&#34;&#34;End of the Certificate valid period.&#34;&#34;&#34;
+        return self._cert.not_valid_after
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Size of the Certificate data (aligned to 4 bytes).&#34;&#34;&#34;
+        size = len(self._data)
+        if size % 4:
+            size += 4 - (size % 4)
+        return size
+
+    def __init__(self, certificate: bytes) -&gt; None:
+        &#34;&#34;&#34;Initialize the Certificate object.
+
+        :param certificate: Certificate bytes (read from file)
+        &#34;&#34;&#34;
+        self._cert = x509.Certificate.load(certificate)
+        self._data = certificate
+
+    def _get_issuer_info(self, key: str, format_str: str) -&gt; str:
+        &#34;&#34;&#34;Return selected issuer info in specified format.
+
+        :param key: of the info to be returned
+        :param format_str: formatting string, e.g. &#34;Value: {}\n&#34;
+        :return: formatted info; empty string if the info is not available (as most of the info are optional)
+        &#34;&#34;&#34;
+        value = self.issuer.get(key, None)
+        if not value:
+            return &#39;&#39;
+
+        return format_str.format(value)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text information about the Certificate.&#34;&#34;&#34;
+        not_valid_before = self.not_valid_before.strftime(&#34;%d.%m.%Y (%H:%M:%S)&#34;)
+        not_valid_after = self.not_valid_after.strftime(&#34;%d.%m.%Y (%H:%M:%S)&#34;)
+        nfo = &#34;&#34;
+        nfo += f&#34;  Certification Authority:    {&#39;YES&#39; if self.ca else &#39;NO&#39;}\n&#34;
+        if self.ca:
+            nfo += f&#34;  Max Path Length:            {self.max_path_length}\n&#34;
+        nfo += f&#34;  Serial Number:              {hex(self.serial_number)}\n&#34;
+        nfo += f&#34;  Validity Range:             {not_valid_before} - {not_valid_after}\n&#34;
+        nfo += f&#34;  Signature Algorithm:        {self.signature_algo}\n&#34;
+        nfo += f&#34;  Self Issued:                {&#39;YES&#39; if self.self_issued else &#39;NO&#39;}\n&#34;
+        nfo += self._get_issuer_info(&#39;country_name&#39;, &#34;  Issuer Country Name:        {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;state_or_province_name&#39;, &#34;  Issuer State/Province Name: {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;locality_name&#39;, &#34;  Issuer Locality Name:       {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;organization_name&#39;, &#34;  Issuer Organization Name:   {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;organizational_unit_name&#39;, &#34;  Issuer Organ. Unit Name:    {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;common_name&#39;, &#34;  Issuer Common Name:         {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;email_address&#39;, &#34;  Issuer Email Address:       {}\n&#34;)
+        return nfo
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Serialized Certificate data.&#34;&#34;&#34;
+        raw_data = self._data
+        if len(raw_data) % 4:
+            raw_data += b&#39;\x00&#39; * (4 - (len(raw_data) % 4))
+        return raw_data
+
+    def verify(self, public_key_modulus: int, public_key_exponent: int) -&gt; bool:
+        &#34;&#34;&#34;Use given public key to verify the certificate is signed.
+
+        :param public_key_modulus: modulus of the public key to be verified
+        :param public_key_exponent: exponent of the public key to be verified
+        :return: True if verification pass; False otherwise
+        &#34;&#34;&#34;
+        public_key = internal_backend.rsa_public_key(public_key_modulus, public_key_exponent)
+        key_object = load_public_key(public_key.export_key())
+        try:
+            rsa_pkcs1v15_verify(key_object, self._cert[&#39;signature_value&#39;].native, self._cert[&#39;tbs_certificate&#39;].dump(),
+                                self.hash_algo)
+        except SignatureError:
+            return False
+        return True</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.utils.crypto.certificate.Certificate"><code class="flex name class">
+<span>class <span class="ident">Certificate</span></span>
+<span>(</span><span>certificate: bytes)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Internally used representation of a Certificate.</p>
+<p>Initialize the Certificate object.</p>
+<p>:param certificate: Certificate bytes (read from file)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Certificate:
+    &#34;&#34;&#34;Internally used representation of a Certificate.&#34;&#34;&#34;
+
+    @property
+    def version(self) -&gt; str:
+        &#34;&#34;&#34;Version of the Certificate.&#34;&#34;&#34;
+        return self._cert.native[&#39;tbs_certificate&#39;][&#39;version&#39;]
+
+    @property
+    def ca(self) -&gt; bool:   # pylint: disable=invalid-name
+        &#34;&#34;&#34;Certification Authority flag.&#34;&#34;&#34;
+        return self._cert.ca
+
+    @property
+    def self_signed(self) -&gt; str:
+        &#34;&#34;&#34;Indication whether the Certificate is self-signed.
+
+        A unicode string of &#34;no&#34; or &#34;maybe&#34;. The &#34;maybe&#34; result will
+        be returned if the certificate issuer and subject are the same.
+        If a key identifier and authority key identifier are present,
+        they will need to match otherwise &#34;no&#34; will be returned.
+
+        To verify is a certificate is truly self-signed, the signature
+        will need to be verified. See the certvalidator package for
+        one possible solution.
+        &#34;&#34;&#34;
+        return self._cert.self_signed
+
+    @property
+    def self_issued(self) -&gt; bool:
+        &#34;&#34;&#34;Is the Certificate self-issued (subject and issuer are the same).&#34;&#34;&#34;
+        return self._cert.self_issued
+
+    @property
+    def serial_number(self) -&gt; int:
+        &#34;&#34;&#34;Serial number of the Certificate.&#34;&#34;&#34;
+        return self._cert.serial_number
+
+    @property
+    def hash_algo(self) -&gt; str:
+        &#34;&#34;&#34;HASH algorithm used in the Certificate.&#34;&#34;&#34;
+        return self._cert.hash_algo
+
+    @property
+    def public_key_modulus(self) -&gt; int:
+        &#34;&#34;&#34;Modulus of the public key of the certificate.&#34;&#34;&#34;
+        return self._cert.public_key.native[&#39;public_key&#39;][&#39;modulus&#39;]
+
+    @property
+    def public_key_exponent(self) -&gt; int:
+        &#34;&#34;&#34;Exponent of the public key of the certificate.&#34;&#34;&#34;
+        return self._cert.public_key.native[&#39;public_key&#39;][&#39;public_exponent&#39;]
+
+    @property
+    def public_key_hash(self) -&gt; bytes:
+        &#34;&#34;&#34;32 bytes hash (SHA-256) of public key (modulus and exponent).&#34;&#34;&#34;
+        modulus = self._cert.public_key.native[&#39;public_key&#39;][&#39;modulus&#39;]
+        exponent = self._cert.public_key.native[&#39;public_key&#39;][&#39;public_exponent&#39;]
+        modulus_len = (modulus.bit_length() + 7) // 8
+        exponent_len = (exponent.bit_length() + 7) // 8
+        return crypto_backend().hash(modulus.to_bytes(modulus_len, &#34;big&#34;) + exponent.to_bytes(exponent_len, &#34;big&#34;))
+
+    @property
+    def public_key_usage(self) -&gt; Set[str]:
+        &#34;&#34;&#34;Usage of the Certificate.&#34;&#34;&#34;
+        return self._cert.key_usage_value.native
+
+    @property
+    def signature_algo(self) -&gt; str:
+        &#34;&#34;&#34;Certificate signature algorithm.&#34;&#34;&#34;
+        return self._cert.signature_algo
+
+    @property
+    def signature(self) -&gt; bytes:
+        &#34;&#34;&#34;Certificate signature.&#34;&#34;&#34;
+        return self._cert.signature
+
+    @property
+    def max_path_length(self) -&gt; int:
+        &#34;&#34;&#34;Maximum length of derived Certificate chain.&#34;&#34;&#34;
+        if not self.ca:
+            return 0
+        return self._cert.basic_constraints_value[&#39;path_len_constraint&#39;].native
+
+    @property
+    def issuer(self) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;Certificate issuer.&#34;&#34;&#34;
+        return self._cert.issuer.native
+
+    @property
+    def not_valid_before(self) -&gt; datetime:
+        &#34;&#34;&#34;Begging of the Certificate valid period.&#34;&#34;&#34;
+        return self._cert.not_valid_before
+
+    @property
+    def not_valid_after(self) -&gt; datetime:
+        &#34;&#34;&#34;End of the Certificate valid period.&#34;&#34;&#34;
+        return self._cert.not_valid_after
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Size of the Certificate data (aligned to 4 bytes).&#34;&#34;&#34;
+        size = len(self._data)
+        if size % 4:
+            size += 4 - (size % 4)
+        return size
+
+    def __init__(self, certificate: bytes) -&gt; None:
+        &#34;&#34;&#34;Initialize the Certificate object.
+
+        :param certificate: Certificate bytes (read from file)
+        &#34;&#34;&#34;
+        self._cert = x509.Certificate.load(certificate)
+        self._data = certificate
+
+    def _get_issuer_info(self, key: str, format_str: str) -&gt; str:
+        &#34;&#34;&#34;Return selected issuer info in specified format.
+
+        :param key: of the info to be returned
+        :param format_str: formatting string, e.g. &#34;Value: {}\n&#34;
+        :return: formatted info; empty string if the info is not available (as most of the info are optional)
+        &#34;&#34;&#34;
+        value = self.issuer.get(key, None)
+        if not value:
+            return &#39;&#39;
+
+        return format_str.format(value)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text information about the Certificate.&#34;&#34;&#34;
+        not_valid_before = self.not_valid_before.strftime(&#34;%d.%m.%Y (%H:%M:%S)&#34;)
+        not_valid_after = self.not_valid_after.strftime(&#34;%d.%m.%Y (%H:%M:%S)&#34;)
+        nfo = &#34;&#34;
+        nfo += f&#34;  Certification Authority:    {&#39;YES&#39; if self.ca else &#39;NO&#39;}\n&#34;
+        if self.ca:
+            nfo += f&#34;  Max Path Length:            {self.max_path_length}\n&#34;
+        nfo += f&#34;  Serial Number:              {hex(self.serial_number)}\n&#34;
+        nfo += f&#34;  Validity Range:             {not_valid_before} - {not_valid_after}\n&#34;
+        nfo += f&#34;  Signature Algorithm:        {self.signature_algo}\n&#34;
+        nfo += f&#34;  Self Issued:                {&#39;YES&#39; if self.self_issued else &#39;NO&#39;}\n&#34;
+        nfo += self._get_issuer_info(&#39;country_name&#39;, &#34;  Issuer Country Name:        {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;state_or_province_name&#39;, &#34;  Issuer State/Province Name: {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;locality_name&#39;, &#34;  Issuer Locality Name:       {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;organization_name&#39;, &#34;  Issuer Organization Name:   {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;organizational_unit_name&#39;, &#34;  Issuer Organ. Unit Name:    {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;common_name&#39;, &#34;  Issuer Common Name:         {}\n&#34;)
+        nfo += self._get_issuer_info(&#39;email_address&#39;, &#34;  Issuer Email Address:       {}\n&#34;)
+        return nfo
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Serialized Certificate data.&#34;&#34;&#34;
+        raw_data = self._data
+        if len(raw_data) % 4:
+            raw_data += b&#39;\x00&#39; * (4 - (len(raw_data) % 4))
+        return raw_data
+
+    def verify(self, public_key_modulus: int, public_key_exponent: int) -&gt; bool:
+        &#34;&#34;&#34;Use given public key to verify the certificate is signed.
+
+        :param public_key_modulus: modulus of the public key to be verified
+        :param public_key_exponent: exponent of the public key to be verified
+        :return: True if verification pass; False otherwise
+        &#34;&#34;&#34;
+        public_key = internal_backend.rsa_public_key(public_key_modulus, public_key_exponent)
+        key_object = load_public_key(public_key.export_key())
+        try:
+            rsa_pkcs1v15_verify(key_object, self._cert[&#39;signature_value&#39;].native, self._cert[&#39;tbs_certificate&#39;].dump(),
+                                self.hash_algo)
+        except SignatureError:
+            return False
+        return True</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.utils.crypto.certificate.Certificate.ca"><code class="name">var <span class="ident">ca</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Certification Authority flag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def ca(self) -&gt; bool:   # pylint: disable=invalid-name
+    &#34;&#34;&#34;Certification Authority flag.&#34;&#34;&#34;
+    return self._cert.ca</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.hash_algo"><code class="name">var <span class="ident">hash_algo</span> : str</code></dt>
+<dd>
+<div class="desc"><p>HASH algorithm used in the Certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def hash_algo(self) -&gt; str:
+    &#34;&#34;&#34;HASH algorithm used in the Certificate.&#34;&#34;&#34;
+    return self._cert.hash_algo</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.issuer"><code class="name">var <span class="ident">issuer</span> : Dict[str, str]</code></dt>
+<dd>
+<div class="desc"><p>Certificate issuer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def issuer(self) -&gt; Dict[str, str]:
+    &#34;&#34;&#34;Certificate issuer.&#34;&#34;&#34;
+    return self._cert.issuer.native</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.max_path_length"><code class="name">var <span class="ident">max_path_length</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Maximum length of derived Certificate chain.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def max_path_length(self) -&gt; int:
+    &#34;&#34;&#34;Maximum length of derived Certificate chain.&#34;&#34;&#34;
+    if not self.ca:
+        return 0
+    return self._cert.basic_constraints_value[&#39;path_len_constraint&#39;].native</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.not_valid_after"><code class="name">var <span class="ident">not_valid_after</span> : datetime.datetime</code></dt>
+<dd>
+<div class="desc"><p>End of the Certificate valid period.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def not_valid_after(self) -&gt; datetime:
+    &#34;&#34;&#34;End of the Certificate valid period.&#34;&#34;&#34;
+    return self._cert.not_valid_after</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.not_valid_before"><code class="name">var <span class="ident">not_valid_before</span> : datetime.datetime</code></dt>
+<dd>
+<div class="desc"><p>Begging of the Certificate valid period.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def not_valid_before(self) -&gt; datetime:
+    &#34;&#34;&#34;Begging of the Certificate valid period.&#34;&#34;&#34;
+    return self._cert.not_valid_before</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.public_key_exponent"><code class="name">var <span class="ident">public_key_exponent</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Exponent of the public key of the certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def public_key_exponent(self) -&gt; int:
+    &#34;&#34;&#34;Exponent of the public key of the certificate.&#34;&#34;&#34;
+    return self._cert.public_key.native[&#39;public_key&#39;][&#39;public_exponent&#39;]</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.public_key_hash"><code class="name">var <span class="ident">public_key_hash</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>32 bytes hash (SHA-256) of public key (modulus and exponent).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def public_key_hash(self) -&gt; bytes:
+    &#34;&#34;&#34;32 bytes hash (SHA-256) of public key (modulus and exponent).&#34;&#34;&#34;
+    modulus = self._cert.public_key.native[&#39;public_key&#39;][&#39;modulus&#39;]
+    exponent = self._cert.public_key.native[&#39;public_key&#39;][&#39;public_exponent&#39;]
+    modulus_len = (modulus.bit_length() + 7) // 8
+    exponent_len = (exponent.bit_length() + 7) // 8
+    return crypto_backend().hash(modulus.to_bytes(modulus_len, &#34;big&#34;) + exponent.to_bytes(exponent_len, &#34;big&#34;))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.public_key_modulus"><code class="name">var <span class="ident">public_key_modulus</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Modulus of the public key of the certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def public_key_modulus(self) -&gt; int:
+    &#34;&#34;&#34;Modulus of the public key of the certificate.&#34;&#34;&#34;
+    return self._cert.public_key.native[&#39;public_key&#39;][&#39;modulus&#39;]</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.public_key_usage"><code class="name">var <span class="ident">public_key_usage</span> : Set[str]</code></dt>
+<dd>
+<div class="desc"><p>Usage of the Certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def public_key_usage(self) -&gt; Set[str]:
+    &#34;&#34;&#34;Usage of the Certificate.&#34;&#34;&#34;
+    return self._cert.key_usage_value.native</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Size of the Certificate data (aligned to 4 bytes).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Size of the Certificate data (aligned to 4 bytes).&#34;&#34;&#34;
+    size = len(self._data)
+    if size % 4:
+        size += 4 - (size % 4)
+    return size</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.self_issued"><code class="name">var <span class="ident">self_issued</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Is the Certificate self-issued (subject and issuer are the same).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def self_issued(self) -&gt; bool:
+    &#34;&#34;&#34;Is the Certificate self-issued (subject and issuer are the same).&#34;&#34;&#34;
+    return self._cert.self_issued</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.self_signed"><code class="name">var <span class="ident">self_signed</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Indication whether the Certificate is self-signed.</p>
+<p>A unicode string of "no" or "maybe". The "maybe" result will
+be returned if the certificate issuer and subject are the same.
+If a key identifier and authority key identifier are present,
+they will need to match otherwise "no" will be returned.</p>
+<p>To verify is a certificate is truly self-signed, the signature
+will need to be verified. See the certvalidator package for
+one possible solution.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def self_signed(self) -&gt; str:
+    &#34;&#34;&#34;Indication whether the Certificate is self-signed.
+
+    A unicode string of &#34;no&#34; or &#34;maybe&#34;. The &#34;maybe&#34; result will
+    be returned if the certificate issuer and subject are the same.
+    If a key identifier and authority key identifier are present,
+    they will need to match otherwise &#34;no&#34; will be returned.
+
+    To verify is a certificate is truly self-signed, the signature
+    will need to be verified. See the certvalidator package for
+    one possible solution.
+    &#34;&#34;&#34;
+    return self._cert.self_signed</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.serial_number"><code class="name">var <span class="ident">serial_number</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Serial number of the Certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def serial_number(self) -&gt; int:
+    &#34;&#34;&#34;Serial number of the Certificate.&#34;&#34;&#34;
+    return self._cert.serial_number</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.signature"><code class="name">var <span class="ident">signature</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>Certificate signature.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def signature(self) -&gt; bytes:
+    &#34;&#34;&#34;Certificate signature.&#34;&#34;&#34;
+    return self._cert.signature</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.signature_algo"><code class="name">var <span class="ident">signature_algo</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Certificate signature algorithm.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def signature_algo(self) -&gt; str:
+    &#34;&#34;&#34;Certificate signature algorithm.&#34;&#34;&#34;
+    return self._cert.signature_algo</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.version"><code class="name">var <span class="ident">version</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Version of the Certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def version(self) -&gt; str:
+    &#34;&#34;&#34;Version of the Certificate.&#34;&#34;&#34;
+    return self._cert.native[&#39;tbs_certificate&#39;][&#39;version&#39;]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.certificate.Certificate.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Serialized Certificate data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Serialized Certificate data.&#34;&#34;&#34;
+    raw_data = self._data
+    if len(raw_data) % 4:
+        raw_data += b&#39;\x00&#39; * (4 - (len(raw_data) % 4))
+    return raw_data</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Text information about the Certificate.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Text information about the Certificate.&#34;&#34;&#34;
+    not_valid_before = self.not_valid_before.strftime(&#34;%d.%m.%Y (%H:%M:%S)&#34;)
+    not_valid_after = self.not_valid_after.strftime(&#34;%d.%m.%Y (%H:%M:%S)&#34;)
+    nfo = &#34;&#34;
+    nfo += f&#34;  Certification Authority:    {&#39;YES&#39; if self.ca else &#39;NO&#39;}\n&#34;
+    if self.ca:
+        nfo += f&#34;  Max Path Length:            {self.max_path_length}\n&#34;
+    nfo += f&#34;  Serial Number:              {hex(self.serial_number)}\n&#34;
+    nfo += f&#34;  Validity Range:             {not_valid_before} - {not_valid_after}\n&#34;
+    nfo += f&#34;  Signature Algorithm:        {self.signature_algo}\n&#34;
+    nfo += f&#34;  Self Issued:                {&#39;YES&#39; if self.self_issued else &#39;NO&#39;}\n&#34;
+    nfo += self._get_issuer_info(&#39;country_name&#39;, &#34;  Issuer Country Name:        {}\n&#34;)
+    nfo += self._get_issuer_info(&#39;state_or_province_name&#39;, &#34;  Issuer State/Province Name: {}\n&#34;)
+    nfo += self._get_issuer_info(&#39;locality_name&#39;, &#34;  Issuer Locality Name:       {}\n&#34;)
+    nfo += self._get_issuer_info(&#39;organization_name&#39;, &#34;  Issuer Organization Name:   {}\n&#34;)
+    nfo += self._get_issuer_info(&#39;organizational_unit_name&#39;, &#34;  Issuer Organ. Unit Name:    {}\n&#34;)
+    nfo += self._get_issuer_info(&#39;common_name&#39;, &#34;  Issuer Common Name:         {}\n&#34;)
+    nfo += self._get_issuer_info(&#39;email_address&#39;, &#34;  Issuer Email Address:       {}\n&#34;)
+    return nfo</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.certificate.Certificate.verify"><code class="name flex">
+<span>def <span class="ident">verify</span></span>(<span>self, public_key_modulus: int, public_key_exponent: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Use given public key to verify the certificate is signed.</p>
+<p>:param public_key_modulus: modulus of the public key to be verified
+:param public_key_exponent: exponent of the public key to be verified
+:return: True if verification pass; False otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify(self, public_key_modulus: int, public_key_exponent: int) -&gt; bool:
+    &#34;&#34;&#34;Use given public key to verify the certificate is signed.
+
+    :param public_key_modulus: modulus of the public key to be verified
+    :param public_key_exponent: exponent of the public key to be verified
+    :return: True if verification pass; False otherwise
+    &#34;&#34;&#34;
+    public_key = internal_backend.rsa_public_key(public_key_modulus, public_key_exponent)
+    key_object = load_public_key(public_key.export_key())
+    try:
+        rsa_pkcs1v15_verify(key_object, self._cert[&#39;signature_value&#39;].native, self._cert[&#39;tbs_certificate&#39;].dump(),
+                            self.hash_algo)
+    except SignatureError:
+        return False
+    return True</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.utils.crypto" href="index.html">spsdk.utils.crypto</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.utils.crypto.certificate.Certificate" href="#spsdk.utils.crypto.certificate.Certificate">Certificate</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.ca" href="#spsdk.utils.crypto.certificate.Certificate.ca">ca</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.export" href="#spsdk.utils.crypto.certificate.Certificate.export">export</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.hash_algo" href="#spsdk.utils.crypto.certificate.Certificate.hash_algo">hash_algo</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.info" href="#spsdk.utils.crypto.certificate.Certificate.info">info</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.issuer" href="#spsdk.utils.crypto.certificate.Certificate.issuer">issuer</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.max_path_length" href="#spsdk.utils.crypto.certificate.Certificate.max_path_length">max_path_length</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.not_valid_after" href="#spsdk.utils.crypto.certificate.Certificate.not_valid_after">not_valid_after</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.not_valid_before" href="#spsdk.utils.crypto.certificate.Certificate.not_valid_before">not_valid_before</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.public_key_exponent" href="#spsdk.utils.crypto.certificate.Certificate.public_key_exponent">public_key_exponent</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.public_key_hash" href="#spsdk.utils.crypto.certificate.Certificate.public_key_hash">public_key_hash</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.public_key_modulus" href="#spsdk.utils.crypto.certificate.Certificate.public_key_modulus">public_key_modulus</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.public_key_usage" href="#spsdk.utils.crypto.certificate.Certificate.public_key_usage">public_key_usage</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.raw_size" href="#spsdk.utils.crypto.certificate.Certificate.raw_size">raw_size</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.self_issued" href="#spsdk.utils.crypto.certificate.Certificate.self_issued">self_issued</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.self_signed" href="#spsdk.utils.crypto.certificate.Certificate.self_signed">self_signed</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.serial_number" href="#spsdk.utils.crypto.certificate.Certificate.serial_number">serial_number</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.signature" href="#spsdk.utils.crypto.certificate.Certificate.signature">signature</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.signature_algo" href="#spsdk.utils.crypto.certificate.Certificate.signature_algo">signature_algo</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.verify" href="#spsdk.utils.crypto.certificate.Certificate.verify">verify</a></code></li>
+<li><code><a title="spsdk.utils.crypto.certificate.Certificate.version" href="#spsdk.utils.crypto.certificate.Certificate.version">version</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

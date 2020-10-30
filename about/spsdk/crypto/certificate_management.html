@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.crypto.certificate_management API documentation</title>
+<meta name="description" content="Module for certificate management (generating certificate, validating certificate, chains)." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.crypto.certificate_management</code></h1>
+</header>
+<section id="section-intro">
+<p>Module for certificate management (generating certificate, validating certificate, chains).</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+&#34;&#34;&#34;Module for certificate management (generating certificate, validating certificate, chains).&#34;&#34;&#34;
+
+from datetime import datetime, timedelta
+from typing import Union, List
+
+from spsdk.crypto import x509, InvalidSignature, Encoding, default_backend, \
+    hashes, RSAPrivateKey, RSAPublicKey, ExtensionOID, \
+    Certificate, CertificateSigningRequest, padding
+
+
+def generate_certificate(subject: x509.Name, issuer: x509.Name, subject_public_key: RSAPublicKey,
+                         issuer_private_key: RSAPrivateKey, serial_number: int = None,
+                         if_ca: bool = True, duration: int = 3650, path_length: int = 2) -&gt; Certificate:
+    &#34;&#34;&#34;Generate certificate.
+
+    :param subject: subject name that the CA issues the certificate to
+    :param issuer: issuer name that issued the certificate
+    :param subject_public_key: RSA public key of subject
+    :param issuer_private_key: RSA private key of issuer
+    :param serial_number: certificate serial number, if not specified, random serial number will be set
+    :param if_ca: true if the certificate can sign certificates, none otherwise
+    :param duration: how long the certificate will be valid (in days)
+    :param path_length: The maximum path length for certificates subordinate to this certificate.
+    :return: certificate
+    &#34;&#34;&#34;
+    crt = x509.CertificateBuilder(subject_name=subject, issuer_name=issuer,
+                                  not_valid_before=datetime.utcnow(),
+                                  not_valid_after=datetime.utcnow() + timedelta(days=duration),
+                                  public_key=subject_public_key, extensions=[],
+                                  serial_number=serial_number or x509.random_serial_number())
+
+    crt = crt.add_extension(x509.BasicConstraints(ca=if_ca, path_length=path_length if if_ca else None), critical=True)
+    return crt.sign(issuer_private_key, hashes.SHA256(), default_backend())
+
+
+def save_crypto_item(item: Union[Certificate, CertificateSigningRequest], file_path: str,
+                     encoding_type: Encoding = Encoding.PEM) -&gt; None:
+    &#34;&#34;&#34;Save the certificate/CSR into file.
+
+    :param item: certificate or certificate signing request
+    :param file_path: path to the file where item will be stored
+    :param encoding_type: encoding type (PEM or DER)
+    &#34;&#34;&#34;
+    with open(file_path, &#34;wb&#34;) as f:
+        f.write(item.public_bytes(encoding_type))
+
+
+def validate_certificate_chain(chain_list: list) -&gt; list:
+    &#34;&#34;&#34;Validate chain of certificates.
+
+    :param chain_list: list of certificates in chain
+    :return: list of boolean values, which corresponds to the certificate validation in chain
+    &#34;&#34;&#34;
+    assert len(chain_list) &gt; 1, &#34;The chain must have at least two certificates&#34;
+    result = []
+    for i in range(len(chain_list) - 1):
+        result.append(validate_certificate(chain_list[i], chain_list[i + 1]))
+    return result
+
+
+def validate_certificate(subject_certificate: Certificate, issuer_certificate: Certificate) -&gt; bool:
+    &#34;&#34;&#34;Validate certificate.
+
+    :param subject_certificate: subject&#39;s certificate
+    :param issuer_certificate: issuer&#39;s certificate
+    :return: true/false whether certificate is valid or not
+    &#34;&#34;&#34;
+    issuer_pub_key = get_public_key_from_certificate(issuer_certificate)
+    cert_to_check = x509.load_pem_x509_certificate(convert_certificate_into_bytes(subject_certificate),
+                                                   default_backend())
+
+    try:
+        issuer_pub_key.verify(cert_to_check.signature, cert_to_check.tbs_certificate_bytes,
+                              padding.PKCS1v15(), cert_to_check.signature_hash_algorithm)
+    except InvalidSignature:
+        return False
+    else:
+        return True
+
+
+def is_ca_flag_set(certificate: Certificate) -&gt; bool:
+    &#34;&#34;&#34;Check if CA flag is set in certificate.
+
+    :param certificate: Certificate to be checked
+    :return: true/false depending whether ca flag is set or not
+    &#34;&#34;&#34;
+    extension = certificate.extensions.get_extension_for_oid(ExtensionOID.BASIC_CONSTRAINTS)
+    return extension.value.ca  # type: ignore # mypy can not handle property definition in cryptography
+
+
+def validate_ca_flag_in_cert_chain(chain_list: List[Certificate]) -&gt; bool:
+    &#34;&#34;&#34;Validate CA flag in certification chain.
+
+    :param chain_list: list of certificates in the chain
+    :return: true/false depending whether ca flag is set or not
+    &#34;&#34;&#34;
+    return is_ca_flag_set(chain_list[0])
+
+
+def get_public_key_from_certificate(certificate: Certificate) -&gt; RSAPublicKey:
+    &#34;&#34;&#34;Get public keys from certificate.
+
+    :param certificate: certificate item
+    :return: RSA public key
+    &#34;&#34;&#34;
+    public_key = certificate.public_key()
+    assert isinstance(public_key, RSAPublicKey), &#34;Currently only RSA is supported&#34;
+    return public_key
+
+
+def convert_certificate_into_bytes(certificate: Certificate, encoding: Encoding = Encoding.PEM) -&gt; bytes:
+    &#34;&#34;&#34;Convert certificates into bytes.
+
+    :param certificate: certificate item
+    :param encoding: encoding type
+    :return: certificate in bytes form
+    &#34;&#34;&#34;
+    assert isinstance(certificate, Certificate), &#34;The input is not a Certificate&#34;
+    return certificate.public_bytes(encoding)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.crypto.certificate_management.convert_certificate_into_bytes"><code class="name flex">
+<span>def <span class="ident">convert_certificate_into_bytes</span></span>(<span>certificate: cryptography.x509.base.Certificate, encoding: cryptography.hazmat.primitives.serialization.base.Encoding = Encoding.PEM) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert certificates into bytes.</p>
+<p>:param certificate: certificate item
+:param encoding: encoding type
+:return: certificate in bytes form</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_certificate_into_bytes(certificate: Certificate, encoding: Encoding = Encoding.PEM) -&gt; bytes:
+    &#34;&#34;&#34;Convert certificates into bytes.
+
+    :param certificate: certificate item
+    :param encoding: encoding type
+    :return: certificate in bytes form
+    &#34;&#34;&#34;
+    assert isinstance(certificate, Certificate), &#34;The input is not a Certificate&#34;
+    return certificate.public_bytes(encoding)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.generate_certificate"><code class="name flex">
+<span>def <span class="ident">generate_certificate</span></span>(<span>subject: cryptography.x509.name.Name, issuer: cryptography.x509.name.Name, subject_public_key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey, issuer_private_key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey, serial_number: int = None, if_ca: bool = True, duration: int = 3650, path_length: int = 2) ‑> cryptography.x509.base.Certificate</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate certificate.</p>
+<p>:param subject: subject name that the CA issues the certificate to
+:param issuer: issuer name that issued the certificate
+:param subject_public_key: RSA public key of subject
+:param issuer_private_key: RSA private key of issuer
+:param serial_number: certificate serial number, if not specified, random serial number will be set
+:param if_ca: true if the certificate can sign certificates, none otherwise
+:param duration: how long the certificate will be valid (in days)
+:param path_length: The maximum path length for certificates subordinate to this certificate.
+:return: certificate</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_certificate(subject: x509.Name, issuer: x509.Name, subject_public_key: RSAPublicKey,
+                         issuer_private_key: RSAPrivateKey, serial_number: int = None,
+                         if_ca: bool = True, duration: int = 3650, path_length: int = 2) -&gt; Certificate:
+    &#34;&#34;&#34;Generate certificate.
+
+    :param subject: subject name that the CA issues the certificate to
+    :param issuer: issuer name that issued the certificate
+    :param subject_public_key: RSA public key of subject
+    :param issuer_private_key: RSA private key of issuer
+    :param serial_number: certificate serial number, if not specified, random serial number will be set
+    :param if_ca: true if the certificate can sign certificates, none otherwise
+    :param duration: how long the certificate will be valid (in days)
+    :param path_length: The maximum path length for certificates subordinate to this certificate.
+    :return: certificate
+    &#34;&#34;&#34;
+    crt = x509.CertificateBuilder(subject_name=subject, issuer_name=issuer,
+                                  not_valid_before=datetime.utcnow(),
+                                  not_valid_after=datetime.utcnow() + timedelta(days=duration),
+                                  public_key=subject_public_key, extensions=[],
+                                  serial_number=serial_number or x509.random_serial_number())
+
+    crt = crt.add_extension(x509.BasicConstraints(ca=if_ca, path_length=path_length if if_ca else None), critical=True)
+    return crt.sign(issuer_private_key, hashes.SHA256(), default_backend())</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.get_public_key_from_certificate"><code class="name flex">
+<span>def <span class="ident">get_public_key_from_certificate</span></span>(<span>certificate: cryptography.x509.base.Certificate) ‑> cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get public keys from certificate.</p>
+<p>:param certificate: certificate item
+:return: RSA public key</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_public_key_from_certificate(certificate: Certificate) -&gt; RSAPublicKey:
+    &#34;&#34;&#34;Get public keys from certificate.
+
+    :param certificate: certificate item
+    :return: RSA public key
+    &#34;&#34;&#34;
+    public_key = certificate.public_key()
+    assert isinstance(public_key, RSAPublicKey), &#34;Currently only RSA is supported&#34;
+    return public_key</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.is_ca_flag_set"><code class="name flex">
+<span>def <span class="ident">is_ca_flag_set</span></span>(<span>certificate: cryptography.x509.base.Certificate) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Check if CA flag is set in certificate.</p>
+<p>:param certificate: Certificate to be checked
+:return: true/false depending whether ca flag is set or not</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_ca_flag_set(certificate: Certificate) -&gt; bool:
+    &#34;&#34;&#34;Check if CA flag is set in certificate.
+
+    :param certificate: Certificate to be checked
+    :return: true/false depending whether ca flag is set or not
+    &#34;&#34;&#34;
+    extension = certificate.extensions.get_extension_for_oid(ExtensionOID.BASIC_CONSTRAINTS)
+    return extension.value.ca  # type: ignore # mypy can not handle property definition in cryptography</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.save_crypto_item"><code class="name flex">
+<span>def <span class="ident">save_crypto_item</span></span>(<span>item: Union[cryptography.x509.base.Certificate, cryptography.x509.base.CertificateSigningRequest], file_path: str, encoding_type: cryptography.hazmat.primitives.serialization.base.Encoding = Encoding.PEM) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Save the certificate/CSR into file.</p>
+<p>:param item: certificate or certificate signing request
+:param file_path: path to the file where item will be stored
+:param encoding_type: encoding type (PEM or DER)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save_crypto_item(item: Union[Certificate, CertificateSigningRequest], file_path: str,
+                     encoding_type: Encoding = Encoding.PEM) -&gt; None:
+    &#34;&#34;&#34;Save the certificate/CSR into file.
+
+    :param item: certificate or certificate signing request
+    :param file_path: path to the file where item will be stored
+    :param encoding_type: encoding type (PEM or DER)
+    &#34;&#34;&#34;
+    with open(file_path, &#34;wb&#34;) as f:
+        f.write(item.public_bytes(encoding_type))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.validate_ca_flag_in_cert_chain"><code class="name flex">
+<span>def <span class="ident">validate_ca_flag_in_cert_chain</span></span>(<span>chain_list: List[cryptography.x509.base.Certificate]) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validate CA flag in certification chain.</p>
+<p>:param chain_list: list of certificates in the chain
+:return: true/false depending whether ca flag is set or not</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_ca_flag_in_cert_chain(chain_list: List[Certificate]) -&gt; bool:
+    &#34;&#34;&#34;Validate CA flag in certification chain.
+
+    :param chain_list: list of certificates in the chain
+    :return: true/false depending whether ca flag is set or not
+    &#34;&#34;&#34;
+    return is_ca_flag_set(chain_list[0])</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.validate_certificate"><code class="name flex">
+<span>def <span class="ident">validate_certificate</span></span>(<span>subject_certificate: cryptography.x509.base.Certificate, issuer_certificate: cryptography.x509.base.Certificate) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validate certificate.</p>
+<p>:param subject_certificate: subject's certificate
+:param issuer_certificate: issuer's certificate
+:return: true/false whether certificate is valid or not</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_certificate(subject_certificate: Certificate, issuer_certificate: Certificate) -&gt; bool:
+    &#34;&#34;&#34;Validate certificate.
+
+    :param subject_certificate: subject&#39;s certificate
+    :param issuer_certificate: issuer&#39;s certificate
+    :return: true/false whether certificate is valid or not
+    &#34;&#34;&#34;
+    issuer_pub_key = get_public_key_from_certificate(issuer_certificate)
+    cert_to_check = x509.load_pem_x509_certificate(convert_certificate_into_bytes(subject_certificate),
+                                                   default_backend())
+
+    try:
+        issuer_pub_key.verify(cert_to_check.signature, cert_to_check.tbs_certificate_bytes,
+                              padding.PKCS1v15(), cert_to_check.signature_hash_algorithm)
+    except InvalidSignature:
+        return False
+    else:
+        return True</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.certificate_management.validate_certificate_chain"><code class="name flex">
+<span>def <span class="ident">validate_certificate_chain</span></span>(<span>chain_list: list) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Validate chain of certificates.</p>
+<p>:param chain_list: list of certificates in chain
+:return: list of boolean values, which corresponds to the certificate validation in chain</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def validate_certificate_chain(chain_list: list) -&gt; list:
+    &#34;&#34;&#34;Validate chain of certificates.
+
+    :param chain_list: list of certificates in chain
+    :return: list of boolean values, which corresponds to the certificate validation in chain
+    &#34;&#34;&#34;
+    assert len(chain_list) &gt; 1, &#34;The chain must have at least two certificates&#34;
+    result = []
+    for i in range(len(chain_list) - 1):
+        result.append(validate_certificate(chain_list[i], chain_list[i + 1]))
+    return result</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.crypto" href="index.html">spsdk.crypto</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.crypto.certificate_management.convert_certificate_into_bytes" href="#spsdk.crypto.certificate_management.convert_certificate_into_bytes">convert_certificate_into_bytes</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.generate_certificate" href="#spsdk.crypto.certificate_management.generate_certificate">generate_certificate</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.get_public_key_from_certificate" href="#spsdk.crypto.certificate_management.get_public_key_from_certificate">get_public_key_from_certificate</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.is_ca_flag_set" href="#spsdk.crypto.certificate_management.is_ca_flag_set">is_ca_flag_set</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.save_crypto_item" href="#spsdk.crypto.certificate_management.save_crypto_item">save_crypto_item</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.validate_ca_flag_in_cert_chain" href="#spsdk.crypto.certificate_management.validate_ca_flag_in_cert_chain">validate_ca_flag_in_cert_chain</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.validate_certificate" href="#spsdk.crypto.certificate_management.validate_certificate">validate_certificate</a></code></li>
+<li><code><a title="spsdk.crypto.certificate_management.validate_certificate_chain" href="#spsdk.crypto.certificate_management.validate_certificate_chain">validate_certificate_chain</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

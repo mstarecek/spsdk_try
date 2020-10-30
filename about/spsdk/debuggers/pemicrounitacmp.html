@@ -1,0 +1,946 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.debuggers.pemicrounitacmp API documentation</title>
+<meta name="description" content="Moduler for pemicroUnitAcmp." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.debuggers.pemicrounitacmp</code></h1>
+</header>
+<section id="section-intro">
+<p>Moduler for pemicroUnitAcmp.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+#
+# Copyright (c) 2020 P&amp;E Microcomputer Systems, Inc
+# All rights reserved.
+# Visit us at www.pemicro.com
+#
+# SPDX-License-Identifier:
+# BSD-3-Clause
+#
+# Redistribution and use in source and binary forms, with or without modification,
+# are permitted provided that the following conditions are met:
+#
+# o Redistributions of source code must retain the above copyright notice, this list
+#   of conditions and the following disclaimer.
+#
+# o Redistributions in binary form must reproduce the above copyright notice, this
+#   list of conditions and the following disclaimer in the documentation and/or
+#   other materials provided with the distribution.
+#
+# o Neither the names of the copyright holders nor the names of the
+#   contributors may be used to endorse or promote products derived from this
+#   software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &#34;AS IS&#34; AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+# ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+&#34;&#34;&#34;Moduler for pemicroUnitAcmp.&#34;&#34;&#34;
+import ctypes
+import os.path
+import platform
+from ctypes import *
+
+PortType_Autodetect = 99
+PortType_ParallelPortCable = 1
+PortType_PCIBDMLightning = 2
+PortType_USBMultilink = 3
+PortType_CycloneProMaxSerial = 4
+PortType_CycloneProMaxUSB = 5
+PortType_CycloneProMaxEthernet = 6
+PortType_OpenSDAUSB = 9
+
+# Special Features for Power Management
+pwr_set_power_options = 0x38000001
+pwr_turn_power_on = 0x38000011
+pwr_turn_power_off = 0x38000012
+
+# Special Features for debug communications mode
+pe_arm_set_communications_mode = 0x44000001
+pe_arm_set_debug_comm_swd = 0x00000000
+pe_arm_set_debug_comm_jtag = 0x00000001
+
+pe_arm_enable_debug_module = 0x44000002
+pe_arm_write_ap_register = 0x44000003
+pe_arm_read_ap_register = 0x44000004
+pe_arm_write_dp_register = 0x44000007
+pe_arm_read_dp_register = 0x44000008
+pe_arm_flush_any_queued_data = 0x44000005
+
+pe_arm_get_last_swd_status = 0x44000006
+pe_arm_swd_status_ack = 0x04
+pe_arm_swd_status_wait = 0x02
+pe_arm_swd_status_fault = 0x01
+
+# Special Features for Setting current device and core
+pe_generic_get_device_list = 0x58004000
+pe_generic_select_device = 0x58004001
+pe_generic_get_core_list = 0x58004002
+pe_generic_select_core = 0x58004003
+pe_set_default_application_files_directory = 0x58006000
+
+
+class pemicroUnitAcmp(object):
+    &#34;&#34;&#34;Class for pemicroUnitAcmp.&#34;&#34;&#34;
+    def getUserFriendlySystemName(self) -&gt; str:
+        &#34;&#34;&#34;Get more friendly system name.&#34;&#34;&#34;
+        if platform.system() == &#34;Windows&#34;:
+            return &#34;Windows&#34;
+        else:
+            if platform.system() == &#34;Linux&#34;:
+                return &#34;Linux&#34;
+            else:
+                if platform.system() == &#34;Darwin&#34;:
+                    return &#34;MacOS&#34;
+                else:
+                    return &#34;Unknown&#34;
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize.&#34;&#34;&#34;
+        b_is_python_64bit = (ctypes.sizeof(ctypes.c_void_p) == 8)
+        osutilitypath = os.path.join(&#34;libraries&#34;, self.getUserFriendlySystemName(), &#34;PEMicro&#34;)
+        if self.getUserFriendlySystemName() == &#34;Windows&#34;:
+            if b_is_python_64bit:
+                self.name = &#34;unitacmp-64.dll&#34;
+            else:
+                self.name = &#34;unitacmp-32.dll&#34;
+        else:
+            if self.getUserFriendlySystemName() == &#34;Linux&#34;:
+                self.name = &#34;unitacmp-64.so&#34;
+            else:
+                self.name = &#34;unitacmp-64.dylib&#34;
+
+        # load the library
+        self.libraryLoaded = False
+        self.connectedToDebugCable = False
+        try:
+            # Look in System Folders
+            self.libraryPath = &#39;&#39;
+            self.lib = cdll.LoadLibrary(self.name)
+        except:
+            try:
+                # Look in the folder with .py file
+                self.libraryPath = os.path.dirname(__file__)
+                self.lib = cdll.LoadLibrary(os.path.join(self.libraryPath, self.name))
+            except:
+                # Look in a structured subfolder
+                self.libraryPath = os.path.join(os.path.dirname(__file__), osutilitypath)
+                self.lib = cdll.LoadLibrary(os.path.join(self.libraryPath, self.name))
+        if self.lib:
+            self.libraryLoaded = True
+            self.lib.pe_special_features.argtypes = [c_ulong, c_bool, c_ulong, c_ulong, c_ulong, c_void_p, c_void_p]
+            self.lib.pe_special_features.restype = c_bool
+
+            self.lib.open_port.argtypes = [c_ulong, c_ulong]
+            self.lib.open_port.restype = c_bool
+
+            self.lib.open_port_by_identifier.argtypes = [c_char_p]
+            self.lib.open_port_by_identifier.restype = c_bool
+
+            self.lib.reenumerate_all_port_types.restype = c_bool
+
+            self.lib.get_enumerated_number_of_ports.argtypes = [c_ulong]
+            self.lib.get_enumerated_number_of_ports.restype = c_ulong
+
+            self.lib.get_port_descriptor_short.argtypes = [c_ulong, c_ulong]
+            self.lib.get_port_descriptor_short.restype = c_char_p
+
+            self.lib.get_port_descriptor.argtypes = [c_ulong, c_ulong]
+            self.lib.get_port_descriptor.restype = c_char_p
+
+            self.lib.get_dll_version.restype = c_ushort
+
+            self.lib.set_debug_shift_frequency.argtypes = [c_ulong]
+
+            self.lib.pe_special_features(pe_set_default_application_files_directory, True, 0, 0, 0,
+                                         c_char_p(self.libraryPath.encode(&#39;utf-8&#39;)), 0)
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;Close connection.&#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return
+        # Close any open connections to hardware
+        self.lib.pe_special_features(pe_arm_flush_any_queued_data, True, 0, 0, 0, 0, 0)
+        self.lib.close_port()
+        self.connectedToDebugCable = False
+
+
+    def __del__(self) -&gt; None:
+        self.close()
+
+    def listPorts(self) -&gt; list:
+        &#34;&#34;&#34;Gather information about attached probes.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            raise ValueError(&#34;No PEMICRO Library is loaded!&#34;)
+        numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+        if numports == 0:
+            return []
+        ports = list()
+
+        for ii in range(numports):
+            ports.append({
+                &#34;id&#34;: self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode(&#34;utf-8&#34;),
+                &#34;description&#34;: self.lib.get_port_descriptor(PortType_Autodetect, ii + 1).decode(&#34;utf-8&#34;)
+            })
+        return ports
+
+    def printPorts(self, ports: list) -&gt; None:
+        &#34;&#34;&#34;Print information about attached probes.&#34;&#34;&#34;
+        if ports == None or len(ports) == 0:
+            print(&#39;No hardware detected locally.&#39;)
+        for i, port in enumerate(ports):
+            print(&#34;{ix:&gt;2}: {id} =&gt; {desc}&#34;.format(ix=i, id=port[&#34;id&#34;], desc=port[&#34;description&#34;]))
+
+    def listPortsDescription(self) -&gt; None:
+        &#34;&#34;&#34;Lists the port&#39;s description.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return
+        numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+        if numports == 0:
+            print(&#39;No hardware detected locally.&#39;)
+        for ii in range(numports):
+            print((self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode().encode(
+                &#34;utf-8&#34;) + &#39; : &#39; + self.lib.get_port_descriptor(PortType_Autodetect, ii + 1).decode().encode(&#34;utf-8&#34;)))
+
+    def listPortsName(self) -&gt; None:
+        &#34;&#34;&#34;Lists the port&#39;s name.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return
+        numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+        if numports == 0:
+            print(&#39;No hardware detected locally.&#39;)
+        for ii in range(numports):
+            print((self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode().encode(&#34;utf-8&#34;)))
+        return
+
+    def connectToDebugCable(self, debugHardwareNameIpOrSerialnum: str = None) -&gt; bool:
+        &#34;&#34;&#34;Connect to debug cable.
+
+        :param debugHardwareNameIpOrSerialnum: Debug HW name ip or serial number
+        :return: True/False
+        &#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return False
+
+        self.connectedToDebugCable = False
+        if debugHardwareNameIpOrSerialnum is None:
+            # USB1 is a generic identifier which will select the first autodetected USB pemicro device
+            portName = c_char_p(&#39;USB1&#39;.encode(&#39;utf-8&#39;))
+        else:
+            # This identifier can be the debug hardware&#39;s IP address, assigned name, serial number, or generic
+            # identifier (USB1, ETHERNET1)
+            portName = c_char_p(debugHardwareNameIpOrSerialnum.encode(&#39;utf-8&#39;))
+        if not self.lib.open_port_by_identifier(portName):
+            return False
+        self.connectedToDebugCable = True
+        return True
+
+    def establishCommunicationsWithTarget(self, swdMode: bool = True, shiftSpeed: int = 1000000) -&gt; bool:
+        &#34;&#34;&#34;Establishing connection with the target.&#34;&#34;&#34;
+        # connectToDebugCable must be used first to connect to the debug hardware
+        if not self.libraryLoaded:
+            return False
+        if not self.connectedToDebugCable:
+            return False
+        if swdMode:
+            self.lib.pe_special_features(pe_arm_set_communications_mode, True, pe_arm_set_debug_comm_swd, 0, 0, 0, 0)
+        else:
+            self.lib.pe_special_features(pe_arm_set_communications_mode, True, pe_arm_set_debug_comm_jtag, 0, 0, 0, 0)
+        # Set 1Mhz Shift Rate
+        self.lib.set_debug_shift_frequency(shiftSpeed)
+        # Communicate to the target, power up debug module, check  (powering it up). Looks for arm IDCODE to verify
+        # connection.
+        return self.lib.pe_special_features(pe_arm_enable_debug_module, True, 0, 0, 0, 0, 0)
+
+    def writeApRegister(self, apselect: int, addr: int, value: int, now: bool = False) -&gt; None:
+        &#34;&#34;&#34;Write Ap register.&#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return
+        self.lib.pe_special_features(pe_arm_write_ap_register, now, apselect, addr, value, 0, 0)
+        return
+
+    def readApRegister(self, apselect: int, addr: int,
+                       now: bool = True, requiresDelay: bool = False) -&gt; int:
+        &#34;&#34;&#34;Read Ap register.
+
+        :param apselect:
+        :param addr: register offset
+        :param now: do not cache the read operation, True/False.
+        :param requiresDelay: Read delay for a response.
+        :return: value read from register
+        &#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return 0
+        retVal = c_ulong()
+        self.lib.pe_special_features(pe_arm_read_ap_register, True, apselect, addr, 0, byref(retVal), 0)
+        return retVal.value
+
+    def writeDpRegister(self, addr: int, value: int,
+                        now: bool = False) -&gt; None:
+        &#34;&#34;&#34;Write Dp register.
+
+        :param addr: register offset
+        :param value: value, which will be written to register
+        :param now: do not cache the read operation, True/False.
+        &#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return
+        self.lib.pe_special_features(pe_arm_write_dp_register, now, addr, value, 0, 0, 0)
+        return
+
+    def readDpRegister(self, addr: int, now: bool = True,
+                       requiresDelay: bool = False) -&gt; int:
+        &#34;&#34;&#34;Read Dp register.
+
+        :param addr: register offset
+        :param now: do not cache the read operation, True/False. Default is True.
+        :param requiresDelay: Read delay for a response.
+        :return:
+        &#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return 0
+        retVal = c_ulong()
+        self.lib.pe_special_features(pe_arm_read_dp_register, True, addr, 0, 0, byref(retVal), 0)
+        return retVal.value
+
+    def lastSwdStatus(self) -&gt; int:
+        &#34;&#34;&#34;Gets the last swd status.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return 0
+        retVal = c_ulong()
+        self.lib.pe_special_features(pe_arm_get_last_swd_status, True, 0, 0, 0, byref(retVal), 0)
+        return retVal.value</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp"><code class="flex name class">
+<span>class <span class="ident">pemicroUnitAcmp</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class for pemicroUnitAcmp.</p>
+<p>Initialize.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class pemicroUnitAcmp(object):
+    &#34;&#34;&#34;Class for pemicroUnitAcmp.&#34;&#34;&#34;
+    def getUserFriendlySystemName(self) -&gt; str:
+        &#34;&#34;&#34;Get more friendly system name.&#34;&#34;&#34;
+        if platform.system() == &#34;Windows&#34;:
+            return &#34;Windows&#34;
+        else:
+            if platform.system() == &#34;Linux&#34;:
+                return &#34;Linux&#34;
+            else:
+                if platform.system() == &#34;Darwin&#34;:
+                    return &#34;MacOS&#34;
+                else:
+                    return &#34;Unknown&#34;
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize.&#34;&#34;&#34;
+        b_is_python_64bit = (ctypes.sizeof(ctypes.c_void_p) == 8)
+        osutilitypath = os.path.join(&#34;libraries&#34;, self.getUserFriendlySystemName(), &#34;PEMicro&#34;)
+        if self.getUserFriendlySystemName() == &#34;Windows&#34;:
+            if b_is_python_64bit:
+                self.name = &#34;unitacmp-64.dll&#34;
+            else:
+                self.name = &#34;unitacmp-32.dll&#34;
+        else:
+            if self.getUserFriendlySystemName() == &#34;Linux&#34;:
+                self.name = &#34;unitacmp-64.so&#34;
+            else:
+                self.name = &#34;unitacmp-64.dylib&#34;
+
+        # load the library
+        self.libraryLoaded = False
+        self.connectedToDebugCable = False
+        try:
+            # Look in System Folders
+            self.libraryPath = &#39;&#39;
+            self.lib = cdll.LoadLibrary(self.name)
+        except:
+            try:
+                # Look in the folder with .py file
+                self.libraryPath = os.path.dirname(__file__)
+                self.lib = cdll.LoadLibrary(os.path.join(self.libraryPath, self.name))
+            except:
+                # Look in a structured subfolder
+                self.libraryPath = os.path.join(os.path.dirname(__file__), osutilitypath)
+                self.lib = cdll.LoadLibrary(os.path.join(self.libraryPath, self.name))
+        if self.lib:
+            self.libraryLoaded = True
+            self.lib.pe_special_features.argtypes = [c_ulong, c_bool, c_ulong, c_ulong, c_ulong, c_void_p, c_void_p]
+            self.lib.pe_special_features.restype = c_bool
+
+            self.lib.open_port.argtypes = [c_ulong, c_ulong]
+            self.lib.open_port.restype = c_bool
+
+            self.lib.open_port_by_identifier.argtypes = [c_char_p]
+            self.lib.open_port_by_identifier.restype = c_bool
+
+            self.lib.reenumerate_all_port_types.restype = c_bool
+
+            self.lib.get_enumerated_number_of_ports.argtypes = [c_ulong]
+            self.lib.get_enumerated_number_of_ports.restype = c_ulong
+
+            self.lib.get_port_descriptor_short.argtypes = [c_ulong, c_ulong]
+            self.lib.get_port_descriptor_short.restype = c_char_p
+
+            self.lib.get_port_descriptor.argtypes = [c_ulong, c_ulong]
+            self.lib.get_port_descriptor.restype = c_char_p
+
+            self.lib.get_dll_version.restype = c_ushort
+
+            self.lib.set_debug_shift_frequency.argtypes = [c_ulong]
+
+            self.lib.pe_special_features(pe_set_default_application_files_directory, True, 0, 0, 0,
+                                         c_char_p(self.libraryPath.encode(&#39;utf-8&#39;)), 0)
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;Close connection.&#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return
+        # Close any open connections to hardware
+        self.lib.pe_special_features(pe_arm_flush_any_queued_data, True, 0, 0, 0, 0, 0)
+        self.lib.close_port()
+        self.connectedToDebugCable = False
+
+
+    def __del__(self) -&gt; None:
+        self.close()
+
+    def listPorts(self) -&gt; list:
+        &#34;&#34;&#34;Gather information about attached probes.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            raise ValueError(&#34;No PEMICRO Library is loaded!&#34;)
+        numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+        if numports == 0:
+            return []
+        ports = list()
+
+        for ii in range(numports):
+            ports.append({
+                &#34;id&#34;: self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode(&#34;utf-8&#34;),
+                &#34;description&#34;: self.lib.get_port_descriptor(PortType_Autodetect, ii + 1).decode(&#34;utf-8&#34;)
+            })
+        return ports
+
+    def printPorts(self, ports: list) -&gt; None:
+        &#34;&#34;&#34;Print information about attached probes.&#34;&#34;&#34;
+        if ports == None or len(ports) == 0:
+            print(&#39;No hardware detected locally.&#39;)
+        for i, port in enumerate(ports):
+            print(&#34;{ix:&gt;2}: {id} =&gt; {desc}&#34;.format(ix=i, id=port[&#34;id&#34;], desc=port[&#34;description&#34;]))
+
+    def listPortsDescription(self) -&gt; None:
+        &#34;&#34;&#34;Lists the port&#39;s description.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return
+        numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+        if numports == 0:
+            print(&#39;No hardware detected locally.&#39;)
+        for ii in range(numports):
+            print((self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode().encode(
+                &#34;utf-8&#34;) + &#39; : &#39; + self.lib.get_port_descriptor(PortType_Autodetect, ii + 1).decode().encode(&#34;utf-8&#34;)))
+
+    def listPortsName(self) -&gt; None:
+        &#34;&#34;&#34;Lists the port&#39;s name.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return
+        numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+        if numports == 0:
+            print(&#39;No hardware detected locally.&#39;)
+        for ii in range(numports):
+            print((self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode().encode(&#34;utf-8&#34;)))
+        return
+
+    def connectToDebugCable(self, debugHardwareNameIpOrSerialnum: str = None) -&gt; bool:
+        &#34;&#34;&#34;Connect to debug cable.
+
+        :param debugHardwareNameIpOrSerialnum: Debug HW name ip or serial number
+        :return: True/False
+        &#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return False
+
+        self.connectedToDebugCable = False
+        if debugHardwareNameIpOrSerialnum is None:
+            # USB1 is a generic identifier which will select the first autodetected USB pemicro device
+            portName = c_char_p(&#39;USB1&#39;.encode(&#39;utf-8&#39;))
+        else:
+            # This identifier can be the debug hardware&#39;s IP address, assigned name, serial number, or generic
+            # identifier (USB1, ETHERNET1)
+            portName = c_char_p(debugHardwareNameIpOrSerialnum.encode(&#39;utf-8&#39;))
+        if not self.lib.open_port_by_identifier(portName):
+            return False
+        self.connectedToDebugCable = True
+        return True
+
+    def establishCommunicationsWithTarget(self, swdMode: bool = True, shiftSpeed: int = 1000000) -&gt; bool:
+        &#34;&#34;&#34;Establishing connection with the target.&#34;&#34;&#34;
+        # connectToDebugCable must be used first to connect to the debug hardware
+        if not self.libraryLoaded:
+            return False
+        if not self.connectedToDebugCable:
+            return False
+        if swdMode:
+            self.lib.pe_special_features(pe_arm_set_communications_mode, True, pe_arm_set_debug_comm_swd, 0, 0, 0, 0)
+        else:
+            self.lib.pe_special_features(pe_arm_set_communications_mode, True, pe_arm_set_debug_comm_jtag, 0, 0, 0, 0)
+        # Set 1Mhz Shift Rate
+        self.lib.set_debug_shift_frequency(shiftSpeed)
+        # Communicate to the target, power up debug module, check  (powering it up). Looks for arm IDCODE to verify
+        # connection.
+        return self.lib.pe_special_features(pe_arm_enable_debug_module, True, 0, 0, 0, 0, 0)
+
+    def writeApRegister(self, apselect: int, addr: int, value: int, now: bool = False) -&gt; None:
+        &#34;&#34;&#34;Write Ap register.&#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return
+        self.lib.pe_special_features(pe_arm_write_ap_register, now, apselect, addr, value, 0, 0)
+        return
+
+    def readApRegister(self, apselect: int, addr: int,
+                       now: bool = True, requiresDelay: bool = False) -&gt; int:
+        &#34;&#34;&#34;Read Ap register.
+
+        :param apselect:
+        :param addr: register offset
+        :param now: do not cache the read operation, True/False.
+        :param requiresDelay: Read delay for a response.
+        :return: value read from register
+        &#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return 0
+        retVal = c_ulong()
+        self.lib.pe_special_features(pe_arm_read_ap_register, True, apselect, addr, 0, byref(retVal), 0)
+        return retVal.value
+
+    def writeDpRegister(self, addr: int, value: int,
+                        now: bool = False) -&gt; None:
+        &#34;&#34;&#34;Write Dp register.
+
+        :param addr: register offset
+        :param value: value, which will be written to register
+        :param now: do not cache the read operation, True/False.
+        &#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return
+        self.lib.pe_special_features(pe_arm_write_dp_register, now, addr, value, 0, 0, 0)
+        return
+
+    def readDpRegister(self, addr: int, now: bool = True,
+                       requiresDelay: bool = False) -&gt; int:
+        &#34;&#34;&#34;Read Dp register.
+
+        :param addr: register offset
+        :param now: do not cache the read operation, True/False. Default is True.
+        :param requiresDelay: Read delay for a response.
+        :return:
+        &#34;&#34;&#34;
+        if not self.connectedToDebugCable:
+            return 0
+        retVal = c_ulong()
+        self.lib.pe_special_features(pe_arm_read_dp_register, True, addr, 0, 0, byref(retVal), 0)
+        return retVal.value
+
+    def lastSwdStatus(self) -&gt; int:
+        &#34;&#34;&#34;Gets the last swd status.&#34;&#34;&#34;
+        if not self.libraryLoaded:
+            return 0
+        retVal = c_ulong()
+        self.lib.pe_special_features(pe_arm_get_last_swd_status, True, 0, 0, 0, byref(retVal), 0)
+        return retVal.value</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Close connection.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self) -&gt; None:
+    &#34;&#34;&#34;Close connection.&#34;&#34;&#34;
+    if not self.connectedToDebugCable:
+        return
+    # Close any open connections to hardware
+    self.lib.pe_special_features(pe_arm_flush_any_queued_data, True, 0, 0, 0, 0, 0)
+    self.lib.close_port()
+    self.connectedToDebugCable = False</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.connectToDebugCable"><code class="name flex">
+<span>def <span class="ident">connectToDebugCable</span></span>(<span>self, debugHardwareNameIpOrSerialnum: str = None) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Connect to debug cable.</p>
+<p>:param debugHardwareNameIpOrSerialnum: Debug HW name ip or serial number
+:return: True/False</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connectToDebugCable(self, debugHardwareNameIpOrSerialnum: str = None) -&gt; bool:
+    &#34;&#34;&#34;Connect to debug cable.
+
+    :param debugHardwareNameIpOrSerialnum: Debug HW name ip or serial number
+    :return: True/False
+    &#34;&#34;&#34;
+    if not self.libraryLoaded:
+        return False
+
+    self.connectedToDebugCable = False
+    if debugHardwareNameIpOrSerialnum is None:
+        # USB1 is a generic identifier which will select the first autodetected USB pemicro device
+        portName = c_char_p(&#39;USB1&#39;.encode(&#39;utf-8&#39;))
+    else:
+        # This identifier can be the debug hardware&#39;s IP address, assigned name, serial number, or generic
+        # identifier (USB1, ETHERNET1)
+        portName = c_char_p(debugHardwareNameIpOrSerialnum.encode(&#39;utf-8&#39;))
+    if not self.lib.open_port_by_identifier(portName):
+        return False
+    self.connectedToDebugCable = True
+    return True</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.establishCommunicationsWithTarget"><code class="name flex">
+<span>def <span class="ident">establishCommunicationsWithTarget</span></span>(<span>self, swdMode: bool = True, shiftSpeed: int = 1000000) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Establishing connection with the target.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def establishCommunicationsWithTarget(self, swdMode: bool = True, shiftSpeed: int = 1000000) -&gt; bool:
+    &#34;&#34;&#34;Establishing connection with the target.&#34;&#34;&#34;
+    # connectToDebugCable must be used first to connect to the debug hardware
+    if not self.libraryLoaded:
+        return False
+    if not self.connectedToDebugCable:
+        return False
+    if swdMode:
+        self.lib.pe_special_features(pe_arm_set_communications_mode, True, pe_arm_set_debug_comm_swd, 0, 0, 0, 0)
+    else:
+        self.lib.pe_special_features(pe_arm_set_communications_mode, True, pe_arm_set_debug_comm_jtag, 0, 0, 0, 0)
+    # Set 1Mhz Shift Rate
+    self.lib.set_debug_shift_frequency(shiftSpeed)
+    # Communicate to the target, power up debug module, check  (powering it up). Looks for arm IDCODE to verify
+    # connection.
+    return self.lib.pe_special_features(pe_arm_enable_debug_module, True, 0, 0, 0, 0, 0)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.getUserFriendlySystemName"><code class="name flex">
+<span>def <span class="ident">getUserFriendlySystemName</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get more friendly system name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUserFriendlySystemName(self) -&gt; str:
+    &#34;&#34;&#34;Get more friendly system name.&#34;&#34;&#34;
+    if platform.system() == &#34;Windows&#34;:
+        return &#34;Windows&#34;
+    else:
+        if platform.system() == &#34;Linux&#34;:
+            return &#34;Linux&#34;
+        else:
+            if platform.system() == &#34;Darwin&#34;:
+                return &#34;MacOS&#34;
+            else:
+                return &#34;Unknown&#34;</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.lastSwdStatus"><code class="name flex">
+<span>def <span class="ident">lastSwdStatus</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the last swd status.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def lastSwdStatus(self) -&gt; int:
+    &#34;&#34;&#34;Gets the last swd status.&#34;&#34;&#34;
+    if not self.libraryLoaded:
+        return 0
+    retVal = c_ulong()
+    self.lib.pe_special_features(pe_arm_get_last_swd_status, True, 0, 0, 0, byref(retVal), 0)
+    return retVal.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPorts"><code class="name flex">
+<span>def <span class="ident">listPorts</span></span>(<span>self) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gather information about attached probes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listPorts(self) -&gt; list:
+    &#34;&#34;&#34;Gather information about attached probes.&#34;&#34;&#34;
+    if not self.libraryLoaded:
+        raise ValueError(&#34;No PEMICRO Library is loaded!&#34;)
+    numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+    if numports == 0:
+        return []
+    ports = list()
+
+    for ii in range(numports):
+        ports.append({
+            &#34;id&#34;: self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode(&#34;utf-8&#34;),
+            &#34;description&#34;: self.lib.get_port_descriptor(PortType_Autodetect, ii + 1).decode(&#34;utf-8&#34;)
+        })
+    return ports</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPortsDescription"><code class="name flex">
+<span>def <span class="ident">listPortsDescription</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Lists the port's description.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listPortsDescription(self) -&gt; None:
+    &#34;&#34;&#34;Lists the port&#39;s description.&#34;&#34;&#34;
+    if not self.libraryLoaded:
+        return
+    numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+    if numports == 0:
+        print(&#39;No hardware detected locally.&#39;)
+    for ii in range(numports):
+        print((self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode().encode(
+            &#34;utf-8&#34;) + &#39; : &#39; + self.lib.get_port_descriptor(PortType_Autodetect, ii + 1).decode().encode(&#34;utf-8&#34;)))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPortsName"><code class="name flex">
+<span>def <span class="ident">listPortsName</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Lists the port's name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def listPortsName(self) -&gt; None:
+    &#34;&#34;&#34;Lists the port&#39;s name.&#34;&#34;&#34;
+    if not self.libraryLoaded:
+        return
+    numports = self.lib.get_enumerated_number_of_ports(PortType_Autodetect)
+    if numports == 0:
+        print(&#39;No hardware detected locally.&#39;)
+    for ii in range(numports):
+        print((self.lib.get_port_descriptor_short(PortType_Autodetect, ii + 1).decode().encode(&#34;utf-8&#34;)))
+    return</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.printPorts"><code class="name flex">
+<span>def <span class="ident">printPorts</span></span>(<span>self, ports: list) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Print information about attached probes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def printPorts(self, ports: list) -&gt; None:
+    &#34;&#34;&#34;Print information about attached probes.&#34;&#34;&#34;
+    if ports == None or len(ports) == 0:
+        print(&#39;No hardware detected locally.&#39;)
+    for i, port in enumerate(ports):
+        print(&#34;{ix:&gt;2}: {id} =&gt; {desc}&#34;.format(ix=i, id=port[&#34;id&#34;], desc=port[&#34;description&#34;]))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.readApRegister"><code class="name flex">
+<span>def <span class="ident">readApRegister</span></span>(<span>self, apselect: int, addr: int, now: bool = True, requiresDelay: bool = False) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read Ap register.</p>
+<p>:param apselect:
+:param addr: register offset
+:param now: do not cache the read operation, True/False.
+:param requiresDelay: Read delay for a response.
+:return: value read from register</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def readApRegister(self, apselect: int, addr: int,
+                   now: bool = True, requiresDelay: bool = False) -&gt; int:
+    &#34;&#34;&#34;Read Ap register.
+
+    :param apselect:
+    :param addr: register offset
+    :param now: do not cache the read operation, True/False.
+    :param requiresDelay: Read delay for a response.
+    :return: value read from register
+    &#34;&#34;&#34;
+    if not self.connectedToDebugCable:
+        return 0
+    retVal = c_ulong()
+    self.lib.pe_special_features(pe_arm_read_ap_register, True, apselect, addr, 0, byref(retVal), 0)
+    return retVal.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.readDpRegister"><code class="name flex">
+<span>def <span class="ident">readDpRegister</span></span>(<span>self, addr: int, now: bool = True, requiresDelay: bool = False) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read Dp register.</p>
+<p>:param addr: register offset
+:param now: do not cache the read operation, True/False. Default is True.
+:param requiresDelay: Read delay for a response.
+:return:</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def readDpRegister(self, addr: int, now: bool = True,
+                   requiresDelay: bool = False) -&gt; int:
+    &#34;&#34;&#34;Read Dp register.
+
+    :param addr: register offset
+    :param now: do not cache the read operation, True/False. Default is True.
+    :param requiresDelay: Read delay for a response.
+    :return:
+    &#34;&#34;&#34;
+    if not self.connectedToDebugCable:
+        return 0
+    retVal = c_ulong()
+    self.lib.pe_special_features(pe_arm_read_dp_register, True, addr, 0, 0, byref(retVal), 0)
+    return retVal.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.writeApRegister"><code class="name flex">
+<span>def <span class="ident">writeApRegister</span></span>(<span>self, apselect: int, addr: int, value: int, now: bool = False) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write Ap register.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writeApRegister(self, apselect: int, addr: int, value: int, now: bool = False) -&gt; None:
+    &#34;&#34;&#34;Write Ap register.&#34;&#34;&#34;
+    if not self.connectedToDebugCable:
+        return
+    self.lib.pe_special_features(pe_arm_write_ap_register, now, apselect, addr, value, 0, 0)
+    return</code></pre>
+</details>
+</dd>
+<dt id="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.writeDpRegister"><code class="name flex">
+<span>def <span class="ident">writeDpRegister</span></span>(<span>self, addr: int, value: int, now: bool = False) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write Dp register.</p>
+<p>:param addr: register offset
+:param value: value, which will be written to register
+:param now: do not cache the read operation, True/False.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def writeDpRegister(self, addr: int, value: int,
+                    now: bool = False) -&gt; None:
+    &#34;&#34;&#34;Write Dp register.
+
+    :param addr: register offset
+    :param value: value, which will be written to register
+    :param now: do not cache the read operation, True/False.
+    &#34;&#34;&#34;
+    if not self.connectedToDebugCable:
+        return
+    self.lib.pe_special_features(pe_arm_write_dp_register, now, addr, value, 0, 0, 0)
+    return</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.debuggers" href="index.html">spsdk.debuggers</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp">pemicroUnitAcmp</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.close" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.close">close</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.connectToDebugCable" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.connectToDebugCable">connectToDebugCable</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.establishCommunicationsWithTarget" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.establishCommunicationsWithTarget">establishCommunicationsWithTarget</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.getUserFriendlySystemName" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.getUserFriendlySystemName">getUserFriendlySystemName</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.lastSwdStatus" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.lastSwdStatus">lastSwdStatus</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPorts" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPorts">listPorts</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPortsDescription" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPortsDescription">listPortsDescription</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPortsName" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.listPortsName">listPortsName</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.printPorts" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.printPorts">printPorts</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.readApRegister" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.readApRegister">readApRegister</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.readDpRegister" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.readDpRegister">readDpRegister</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.writeApRegister" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.writeApRegister">writeApRegister</a></code></li>
+<li><code><a title="spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.writeDpRegister" href="#spsdk.debuggers.pemicrounitacmp.pemicroUnitAcmp.writeDpRegister">writeDpRegister</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

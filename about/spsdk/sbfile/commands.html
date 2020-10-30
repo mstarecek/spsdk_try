@@ -1,0 +1,3306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.sbfile.commands API documentation</title>
+<meta name="description" content="Commands used by SBFile module." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.sbfile.commands</code></h1>
+</header>
+<section id="section-intro">
+<p>Commands used by SBFile module.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Commands used by SBFile module.&#34;&#34;&#34;
+
+from abc import abstractmethod
+from struct import pack, unpack_from, calcsize
+from typing import Any, Mapping, Optional, Type
+
+from crccheck.crc import Crc32Mpeg2
+
+from spsdk.mboot import ExtMemId
+from spsdk.utils.crypto.abstract import BaseClass
+from spsdk.utils.crypto.common import swap16
+from spsdk.utils.easy_enum import Enum
+from spsdk.utils.misc import DebugInfo
+from .misc import SecBootBlckSize
+
+
+########################################################################################################################
+# Enums
+########################################################################################################################
+class EnumCmdTag(Enum):
+    &#34;&#34;&#34;Command tags.&#34;&#34;&#34;
+    NOP = 0x0
+    TAG = 0x1
+    LOAD = 0x2
+    FILL = 0x3
+    JUMP = 0x4
+    CALL = 0x5
+    ERASE = 0x7
+    RESET = 0x8
+    MEM_ENABLE = 0x9
+    PROG = 0xA
+    FW_VERSION_CHECK = (0xB, &#39;Check FW version fuse value&#39;)
+    WR_KEYSTORE_TO_NV = (0xC, &#39;Restore key-store restore to non-volatile memory&#39;)
+    WR_KEYSTORE_FROM_NV = (0xD, &#39;Backup key-store from non-volatile memory&#39;)
+
+
+class EnumSectionFlag(Enum):
+    &#34;&#34;&#34;Section flags.&#34;&#34;&#34;
+    BOOTABLE = 0x0001
+    CLEARTEXT = 0x0002
+    LAST_SECT = 0x8000
+
+
+########################################################################################################################
+# Header Class
+########################################################################################################################
+class CmdHeader:
+    &#34;&#34;&#34;SBFile command header.&#34;&#34;&#34;
+    FORMAT = &#39;&lt;2BH3L&#39;
+    SIZE = calcsize(FORMAT)
+
+    @property
+    def crc(self) -&gt; int:
+        &#34;&#34;&#34;Calculate CRC for the header data.&#34;&#34;&#34;
+        raw_data = self._raw_data(crc=0)
+        checksum = 0x5a
+        for i in range(1, self.SIZE):
+            checksum = (checksum + raw_data[i]) &amp; 0xFF
+        return checksum
+
+    def __init__(self, tag: int, flags: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize header.&#34;&#34;&#34;
+        assert tag in EnumCmdTag.tags()
+        self.tag = tag
+        self.flags = flags
+        self.address = 0
+        self.count = 0
+        self.data = 0
+
+    def __eq__(self, obj: Any) -&gt; bool:
+        return isinstance(obj, self.__class__) and vars(obj) == vars(self)
+
+    def __str__(self) -&gt; str:
+        tag = EnumCmdTag.get(self.tag, f&#34;0x{self.tag:02X}&#34;)
+        return f&#34;tag={tag}, flags=0x{self.flags:04X}, &#34; \
+               f&#34;address=0x{self.address:08X}, count=0x{self.count:08X}, data=0x{self.data:08X}&#34;
+
+    def _raw_data(self, crc: int) -&gt; bytes:
+        &#34;&#34;&#34;Return raw data of the header with specified CRC.
+
+        :param crc: value to be used
+        :return: binary representation of the header
+        &#34;&#34;&#34;
+        return pack(self.FORMAT, crc, self.tag, self.flags, self.address, self.count, self.data)
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Export command header as bytes.&#34;&#34;&#34;
+        return self._raw_data(self.crc)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdHeader&#39;:
+        &#34;&#34;&#34;Parse command header from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CMDHeader object
+        :raise Exception: raised when size is incorrect
+        :raise ValueError: raised when CRC is incorrect
+        &#34;&#34;&#34;
+        if calcsize(cls.FORMAT) &gt; len(data) - offset:
+            raise Exception()
+        obj = cls(EnumCmdTag.NOP)
+        (crc, obj.tag, obj.flags, obj.address, obj.count, obj.data) = unpack_from(cls.FORMAT, data, offset)
+        if crc != obj.crc:
+            raise ValueError(&#39;CRC does not match&#39;)
+        return obj
+
+
+########################################################################################################################
+# Commands Classes
+########################################################################################################################
+class CmdBaseClass(BaseClass):
+    &#34;&#34;&#34;Base class for all commands.&#34;&#34;&#34;
+
+    def __init__(self, tag: int) -&gt; None:
+        &#34;&#34;&#34;Initialize CmdBase.&#34;&#34;&#34;
+        self._header = CmdHeader(tag)
+
+    # TODO Refactor: so header is not published, it should not be accessed publicly
+    @property
+    def header(self) -&gt; CmdHeader:
+        &#34;&#34;&#34;Return command header.&#34;&#34;&#34;
+        return self._header
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Return size of the command in binary format (including header).&#34;&#34;&#34;
+        return CmdHeader.SIZE  # this is default implementation
+
+    def __str__(self) -&gt; str:
+        return &#39;Command: &#39; + str(self._header)  # default implementation: use command name
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return text info about the instance.&#34;&#34;&#34;
+        return self.__str__() + &#39;\n&#39;  # default implementation is same as __str__
+
+    def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Return object serialized into bytes.&#34;&#34;&#34;
+        dbg_info.append_section(&#39;Command:&#39; + EnumCmdTag.name(self.header.tag))
+        cmd_data = self._header.export()  # default implementation
+        dbg_info.append_binary_data(&#39;cmd-header&#39;, cmd_data)
+        return cmd_data
+
+    @classmethod
+    @abstractmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdBaseClass&#39;:
+        &#34;&#34;&#34;Deserialize object from binary.&#34;&#34;&#34;
+
+
+class CmdNop(CmdBaseClass):
+    &#34;&#34;&#34;Command NOP class.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Nop.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.NOP)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdNop&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CMD Nop object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.NOP
+        return cls()
+
+
+class CmdTag(CmdBaseClass):
+    &#34;&#34;&#34;Command TAG class.
+
+    It is also used as header for boot section for SB file 1.x.
+    &#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Tag.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.TAG)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdTag&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: parsed instance
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.TAG
+        result = cls()
+        result._header = header
+        return result
+
+
+class CmdLoad(CmdBaseClass):
+    &#34;&#34;&#34;Command Load. The load statement is used to store data into the memory.&#34;&#34;&#34;
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address in target processor to load data.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: address in target processor to load data
+        &#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Return aligned size of the command including header and data.&#34;&#34;&#34;
+        size = CmdHeader.SIZE + len(self.data)
+        if size % CmdHeader.SIZE:
+            size += CmdHeader.SIZE - (size % CmdHeader.SIZE)
+        return size
+
+    def __init__(self, address: int, data: bytes) -&gt; None:
+        &#34;&#34;&#34;Initialize CMD Load.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.LOAD)
+        assert isinstance(data, (bytes, bytearray))
+        self.address = address
+        self.data = bytes(data)
+
+    def __str__(self) -&gt; str:
+        return f&#34;LOAD: Address=0x{self.address:08X}, DataLen={len(self.data)}&#34;
+
+    def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Export command as binary.&#34;&#34;&#34;
+        self._update_data()
+        result = super().export(dbg_info)
+        dbg_info.append_binary_section(&#39;load-data&#39;, self.data)
+        return result + self.data
+
+    def _update_data(self) -&gt; None:
+        &#34;&#34;&#34;Update command data.&#34;&#34;&#34;
+        # padding data
+        self.data = SecBootBlckSize.align_block_fill_random(self.data)
+        # update header
+        self._header.count = len(self.data)
+        self._header.data = Crc32Mpeg2.calc(self.data, 0xFFFFFFFF)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdLoad&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CMD Load object
+        :raise ValueError: raised when there is invalid CRC
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.LOAD
+        offset += CmdHeader.SIZE
+        header_count = SecBootBlckSize.align(header.count)
+        cmd_data = data[offset: offset + header_count]
+        if header.data != Crc32Mpeg2.calc(cmd_data, 0xFFFFFFFF):
+            raise ValueError(&#39;Invalid CRC in the command header&#39;)
+        obj = CmdLoad(header.address, cmd_data)
+        obj.header.data = header.data
+        obj.header.flags = header.flags
+        obj._update_data()
+        return obj
+
+
+class CmdFill(CmdBaseClass):
+    &#34;&#34;&#34;Command Fill class.&#34;&#34;&#34;
+    PADDING_VALUE = 0x00
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address of the command Fill.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set address for the command Fill.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Calculate raw size of header.&#34;&#34;&#34;
+        size = CmdHeader.SIZE
+        size += len(self._pattern) - 4
+        if size % CmdHeader.SIZE:
+            size += CmdHeader.SIZE - (size % CmdHeader.SIZE)
+        return size
+
+    def __init__(self, address: int, pattern: bytes) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Fill.
+
+        :param address: to write data
+        :param pattern: data to be written
+        :raise ValueError: raised when size is not aligned to 4 bytes
+        &#34;&#34;&#34;
+        super().__init__(EnumCmdTag.FILL)
+        assert isinstance(pattern, (bytes, bytearray))
+        if len(pattern) &lt; 4:
+            raise ValueError(&#39;pattern must be at least 4 bytes long&#39;)
+        if len(pattern) % 4:
+            raise ValueError(&#39;pattern size must be aligned to 4 bytes&#39;)
+        self.address = address
+        self._pattern = bytes(pattern)
+        # update header
+        self._header.data = unpack_from(&#34;&lt;L&#34;, self._pattern)[0]
+        self._header.count = len(self._pattern)
+
+    @property
+    def pattern(self) -&gt; bytes:
+        &#34;&#34;&#34;Return binary data to fill.&#34;&#34;&#34;
+        return self._pattern
+
+    def __str__(self) -&gt; str:
+        return f&#34;FILL: Address=0x{self.address:08X}, Pattern=&#34; + &#34; &#34;.join(f&#39;{byte:02X}&#39; for byte in self._pattern)
+
+    def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Return command in binary form (serialization).&#34;&#34;&#34;
+        # export cmd
+        data = super().export(dbg_info)
+        # export additional data
+        if len(self._pattern) &gt; 4:
+            data += bytes(self._pattern[4:])
+            dbg_info.append_binary_data(&#39;pattern&#39;, self._pattern[4:])
+        data = SecBootBlckSize.align_block_fill_random(data)
+        return data
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdFill&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Fill object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.FILL
+        # The last 4 bytes of header are part of pattern value
+        offset += CmdHeader.SIZE - 4
+        return cls(header.address, data[offset: offset + header.count])
+
+
+class CmdJump(CmdBaseClass):
+    &#34;&#34;&#34;Command Jump class.&#34;&#34;&#34;
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address of the command Jump.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set address of the command Jump.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def argument(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s argument.&#34;&#34;&#34;
+        return self._header.data
+
+    @argument.setter
+    def argument(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s argument.&#34;&#34;&#34;
+        assert 0x00 &lt;= value &lt;= 0xFF
+        self._header.data = value
+
+    @property
+    def spreg(self) -&gt; Optional[int]:
+        &#34;&#34;&#34;Return command&#39;s Stack Pointer.&#34;&#34;&#34;
+        if self._header.flags == 1:
+            return self._header.count
+
+        return None
+
+    @spreg.setter
+    def spreg(self, value: Optional[int]) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s Stack Pointer.&#34;&#34;&#34;
+        if value is None:
+            self._header.flags = 0
+            self._header.count = 0
+        else:
+            self._header.flags = 1
+            self._header.count = value
+
+    def __init__(self, address: int = 0, argument: int = 0, spreg: Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Jump.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.JUMP)
+        self.address = address
+        self.argument = argument
+        self.spreg = spreg
+
+    def __str__(self) -&gt; str:
+        nfo = f&#34;JUMP: Address=0x{self.address:08X}, Argument=0x{self.argument:08X}&#34;
+        if self.spreg is not None:
+            nfo += f&#34;, SP=0x{self.spreg:08X}&#34;
+        return nfo
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdJump&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Jump object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.JUMP
+        return cls(header.address, header.data, header.count if header.flags else None)
+
+
+class CmdCall(CmdBaseClass):
+    &#34;&#34;&#34;Command Call.
+
+    The call statement is used for inserting a bootloader command that executes a function
+    from one of the files that are loaded into the memory.
+    &#34;&#34;&#34;
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s address.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def argument(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s argument.&#34;&#34;&#34;
+        return self._header.data
+
+    @argument.setter
+    def argument(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s argument.&#34;&#34;&#34;
+        self._header.data = value
+
+    def __init__(self, address: int = 0, argument: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Call.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.CALL)
+        self.address = address
+        self.argument = argument
+
+    def __str__(self) -&gt; str:
+        return f&#34;CALL: Address=0x{self.address:08X}, Argument=0x{self.argument:08X}&#34;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdCall&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Call object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.CALL
+        return cls(header.address, header.data)
+
+
+class CmdErase(CmdBaseClass):
+    &#34;&#34;&#34;Command Erase class.&#34;&#34;&#34;
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s address.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def length(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s count.&#34;&#34;&#34;
+        return self._header.count
+
+    @length.setter
+    def length(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s count.&#34;&#34;&#34;
+        self._header.count = value
+
+    @property
+    def flags(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s flag.&#34;&#34;&#34;
+        return self._header.flags
+
+    @flags.setter
+    def flags(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s flag.&#34;&#34;&#34;
+        self._header.flags = value
+
+    def __init__(self, address: int = 0, length: int = 0, flags: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Erase.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.ERASE)
+        self.address = address
+        self.length = length
+        self.flags = flags
+
+    def __str__(self) -&gt; str:
+        return f&#34;ERASE: Address=0x{self.address:08X}, Length={self.length}, Flags=0x{self.flags:08X}&#34;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdErase&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Erase object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.ERASE
+        return cls(header.address, header.count, header.flags)
+
+
+class CmdReset(CmdBaseClass):
+    &#34;&#34;&#34;Command Reset class.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Reset.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.RESET)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdReset&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Cmd Reset object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.RESET
+        return cls()
+
+
+class CmdMemEnable(CmdBaseClass):
+    &#34;&#34;&#34;Command to configure certain memory.&#34;&#34;&#34;
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s address.&#34;&#34;&#34;
+        self._header.address = value
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s size.&#34;&#34;&#34;
+        return self._header.count
+
+    @size.setter
+    def size(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s size.&#34;&#34;&#34;
+        self._header.count = value
+
+    @property
+    def mem_type(self) -&gt; ExtMemId:
+        &#34;&#34;&#34;Return memory to be enabled.&#34;&#34;&#34;
+        return ExtMemId.from_int(swap16(self._header.flags))
+
+    @mem_type.setter
+    def mem_type(self, value: ExtMemId) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: memory to be enabled
+        &#34;&#34;&#34;
+        self._header.flags = swap16(value)
+
+    def __init__(self, address: int, size: int, mem_type: ExtMemId):
+        &#34;&#34;&#34;Initialize CmdMemEnable.
+
+        :param address: source address with configuration data for memory initialization
+        :param size: size of configuration data used for memory initialization
+        :param mem_type: identification of external memory type, see enum for details
+        &#34;&#34;&#34;
+        super().__init__(EnumCmdTag.MEM_ENABLE)
+        self.address = address
+        self.mem_type = mem_type
+        self.size = size
+
+    def __str__(self) -&gt; str:
+        return f&#34;MEM-ENABLE: Address=0x{self.address:08X}, Size={self.size}, MemType=0x{self.mem_type:08X}&#34;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdMemEnable&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Memory Enable object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.MEM_ENABLE
+        return cls(header.address, header.count, ExtMemId.from_int(swap16(header.flags)))
+
+
+class CmdProg(CmdBaseClass):
+    &#34;&#34;&#34;Command Program class.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Cmd Program.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.PROG)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdProg&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: parsed command object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.PROG
+        return cls()
+
+
+class VersionCheckType(Enum):
+    &#34;&#34;&#34;Select type of the version check: either secure or non-secure firmware to be checked.&#34;&#34;&#34;
+    SECURE_VERSION = 0
+    NON_SECURE_VERSION = 1
+
+
+class CmdVersionCheck(CmdBaseClass):
+    &#34;&#34;&#34;FW Version Check command class.
+
+    Validates version of secure or non-secure firmware.
+    The command fails if version is &lt; expected.
+    &#34;&#34;&#34;
+
+    def __init__(self, ver_type: VersionCheckType, version: int) -&gt; None:
+        &#34;&#34;&#34;Initialize CmdVersionCheck.
+
+        :param ver_type: version check type, see `VersionCheckType` enum
+        :param version: to be checked
+        &#34;&#34;&#34;
+        super().__init__(EnumCmdTag.FW_VERSION_CHECK)
+        assert ver_type in VersionCheckType.tags()
+        self.header.address = ver_type
+        self.header.count = version
+
+    @property
+    def type(self) -&gt; VersionCheckType:
+        &#34;&#34;&#34;Return type of the check version, see VersionCheckType enumeration.&#34;&#34;&#34;
+        return VersionCheckType.from_int(self.header.address)
+
+    @property
+    def version(self) -&gt; int:
+        &#34;&#34;&#34;Return minimal version expected.&#34;&#34;&#34;
+        return self.header.count
+
+    def __str__(self) -&gt; str:
+        return super().__str__() + f&#39; type={VersionCheckType.name(self.type)}, version={str(self.version)}&#39;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdVersionCheck&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: parsed command object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.FW_VERSION_CHECK
+        ver_type = VersionCheckType.from_int(header.address)
+        version = header.count
+        return CmdVersionCheck(ver_type, version)
+
+
+class CmdKeyStoreBackupRestore(CmdBaseClass):
+    &#34;&#34;&#34;Shared, abstract implementation for key-store backup and restore command.&#34;&#34;&#34;
+
+    # bit mask for controller ID inside flags
+    ROM_MEM_DEVICE_ID_MASK = 0xff00
+    # shift for controller ID inside flags
+    ROM_MEM_DEVICE_ID_SHIFT = 8
+
+    @classmethod
+    @abstractmethod
+    def cmd_id(cls) -&gt; EnumCmdTag:
+        &#34;&#34;&#34;Return command ID.&#34;&#34;&#34;
+        raise NotImplementedError(&#39;abstract method&#39;)
+
+    def __init__(self, address: int, controller_id: int):
+        &#34;&#34;&#34;Initialize CmdKeyStoreBackupRestore.
+
+        :param address: where to backup key-store or source for restoring key-store
+        :param controller_id: ID of the memory to backup key-store or source memory to load key-store back
+        &#34;&#34;&#34;
+        super().__init__(self.cmd_id())
+        assert 0 &lt;= address &lt;= 0xFFFFFFFF
+        self.header.address = address
+        assert 0 &lt;= controller_id &lt;= 0xFF
+        self.header.flags = ((self.header.flags &amp; ~self.ROM_MEM_DEVICE_ID_MASK) |
+                             ((controller_id &lt;&lt; self.ROM_MEM_DEVICE_ID_SHIFT) &amp; self.ROM_MEM_DEVICE_ID_MASK))
+        self.header.count = 4  # this is useless, but it is kept for backward compatibility with elftosb
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address where to backup key-store or source for restoring key-store.&#34;&#34;&#34;
+        return self.header.address
+
+    @property
+    def controller_id(self) -&gt; int:
+        &#34;&#34;&#34;Return controller ID of the memory to backup key-store or source memory to load key-store back.&#34;&#34;&#34;
+        return (self.header.flags &amp; self.ROM_MEM_DEVICE_ID_MASK) &gt;&gt; self.ROM_MEM_DEVICE_ID_SHIFT
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdKeyStoreBackupRestore&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CmdKeyStoreBackupRestore object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == cls.cmd_id()
+        address = header.address
+        controller_id = (header.flags &amp; cls.ROM_MEM_DEVICE_ID_MASK) &gt;&gt; cls.ROM_MEM_DEVICE_ID_SHIFT
+        return cls(address, controller_id)
+
+
+class CmdKeyStoreBackup(CmdKeyStoreBackupRestore):
+    &#34;&#34;&#34;Command to backup keystore from non-volatile memory.&#34;&#34;&#34;
+
+    @classmethod
+    def cmd_id(cls) -&gt; EnumCmdTag:
+        &#34;&#34;&#34;Return command ID for backup operation.&#34;&#34;&#34;
+        return EnumCmdTag.WR_KEYSTORE_FROM_NV
+
+
+class CmdKeyStoreRestore(CmdKeyStoreBackupRestore):
+    &#34;&#34;&#34;Command to restore keystore into non-volatile memory.&#34;&#34;&#34;
+
+    @classmethod
+    def cmd_id(cls) -&gt; EnumCmdTag:
+        &#34;&#34;&#34;Return command ID for restore operation.&#34;&#34;&#34;
+        return EnumCmdTag.WR_KEYSTORE_TO_NV
+
+
+########################################################################################################################
+# Command parser from binary format
+########################################################################################################################
+_CMD_CLASS: Mapping[int, Type[CmdBaseClass]] = {
+    EnumCmdTag.NOP: CmdNop,
+    EnumCmdTag.TAG: CmdTag,
+    EnumCmdTag.LOAD: CmdLoad,
+    EnumCmdTag.FILL: CmdFill,
+    EnumCmdTag.JUMP: CmdJump,
+    EnumCmdTag.CALL: CmdCall,
+    EnumCmdTag.ERASE: CmdErase,
+    EnumCmdTag.RESET: CmdReset,
+    EnumCmdTag.MEM_ENABLE: CmdMemEnable,
+    EnumCmdTag.PROG: CmdProg,
+    EnumCmdTag.FW_VERSION_CHECK: CmdVersionCheck,
+    EnumCmdTag.WR_KEYSTORE_TO_NV: CmdKeyStoreRestore,
+    EnumCmdTag.WR_KEYSTORE_FROM_NV: CmdKeyStoreBackup,
+}
+
+
+def parse_command(data: bytes, offset: int = 0) -&gt; CmdBaseClass:
+    &#34;&#34;&#34;Parse SB 2.x command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data to start parsing
+    :return: parsed command object
+    :raise ValueError: raised when there is unsupported command provided
+    &#34;&#34;&#34;
+    header_tag = data[offset + 1]
+    if header_tag not in _CMD_CLASS:
+        raise ValueError(f&#39;Unsupported command: {str(header_tag)}&#39;)
+    return _CMD_CLASS[header_tag].parse(data, offset)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.sbfile.commands.parse_command"><code class="name flex">
+<span>def <span class="ident">parse_command</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse SB 2.x command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data to start parsing
+:return: parsed command object
+:raise ValueError: raised when there is unsupported command provided</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_command(data: bytes, offset: int = 0) -&gt; CmdBaseClass:
+    &#34;&#34;&#34;Parse SB 2.x command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data to start parsing
+    :return: parsed command object
+    :raise ValueError: raised when there is unsupported command provided
+    &#34;&#34;&#34;
+    header_tag = data[offset + 1]
+    if header_tag not in _CMD_CLASS:
+        raise ValueError(f&#39;Unsupported command: {str(header_tag)}&#39;)
+    return _CMD_CLASS[header_tag].parse(data, offset)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdBaseClass"><code class="flex name class">
+<span>class <span class="ident">CmdBaseClass</span></span>
+<span>(</span><span>tag: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all commands.</p>
+<p>Initialize CmdBase.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdBaseClass(BaseClass):
+    &#34;&#34;&#34;Base class for all commands.&#34;&#34;&#34;
+
+    def __init__(self, tag: int) -&gt; None:
+        &#34;&#34;&#34;Initialize CmdBase.&#34;&#34;&#34;
+        self._header = CmdHeader(tag)
+
+    # TODO Refactor: so header is not published, it should not be accessed publicly
+    @property
+    def header(self) -&gt; CmdHeader:
+        &#34;&#34;&#34;Return command header.&#34;&#34;&#34;
+        return self._header
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Return size of the command in binary format (including header).&#34;&#34;&#34;
+        return CmdHeader.SIZE  # this is default implementation
+
+    def __str__(self) -&gt; str:
+        return &#39;Command: &#39; + str(self._header)  # default implementation: use command name
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return text info about the instance.&#34;&#34;&#34;
+        return self.__str__() + &#39;\n&#39;  # default implementation is same as __str__
+
+    def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Return object serialized into bytes.&#34;&#34;&#34;
+        dbg_info.append_section(&#39;Command:&#39; + EnumCmdTag.name(self.header.tag))
+        cmd_data = self._header.export()  # default implementation
+        dbg_info.append_binary_data(&#39;cmd-header&#39;, cmd_data)
+        return cmd_data
+
+    @classmethod
+    @abstractmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdBaseClass&#39;:
+        &#34;&#34;&#34;Deserialize object from binary.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdCall" href="#spsdk.sbfile.commands.CmdCall">CmdCall</a></li>
+<li><a title="spsdk.sbfile.commands.CmdErase" href="#spsdk.sbfile.commands.CmdErase">CmdErase</a></li>
+<li><a title="spsdk.sbfile.commands.CmdFill" href="#spsdk.sbfile.commands.CmdFill">CmdFill</a></li>
+<li><a title="spsdk.sbfile.commands.CmdJump" href="#spsdk.sbfile.commands.CmdJump">CmdJump</a></li>
+<li><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></li>
+<li><a title="spsdk.sbfile.commands.CmdLoad" href="#spsdk.sbfile.commands.CmdLoad">CmdLoad</a></li>
+<li><a title="spsdk.sbfile.commands.CmdMemEnable" href="#spsdk.sbfile.commands.CmdMemEnable">CmdMemEnable</a></li>
+<li><a title="spsdk.sbfile.commands.CmdNop" href="#spsdk.sbfile.commands.CmdNop">CmdNop</a></li>
+<li><a title="spsdk.sbfile.commands.CmdProg" href="#spsdk.sbfile.commands.CmdProg">CmdProg</a></li>
+<li><a title="spsdk.sbfile.commands.CmdReset" href="#spsdk.sbfile.commands.CmdReset">CmdReset</a></li>
+<li><a title="spsdk.sbfile.commands.CmdTag" href="#spsdk.sbfile.commands.CmdTag">CmdTag</a></li>
+<li><a title="spsdk.sbfile.commands.CmdVersionCheck" href="#spsdk.sbfile.commands.CmdVersionCheck">CmdVersionCheck</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdBaseClass.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Deserialize object from binary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+@abstractmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdBaseClass&#39;:
+    &#34;&#34;&#34;Deserialize object from binary.&#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdBaseClass.header"><code class="name">var <span class="ident">header</span> : <a title="spsdk.sbfile.commands.CmdHeader" href="#spsdk.sbfile.commands.CmdHeader">CmdHeader</a></code></dt>
+<dd>
+<div class="desc"><p>Return command header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def header(self) -&gt; CmdHeader:
+    &#34;&#34;&#34;Return command header.&#34;&#34;&#34;
+    return self._header</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdBaseClass.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return size of the command in binary format (including header).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Return size of the command in binary format (including header).&#34;&#34;&#34;
+    return CmdHeader.SIZE  # this is default implementation</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdBaseClass.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, dbg_info: <a title="spsdk.utils.misc.DebugInfo" href="../utils/misc.html#spsdk.utils.misc.DebugInfo">DebugInfo</a> = &lt;spsdk.utils.misc.DebugInfo object&gt;) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return object serialized into bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+    &#34;&#34;&#34;Return object serialized into bytes.&#34;&#34;&#34;
+    dbg_info.append_section(&#39;Command:&#39; + EnumCmdTag.name(self.header.tag))
+    cmd_data = self._header.export()  # default implementation
+    dbg_info.append_binary_data(&#39;cmd-header&#39;, cmd_data)
+    return cmd_data</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdBaseClass.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return text info about the instance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Return text info about the instance.&#34;&#34;&#34;
+    return self.__str__() + &#39;\n&#39;  # default implementation is same as __str__</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdCall"><code class="flex name class">
+<span>class <span class="ident">CmdCall</span></span>
+<span>(</span><span>address: int = 0, argument: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Call.</p>
+<p>The call statement is used for inserting a bootloader command that executes a function
+from one of the files that are loaded into the memory.</p>
+<p>Initialize Command Call.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdCall(CmdBaseClass):
+    &#34;&#34;&#34;Command Call.
+
+    The call statement is used for inserting a bootloader command that executes a function
+    from one of the files that are loaded into the memory.
+    &#34;&#34;&#34;
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s address.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def argument(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s argument.&#34;&#34;&#34;
+        return self._header.data
+
+    @argument.setter
+    def argument(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s argument.&#34;&#34;&#34;
+        self._header.data = value
+
+    def __init__(self, address: int = 0, argument: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Call.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.CALL)
+        self.address = address
+        self.argument = argument
+
+    def __str__(self) -&gt; str:
+        return f&#34;CALL: Address=0x{self.address:08X}, Argument=0x{self.argument:08X}&#34;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdCall&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Call object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.CALL
+        return cls(header.address, header.data)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdCall.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdCall" href="#spsdk.sbfile.commands.CmdCall">CmdCall</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: Command Call object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdCall&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: Command Call object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.CALL
+    return cls(header.address, header.data)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdCall.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's address.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdCall.argument"><code class="name">var <span class="ident">argument</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's argument.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def argument(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s argument.&#34;&#34;&#34;
+    return self._header.data</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdErase"><code class="flex name class">
+<span>class <span class="ident">CmdErase</span></span>
+<span>(</span><span>address: int = 0, length: int = 0, flags: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Erase class.</p>
+<p>Initialize Command Erase.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdErase(CmdBaseClass):
+    &#34;&#34;&#34;Command Erase class.&#34;&#34;&#34;
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s address.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def length(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s count.&#34;&#34;&#34;
+        return self._header.count
+
+    @length.setter
+    def length(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s count.&#34;&#34;&#34;
+        self._header.count = value
+
+    @property
+    def flags(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s flag.&#34;&#34;&#34;
+        return self._header.flags
+
+    @flags.setter
+    def flags(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s flag.&#34;&#34;&#34;
+        self._header.flags = value
+
+    def __init__(self, address: int = 0, length: int = 0, flags: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Erase.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.ERASE)
+        self.address = address
+        self.length = length
+        self.flags = flags
+
+    def __str__(self) -&gt; str:
+        return f&#34;ERASE: Address=0x{self.address:08X}, Length={self.length}, Flags=0x{self.flags:08X}&#34;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdErase&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Erase object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.ERASE
+        return cls(header.address, header.count, header.flags)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdErase.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdErase" href="#spsdk.sbfile.commands.CmdErase">CmdErase</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: Command Erase object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdErase&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: Command Erase object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.ERASE
+    return cls(header.address, header.count, header.flags)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdErase.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's address.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdErase.flags"><code class="name">var <span class="ident">flags</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's flag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def flags(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s flag.&#34;&#34;&#34;
+    return self._header.flags</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdErase.length"><code class="name">var <span class="ident">length</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's count.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def length(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s count.&#34;&#34;&#34;
+    return self._header.count</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdFill"><code class="flex name class">
+<span>class <span class="ident">CmdFill</span></span>
+<span>(</span><span>address: int, pattern: bytes)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Fill class.</p>
+<p>Initialize Command Fill.</p>
+<p>:param address: to write data
+:param pattern: data to be written
+:raise ValueError: raised when size is not aligned to 4 bytes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdFill(CmdBaseClass):
+    &#34;&#34;&#34;Command Fill class.&#34;&#34;&#34;
+    PADDING_VALUE = 0x00
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address of the command Fill.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set address for the command Fill.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Calculate raw size of header.&#34;&#34;&#34;
+        size = CmdHeader.SIZE
+        size += len(self._pattern) - 4
+        if size % CmdHeader.SIZE:
+            size += CmdHeader.SIZE - (size % CmdHeader.SIZE)
+        return size
+
+    def __init__(self, address: int, pattern: bytes) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Fill.
+
+        :param address: to write data
+        :param pattern: data to be written
+        :raise ValueError: raised when size is not aligned to 4 bytes
+        &#34;&#34;&#34;
+        super().__init__(EnumCmdTag.FILL)
+        assert isinstance(pattern, (bytes, bytearray))
+        if len(pattern) &lt; 4:
+            raise ValueError(&#39;pattern must be at least 4 bytes long&#39;)
+        if len(pattern) % 4:
+            raise ValueError(&#39;pattern size must be aligned to 4 bytes&#39;)
+        self.address = address
+        self._pattern = bytes(pattern)
+        # update header
+        self._header.data = unpack_from(&#34;&lt;L&#34;, self._pattern)[0]
+        self._header.count = len(self._pattern)
+
+    @property
+    def pattern(self) -&gt; bytes:
+        &#34;&#34;&#34;Return binary data to fill.&#34;&#34;&#34;
+        return self._pattern
+
+    def __str__(self) -&gt; str:
+        return f&#34;FILL: Address=0x{self.address:08X}, Pattern=&#34; + &#34; &#34;.join(f&#39;{byte:02X}&#39; for byte in self._pattern)
+
+    def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Return command in binary form (serialization).&#34;&#34;&#34;
+        # export cmd
+        data = super().export(dbg_info)
+        # export additional data
+        if len(self._pattern) &gt; 4:
+            data += bytes(self._pattern[4:])
+            dbg_info.append_binary_data(&#39;pattern&#39;, self._pattern[4:])
+        data = SecBootBlckSize.align_block_fill_random(data)
+        return data
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdFill&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Fill object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.FILL
+        # The last 4 bytes of header are part of pattern value
+        offset += CmdHeader.SIZE - 4
+        return cls(header.address, data[offset: offset + header.count])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdFill.PADDING_VALUE"><code class="name">var <span class="ident">PADDING_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdFill.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdFill" href="#spsdk.sbfile.commands.CmdFill">CmdFill</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: Command Fill object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdFill&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: Command Fill object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.FILL
+    # The last 4 bytes of header are part of pattern value
+    offset += CmdHeader.SIZE - 4
+    return cls(header.address, data[offset: offset + header.count])</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdFill.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return address of the command Fill.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return address of the command Fill.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdFill.pattern"><code class="name">var <span class="ident">pattern</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>Return binary data to fill.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def pattern(self) -&gt; bytes:
+    &#34;&#34;&#34;Return binary data to fill.&#34;&#34;&#34;
+    return self._pattern</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdFill.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Calculate raw size of header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Calculate raw size of header.&#34;&#34;&#34;
+    size = CmdHeader.SIZE
+    size += len(self._pattern) - 4
+    if size % CmdHeader.SIZE:
+        size += CmdHeader.SIZE - (size % CmdHeader.SIZE)
+    return size</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdFill.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, dbg_info: <a title="spsdk.utils.misc.DebugInfo" href="../utils/misc.html#spsdk.utils.misc.DebugInfo">DebugInfo</a> = &lt;spsdk.utils.misc.DebugInfo object&gt;) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return command in binary form (serialization).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+    &#34;&#34;&#34;Return command in binary form (serialization).&#34;&#34;&#34;
+    # export cmd
+    data = super().export(dbg_info)
+    # export additional data
+    if len(self._pattern) &gt; 4:
+        data += bytes(self._pattern[4:])
+        dbg_info.append_binary_data(&#39;pattern&#39;, self._pattern[4:])
+    data = SecBootBlckSize.align_block_fill_random(data)
+    return data</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdHeader"><code class="flex name class">
+<span>class <span class="ident">CmdHeader</span></span>
+<span>(</span><span>tag: int, flags: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>SBFile command header.</p>
+<p>Initialize header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdHeader:
+    &#34;&#34;&#34;SBFile command header.&#34;&#34;&#34;
+    FORMAT = &#39;&lt;2BH3L&#39;
+    SIZE = calcsize(FORMAT)
+
+    @property
+    def crc(self) -&gt; int:
+        &#34;&#34;&#34;Calculate CRC for the header data.&#34;&#34;&#34;
+        raw_data = self._raw_data(crc=0)
+        checksum = 0x5a
+        for i in range(1, self.SIZE):
+            checksum = (checksum + raw_data[i]) &amp; 0xFF
+        return checksum
+
+    def __init__(self, tag: int, flags: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize header.&#34;&#34;&#34;
+        assert tag in EnumCmdTag.tags()
+        self.tag = tag
+        self.flags = flags
+        self.address = 0
+        self.count = 0
+        self.data = 0
+
+    def __eq__(self, obj: Any) -&gt; bool:
+        return isinstance(obj, self.__class__) and vars(obj) == vars(self)
+
+    def __str__(self) -&gt; str:
+        tag = EnumCmdTag.get(self.tag, f&#34;0x{self.tag:02X}&#34;)
+        return f&#34;tag={tag}, flags=0x{self.flags:04X}, &#34; \
+               f&#34;address=0x{self.address:08X}, count=0x{self.count:08X}, data=0x{self.data:08X}&#34;
+
+    def _raw_data(self, crc: int) -&gt; bytes:
+        &#34;&#34;&#34;Return raw data of the header with specified CRC.
+
+        :param crc: value to be used
+        :return: binary representation of the header
+        &#34;&#34;&#34;
+        return pack(self.FORMAT, crc, self.tag, self.flags, self.address, self.count, self.data)
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Export command header as bytes.&#34;&#34;&#34;
+        return self._raw_data(self.crc)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdHeader&#39;:
+        &#34;&#34;&#34;Parse command header from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CMDHeader object
+        :raise Exception: raised when size is incorrect
+        :raise ValueError: raised when CRC is incorrect
+        &#34;&#34;&#34;
+        if calcsize(cls.FORMAT) &gt; len(data) - offset:
+            raise Exception()
+        obj = cls(EnumCmdTag.NOP)
+        (crc, obj.tag, obj.flags, obj.address, obj.count, obj.data) = unpack_from(cls.FORMAT, data, offset)
+        if crc != obj.crc:
+            raise ValueError(&#39;CRC does not match&#39;)
+        return obj</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdHeader.FORMAT"><code class="name">var <span class="ident">FORMAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdHeader.SIZE"><code class="name">var <span class="ident">SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdHeader.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdHeader" href="#spsdk.sbfile.commands.CmdHeader">CmdHeader</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command header from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: CMDHeader object
+:raise Exception: raised when size is incorrect
+:raise ValueError: raised when CRC is incorrect</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdHeader&#39;:
+    &#34;&#34;&#34;Parse command header from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: CMDHeader object
+    :raise Exception: raised when size is incorrect
+    :raise ValueError: raised when CRC is incorrect
+    &#34;&#34;&#34;
+    if calcsize(cls.FORMAT) &gt; len(data) - offset:
+        raise Exception()
+    obj = cls(EnumCmdTag.NOP)
+    (crc, obj.tag, obj.flags, obj.address, obj.count, obj.data) = unpack_from(cls.FORMAT, data, offset)
+    if crc != obj.crc:
+        raise ValueError(&#39;CRC does not match&#39;)
+    return obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdHeader.crc"><code class="name">var <span class="ident">crc</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Calculate CRC for the header data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def crc(self) -&gt; int:
+    &#34;&#34;&#34;Calculate CRC for the header data.&#34;&#34;&#34;
+    raw_data = self._raw_data(crc=0)
+    checksum = 0x5a
+    for i in range(1, self.SIZE):
+        checksum = (checksum + raw_data[i]) &amp; 0xFF
+    return checksum</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdHeader.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export command header as bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Export command header as bytes.&#34;&#34;&#34;
+    return self._raw_data(self.crc)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdJump"><code class="flex name class">
+<span>class <span class="ident">CmdJump</span></span>
+<span>(</span><span>address: int = 0, argument: int = 0, spreg: Union[int, NoneType] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Jump class.</p>
+<p>Initialize Command Jump.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdJump(CmdBaseClass):
+    &#34;&#34;&#34;Command Jump class.&#34;&#34;&#34;
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address of the command Jump.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set address of the command Jump.&#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def argument(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s argument.&#34;&#34;&#34;
+        return self._header.data
+
+    @argument.setter
+    def argument(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s argument.&#34;&#34;&#34;
+        assert 0x00 &lt;= value &lt;= 0xFF
+        self._header.data = value
+
+    @property
+    def spreg(self) -&gt; Optional[int]:
+        &#34;&#34;&#34;Return command&#39;s Stack Pointer.&#34;&#34;&#34;
+        if self._header.flags == 1:
+            return self._header.count
+
+        return None
+
+    @spreg.setter
+    def spreg(self, value: Optional[int]) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s Stack Pointer.&#34;&#34;&#34;
+        if value is None:
+            self._header.flags = 0
+            self._header.count = 0
+        else:
+            self._header.flags = 1
+            self._header.count = value
+
+    def __init__(self, address: int = 0, argument: int = 0, spreg: Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Jump.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.JUMP)
+        self.address = address
+        self.argument = argument
+        self.spreg = spreg
+
+    def __str__(self) -&gt; str:
+        nfo = f&#34;JUMP: Address=0x{self.address:08X}, Argument=0x{self.argument:08X}&#34;
+        if self.spreg is not None:
+            nfo += f&#34;, SP=0x{self.spreg:08X}&#34;
+        return nfo
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdJump&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Jump object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.JUMP
+        return cls(header.address, header.data, header.count if header.flags else None)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdJump.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdJump" href="#spsdk.sbfile.commands.CmdJump">CmdJump</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: Command Jump object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdJump&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: Command Jump object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.JUMP
+    return cls(header.address, header.data, header.count if header.flags else None)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdJump.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return address of the command Jump.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return address of the command Jump.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdJump.argument"><code class="name">var <span class="ident">argument</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's argument.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def argument(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s argument.&#34;&#34;&#34;
+    return self._header.data</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdJump.spreg"><code class="name">var <span class="ident">spreg</span> : Union[int, NoneType]</code></dt>
+<dd>
+<div class="desc"><p>Return command's Stack Pointer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def spreg(self) -&gt; Optional[int]:
+    &#34;&#34;&#34;Return command&#39;s Stack Pointer.&#34;&#34;&#34;
+    if self._header.flags == 1:
+        return self._header.count
+
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackup"><code class="flex name class">
+<span>class <span class="ident">CmdKeyStoreBackup</span></span>
+<span>(</span><span>address: int, controller_id: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command to backup keystore from non-volatile memory.</p>
+<p>Initialize CmdKeyStoreBackupRestore.</p>
+<p>:param address: where to backup key-store or source for restoring key-store
+:param controller_id: ID of the memory to backup key-store or source memory to load key-store back</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdKeyStoreBackup(CmdKeyStoreBackupRestore):
+    &#34;&#34;&#34;Command to backup keystore from non-volatile memory.&#34;&#34;&#34;
+
+    @classmethod
+    def cmd_id(cls) -&gt; EnumCmdTag:
+        &#34;&#34;&#34;Return command ID for backup operation.&#34;&#34;&#34;
+        return EnumCmdTag.WR_KEYSTORE_FROM_NV</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></li>
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackup.cmd_id"><code class="name flex">
+<span>def <span class="ident">cmd_id</span></span>(<span>) ‑> <a title="spsdk.sbfile.commands.EnumCmdTag" href="#spsdk.sbfile.commands.EnumCmdTag">EnumCmdTag</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return command ID for backup operation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def cmd_id(cls) -&gt; EnumCmdTag:
+    &#34;&#34;&#34;Return command ID for backup operation.&#34;&#34;&#34;
+    return EnumCmdTag.WR_KEYSTORE_FROM_NV</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id">controller_id</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore"><code class="flex name class">
+<span>class <span class="ident">CmdKeyStoreBackupRestore</span></span>
+<span>(</span><span>address: int, controller_id: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Shared, abstract implementation for key-store backup and restore command.</p>
+<p>Initialize CmdKeyStoreBackupRestore.</p>
+<p>:param address: where to backup key-store or source for restoring key-store
+:param controller_id: ID of the memory to backup key-store or source memory to load key-store back</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdKeyStoreBackupRestore(CmdBaseClass):
+    &#34;&#34;&#34;Shared, abstract implementation for key-store backup and restore command.&#34;&#34;&#34;
+
+    # bit mask for controller ID inside flags
+    ROM_MEM_DEVICE_ID_MASK = 0xff00
+    # shift for controller ID inside flags
+    ROM_MEM_DEVICE_ID_SHIFT = 8
+
+    @classmethod
+    @abstractmethod
+    def cmd_id(cls) -&gt; EnumCmdTag:
+        &#34;&#34;&#34;Return command ID.&#34;&#34;&#34;
+        raise NotImplementedError(&#39;abstract method&#39;)
+
+    def __init__(self, address: int, controller_id: int):
+        &#34;&#34;&#34;Initialize CmdKeyStoreBackupRestore.
+
+        :param address: where to backup key-store or source for restoring key-store
+        :param controller_id: ID of the memory to backup key-store or source memory to load key-store back
+        &#34;&#34;&#34;
+        super().__init__(self.cmd_id())
+        assert 0 &lt;= address &lt;= 0xFFFFFFFF
+        self.header.address = address
+        assert 0 &lt;= controller_id &lt;= 0xFF
+        self.header.flags = ((self.header.flags &amp; ~self.ROM_MEM_DEVICE_ID_MASK) |
+                             ((controller_id &lt;&lt; self.ROM_MEM_DEVICE_ID_SHIFT) &amp; self.ROM_MEM_DEVICE_ID_MASK))
+        self.header.count = 4  # this is useless, but it is kept for backward compatibility with elftosb
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address where to backup key-store or source for restoring key-store.&#34;&#34;&#34;
+        return self.header.address
+
+    @property
+    def controller_id(self) -&gt; int:
+        &#34;&#34;&#34;Return controller ID of the memory to backup key-store or source memory to load key-store back.&#34;&#34;&#34;
+        return (self.header.flags &amp; self.ROM_MEM_DEVICE_ID_MASK) &gt;&gt; self.ROM_MEM_DEVICE_ID_SHIFT
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdKeyStoreBackupRestore&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CmdKeyStoreBackupRestore object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == cls.cmd_id()
+        address = header.address
+        controller_id = (header.flags &amp; cls.ROM_MEM_DEVICE_ID_MASK) &gt;&gt; cls.ROM_MEM_DEVICE_ID_SHIFT
+        return cls(address, controller_id)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdKeyStoreBackup" href="#spsdk.sbfile.commands.CmdKeyStoreBackup">CmdKeyStoreBackup</a></li>
+<li><a title="spsdk.sbfile.commands.CmdKeyStoreRestore" href="#spsdk.sbfile.commands.CmdKeyStoreRestore">CmdKeyStoreRestore</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_MASK"><code class="name">var <span class="ident">ROM_MEM_DEVICE_ID_MASK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_SHIFT"><code class="name">var <span class="ident">ROM_MEM_DEVICE_ID_SHIFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.cmd_id"><code class="name flex">
+<span>def <span class="ident">cmd_id</span></span>(<span>) ‑> <a title="spsdk.sbfile.commands.EnumCmdTag" href="#spsdk.sbfile.commands.EnumCmdTag">EnumCmdTag</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return command ID.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+@abstractmethod
+def cmd_id(cls) -&gt; EnumCmdTag:
+    &#34;&#34;&#34;Return command ID.&#34;&#34;&#34;
+    raise NotImplementedError(&#39;abstract method&#39;)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: CmdKeyStoreBackupRestore object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdKeyStoreBackupRestore&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: CmdKeyStoreBackupRestore object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == cls.cmd_id()
+    address = header.address
+    controller_id = (header.flags &amp; cls.ROM_MEM_DEVICE_ID_MASK) &gt;&gt; cls.ROM_MEM_DEVICE_ID_SHIFT
+    return cls(address, controller_id)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return address where to backup key-store or source for restoring key-store.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return address where to backup key-store or source for restoring key-store.&#34;&#34;&#34;
+    return self.header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id"><code class="name">var <span class="ident">controller_id</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return controller ID of the memory to backup key-store or source memory to load key-store back.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def controller_id(self) -&gt; int:
+    &#34;&#34;&#34;Return controller ID of the memory to backup key-store or source memory to load key-store back.&#34;&#34;&#34;
+    return (self.header.flags &amp; self.ROM_MEM_DEVICE_ID_MASK) &gt;&gt; self.ROM_MEM_DEVICE_ID_SHIFT</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreRestore"><code class="flex name class">
+<span>class <span class="ident">CmdKeyStoreRestore</span></span>
+<span>(</span><span>address: int, controller_id: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command to restore keystore into non-volatile memory.</p>
+<p>Initialize CmdKeyStoreBackupRestore.</p>
+<p>:param address: where to backup key-store or source for restoring key-store
+:param controller_id: ID of the memory to backup key-store or source memory to load key-store back</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdKeyStoreRestore(CmdKeyStoreBackupRestore):
+    &#34;&#34;&#34;Command to restore keystore into non-volatile memory.&#34;&#34;&#34;
+
+    @classmethod
+    def cmd_id(cls) -&gt; EnumCmdTag:
+        &#34;&#34;&#34;Return command ID for restore operation.&#34;&#34;&#34;
+        return EnumCmdTag.WR_KEYSTORE_TO_NV</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></li>
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdKeyStoreRestore.cmd_id"><code class="name flex">
+<span>def <span class="ident">cmd_id</span></span>(<span>) ‑> <a title="spsdk.sbfile.commands.EnumCmdTag" href="#spsdk.sbfile.commands.EnumCmdTag">EnumCmdTag</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return command ID for restore operation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def cmd_id(cls) -&gt; EnumCmdTag:
+    &#34;&#34;&#34;Return command ID for restore operation.&#34;&#34;&#34;
+    return EnumCmdTag.WR_KEYSTORE_TO_NV</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id">controller_id</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdLoad"><code class="flex name class">
+<span>class <span class="ident">CmdLoad</span></span>
+<span>(</span><span>address: int, data: bytes)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Load. The load statement is used to store data into the memory.</p>
+<p>Initialize CMD Load.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdLoad(CmdBaseClass):
+    &#34;&#34;&#34;Command Load. The load statement is used to store data into the memory.&#34;&#34;&#34;
+
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return address in target processor to load data.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: address in target processor to load data
+        &#34;&#34;&#34;
+        assert 0x00000000 &lt;= value &lt;= 0xFFFFFFFF
+        self._header.address = value
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Return aligned size of the command including header and data.&#34;&#34;&#34;
+        size = CmdHeader.SIZE + len(self.data)
+        if size % CmdHeader.SIZE:
+            size += CmdHeader.SIZE - (size % CmdHeader.SIZE)
+        return size
+
+    def __init__(self, address: int, data: bytes) -&gt; None:
+        &#34;&#34;&#34;Initialize CMD Load.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.LOAD)
+        assert isinstance(data, (bytes, bytearray))
+        self.address = address
+        self.data = bytes(data)
+
+    def __str__(self) -&gt; str:
+        return f&#34;LOAD: Address=0x{self.address:08X}, DataLen={len(self.data)}&#34;
+
+    def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Export command as binary.&#34;&#34;&#34;
+        self._update_data()
+        result = super().export(dbg_info)
+        dbg_info.append_binary_section(&#39;load-data&#39;, self.data)
+        return result + self.data
+
+    def _update_data(self) -&gt; None:
+        &#34;&#34;&#34;Update command data.&#34;&#34;&#34;
+        # padding data
+        self.data = SecBootBlckSize.align_block_fill_random(self.data)
+        # update header
+        self._header.count = len(self.data)
+        self._header.data = Crc32Mpeg2.calc(self.data, 0xFFFFFFFF)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdLoad&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CMD Load object
+        :raise ValueError: raised when there is invalid CRC
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.LOAD
+        offset += CmdHeader.SIZE
+        header_count = SecBootBlckSize.align(header.count)
+        cmd_data = data[offset: offset + header_count]
+        if header.data != Crc32Mpeg2.calc(cmd_data, 0xFFFFFFFF):
+            raise ValueError(&#39;Invalid CRC in the command header&#39;)
+        obj = CmdLoad(header.address, cmd_data)
+        obj.header.data = header.data
+        obj.header.flags = header.flags
+        obj._update_data()
+        return obj</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdLoad.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdLoad" href="#spsdk.sbfile.commands.CmdLoad">CmdLoad</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: CMD Load object
+:raise ValueError: raised when there is invalid CRC</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdLoad&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: CMD Load object
+    :raise ValueError: raised when there is invalid CRC
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.LOAD
+    offset += CmdHeader.SIZE
+    header_count = SecBootBlckSize.align(header.count)
+    cmd_data = data[offset: offset + header_count]
+    if header.data != Crc32Mpeg2.calc(cmd_data, 0xFFFFFFFF):
+        raise ValueError(&#39;Invalid CRC in the command header&#39;)
+    obj = CmdLoad(header.address, cmd_data)
+    obj.header.data = header.data
+    obj.header.flags = header.flags
+    obj._update_data()
+    return obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdLoad.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return address in target processor to load data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return address in target processor to load data.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdLoad.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return aligned size of the command including header and data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Return aligned size of the command including header and data.&#34;&#34;&#34;
+    size = CmdHeader.SIZE + len(self.data)
+    if size % CmdHeader.SIZE:
+        size += CmdHeader.SIZE - (size % CmdHeader.SIZE)
+    return size</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdLoad.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, dbg_info: <a title="spsdk.utils.misc.DebugInfo" href="../utils/misc.html#spsdk.utils.misc.DebugInfo">DebugInfo</a> = &lt;spsdk.utils.misc.DebugInfo object&gt;) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export command as binary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+    &#34;&#34;&#34;Export command as binary.&#34;&#34;&#34;
+    self._update_data()
+    result = super().export(dbg_info)
+    dbg_info.append_binary_section(&#39;load-data&#39;, self.data)
+    return result + self.data</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdMemEnable"><code class="flex name class">
+<span>class <span class="ident">CmdMemEnable</span></span>
+<span>(</span><span>address: int, size: int, mem_type: <a title="spsdk.mboot.memories.ExtMemId" href="../mboot/memories.html#spsdk.mboot.memories.ExtMemId">ExtMemId</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command to configure certain memory.</p>
+<p>Initialize CmdMemEnable.</p>
+<p>:param address: source address with configuration data for memory initialization
+:param size: size of configuration data used for memory initialization
+:param mem_type: identification of external memory type, see enum for details</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdMemEnable(CmdBaseClass):
+    &#34;&#34;&#34;Command to configure certain memory.&#34;&#34;&#34;
+    @property
+    def address(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+        return self._header.address
+
+    @address.setter
+    def address(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s address.&#34;&#34;&#34;
+        self._header.address = value
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Return command&#39;s size.&#34;&#34;&#34;
+        return self._header.count
+
+    @size.setter
+    def size(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Set command&#39;s size.&#34;&#34;&#34;
+        self._header.count = value
+
+    @property
+    def mem_type(self) -&gt; ExtMemId:
+        &#34;&#34;&#34;Return memory to be enabled.&#34;&#34;&#34;
+        return ExtMemId.from_int(swap16(self._header.flags))
+
+    @mem_type.setter
+    def mem_type(self, value: ExtMemId) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: memory to be enabled
+        &#34;&#34;&#34;
+        self._header.flags = swap16(value)
+
+    def __init__(self, address: int, size: int, mem_type: ExtMemId):
+        &#34;&#34;&#34;Initialize CmdMemEnable.
+
+        :param address: source address with configuration data for memory initialization
+        :param size: size of configuration data used for memory initialization
+        :param mem_type: identification of external memory type, see enum for details
+        &#34;&#34;&#34;
+        super().__init__(EnumCmdTag.MEM_ENABLE)
+        self.address = address
+        self.mem_type = mem_type
+        self.size = size
+
+    def __str__(self) -&gt; str:
+        return f&#34;MEM-ENABLE: Address=0x{self.address:08X}, Size={self.size}, MemType=0x{self.mem_type:08X}&#34;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdMemEnable&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Command Memory Enable object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.MEM_ENABLE
+        return cls(header.address, header.count, ExtMemId.from_int(swap16(header.flags)))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdMemEnable.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdMemEnable" href="#spsdk.sbfile.commands.CmdMemEnable">CmdMemEnable</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: Command Memory Enable object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdMemEnable&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: Command Memory Enable object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.MEM_ENABLE
+    return cls(header.address, header.count, ExtMemId.from_int(swap16(header.flags)))</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdMemEnable.address"><code class="name">var <span class="ident">address</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's address.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def address(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s address.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdMemEnable.mem_type"><code class="name">var <span class="ident">mem_type</span> : <a title="spsdk.mboot.memories.ExtMemId" href="../mboot/memories.html#spsdk.mboot.memories.ExtMemId">ExtMemId</a></code></dt>
+<dd>
+<div class="desc"><p>Return memory to be enabled.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def mem_type(self) -&gt; ExtMemId:
+    &#34;&#34;&#34;Return memory to be enabled.&#34;&#34;&#34;
+    return ExtMemId.from_int(swap16(self._header.flags))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdMemEnable.size"><code class="name">var <span class="ident">size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return command's size.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def size(self) -&gt; int:
+    &#34;&#34;&#34;Return command&#39;s size.&#34;&#34;&#34;
+    return self._header.count</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdNop"><code class="flex name class">
+<span>class <span class="ident">CmdNop</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command NOP class.</p>
+<p>Initialize Command Nop.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdNop(CmdBaseClass):
+    &#34;&#34;&#34;Command NOP class.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Nop.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.NOP)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdNop&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: CMD Nop object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.NOP
+        return cls()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdNop.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdNop" href="#spsdk.sbfile.commands.CmdNop">CmdNop</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: CMD Nop object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdNop&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: CMD Nop object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.NOP
+    return cls()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdProg"><code class="flex name class">
+<span>class <span class="ident">CmdProg</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Program class.</p>
+<p>Initialize Cmd Program.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdProg(CmdBaseClass):
+    &#34;&#34;&#34;Command Program class.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Cmd Program.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.PROG)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdProg&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: parsed command object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.PROG
+        return cls()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdProg.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdProg" href="#spsdk.sbfile.commands.CmdProg">CmdProg</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: parsed command object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdProg&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: parsed command object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.PROG
+    return cls()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdReset"><code class="flex name class">
+<span>class <span class="ident">CmdReset</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command Reset class.</p>
+<p>Initialize Command Reset.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdReset(CmdBaseClass):
+    &#34;&#34;&#34;Command Reset class.&#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Reset.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.RESET)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdReset&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: Cmd Reset object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.RESET
+        return cls()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdReset.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdReset" href="#spsdk.sbfile.commands.CmdReset">CmdReset</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: Cmd Reset object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdReset&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: Cmd Reset object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.RESET
+    return cls()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdTag"><code class="flex name class">
+<span>class <span class="ident">CmdTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command TAG class.</p>
+<p>It is also used as header for boot section for SB file 1.x.</p>
+<p>Initialize Command Tag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdTag(CmdBaseClass):
+    &#34;&#34;&#34;Command TAG class.
+
+    It is also used as header for boot section for SB file 1.x.
+    &#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize Command Tag.&#34;&#34;&#34;
+        super().__init__(EnumCmdTag.TAG)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdTag&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: parsed instance
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.TAG
+        result = cls()
+        result._header = header
+        return result</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1" href="sb1/headers.html#spsdk.sbfile.sb1.headers.BootSectionHeaderV1">BootSectionHeaderV1</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdTag.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdTag" href="#spsdk.sbfile.commands.CmdTag">CmdTag</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: parsed instance</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdTag&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: parsed instance
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.TAG
+    result = cls()
+    result._header = header
+    return result</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdVersionCheck"><code class="flex name class">
+<span>class <span class="ident">CmdVersionCheck</span></span>
+<span>(</span><span>ver_type: <a title="spsdk.sbfile.commands.VersionCheckType" href="#spsdk.sbfile.commands.VersionCheckType">VersionCheckType</a>, version: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>FW Version Check command class.</p>
+<p>Validates version of secure or non-secure firmware.
+The command fails if version is &lt; expected.</p>
+<p>Initialize CmdVersionCheck.</p>
+<p>:param ver_type: version check type, see <code><a title="spsdk.sbfile.commands.VersionCheckType" href="#spsdk.sbfile.commands.VersionCheckType">VersionCheckType</a></code> enum
+:param version: to be checked</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdVersionCheck(CmdBaseClass):
+    &#34;&#34;&#34;FW Version Check command class.
+
+    Validates version of secure or non-secure firmware.
+    The command fails if version is &lt; expected.
+    &#34;&#34;&#34;
+
+    def __init__(self, ver_type: VersionCheckType, version: int) -&gt; None:
+        &#34;&#34;&#34;Initialize CmdVersionCheck.
+
+        :param ver_type: version check type, see `VersionCheckType` enum
+        :param version: to be checked
+        &#34;&#34;&#34;
+        super().__init__(EnumCmdTag.FW_VERSION_CHECK)
+        assert ver_type in VersionCheckType.tags()
+        self.header.address = ver_type
+        self.header.count = version
+
+    @property
+    def type(self) -&gt; VersionCheckType:
+        &#34;&#34;&#34;Return type of the check version, see VersionCheckType enumeration.&#34;&#34;&#34;
+        return VersionCheckType.from_int(self.header.address)
+
+    @property
+    def version(self) -&gt; int:
+        &#34;&#34;&#34;Return minimal version expected.&#34;&#34;&#34;
+        return self.header.count
+
+    def __str__(self) -&gt; str:
+        return super().__str__() + f&#39; type={VersionCheckType.name(self.type)}, version={str(self.version)}&#39;
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdVersionCheck&#39;:
+        &#34;&#34;&#34;Parse command from bytes.
+
+        :param data: Input data as bytes
+        :param offset: The offset of input data
+        :return: parsed command object
+        &#34;&#34;&#34;
+        header = CmdHeader.parse(data, offset)
+        assert header.tag == EnumCmdTag.FW_VERSION_CHECK
+        ver_type = VersionCheckType.from_int(header.address)
+        version = header.count
+        return CmdVersionCheck(ver_type, version)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdVersionCheck.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.commands.CmdVersionCheck" href="#spsdk.sbfile.commands.CmdVersionCheck">CmdVersionCheck</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse command from bytes.</p>
+<p>:param data: Input data as bytes
+:param offset: The offset of input data
+:return: parsed command object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;CmdVersionCheck&#39;:
+    &#34;&#34;&#34;Parse command from bytes.
+
+    :param data: Input data as bytes
+    :param offset: The offset of input data
+    :return: parsed command object
+    &#34;&#34;&#34;
+    header = CmdHeader.parse(data, offset)
+    assert header.tag == EnumCmdTag.FW_VERSION_CHECK
+    ver_type = VersionCheckType.from_int(header.address)
+    version = header.count
+    return CmdVersionCheck(ver_type, version)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.CmdVersionCheck.type"><code class="name">var <span class="ident">type</span> : <a title="spsdk.sbfile.commands.VersionCheckType" href="#spsdk.sbfile.commands.VersionCheckType">VersionCheckType</a></code></dt>
+<dd>
+<div class="desc"><p>Return type of the check version, see VersionCheckType enumeration.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def type(self) -&gt; VersionCheckType:
+    &#34;&#34;&#34;Return type of the check version, see VersionCheckType enumeration.&#34;&#34;&#34;
+    return VersionCheckType.from_int(self.header.address)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.commands.CmdVersionCheck.version"><code class="name">var <span class="ident">version</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return minimal version expected.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def version(self) -&gt; int:
+    &#34;&#34;&#34;Return minimal version expected.&#34;&#34;&#34;
+    return self.header.count</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag"><code class="flex name class">
+<span>class <span class="ident">EnumCmdTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command tags.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EnumCmdTag(Enum):
+    &#34;&#34;&#34;Command tags.&#34;&#34;&#34;
+    NOP = 0x0
+    TAG = 0x1
+    LOAD = 0x2
+    FILL = 0x3
+    JUMP = 0x4
+    CALL = 0x5
+    ERASE = 0x7
+    RESET = 0x8
+    MEM_ENABLE = 0x9
+    PROG = 0xA
+    FW_VERSION_CHECK = (0xB, &#39;Check FW version fuse value&#39;)
+    WR_KEYSTORE_TO_NV = (0xC, &#39;Restore key-store restore to non-volatile memory&#39;)
+    WR_KEYSTORE_FROM_NV = (0xD, &#39;Backup key-store from non-volatile memory&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.CALL"><code class="name">var <span class="ident">CALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.ERASE"><code class="name">var <span class="ident">ERASE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.FILL"><code class="name">var <span class="ident">FILL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.FW_VERSION_CHECK"><code class="name">var <span class="ident">FW_VERSION_CHECK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.JUMP"><code class="name">var <span class="ident">JUMP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.LOAD"><code class="name">var <span class="ident">LOAD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.MEM_ENABLE"><code class="name">var <span class="ident">MEM_ENABLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.NOP"><code class="name">var <span class="ident">NOP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.PROG"><code class="name">var <span class="ident">PROG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.RESET"><code class="name">var <span class="ident">RESET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.TAG"><code class="name">var <span class="ident">TAG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_FROM_NV"><code class="name">var <span class="ident">WR_KEYSTORE_FROM_NV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_TO_NV"><code class="name">var <span class="ident">WR_KEYSTORE_TO_NV</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumSectionFlag"><code class="flex name class">
+<span>class <span class="ident">EnumSectionFlag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Section flags.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EnumSectionFlag(Enum):
+    &#34;&#34;&#34;Section flags.&#34;&#34;&#34;
+    BOOTABLE = 0x0001
+    CLEARTEXT = 0x0002
+    LAST_SECT = 0x8000</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.EnumSectionFlag.BOOTABLE"><code class="name">var <span class="ident">BOOTABLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumSectionFlag.CLEARTEXT"><code class="name">var <span class="ident">CLEARTEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.EnumSectionFlag.LAST_SECT"><code class="name">var <span class="ident">LAST_SECT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.commands.VersionCheckType"><code class="flex name class">
+<span>class <span class="ident">VersionCheckType</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Select type of the version check: either secure or non-secure firmware to be checked.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VersionCheckType(Enum):
+    &#34;&#34;&#34;Select type of the version check: either secure or non-secure firmware to be checked.&#34;&#34;&#34;
+    SECURE_VERSION = 0
+    NON_SECURE_VERSION = 1</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.commands.VersionCheckType.NON_SECURE_VERSION"><code class="name">var <span class="ident">NON_SECURE_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.commands.VersionCheckType.SECURE_VERSION"><code class="name">var <span class="ident">SECURE_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.sbfile" href="index.html">spsdk.sbfile</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.parse_command" href="#spsdk.sbfile.commands.parse_command">parse_command</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdBaseClass" href="#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.export" href="#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.header" href="#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.info" href="#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.parse" href="#spsdk.sbfile.commands.CmdBaseClass.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdBaseClass.raw_size" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdCall" href="#spsdk.sbfile.commands.CmdCall">CmdCall</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdCall.address" href="#spsdk.sbfile.commands.CmdCall.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdCall.argument" href="#spsdk.sbfile.commands.CmdCall.argument">argument</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdCall.parse" href="#spsdk.sbfile.commands.CmdCall.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdErase" href="#spsdk.sbfile.commands.CmdErase">CmdErase</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdErase.address" href="#spsdk.sbfile.commands.CmdErase.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdErase.flags" href="#spsdk.sbfile.commands.CmdErase.flags">flags</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdErase.length" href="#spsdk.sbfile.commands.CmdErase.length">length</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdErase.parse" href="#spsdk.sbfile.commands.CmdErase.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdFill" href="#spsdk.sbfile.commands.CmdFill">CmdFill</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sbfile.commands.CmdFill.PADDING_VALUE" href="#spsdk.sbfile.commands.CmdFill.PADDING_VALUE">PADDING_VALUE</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdFill.address" href="#spsdk.sbfile.commands.CmdFill.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdFill.export" href="#spsdk.sbfile.commands.CmdFill.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdFill.parse" href="#spsdk.sbfile.commands.CmdFill.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdFill.pattern" href="#spsdk.sbfile.commands.CmdFill.pattern">pattern</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdFill.raw_size" href="#spsdk.sbfile.commands.CmdFill.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdHeader" href="#spsdk.sbfile.commands.CmdHeader">CmdHeader</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdHeader.FORMAT" href="#spsdk.sbfile.commands.CmdHeader.FORMAT">FORMAT</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdHeader.SIZE" href="#spsdk.sbfile.commands.CmdHeader.SIZE">SIZE</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdHeader.crc" href="#spsdk.sbfile.commands.CmdHeader.crc">crc</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdHeader.export" href="#spsdk.sbfile.commands.CmdHeader.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdHeader.parse" href="#spsdk.sbfile.commands.CmdHeader.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdJump" href="#spsdk.sbfile.commands.CmdJump">CmdJump</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdJump.address" href="#spsdk.sbfile.commands.CmdJump.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdJump.argument" href="#spsdk.sbfile.commands.CmdJump.argument">argument</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdJump.parse" href="#spsdk.sbfile.commands.CmdJump.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdJump.spreg" href="#spsdk.sbfile.commands.CmdJump.spreg">spreg</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackup" href="#spsdk.sbfile.commands.CmdKeyStoreBackup">CmdKeyStoreBackup</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackup.cmd_id" href="#spsdk.sbfile.commands.CmdKeyStoreBackup.cmd_id">cmd_id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore">CmdKeyStoreBackupRestore</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_MASK" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_MASK">ROM_MEM_DEVICE_ID_MASK</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_SHIFT" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_SHIFT">ROM_MEM_DEVICE_ID_SHIFT</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.cmd_id" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.cmd_id">cmd_id</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id">controller_id</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdKeyStoreRestore" href="#spsdk.sbfile.commands.CmdKeyStoreRestore">CmdKeyStoreRestore</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdKeyStoreRestore.cmd_id" href="#spsdk.sbfile.commands.CmdKeyStoreRestore.cmd_id">cmd_id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdLoad" href="#spsdk.sbfile.commands.CmdLoad">CmdLoad</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdLoad.address" href="#spsdk.sbfile.commands.CmdLoad.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdLoad.export" href="#spsdk.sbfile.commands.CmdLoad.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdLoad.parse" href="#spsdk.sbfile.commands.CmdLoad.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdLoad.raw_size" href="#spsdk.sbfile.commands.CmdLoad.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdMemEnable" href="#spsdk.sbfile.commands.CmdMemEnable">CmdMemEnable</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdMemEnable.address" href="#spsdk.sbfile.commands.CmdMemEnable.address">address</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdMemEnable.mem_type" href="#spsdk.sbfile.commands.CmdMemEnable.mem_type">mem_type</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdMemEnable.parse" href="#spsdk.sbfile.commands.CmdMemEnable.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdMemEnable.size" href="#spsdk.sbfile.commands.CmdMemEnable.size">size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdNop" href="#spsdk.sbfile.commands.CmdNop">CmdNop</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdNop.parse" href="#spsdk.sbfile.commands.CmdNop.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdProg" href="#spsdk.sbfile.commands.CmdProg">CmdProg</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdProg.parse" href="#spsdk.sbfile.commands.CmdProg.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdReset" href="#spsdk.sbfile.commands.CmdReset">CmdReset</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdReset.parse" href="#spsdk.sbfile.commands.CmdReset.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdTag" href="#spsdk.sbfile.commands.CmdTag">CmdTag</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdTag.parse" href="#spsdk.sbfile.commands.CmdTag.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.CmdVersionCheck" href="#spsdk.sbfile.commands.CmdVersionCheck">CmdVersionCheck</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.CmdVersionCheck.parse" href="#spsdk.sbfile.commands.CmdVersionCheck.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdVersionCheck.type" href="#spsdk.sbfile.commands.CmdVersionCheck.type">type</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdVersionCheck.version" href="#spsdk.sbfile.commands.CmdVersionCheck.version">version</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.EnumCmdTag" href="#spsdk.sbfile.commands.EnumCmdTag">EnumCmdTag</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.CALL" href="#spsdk.sbfile.commands.EnumCmdTag.CALL">CALL</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.ERASE" href="#spsdk.sbfile.commands.EnumCmdTag.ERASE">ERASE</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.FILL" href="#spsdk.sbfile.commands.EnumCmdTag.FILL">FILL</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.FW_VERSION_CHECK" href="#spsdk.sbfile.commands.EnumCmdTag.FW_VERSION_CHECK">FW_VERSION_CHECK</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.JUMP" href="#spsdk.sbfile.commands.EnumCmdTag.JUMP">JUMP</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.LOAD" href="#spsdk.sbfile.commands.EnumCmdTag.LOAD">LOAD</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.MEM_ENABLE" href="#spsdk.sbfile.commands.EnumCmdTag.MEM_ENABLE">MEM_ENABLE</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.NOP" href="#spsdk.sbfile.commands.EnumCmdTag.NOP">NOP</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.PROG" href="#spsdk.sbfile.commands.EnumCmdTag.PROG">PROG</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.RESET" href="#spsdk.sbfile.commands.EnumCmdTag.RESET">RESET</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.TAG" href="#spsdk.sbfile.commands.EnumCmdTag.TAG">TAG</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_FROM_NV" href="#spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_FROM_NV">WR_KEYSTORE_FROM_NV</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_TO_NV" href="#spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_TO_NV">WR_KEYSTORE_TO_NV</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.EnumSectionFlag" href="#spsdk.sbfile.commands.EnumSectionFlag">EnumSectionFlag</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.EnumSectionFlag.BOOTABLE" href="#spsdk.sbfile.commands.EnumSectionFlag.BOOTABLE">BOOTABLE</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumSectionFlag.CLEARTEXT" href="#spsdk.sbfile.commands.EnumSectionFlag.CLEARTEXT">CLEARTEXT</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.EnumSectionFlag.LAST_SECT" href="#spsdk.sbfile.commands.EnumSectionFlag.LAST_SECT">LAST_SECT</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.commands.VersionCheckType" href="#spsdk.sbfile.commands.VersionCheckType">VersionCheckType</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.commands.VersionCheckType.NON_SECURE_VERSION" href="#spsdk.sbfile.commands.VersionCheckType.NON_SECURE_VERSION">NON_SECURE_VERSION</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.VersionCheckType.SECURE_VERSION" href="#spsdk.sbfile.commands.VersionCheckType.SECURE_VERSION">SECURE_VERSION</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

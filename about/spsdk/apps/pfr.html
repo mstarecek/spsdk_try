@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.apps.pfr API documentation</title>
+<meta name="description" content="Console script for pfr." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.apps.pfr</code></h1>
+</header>
+<section id="section-intro">
+<p>Console script for pfr.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Console script for pfr.&#34;&#34;&#34;
+
+import json
+import sys
+# no_type_check decorator is used to suppress mypy&#39;s confusion in Click and cryptography libraries
+from typing import (Iterable, List, Mapping, Optional, Tuple, Type, Union,
+                    no_type_check)
+
+import click
+from jinja2 import Environment, FileSystemLoader
+
+from spsdk import SPSDK_DATA_FOLDER
+from spsdk import __version__ as spsdk_version
+from spsdk import crypto
+from spsdk.image import pfr
+from spsdk.image.misc import dict_diff
+
+from .elftosb_helper import RootOfTrustInfo
+
+HTMLDataElement = Mapping[str, Union[str, Iterable[dict]]]
+HTMLData = List[HTMLDataElement]
+PFRArea = Union[Type[pfr.CMPA], Type[pfr.CFPA]]
+
+@no_type_check
+def _store_output(data: str, path: Optional[click.Path], mode: str = &#39;w&#39;) -&gt; None:
+    &#34;&#34;&#34;Store the output data; either on stdout or into file if it&#39;s provided.&#34;&#34;&#34;
+    if path is None:
+        click.echo(data)
+    else:
+        with open(path, mode) as f:
+            f.write(data)
+
+
+def _get_pfr_class(area_name: str) -&gt; PFRArea:
+    &#34;&#34;&#34;Return CMPA/CFPA class based on the name.&#34;&#34;&#34;
+    return getattr(pfr, area_name.upper())
+
+
+@no_type_check
+def _load_user_config(user_config_file: click.File) -&gt; Optional[dict]:
+    &#34;&#34;&#34;Load user JSON configuration file.&#34;&#34;&#34;
+    if user_config_file is None:
+        return None
+    return json.load(user_config_file)
+
+
+@no_type_check
+def _extract_public_key(file_path: str, password: Optional[str]) -&gt; crypto.RSAPublicKey:
+    cert_candidate = crypto.load_certificate(file_path)
+    if cert_candidate:
+        return cert_candidate.public_key()
+    private_candidate = crypto.load_private_key(file_path, password.encode() if password else None)
+    if private_candidate:
+        return private_candidate.public_key()
+    public_candidate = crypto.load_public_key(file_path)
+    if public_candidate:
+        return public_candidate
+    assert False, f&#34;Unable to load secret file &#39;{file_path}&#39;.&#34;
+
+
+@no_type_check
+def _extract_public_keys(secret_files: Tuple[str], password: Optional[str]) -&gt; List[crypto.RSAPublicKey]:
+    &#34;&#34;&#34;Extract RSAPublic key from a file that contains Certificate, Private Key o Public Key.&#34;&#34;&#34;
+    return [
+        _extract_public_key(file_path=source, password=password)
+        for source in secret_files
+    ]
+
+
+@no_type_check
+def _get_data_for_html(area: PFRArea) -&gt; HTMLData:
+    &#34;&#34;&#34;Gather XML data and transform them into format used by template.&#34;&#34;&#34;
+    data: HTMLData = []
+    for reg in area._get_registers():
+        element: HTMLDataElement = {
+            &#39;name&#39;: reg.attrib[&#39;name&#39;],
+            &#39;desc&#39;: reg.attrib[&#39;description&#39;],
+            &#39;width&#39;: reg.attrib[&#39;width&#39;],
+            &#39;offset&#39;: reg.attrib[&#39;offset&#39;],
+            &#39;bitfields&#39;: []
+        }
+        for reg_bitfield in area._get_bitfields(reg.attrib[&#39;name&#39;]):
+            if reg_bitfield.attrib[&#39;name&#39;] == &#39;FIELD&#39;:
+                continue
+            bitfield = {
+                &#39;name&#39;: reg_bitfield.attrib[&#39;name&#39;],
+                &#39;desc&#39;: reg_bitfield.attrib[&#39;description&#39;],
+                &#39;width&#39;: reg_bitfield.attrib[&#39;width&#39;],
+                &#39;offset&#39;: reg_bitfield.attrib[&#39;offset&#39;],
+                &#39;bit_values&#39;: {}
+            }
+            for bf_value in reg_bitfield.findall(&#39;bit_field_value&#39;):
+                bitfield[&#39;bit_values&#39;][bf_value.attrib[&#39;value&#39;]] = bf_value.attrib[&#39;description&#39;]
+            element[&#39;bitfields&#39;].append(bitfield)
+        data.append(element)
+    return data
+
+
+def _generate_html(area_name: str, data: List[dict]) -&gt; str:
+    &#34;&#34;&#34;Generate HTML content.&#34;&#34;&#34;
+    jinja_env = Environment(loader=FileSystemLoader(SPSDK_DATA_FOLDER))
+    template = jinja_env.get_template(&#34;pfr_desc_template.html&#34;)
+    return template.render(area_name=area_name, data=data)
+
+
+@click.group()
+@click.version_option(spsdk_version, &#39;-v&#39;, &#39;--version&#39;)
+def main() -&gt; int:
+    &#34;&#34;&#34;Utility for generating and parsing Protected Flash Region data (CMPA, CFPA).&#34;&#34;&#34;
+    return 0
+
+
+@main.command()
+def devices() -&gt; None:
+    &#34;&#34;&#34;List supported devices.&#34;&#34;&#34;
+    click.echo(&#39;\n&#39;.join(pfr.CMPA.devices()))
+
+
+@main.command()
+@click.option(&#39;-d&#39;, &#39;--device&#39;, type=click.Choice(pfr.CMPA.devices()), help=&#34;Device to use&#34;, required=True)
+@click.option(&#39;-r&#39;, &#39;--revision&#39;, help=&#34;Chip revision; if not specivfied, most recent one will be used&#34;)
+@click.option(&#39;-t&#39;, &#39;--type&#39;, &#39;area&#39;, required=True, type=click.Choice([&#39;cmpa&#39;, &#39;cfpa&#39;]),
+              help=&#39;Select PFR partition&#39;)
+@click.option(&#39;-o&#39;, &#39;--output&#39;, type=click.Path(), required=False,
+              help=&#34;Save the output into a file instead of console&#34;)
+@click.option(&#39;-f&#39;, &#39;--full&#39;, is_flag=True, help=&#34;Show full config, including computed values&#34;)
+def user_config(device: str, revision: str, area: str, output: click.Path, full: bool) -&gt; None:
+    &#34;&#34;&#34;Generate user configuration.&#34;&#34;&#34;
+    pfr_obj = _get_pfr_class(area)(device=device, revision=revision)
+    data = pfr_obj.generate_config(not full)
+    config = {
+        &#39;device&#39;: pfr_obj.device,
+        &#39;revision&#39;: pfr_obj.revision,
+        &#39;type&#39;: area,
+        &#39;settings&#39;: data
+    }
+    json_data = json.dumps(config, indent=2)
+    _store_output(json_data, output)
+
+
+@main.command()
+@click.option(&#39;-d&#39;, &#39;--device&#39;, type=click.Choice(pfr.CMPA.devices()), help=&#34;Device to use&#34;, required=True)
+@click.option(&#39;-r&#39;, &#39;--revision&#39;, help=&#34;Chip revision; if not specivfied, most recent one will be used&#34;)
+@click.option(&#39;-t&#39;, &#39;--type&#39;, &#39;area&#39;, required=True, type=click.Choice([&#39;cmpa&#39;, &#39;cfpa&#39;]),
+              help=&#39;Select PFR partition&#39;)
+@click.option(&#39;-o&#39;, &#39;--output&#39;, type=click.Path(), required=False,
+              help=&#34;Save the output into a file instead of console&#34;)
+@click.option(&#39;-b&#39;, &#39;--binary&#39;, type=click.File(&#39;rb&#39;), required=True, help=&#34;Binary to parse&#34;)
+@click.option(&#39;-c&#39;, &#39;--show-calc&#39;, is_flag=True, help=&#34;Show also the calculated fields&#34;)
+@click.option(&#39;-f&#39;, &#39;--show-diff&#39;, is_flag=True, help=&#34;Show differences comparing to defaults&#34;)
+def parse(device: str, revision: str, area: str, output: click.Path, binary: click.File,
+          show_calc: bool, show_diff: bool) -&gt; None:
+    &#34;&#34;&#34;Parse binary a extract configuration.&#34;&#34;&#34;
+    pfr_obj = _get_pfr_class(area)(device=device, revision=revision)
+    data = binary.read()    # type: ignore
+    parsed = pfr_obj.parse(data, exclude_computed=False)
+    if show_diff:
+        parsed = dict_diff(
+            pfr_obj.generate_config(exclude_computed=not show_calc),
+            parsed)
+    config = {
+        &#39;device&#39;: pfr_obj.device,
+        &#39;revision&#39;: pfr_obj.revision,
+        &#39;type&#39;: area,
+        &#39;settings&#39;: parsed
+    }
+    json_data = json.dumps(config, indent=2)
+    _store_output(json_data, output)
+
+
+@main.command()
+@click.option(&#39;-c&#39;, &#39;--user-config&#39;, &#39;user_config_file&#39;, type=click.File(&#39;r&#39;), required=True,
+              help=&#34;JSON file with user configuration&#34;)
+@click.option(&#39;-o&#39;, &#39;--output&#39;, type=click.Path(), required=True,
+              help=&#34;Save the output into a file instead of console&#34;)
+@click.option(&#39;-a&#39;, &#39;--add-hash&#39;, is_flag=True,
+              help=&#34;Add HASH digest at the end. CAUTION!!! It locks the device&#34;)
+@click.option(&#39;-i&#39;, &#39;--calc-inverse&#39;, is_flag=True,
+              help=&#34;Calculate the INVERSE values CAUTION!!! It locks the settings&#34;)
+@click.option(&#39;-e&#39;, &#39;--elf2sb-config&#39;, type=click.File(&#39;r&#39;), required=False,
+              help=&#39;Specify Root Of Trust from configuration file used by elf2sb tool&#39;)
+@click.option(&#39;-f&#39;, &#39;--secret-file&#39;, type=click.Path(exists=True), multiple=True, required=False,
+              help=&#34;Secret file (certificate, public key, private key); can be defined multiple times&#34;)
+@click.option(&#39;-p&#39;, &#39;--password&#39;, help=&#34;Password when using Encrypted private keys as --secret-file&#34;)
+def generate(output: click.Path, user_config_file: click.File, add_hash: bool, calc_inverse: bool,
+             elf2sb_config: click.File, secret_file: Tuple[str], password: str) -&gt; None:
+    &#34;&#34;&#34;Generate binary data.&#34;&#34;&#34;
+    user_config = _load_user_config(user_config_file)
+    root_of_trust = None
+    if elf2sb_config:
+        keys = RootOfTrustInfo(json.load(elf2sb_config)).public_keys    #type: ignore
+        root_of_trust = tuple(keys)
+    if secret_file:
+        root_of_trust = secret_file
+    area = user_config[&#39;type&#39;]
+    pfr_obj = _get_pfr_class(area)(device=user_config[&#39;device&#39;], revision=user_config[&#39;revision&#39;])
+    if area == &#39;cmpa&#39; and not root_of_trust:
+        click.echo(&#39;Error: CMPA page requires either --secret-file(s) or --elf2sb-config&#39;)
+        sys.exit(1)
+    pfr_obj.keys = _extract_public_keys(root_of_trust, password) if area == &#39;cmpa&#39; else None
+    pfr_obj.user_config = user_config[&#39;settings&#39;]
+    data = pfr_obj.export(add_hash=add_hash, compute_inverses=calc_inverse)
+    _store_output(data, output, &#39;wb&#39;)
+
+
+@main.command()
+@click.option(&#39;-d&#39;, &#39;--device&#39;, type=click.Choice(pfr.CMPA.devices()), help=&#34;Device to use&#34;, required=True)
+@click.option(&#39;-r&#39;, &#39;--revision&#39;, help=&#34;Chip revision; if not specivfied, most recent one will be used&#34;)
+@click.option(&#39;-t&#39;, &#39;--type&#39;, &#39;area&#39;, required=True, type=click.Choice([&#39;cmpa&#39;, &#39;cfpa&#39;]),
+              help=&#39;Select PFR partition&#39;)
+@click.option(&#39;-o&#39;, &#39;--output&#39;, type=click.Path(), required=True,
+              help=&#34;Save the output into a file instead of console&#34;)
+@click.option(&#39;-p&#39;, &#39;--open&#39;, &#39;open_result&#39;, is_flag=True, help=&#34;Open the generated description file&#34;)
+def info(device: str, revision: str, area: str, output: click.Path, open_result: bool) -&gt; None:
+    &#34;&#34;&#34;Generate HTML page with brief descrition of CMPA/CFPA sonfiguration fields.&#34;&#34;&#34;
+    pfr_obj = _get_pfr_class(area)(device=device, revision=revision)
+    data = _get_data_for_html(pfr_obj)
+    html_output = _generate_html(pfr_obj.__class__.__name__, data)
+    _store_output(html_output, output)
+    if open_result:  # pragma: no cover # can&#39;t test opening the html document
+        click.launch(f&#39;{output}&#39;)
+
+
+if __name__ == &#34;__main__&#34;:
+    sys.exit(main())  # pragma: no cover</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.apps" href="index.html">spsdk.apps</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

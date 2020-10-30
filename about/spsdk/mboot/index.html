@@ -1,0 +1,3364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.mboot API documentation</title>
+<meta name="description" content="Module implementing communication with the MCU Bootloader." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.mboot</code></h1>
+</header>
+<section id="section-intro">
+<p>Module implementing communication with the MCU Bootloader.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2016-2018 Martin Olejar
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Module implementing communication with the MCU Bootloader.&#34;&#34;&#34;
+
+from .mcuboot import McuBoot
+from .commands import CommandTag, KeyProvUserKeyType
+from .memories import ExtMemPropTags, ExtMemId
+from .properties import PropertyTag, PeripheryTag, Version, parse_property_value
+from .interfaces import scan_usb
+from .exceptions import McuBootError, McuBootCommandError, McuBootConnectionError
+from .error_codes import StatusCode
+
+__all__ = [
+    # global methods
+    &#39;scan_usb&#39;,
+    &#39;parse_property_value&#39;,
+    # classes
+    &#39;McuBoot&#39;,
+    &#39;Version&#39;,
+    # enums
+    &#39;PropertyTag&#39;,
+    &#39;PeripheryTag&#39;,
+    &#39;CommandTag&#39;,
+    &#39;StatusCode&#39;,
+    &#39;ExtMemId&#39;,
+    &#39;KeyProvUserKeyType&#39;,
+    # exceptions
+    &#39;McuBootError&#39;,
+    &#39;McuBootCommandError&#39;,
+    &#39;McuBootConnectionError&#39;
+]</code></pre>
+</details>
+</section>
+<section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="spsdk.mboot.commands" href="commands.html">spsdk.mboot.commands</a></code></dt>
+<dd>
+<div class="desc"><p>Commands and responses used by MBOOT module.</p></div>
+</dd>
+<dt><code class="name"><a title="spsdk.mboot.error_codes" href="error_codes.html">spsdk.mboot.error_codes</a></code></dt>
+<dd>
+<div class="desc"><p>Status and error codes used by the MBoot protocol.</p></div>
+</dd>
+<dt><code class="name"><a title="spsdk.mboot.exceptions" href="exceptions.html">spsdk.mboot.exceptions</a></code></dt>
+<dd>
+<div class="desc"><p>Exceptions used in the MBoot module.</p></div>
+</dd>
+<dt><code class="name"><a title="spsdk.mboot.interfaces" href="interfaces/index.html">spsdk.mboot.interfaces</a></code></dt>
+<dd>
+<div class="desc"><p>Module implementing the Mboot communication protocol.</p></div>
+</dd>
+<dt><code class="name"><a title="spsdk.mboot.mcuboot" href="mcuboot.html">spsdk.mboot.mcuboot</a></code></dt>
+<dd>
+<div class="desc"><p>Module for comunication with the bootloader.</p></div>
+</dd>
+<dt><code class="name"><a title="spsdk.mboot.memories" href="memories.html">spsdk.mboot.memories</a></code></dt>
+<dd>
+<div class="desc"><p>Various types of memory identifiers used in the MBoot module.</p></div>
+</dd>
+<dt><code class="name"><a title="spsdk.mboot.properties" href="properties.html">spsdk.mboot.properties</a></code></dt>
+<dd>
+<div class="desc"><p>Helper module for more human-friendly interpretation of the target device properties.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.mboot.parse_property_value"><code class="name flex">
+<span>def <span class="ident">parse_property_value</span></span>(<span>property_tag: int, raw_values: list, ext_mem_id: int = None) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse the property value received from the device.</p>
+<p>:param property_tag: Tag representing the property
+:param raw_values: Data received from the device
+:param ext_mem_id: ID of the external memory used to read the property, defaults to None
+:return: Object representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_property_value(property_tag: int, raw_values: list, ext_mem_id: int = None) -&gt; Any:
+    &#34;&#34;&#34;Parse the property value received from the device.
+
+    :param property_tag: Tag representing the property
+    :param raw_values: Data received from the device
+    :param ext_mem_id: ID of the external memory used to read the property, defaults to None
+    :return: Object representing the property
+    &#34;&#34;&#34;
+    assert isinstance(property_tag, int)
+    assert isinstance(raw_values, list)
+
+    if property_tag not in PROPERTIES.keys():
+        return None
+
+    cls = PROPERTIES[property_tag][&#39;class&#39;]  # type: ignore
+    kwargs: dict = PROPERTIES[property_tag][&#39;kwargs&#39;]  # type: ignore
+    if &#39;mem_id&#39; in kwargs:
+        kwargs[&#39;mem_id&#39;] = ext_mem_id  # type: ignore
+
+    return cls(property_tag, raw_values, **kwargs)  # type: ignore</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.scan_usb"><code class="name flex">
+<span>def <span class="ident">scan_usb</span></span>(<span>device_name: str = None) ‑> List[<a title="spsdk.mboot.interfaces.base.Interface" href="interfaces/base.html#spsdk.mboot.interfaces.base.Interface">Interface</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Scan connected USB devices.</p>
+<p>:param device_name: The specific device name (MKL27, LPC55, &hellip;) or VID:PID
+:return: list of matching RawHid devices</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scan_usb(device_name: str = None) -&gt; List[Interface]:
+    &#34;&#34;&#34;Scan connected USB devices.
+
+    :param device_name: The specific device name (MKL27, LPC55, ...) or VID:PID
+    :return: list of matching RawHid devices
+    &#34;&#34;&#34;
+    devices = []
+
+    if device_name is None:
+        for _, value in USB_DEVICES.items():
+            devices += RawHid.enumerate(value[0], value[1])
+    else:
+        if &#39;:&#39; in device_name:
+            vid_str, pid_str = device_name.split(&#39;:&#39;)
+            devices = RawHid.enumerate(int(vid_str, 0), int(pid_str, 0))
+        else:
+            if device_name in USB_DEVICES:
+                vid = USB_DEVICES[device_name][0]
+                pid = USB_DEVICES[device_name][1]
+                devices = RawHid.enumerate(vid, pid)
+    return devices</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.mboot.CommandTag"><code class="flex name class">
+<span>class <span class="ident">CommandTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot Commands.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CommandTag(Enum):
+    &#34;&#34;&#34;McuBoot Commands.&#34;&#34;&#34;
+
+    FLASH_ERASE_ALL = (0x01, &#39;FlashEraseAll&#39;, &#39;Erase Complete Flash&#39;)
+    FLASH_ERASE_REGION = (0x02, &#39;FlashEraseRegion&#39;, &#39;Erase Flash Region&#39;)
+    READ_MEMORY = (0x03, &#39;ReadMemory&#39;, &#39;Read Memory&#39;)
+    WRITE_MEMORY = (0x04, &#39;WriteMemory&#39;, &#39;Write Memory&#39;)
+    FILL_MEMORY = (0x05, &#39;FillMemory&#39;, &#39;Fill Memory&#39;)
+    FLASH_SECURITY_DISABLE = (0x06, &#39;FlashSecurityDisable&#39;, &#39;Disable Flash Security&#39;)
+    GET_PROPERTY = (0x07, &#39;GetProperty&#39;, &#39;Get Property&#39;)
+    RECEIVE_SB_FILE = (0x08, &#39;ReceiveSBFile&#39;, &#39;Receive SB File&#39;)
+    EXECUTE = (0x09, &#39;Execute&#39;, &#39;Execute&#39;)
+    CALL = (0x0A, &#39;Call&#39;, &#39;Call&#39;)
+    RESET = (0x0B, &#39;Reset&#39;, &#39;Reset MCU&#39;)
+    SET_PROPERTY = (0x0C, &#39;SetProperty&#39;, &#39;Set Property&#39;)
+    FLASH_ERASE_ALL_UNSECURE = (0x0D, &#39;FlashEraseAllUnsecure&#39;, &#39;Erase Complete Flash and Unlock&#39;)
+    FLASH_PROGRAM_ONCE = (0x0E, &#39;FlashProgramOnce&#39;, &#39;Flash Program Once&#39;)
+    FLASH_READ_ONCE = (0x0F, &#39;FlashReadOnce&#39;, &#39;Flash Read Once&#39;)
+    FLASH_READ_RESOURCE = (0x10, &#39;FlashReadResource&#39;, &#39;Flash Read Resource&#39;)
+    CONFIGURE_MEMORY = (0x11, &#39;ConfigureMemory&#39;, &#39;Configure Quad-SPI Memory&#39;)
+    RELIABLE_UPDATE = (0x12, &#39;ReliableUpdate&#39;, &#39;Reliable Update&#39;)
+    GENERATE_KEY_BLOB = (0x13, &#39;GenerateKeyBlob&#39;, &#39;Generate Key Blob&#39;)
+    KEY_PROVISIONING = (0x15, &#39;KeyProvisioning&#39;, &#39;Key Provisioning&#39;)
+
+    # reserved commands
+    CONFIGURE_I2C = (0xC1, &#39;ConfigureI2c&#39;, &#39;Configure I2C&#39;)
+    CONFIGURE_SPI = (0xC2, &#39;ConfigureSpi&#39;, &#39;Configure SPI&#39;)
+    CONFIGURE_CAN = (0xC3, &#39;ConfigureCan&#39;, &#39;Configure CAN&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.CommandTag.CALL"><code class="name">var <span class="ident">CALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.CONFIGURE_CAN"><code class="name">var <span class="ident">CONFIGURE_CAN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.CONFIGURE_I2C"><code class="name">var <span class="ident">CONFIGURE_I2C</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.CONFIGURE_MEMORY"><code class="name">var <span class="ident">CONFIGURE_MEMORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.CONFIGURE_SPI"><code class="name">var <span class="ident">CONFIGURE_SPI</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.EXECUTE"><code class="name">var <span class="ident">EXECUTE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FILL_MEMORY"><code class="name">var <span class="ident">FILL_MEMORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_ERASE_ALL"><code class="name">var <span class="ident">FLASH_ERASE_ALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_ERASE_ALL_UNSECURE"><code class="name">var <span class="ident">FLASH_ERASE_ALL_UNSECURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_ERASE_REGION"><code class="name">var <span class="ident">FLASH_ERASE_REGION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_PROGRAM_ONCE"><code class="name">var <span class="ident">FLASH_PROGRAM_ONCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_READ_ONCE"><code class="name">var <span class="ident">FLASH_READ_ONCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_READ_RESOURCE"><code class="name">var <span class="ident">FLASH_READ_RESOURCE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.FLASH_SECURITY_DISABLE"><code class="name">var <span class="ident">FLASH_SECURITY_DISABLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.GENERATE_KEY_BLOB"><code class="name">var <span class="ident">GENERATE_KEY_BLOB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.GET_PROPERTY"><code class="name">var <span class="ident">GET_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.KEY_PROVISIONING"><code class="name">var <span class="ident">KEY_PROVISIONING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.READ_MEMORY"><code class="name">var <span class="ident">READ_MEMORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.RECEIVE_SB_FILE"><code class="name">var <span class="ident">RECEIVE_SB_FILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.RELIABLE_UPDATE"><code class="name">var <span class="ident">RELIABLE_UPDATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.RESET"><code class="name">var <span class="ident">RESET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.SET_PROPERTY"><code class="name">var <span class="ident">SET_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.CommandTag.WRITE_MEMORY"><code class="name">var <span class="ident">WRITE_MEMORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.ExtMemId"><code class="flex name class">
+<span>class <span class="ident">ExtMemId</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot External Memory Property Tags.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ExtMemId(Enum):
+    &#34;&#34;&#34;McuBoot External Memory Property Tags.&#34;&#34;&#34;
+
+    QUAD_SPI0 = (1, &#39;QSPI&#39;, &#39;Quad SPI Memory 0&#39;)
+    IFR0 = (4, &#39;Nonvolatile information register 0 (only used by SB loader)&#39;)
+    SEMC_NOR = (8, &#39;SEMC-NOR&#39;, &#39;SEMC NOR Memory&#39;)
+    FLEX_SPI_NOR = (9, &#39;FLEX-SPI-NOR&#39;, &#39;Flex SPI NOR Memory&#39;)
+    SPIFI_NOR = (10, &#39;SPIFI-NOR&#39;, &#39;SPIFI NOR Memory&#39;)
+    FLASH_EXEC_ONLY = (16, &#39;FLASH-EXEC&#39;, &#39;Execute-Only region on internal Flash&#39;)
+    SEMC_NAND = (256, &#39;SEMC-NAND&#39;, &#39;SEMC NAND Memory&#39;)
+    SPI_NAND = (257, &#39;SPI-NAND&#39;, &#39;SPI NAND Memory&#39;)
+    SPI_NOR_EEPROM = (272, &#39;SPI-MEM&#39;, &#39;SPI NOR/EEPROM Memory&#39;)
+    I2C_NOR_EEPROM = (273, &#39;I2C-MEM&#39;, &#39;I2C NOR/EEPROM Memory&#39;)
+    SD_CARD = (288, &#39;SD&#39;, &#39;eSD/SD/SDHC/SDXC Memory Card&#39;)
+    MMC_CARD = (289, &#39;MMC&#39;, &#39;MMC/eMMC Memory Card&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.ExtMemId.FLASH_EXEC_ONLY"><code class="name">var <span class="ident">FLASH_EXEC_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.FLEX_SPI_NOR"><code class="name">var <span class="ident">FLEX_SPI_NOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.I2C_NOR_EEPROM"><code class="name">var <span class="ident">I2C_NOR_EEPROM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.IFR0"><code class="name">var <span class="ident">IFR0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.MMC_CARD"><code class="name">var <span class="ident">MMC_CARD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.QUAD_SPI0"><code class="name">var <span class="ident">QUAD_SPI0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.SD_CARD"><code class="name">var <span class="ident">SD_CARD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.SEMC_NAND"><code class="name">var <span class="ident">SEMC_NAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.SEMC_NOR"><code class="name">var <span class="ident">SEMC_NOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.SPIFI_NOR"><code class="name">var <span class="ident">SPIFI_NOR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.SPI_NAND"><code class="name">var <span class="ident">SPI_NAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.ExtMemId.SPI_NOR_EEPROM"><code class="name">var <span class="ident">SPI_NOR_EEPROM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType"><code class="flex name class">
+<span>class <span class="ident">KeyProvUserKeyType</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumeration of supported user keys in PUF. Keys are SoC specific, not all will be supported for the processor.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class KeyProvUserKeyType(Enum):
+    &#34;&#34;&#34;Enumeration of supported user keys in PUF. Keys are SoC specific, not all will be supported for the processor.&#34;&#34;&#34;
+    OTFADKEK = (2, &#34;Key for OTFAD encryption&#34;)  # used on RTxxx
+    SBKEK = (3, &#34;Key for SB file encryption&#34;)  # Available on LPC55Sxx and RTxxx
+    PRINCE_REGION_0 = (7, &#34;TODO description&#34;)  # LPC55Sxx
+    PRINCE_REGION_1 = (8, &#34;TODO description&#34;)  # LPC55Sxx
+    PRINCE_REGION_2 = (9, &#34;TODO description&#34;)  # LPC55Sxx
+    USERKEK = (11, &#34;Encrypted boot image key&#34;)  # LPC55Sxx and RTxxx
+    UDS = (12, &#34;TODO description&#34;)  # LPC55Sxx and RTxxx</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.KeyProvUserKeyType.OTFADKEK"><code class="name">var <span class="ident">OTFADKEK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_0"><code class="name">var <span class="ident">PRINCE_REGION_0</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_1"><code class="name">var <span class="ident">PRINCE_REGION_1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_2"><code class="name">var <span class="ident">PRINCE_REGION_2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType.SBKEK"><code class="name">var <span class="ident">SBKEK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType.UDS"><code class="name">var <span class="ident">UDS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.KeyProvUserKeyType.USERKEK"><code class="name">var <span class="ident">USERKEK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.McuBoot"><code class="flex name class">
+<span>class <span class="ident">McuBoot</span></span>
+<span>(</span><span>device: <a title="spsdk.mboot.interfaces.base.Interface" href="interfaces/base.html#spsdk.mboot.interfaces.base.Interface">Interface</a>, cmd_exception: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class for communication with the bootloader.</p>
+<p>Initialize the McuBoot object.</p>
+<p>:param device: The instance of communication interface class
+:param cmd_exception: True to throw McuBootCommandError on any error;
+False to set status code only
+Note: some operation might raise McuBootCommandError is all cases</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class McuBoot:  # pylint: disable=too-many-public-methods
+    &#34;&#34;&#34;Class for communication with the bootloader.&#34;&#34;&#34;
+
+    @property
+    def status_code(self) -&gt; StatusCode:
+        &#34;&#34;&#34;:return: status code of the last operation.&#34;&#34;&#34;
+        return self._status_code
+
+    @property
+    def is_opened(self) -&gt; bool:
+        &#34;&#34;&#34;:return: True if the device is open.&#34;&#34;&#34;
+        return self._device.is_opened
+
+    def __init__(self, device: Interface, cmd_exception: bool = False) -&gt; None:
+        &#34;&#34;&#34;Initialize the McuBoot object.
+
+        :param device: The instance of communication interface class
+        :param cmd_exception: True to throw McuBootCommandError on any error;
+                False to set status code only
+                Note: some operation might raise McuBootCommandError is all cases
+
+        &#34;&#34;&#34;
+        self._cmd_exception = cmd_exception
+        self._status_code = StatusCode.SUCCESS
+        self._device = device
+        self.reopen = False
+
+    def __enter__(self) -&gt; &#39;McuBoot&#39;:
+        self.reopen = True
+        self.open()
+        return self
+
+    def __exit__(self, exception_type: Type[BaseException] = None,
+                 exception_value: BaseException = None, traceback: TracebackType = None) -&gt; None:
+        self.close()
+
+    def _process_cmd(self, cmd_packet: CmdPacket) -&gt; Any:
+        &#34;&#34;&#34;Process Command.
+
+        :param cmd_packet: Command Packet
+        :return: commad response derived from the CmdResponse
+        :raises McuBootConnectionError: Timeout Error
+        :raises McuBootCommandError: Error during command execution on the target
+        &#34;&#34;&#34;
+        if not self._device.is_opened:
+            logger.info(&#39;TX: Device not opened&#39;)
+            raise McuBootConnectionError(&#39;Device not opened&#39;)
+
+        logger.debug(f&#39;TX-PACKET: {cmd_packet.info()}&#39;)
+
+        try:
+            self._device.write(cmd_packet)
+            response = self._device.read()
+        except TimeoutError:
+            self._status_code = StatusCode.NO_RESPONSE
+            logger.debug(&#39;RX-PACKET: No Response, Timeout Error !&#39;)
+            raise McuBootConnectionError(&#34;No Response from Device&#34;)
+
+        logger.debug(f&#39;RX-PACKET: {response.info()}&#39;)
+        self._status_code = response.status
+
+        if self._cmd_exception and self._status_code != StatusCode.SUCCESS:
+            raise McuBootCommandError(CommandTag.name(cmd_packet.header.tag), response.status)
+
+        return response
+
+    def _read_data(self, cmd_tag: int, length: int, timeout: int = 1000) -&gt; bytes:
+        &#34;&#34;&#34;Read data from device.
+
+        :param cmd_tag: Tag indicating the read command.
+        :param length: Length of data to read
+        :param timeout: Timeout, defaults to 1000
+        :raises McuBootConnectionError: Timeout error or a problem opening the interface
+        :raises McuBootCommandError: Error during command execution on the target
+        :return: Data read from the device
+        &#34;&#34;&#34;
+        data = b&#39;&#39;
+
+        if not self._device.is_opened:
+            logger.info(&#39;RX: Device not opened&#39;)
+            raise McuBootConnectionError(&#39;Device not opened&#39;)
+
+        while True:
+            try:
+                response = self._device.read()
+            except TimeoutError:
+                self._status_code = StatusCode.NO_RESPONSE
+                logger.debug(&#39;RX: No Response, Timeout Error !&#39;)
+                raise McuBootConnectionError(&#34;No Response from Device&#34;)
+
+            if isinstance(response, bytes):
+                data += response
+
+            elif isinstance(response, GenericResponse):
+                logger.debug(f&#39;RX-PACKET: {response.info()}&#39;)
+                self._status_code = response.status
+                if response.cmd_tag == cmd_tag:
+                    break
+
+        if len(data) &lt; length or self.status_code != StatusCode.SUCCESS:
+            status_info = StatusCode.get(self._status_code, f&#39;0x{self._status_code:08X}&#39;)
+            logger.debug(f&#34;CMD: Received {len(data)} from {length} Bytes, {status_info}&#34;)
+            if self._cmd_exception:
+                raise McuBootCommandError(CommandTag.name(cmd_tag), response.status)
+        else:
+            logger.info(f&#34;CMD: Successfully Received {len(data)} from {length} Bytes&#34;)
+
+        return data[:length] if len(data) &gt; length else data
+
+    def _send_data(self, cmd_tag: int, data: List[bytes]) -&gt; bool:
+        &#34;&#34;&#34;Send Data part of specific command.
+
+        :param cmd_tag: Tag indicating the command
+        :param data: List of data chunks to send
+        :raises McuBootConnectionError: Timeout error
+        :raises McuBootCommandError: Error during command execution on the target
+        :return: True if the operation is successfull
+        &#34;&#34;&#34;
+        if not self._device.is_opened:
+            logger.info(&#39;TX: Device Disconnected&#39;)
+            raise McuBootConnectionError(&#39;Device Disconnected !&#39;)
+
+        try:
+            for data_chunk in data:
+                self._device.write(data_chunk)
+            response = self._device.read()
+        except TimeoutError:
+            self._status_code = StatusCode.NO_RESPONSE
+            logger.debug(&#39;RX: No Response, Timeout Error !&#39;)
+            raise McuBootConnectionError(&#34;No Response from Device&#34;)
+        except SPSDKError:
+            response = self._device.read()
+
+        logger.debug(f&#39;RX-PACKET: {response.info()}&#39;)
+        self._status_code = response.status
+        if response.status != StatusCode.SUCCESS:
+            status_info = StatusCode.get(self._status_code, f&#39;0x{self._status_code:08X}&#39;)
+            logger.debug(f&#34;CMD: Send Error, {status_info}&#34;)
+            if self._cmd_exception:
+                raise McuBootCommandError(CommandTag.name(cmd_tag), response.status)
+            return False
+
+        logger.info(f&#34;CMD: Successfully Send {sum(len(chunk) for chunk in data)} Bytes&#34;)
+        return True
+
+    def _split_data(self, data: bytes) -&gt; List[bytes]:
+        &#34;&#34;&#34;Split data to send if necessary.
+
+        :param data: Data to send
+        :return: List of data splices
+        &#34;&#34;&#34;
+        if not self._device.need_data_split:
+            return [data]
+        packet_size_property = self.get_property(prop_tag=PropertyTag.MAX_PACKET_SIZE)
+        assert packet_size_property, &#34;Unable to get MAX PACKET SIZE&#34;
+        max_packet_size = packet_size_property[0]
+        return [
+            data[i:i + max_packet_size] for i in range(0, len(data), max_packet_size)
+        ]
+
+    def open(self) -&gt; None:
+        &#34;&#34;&#34;Connect to the device.&#34;&#34;&#34;
+        if not self._device.is_opened:
+            logger.info(f&#34;Connect: {self._device.info()}&#34;)
+            self._device.open()
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;Disconnect from the device.&#34;&#34;&#34;
+        self._device.close()
+
+    def get_property_list(self) -&gt; list:
+        &#34;&#34;&#34;Get a list of available properties.
+
+        :return: List of available properties.
+        :raises McuBootCommandError: Failure to read properties list
+        &#34;&#34;&#34;
+        property_list: List[Any] = []
+        for tag in PropertyTag.tags():
+            try:
+                values = self.get_property(tag)
+            except McuBootCommandError:
+                continue
+
+            if values:
+                property_list.append(parse_property_value(tag, values))
+
+        self._status_code = StatusCode.SUCCESS
+        if not property_list:
+            self._status_code = StatusCode.FAIL
+            if self._cmd_exception:
+                raise McuBootCommandError(&#39;GetPropertyList&#39;, self.status_code)
+
+        return property_list
+
+    def _get_internal_flash(self) -&gt; dict:
+        &#34;&#34;&#34;Get information about the internal flash.
+
+        - key: index
+        - value: dictionary
+            - key: &#39;address&#39; / &#39;size&#39; / &#39;sector_size&#39;
+            - value: number??
+        :return: info about internal flash for memory map
+        &#34;&#34;&#34;
+        index = 0
+        mdata: dict = {}
+        start_address = 0
+        while True:
+            try:
+                values = self.get_property(PropertyTag.FLASH_START_ADDRESS, index)
+                if not values:
+                    break
+                if index == 0:
+                    start_address = values[0]
+                elif start_address == values[0]:
+                    break
+                mdata[index] = {}
+                mdata[index][&#39;address&#39;] = values[0]
+                values = self.get_property(PropertyTag.FLASH_SIZE, index)
+                if not values:
+                    break
+                mdata[index][&#39;size&#39;] = values[0]
+                values = self.get_property(PropertyTag.FLASH_SECTOR_SIZE, index)
+                if not values:
+                    break
+                mdata[index][&#39;sector_size&#39;] = values[0]
+                index += 1
+            except McuBootCommandError:
+                break
+
+        return mdata
+
+    def _get_internal_ram(self) -&gt; dict:
+        &#34;&#34;&#34;Get information about the internal RAM.
+
+        - key: index
+        - value: dictionary
+            - key: &#39;address&#39; / &#39;size&#39;
+            - value: number??
+        :return: info about internal RAM
+        &#34;&#34;&#34;
+        index = 0
+        mdata: Dict[int, Dict[str, int]] = {}
+        start_address = 0
+        while True:
+            try:
+                values = self.get_property(PropertyTag.RAM_START_ADDRESS, index)
+                if not values:
+                    break
+                if index == 0:
+                    start_address = values[0]
+                elif start_address == values[0]:
+                    break
+                mdata[index] = {}
+                mdata[index][&#39;address&#39;] = values[0]
+                values = self.get_property(PropertyTag.RAM_SIZE, index)
+                if not values:
+                    break
+                mdata[index][&#39;size&#39;] = values[0]
+                index += 1
+            except McuBootCommandError:
+                break
+
+        return mdata
+
+    def _get_ext_memories(self) -&gt; list:
+        &#34;&#34;&#34;Get information about the external memories.
+
+        List contains dictionary with info about memory:
+        - mem_id
+        - mem_name
+        - address (optional)
+        - size (optional)
+        - page_size (optional)
+        - sector_size (optional)
+        - block_size (optional)
+        :return: list of external memories supported by the device
+        &#34;&#34;&#34;
+        ext_mem_list: List[Dict[str, Union[int, str]]] = []
+        ext_mem_ids: Sequence[int] = ExtMemId.tags()
+        try:
+            values = self.get_property(PropertyTag.CURRENT_VERSION)
+        except McuBootCommandError:
+            values = None
+
+        if not values and self._status_code == StatusCode.UNKNOWN_PROPERTY:
+            self._status_code = StatusCode.SUCCESS
+            return ext_mem_list
+
+        assert values
+
+        if Version(values[0]) &lt;= Version(&#34;2.0.0&#34;):
+            # old versions mboot support only Quad SPI memory
+            ext_mem_ids = [ExtMemId.QUAD_SPI0]
+
+        for mem_id in ext_mem_ids:
+            mem_attrs: Dict[str, Union[int, str]] = {}
+
+            try:
+                values = self.get_property(PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES, mem_id)
+            except McuBootCommandError:
+                values = None
+
+            if not values:
+                if self._status_code == StatusCode.UNKNOWN_PROPERTY:
+                    # No external memories are supported by current device.
+                    break
+
+                if self._status_code == StatusCode.INVALID_ARGUMENT:
+                    # Current memory type is not supported by the device, skip to next external memory.
+                    continue
+
+                if self._status_code == StatusCode.QSPI_NOT_CONFIGURED:
+                    # QSPI0 is not supported, skip to next external memory.
+                    continue
+
+                if self._status_code == StatusCode.MEMORY_NOT_CONFIGURED:
+                    # Un-configured external memory, skip to next external memory.
+                    continue
+
+                assert self._status_code != StatusCode.SUCCESS  # Other Error
+                break
+
+            # memory ID and name
+            mem_attrs[&#39;mem_id&#39;] = mem_id
+            mem_attrs[&#39;mem_name&#39;] = ExtMemId.name(mem_id)
+            # parse memory attributes
+            if values[0] &amp; ExtMemPropTags.START_ADDRESS:
+                mem_attrs[&#39;address&#39;] = values[1]
+            if values[0] &amp; ExtMemPropTags.SIZE_IN_KBYTES:
+                mem_attrs[&#39;size&#39;] = values[2] * 1024
+            if values[0] &amp; ExtMemPropTags.PAGE_SIZE:
+                mem_attrs[&#39;page_size&#39;] = values[3]
+            if values[0] &amp; ExtMemPropTags.SECTOR_SIZE:
+                mem_attrs[&#39;sector_size&#39;] = values[4]
+            if values[0] &amp; ExtMemPropTags.BLOCK_SIZE:
+                mem_attrs[&#39;block_size&#39;] = values[5]
+            # store attributes
+            ext_mem_list.append(mem_attrs)
+
+        return ext_mem_list
+
+    def get_memory_list(self) -&gt; dict:
+        &#34;&#34;&#34;Get list of embedded memories.
+
+        :return: dict, with the following keys: internal_flash (optional) - dictionary,
+                internal_ram (optional) - dictionary, external_mems (optional) - list
+        :raises McuBootCommandError: Error reading the memory list
+        &#34;&#34;&#34;
+        memory_list: Dict[str, Any] = {}
+        # Internal FLASH
+        mdata = self._get_internal_flash()
+        if mdata:
+            memory_list[&#39;internal_flash&#39;] = mdata
+
+        # Internal RAM
+        mdata = self._get_internal_ram()
+        if mdata:
+            memory_list[&#39;internal_ram&#39;] = mdata
+
+        # External Memories
+        ext_mem_list = self._get_ext_memories()
+        if ext_mem_list:
+            memory_list[&#39;external_mems&#39;] = ext_mem_list
+
+        self._status_code = StatusCode.SUCCESS
+        if not memory_list:
+            self._status_code = StatusCode.FAIL
+            if self._cmd_exception:
+                raise McuBootCommandError(&#39;GetMemoryList&#39;, self.status_code)
+
+        return memory_list
+
+    def flash_erase_all(self, mem_id: int = 0) -&gt; bool:
+        &#34;&#34;&#34;Erase complete flash memory without recovering flash security section.
+
+        :param mem_id: Memory ID
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: FlashEraseAll(mem_id={mem_id})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_ERASE_ALL, 0, mem_id)
+        response = self._process_cmd(cmd_packet)
+        assert isinstance(cmd_packet, GenericResponse)
+        return response.status == StatusCode.SUCCESS
+
+    def flash_erase_region(self, address: int, length: int, mem_id: int = 0) -&gt; bool:
+        &#34;&#34;&#34;Erase specified range of flash.
+
+        :param address: Start address
+        :param length: Count of bytes
+        :param mem_id: Memory ID
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: FlashEraseRegion(address=0x{address:08X}, length={length}, mem_id={mem_id})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_ERASE_REGION, 0, address, length, mem_id)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def read_memory(self, address: int, length: int, mem_id: int = 0) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Read data from MCU memory.
+
+        :param address: Start address
+        :param length: Count of bytes
+        :param mem_id: Memory ID
+        :return: Data read from the memory; None in case of a failure
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: ReadMemory(address=0x{address:08X}, length={length}, mem_id={mem_id})&#34;)
+        cmd_packet = CmdPacket(CommandTag.READ_MEMORY, 0, address, length, mem_id)
+        cmd_response = self._process_cmd(cmd_packet)
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._read_data(CommandTag.READ_MEMORY, cmd_response.length)
+        return None
+
+    def write_memory(self, address: int, data: bytes, mem_id: int = 0) -&gt; bool:
+        &#34;&#34;&#34;Write data into MCU memory.
+
+        :param address: Start address
+        :param data: List of bytes
+        :param mem_id: Memory ID, see ExtMemId; additionally use `0` for internal memory
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: WriteMemory(address=0x{address:08X}, length={len(data)}, mem_id={mem_id})&#34;)
+        data_chunks = self._split_data(data=data)
+        cmd_packet = CmdPacket(CommandTag.WRITE_MEMORY, 0, address, len(data), mem_id)
+        if self._process_cmd(cmd_packet).status == StatusCode.SUCCESS:
+            return self._send_data(CommandTag.WRITE_MEMORY, data_chunks)
+        return False
+
+    def fill_memory(self, address: int, length: int, pattern: int = 0xFFFFFFFF) -&gt; bool:
+        &#34;&#34;&#34;Fill MCU memory with specified pattern.
+
+        :param address: Start address (must be word aligned)
+        :param length: Count of words (must be word aligned)
+        :param pattern: Count of wrote bytes
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: FillMemory(address=0x{address:08X}, length={length}, pattern=0x{pattern:08X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FILL_MEMORY, 0, address, length, pattern)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def flash_security_disable(self, backdoor_key: bytes) -&gt; bool:
+        &#34;&#34;&#34;Disable flash security by using of backdoor key.
+
+        :param backdoor_key: The key value as array of 8 bytes
+        :return: False in case of any problem; True otherwise
+        :raises ValueError: If the backdoor_key is not 8 bytes long
+        &#34;&#34;&#34;
+        if len(backdoor_key) != 8:
+            raise ValueError(&#39;Backdoor key must by 8 bytes long&#39;)
+        logger.info(f&#34;CMD: FlashSecurityDisable(backdoor_key={backdoor_key!r})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_SECURITY_DISABLE, 0, data=backdoor_key)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def get_property(self, prop_tag: PropertyTag, index: int = 0) -&gt; Optional[List[int]]:
+        &#34;&#34;&#34;Get specified property value.
+
+        :param prop_tag: Property TAG (see Properties Enum)
+        :param index: External memory ID or internal memory region index (depends on property type)
+        :return: list integers representing the property; None in case no response from device
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: GetProperty({PropertyTag.name(prop_tag)!r}, index={index!r})&#34;)
+        cmd_packet = CmdPacket(CommandTag.GET_PROPERTY, 0, prop_tag, index)
+        cmd_response = self._process_cmd(cmd_packet)
+        return cmd_response.values if cmd_response.status == StatusCode.SUCCESS else None
+
+    def set_property(self, prop_tag: PropertyTag, value: int) -&gt; bool:
+        &#34;&#34;&#34;Set value of specified property.
+
+        :param  prop_tag: Property TAG (see Property enumerator)
+        :param  value: The value of selected property
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: SetProperty({PropertyTag.name(prop_tag)}, value=0x{value:08X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.SET_PROPERTY, 0, prop_tag, value)
+        cmd_response = self._process_cmd(cmd_packet)
+        return cmd_response.status == StatusCode.SUCCESS
+
+    def receive_sb_file(self, data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Receive SB file.
+
+        :param  data: SB file data
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: ReceiveSBfile(data_length={len(data)})&#34;)
+        data_chunks = self._split_data(data=data)
+        cmd_packet = CmdPacket(CommandTag.RECEIVE_SB_FILE, 1, len(data))
+        cmd_response = self._process_cmd(cmd_packet)
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._send_data(CommandTag.RECEIVE_SB_FILE, data_chunks)
+        return False
+
+    def execute(self, address: int, argument: int, sp: int) -&gt; bool:    # pylint: disable=invalid-name
+        &#34;&#34;&#34;Execute program on a given address using the stack pointer.
+
+        :param address: Jump address (must be word aligned)
+        :param argument: Function arguments address
+        :param sp: Stack pointer address
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: Execute(address=0x{address:08X}, argument=0x{argument:08X}, SP=0x{sp:08X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.EXECUTE, 0, address, argument, sp)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def call(self, address: int, argument: int) -&gt; bool:
+        &#34;&#34;&#34;Fill MCU memory with specified pattern.
+
+        :param address: Call address (must be word aligned)
+        :param argument: Function arguments address
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: Call(address=0x{address:08X}, argument=0x{argument:08X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.CALL, 0, address, argument)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def reset(self, timeout: int = 2000, reopen: bool = True) -&gt; bool:
+        &#34;&#34;&#34;Reset MCU and reconnect if enabled.
+
+        :param timeout: The maximal waiting time in [ms] for reopen connection
+        :param reopen: True for reopen connection after HW reset else False
+        :return: False in case of any problem; True otherwise
+        :raise ValueError: if reopen is not supported
+        :raise McuBootConnectionError: Failure to reopen the device
+        &#34;&#34;&#34;
+        logger.info(&#39;CMD: Reset MCU&#39;)
+        cmd_packet = CmdPacket(CommandTag.RESET, 0)
+        ret_val = False
+        if self._process_cmd(cmd_packet).status == StatusCode.SUCCESS:
+            self._device.close()
+            ret_val = True
+            if reopen:
+                if not self.reopen:
+                    raise ValueError(&#39;reopen is not supported&#39;)
+                time.sleep(timeout / 1000)
+                try:
+                    self._device.open()
+                except SPSDKError:
+                    ret_val = False
+                    if self._cmd_exception:
+                        raise McuBootConnectionError(&#39;reopen failed&#39;)
+        return ret_val
+
+    def flash_erase_all_unsecure(self) -&gt; bool:
+        &#34;&#34;&#34;Erase complete flash memory and recover flash security section.
+
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(&#39;CMD: FlashEraseAllUnsecure&#39;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_ERASE_ALL_UNSECURE, 0)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def efuse_read_once(self, index: int) -&gt; Optional[int]:
+        &#34;&#34;&#34;Read from MCU flash program once region.
+
+        :param index: Start index
+        :return: read value (32-bit int); None if operation failed
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: FlashReadOnce(index={index})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_READ_ONCE, 0, index, 4)
+        cmd_response = self._process_cmd(cmd_packet)
+        return cmd_response.values[0] if cmd_response.status == StatusCode.SUCCESS else None
+
+    def efuse_program_once(self, index: int, value: int) -&gt; bool:
+        &#34;&#34;&#34;Write into MCU once program region (OCOTP).
+
+        :param index: Start index
+        :param value: Int value (4 bytes long)
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: FlashProgramOnce(index={index}, value=0x{value:X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_PROGRAM_ONCE, 0, index, 4, value)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def flash_read_once(self, index: int, count: int = 4) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Read from MCU flash program once region (max 8 bytes).
+
+        :param index: Start index
+        :param count: Count of bytes
+        :return: Data read; None in case of an failure
+        &#34;&#34;&#34;
+        assert count in (4, 8)
+        logger.info(f&#34;CMD: FlashReadOnce(index={index}, bytes={count})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_READ_ONCE, 0, index, count)
+        cmd_response = self._process_cmd(cmd_packet)
+        return cmd_response.data if cmd_response.status == StatusCode.SUCCESS else None
+
+    def flash_program_once(self, index: int, data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Write into MCU flash program once region (max 8 bytes).
+
+        :param index: Start index
+        :param data: Input data aligned to 4 or 8 bytes
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        assert len(data) in (4, 8)
+        logger.info(f&#34;CMD: FlashProgramOnce(index={index!r}, data={data!r})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_PROGRAM_ONCE, 0, index, len(data), data=data)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def flash_read_resource(self, address: int, length: int, option: int = 1) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Read resource of flash module.
+
+        :param address: Start address
+        :param length: Number of bytes
+        :param option:
+        :return: Data from the resource; None in case of an failure
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: FlashReadResource(address=0x{address:08X}, length={length}, option={option})&#34;)
+        cmd_packet = CmdPacket(CommandTag.FLASH_READ_RESOURCE, 0, address, length, option)
+        cmd_response = self._process_cmd(cmd_packet)
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._read_data(CommandTag.FLASH_READ_RESOURCE, cmd_response.length)
+        return None
+
+    def configure_memory(self, address: int, mem_id: ExtMemId) -&gt; bool:
+        &#34;&#34;&#34;Configure memory.
+
+        :param address: The address in memory where are locating configuration data
+        :param mem_id: External memory ID
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: ConfigureMemory({ExtMemId.name(mem_id)}, address=0x{address:08X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.CONFIGURE_MEMORY, 0, mem_id, address)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def reliable_update(self, address: int) -&gt; bool:
+        &#34;&#34;&#34;Reliable Update.
+
+        :param address: Address where new the firmware is stored
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: ReliableUpdate(address=0x{address:08X})&#34;)
+        cmd_packet = CmdPacket(CommandTag.RELIABLE_UPDATE, 0, address)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def generate_key_blob(self, dek_data: bytes, count: int = 72) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Generate Key Blob.
+
+        :param dek_data: Data Encryption Key as bytes
+        :param count: Key blob count (default: 72 - AES128bit)
+        :return: Key blob; None in case of an failure
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: GenerateKeyBlob(dek_len={len(dek_data)}, count={count})&#34;)
+        data_chunks = self._split_data(data=dek_data)
+        cmd_response = self._process_cmd(CmdPacket(CommandTag.GENERATE_KEY_BLOB, 1, 0, len(dek_data), 0))
+        if cmd_response.status != StatusCode.SUCCESS:
+            return None
+        if not self._send_data(CommandTag.GENERATE_KEY_BLOB, data_chunks):
+            return None
+        cmd_response = self._process_cmd(CmdPacket(CommandTag.GENERATE_KEY_BLOB, 0, 0, count, 1))
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._read_data(CommandTag.GENERATE_KEY_BLOB, cmd_response.length)
+        return None
+
+    def kp_enroll(self) -&gt; bool:
+        &#34;&#34;&#34;Key provisioning: Enroll Command (start PUF).
+
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(&#34;CMD: [KeyProvisioning] Enroll&#34;)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.ENROLL)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def kp_set_intrinsic_key(self, key_type: int, key_size: int) -&gt; bool:
+        &#34;&#34;&#34;Key provisioning: Generate Intrinsic Key.
+
+        :param key_type: Type of the key
+        :param key_size: Size of the key
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: [KeyProvisioning] SetIntrinsicKey(type={key_type}, key_size={key_size})&#34;)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.SET_INTRINSIC_KEY, key_type, key_size)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def kp_write_nonvolatile(self, mem_id: int = 0) -&gt; bool:
+        &#34;&#34;&#34;Key provisioning: Write the key to a nonvolatile memory.
+
+        :param mem_id: The memory ID (default: 0)
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: [KeyProvisioning] WriteNonVolatileMemory(mem_id={mem_id})&#34;)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.WRITE_NON_VOLATILE, mem_id)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def kp_read_nonvolatile(self, mem_id: int = 0) -&gt; bool:
+        &#34;&#34;&#34;Key provisioning: Load the key from a nonvolatile memory to bootloader.
+
+        :param mem_id: The memory ID (default: 0)
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: [KeyProvisioning] ReadNonVolatileMemory(mem_id={mem_id})&#34;)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.READ_NON_VOLATILE, mem_id)
+        return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS
+
+    def kp_set_user_key(self, key_type: KeyProvUserKeyType, key_data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Key provisioning: Send the user key specified by &lt;key_type&gt; to bootloader.
+
+        :param key_type: type of the user key, see enumeration for details
+        :param key_data: binary content of the user key
+        :return: False in case of any problem; True otherwise
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: [KeyProvisioning] SetUserKey(key_type={KeyProvUserKeyType.name(key_type)}, &#34;
+                    f&#34;key_len={len(key_data)})&#34;)
+        data_chunks = self._split_data(data=key_data)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 1, KeyProvOperation.SET_USER_KEY, key_type, len(key_data))
+        cmd_response = self._process_cmd(cmd_packet)
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._send_data(CommandTag.KEY_PROVISIONING, data_chunks)
+        return False
+
+    def kp_write_key_store(self, key_data: bytes) -&gt; bool:
+        &#34;&#34;&#34;Key provisioning: Write key data into key store area.
+
+        :param key_data: key store binary content to be written to processor
+        :return: result of the operation; True means success
+        &#34;&#34;&#34;
+        logger.info(f&#34;CMD: [KeyProvisioning] WriteKeyStore(key_len={len(key_data)})&#34;)
+        data_chunks = self._split_data(data=key_data)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 1, KeyProvOperation.WRITE_KEY_STORE, 0, len(key_data))
+        cmd_response = self._process_cmd(cmd_packet)
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._send_data(CommandTag.KEY_PROVISIONING, data_chunks)
+        return False
+
+    def kp_read_key_store(self) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Key provisioning: Read key data from key store area.&#34;&#34;&#34;
+        logger.info(f&#34;CMD: [KeyProvisioning] ReadKeyStore&#34;)
+        cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.READ_KEY_STORE)
+        cmd_response = self._process_cmd(cmd_packet)
+        if cmd_response.status == StatusCode.SUCCESS:
+            return self._read_data(CommandTag.KEY_PROVISIONING, cmd_response.length)
+        return None</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.McuBoot.is_opened"><code class="name">var <span class="ident">is_opened</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>:return: True if the device is open.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def is_opened(self) -&gt; bool:
+    &#34;&#34;&#34;:return: True if the device is open.&#34;&#34;&#34;
+    return self._device.is_opened</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.status_code"><code class="name">var <span class="ident">status_code</span> : <a title="spsdk.mboot.error_codes.StatusCode" href="error_codes.html#spsdk.mboot.error_codes.StatusCode">StatusCode</a></code></dt>
+<dd>
+<div class="desc"><p>:return: status code of the last operation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def status_code(self) -&gt; StatusCode:
+    &#34;&#34;&#34;:return: status code of the last operation.&#34;&#34;&#34;
+    return self._status_code</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.McuBoot.call"><code class="name flex">
+<span>def <span class="ident">call</span></span>(<span>self, address: int, argument: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fill MCU memory with specified pattern.</p>
+<p>:param address: Call address (must be word aligned)
+:param argument: Function arguments address
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def call(self, address: int, argument: int) -&gt; bool:
+    &#34;&#34;&#34;Fill MCU memory with specified pattern.
+
+    :param address: Call address (must be word aligned)
+    :param argument: Function arguments address
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: Call(address=0x{address:08X}, argument=0x{argument:08X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.CALL, 0, address, argument)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.close"><code class="name flex">
+<span>def <span class="ident">close</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Disconnect from the device.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def close(self) -&gt; None:
+    &#34;&#34;&#34;Disconnect from the device.&#34;&#34;&#34;
+    self._device.close()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.configure_memory"><code class="name flex">
+<span>def <span class="ident">configure_memory</span></span>(<span>self, address: int, mem_id: <a title="spsdk.mboot.memories.ExtMemId" href="memories.html#spsdk.mboot.memories.ExtMemId">ExtMemId</a>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Configure memory.</p>
+<p>:param address: The address in memory where are locating configuration data
+:param mem_id: External memory ID
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def configure_memory(self, address: int, mem_id: ExtMemId) -&gt; bool:
+    &#34;&#34;&#34;Configure memory.
+
+    :param address: The address in memory where are locating configuration data
+    :param mem_id: External memory ID
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: ConfigureMemory({ExtMemId.name(mem_id)}, address=0x{address:08X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.CONFIGURE_MEMORY, 0, mem_id, address)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.efuse_program_once"><code class="name flex">
+<span>def <span class="ident">efuse_program_once</span></span>(<span>self, index: int, value: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write into MCU once program region (OCOTP).</p>
+<p>:param index: Start index
+:param value: Int value (4 bytes long)
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def efuse_program_once(self, index: int, value: int) -&gt; bool:
+    &#34;&#34;&#34;Write into MCU once program region (OCOTP).
+
+    :param index: Start index
+    :param value: Int value (4 bytes long)
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: FlashProgramOnce(index={index}, value=0x{value:X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_PROGRAM_ONCE, 0, index, 4, value)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.efuse_read_once"><code class="name flex">
+<span>def <span class="ident">efuse_read_once</span></span>(<span>self, index: int) ‑> Union[int, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read from MCU flash program once region.</p>
+<p>:param index: Start index
+:return: read value (32-bit int); None if operation failed</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def efuse_read_once(self, index: int) -&gt; Optional[int]:
+    &#34;&#34;&#34;Read from MCU flash program once region.
+
+    :param index: Start index
+    :return: read value (32-bit int); None if operation failed
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: FlashReadOnce(index={index})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_READ_ONCE, 0, index, 4)
+    cmd_response = self._process_cmd(cmd_packet)
+    return cmd_response.values[0] if cmd_response.status == StatusCode.SUCCESS else None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.execute"><code class="name flex">
+<span>def <span class="ident">execute</span></span>(<span>self, address: int, argument: int, sp: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Execute program on a given address using the stack pointer.</p>
+<p>:param address: Jump address (must be word aligned)
+:param argument: Function arguments address
+:param sp: Stack pointer address
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def execute(self, address: int, argument: int, sp: int) -&gt; bool:    # pylint: disable=invalid-name
+    &#34;&#34;&#34;Execute program on a given address using the stack pointer.
+
+    :param address: Jump address (must be word aligned)
+    :param argument: Function arguments address
+    :param sp: Stack pointer address
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: Execute(address=0x{address:08X}, argument=0x{argument:08X}, SP=0x{sp:08X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.EXECUTE, 0, address, argument, sp)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.fill_memory"><code class="name flex">
+<span>def <span class="ident">fill_memory</span></span>(<span>self, address: int, length: int, pattern: int = 4294967295) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fill MCU memory with specified pattern.</p>
+<p>:param address: Start address (must be word aligned)
+:param length: Count of words (must be word aligned)
+:param pattern: Count of wrote bytes
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def fill_memory(self, address: int, length: int, pattern: int = 0xFFFFFFFF) -&gt; bool:
+    &#34;&#34;&#34;Fill MCU memory with specified pattern.
+
+    :param address: Start address (must be word aligned)
+    :param length: Count of words (must be word aligned)
+    :param pattern: Count of wrote bytes
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: FillMemory(address=0x{address:08X}, length={length}, pattern=0x{pattern:08X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FILL_MEMORY, 0, address, length, pattern)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_erase_all"><code class="name flex">
+<span>def <span class="ident">flash_erase_all</span></span>(<span>self, mem_id: int = 0) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Erase complete flash memory without recovering flash security section.</p>
+<p>:param mem_id: Memory ID
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_erase_all(self, mem_id: int = 0) -&gt; bool:
+    &#34;&#34;&#34;Erase complete flash memory without recovering flash security section.
+
+    :param mem_id: Memory ID
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: FlashEraseAll(mem_id={mem_id})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_ERASE_ALL, 0, mem_id)
+    response = self._process_cmd(cmd_packet)
+    assert isinstance(cmd_packet, GenericResponse)
+    return response.status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_erase_all_unsecure"><code class="name flex">
+<span>def <span class="ident">flash_erase_all_unsecure</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Erase complete flash memory and recover flash security section.</p>
+<p>:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_erase_all_unsecure(self) -&gt; bool:
+    &#34;&#34;&#34;Erase complete flash memory and recover flash security section.
+
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(&#39;CMD: FlashEraseAllUnsecure&#39;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_ERASE_ALL_UNSECURE, 0)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_erase_region"><code class="name flex">
+<span>def <span class="ident">flash_erase_region</span></span>(<span>self, address: int, length: int, mem_id: int = 0) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Erase specified range of flash.</p>
+<p>:param address: Start address
+:param length: Count of bytes
+:param mem_id: Memory ID
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_erase_region(self, address: int, length: int, mem_id: int = 0) -&gt; bool:
+    &#34;&#34;&#34;Erase specified range of flash.
+
+    :param address: Start address
+    :param length: Count of bytes
+    :param mem_id: Memory ID
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: FlashEraseRegion(address=0x{address:08X}, length={length}, mem_id={mem_id})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_ERASE_REGION, 0, address, length, mem_id)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_program_once"><code class="name flex">
+<span>def <span class="ident">flash_program_once</span></span>(<span>self, index: int, data: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write into MCU flash program once region (max 8 bytes).</p>
+<p>:param index: Start index
+:param data: Input data aligned to 4 or 8 bytes
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_program_once(self, index: int, data: bytes) -&gt; bool:
+    &#34;&#34;&#34;Write into MCU flash program once region (max 8 bytes).
+
+    :param index: Start index
+    :param data: Input data aligned to 4 or 8 bytes
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    assert len(data) in (4, 8)
+    logger.info(f&#34;CMD: FlashProgramOnce(index={index!r}, data={data!r})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_PROGRAM_ONCE, 0, index, len(data), data=data)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_read_once"><code class="name flex">
+<span>def <span class="ident">flash_read_once</span></span>(<span>self, index: int, count: int = 4) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read from MCU flash program once region (max 8 bytes).</p>
+<p>:param index: Start index
+:param count: Count of bytes
+:return: Data read; None in case of an failure</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_read_once(self, index: int, count: int = 4) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Read from MCU flash program once region (max 8 bytes).
+
+    :param index: Start index
+    :param count: Count of bytes
+    :return: Data read; None in case of an failure
+    &#34;&#34;&#34;
+    assert count in (4, 8)
+    logger.info(f&#34;CMD: FlashReadOnce(index={index}, bytes={count})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_READ_ONCE, 0, index, count)
+    cmd_response = self._process_cmd(cmd_packet)
+    return cmd_response.data if cmd_response.status == StatusCode.SUCCESS else None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_read_resource"><code class="name flex">
+<span>def <span class="ident">flash_read_resource</span></span>(<span>self, address: int, length: int, option: int = 1) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read resource of flash module.</p>
+<p>:param address: Start address
+:param length: Number of bytes
+:param option:
+:return: Data from the resource; None in case of an failure</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_read_resource(self, address: int, length: int, option: int = 1) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Read resource of flash module.
+
+    :param address: Start address
+    :param length: Number of bytes
+    :param option:
+    :return: Data from the resource; None in case of an failure
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: FlashReadResource(address=0x{address:08X}, length={length}, option={option})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_READ_RESOURCE, 0, address, length, option)
+    cmd_response = self._process_cmd(cmd_packet)
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._read_data(CommandTag.FLASH_READ_RESOURCE, cmd_response.length)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.flash_security_disable"><code class="name flex">
+<span>def <span class="ident">flash_security_disable</span></span>(<span>self, backdoor_key: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Disable flash security by using of backdoor key.</p>
+<p>:param backdoor_key: The key value as array of 8 bytes
+:return: False in case of any problem; True otherwise
+:raises ValueError: If the backdoor_key is not 8 bytes long</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def flash_security_disable(self, backdoor_key: bytes) -&gt; bool:
+    &#34;&#34;&#34;Disable flash security by using of backdoor key.
+
+    :param backdoor_key: The key value as array of 8 bytes
+    :return: False in case of any problem; True otherwise
+    :raises ValueError: If the backdoor_key is not 8 bytes long
+    &#34;&#34;&#34;
+    if len(backdoor_key) != 8:
+        raise ValueError(&#39;Backdoor key must by 8 bytes long&#39;)
+    logger.info(f&#34;CMD: FlashSecurityDisable(backdoor_key={backdoor_key!r})&#34;)
+    cmd_packet = CmdPacket(CommandTag.FLASH_SECURITY_DISABLE, 0, data=backdoor_key)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.generate_key_blob"><code class="name flex">
+<span>def <span class="ident">generate_key_blob</span></span>(<span>self, dek_data: bytes, count: int = 72) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate Key Blob.</p>
+<p>:param dek_data: Data Encryption Key as bytes
+:param count: Key blob count (default: 72 - AES128bit)
+:return: Key blob; None in case of an failure</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_key_blob(self, dek_data: bytes, count: int = 72) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Generate Key Blob.
+
+    :param dek_data: Data Encryption Key as bytes
+    :param count: Key blob count (default: 72 - AES128bit)
+    :return: Key blob; None in case of an failure
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: GenerateKeyBlob(dek_len={len(dek_data)}, count={count})&#34;)
+    data_chunks = self._split_data(data=dek_data)
+    cmd_response = self._process_cmd(CmdPacket(CommandTag.GENERATE_KEY_BLOB, 1, 0, len(dek_data), 0))
+    if cmd_response.status != StatusCode.SUCCESS:
+        return None
+    if not self._send_data(CommandTag.GENERATE_KEY_BLOB, data_chunks):
+        return None
+    cmd_response = self._process_cmd(CmdPacket(CommandTag.GENERATE_KEY_BLOB, 0, 0, count, 1))
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._read_data(CommandTag.GENERATE_KEY_BLOB, cmd_response.length)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.get_memory_list"><code class="name flex">
+<span>def <span class="ident">get_memory_list</span></span>(<span>self) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get list of embedded memories.</p>
+<p>:return: dict, with the following keys: internal_flash (optional) - dictionary,
+internal_ram (optional) - dictionary, external_mems (optional) - list
+:raises McuBootCommandError: Error reading the memory list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_memory_list(self) -&gt; dict:
+    &#34;&#34;&#34;Get list of embedded memories.
+
+    :return: dict, with the following keys: internal_flash (optional) - dictionary,
+            internal_ram (optional) - dictionary, external_mems (optional) - list
+    :raises McuBootCommandError: Error reading the memory list
+    &#34;&#34;&#34;
+    memory_list: Dict[str, Any] = {}
+    # Internal FLASH
+    mdata = self._get_internal_flash()
+    if mdata:
+        memory_list[&#39;internal_flash&#39;] = mdata
+
+    # Internal RAM
+    mdata = self._get_internal_ram()
+    if mdata:
+        memory_list[&#39;internal_ram&#39;] = mdata
+
+    # External Memories
+    ext_mem_list = self._get_ext_memories()
+    if ext_mem_list:
+        memory_list[&#39;external_mems&#39;] = ext_mem_list
+
+    self._status_code = StatusCode.SUCCESS
+    if not memory_list:
+        self._status_code = StatusCode.FAIL
+        if self._cmd_exception:
+            raise McuBootCommandError(&#39;GetMemoryList&#39;, self.status_code)
+
+    return memory_list</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.get_property"><code class="name flex">
+<span>def <span class="ident">get_property</span></span>(<span>self, prop_tag: <a title="spsdk.mboot.properties.PropertyTag" href="properties.html#spsdk.mboot.properties.PropertyTag">PropertyTag</a>, index: int = 0) ‑> Union[List[int], NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get specified property value.</p>
+<p>:param prop_tag: Property TAG (see Properties Enum)
+:param index: External memory ID or internal memory region index (depends on property type)
+:return: list integers representing the property; None in case no response from device</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_property(self, prop_tag: PropertyTag, index: int = 0) -&gt; Optional[List[int]]:
+    &#34;&#34;&#34;Get specified property value.
+
+    :param prop_tag: Property TAG (see Properties Enum)
+    :param index: External memory ID or internal memory region index (depends on property type)
+    :return: list integers representing the property; None in case no response from device
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: GetProperty({PropertyTag.name(prop_tag)!r}, index={index!r})&#34;)
+    cmd_packet = CmdPacket(CommandTag.GET_PROPERTY, 0, prop_tag, index)
+    cmd_response = self._process_cmd(cmd_packet)
+    return cmd_response.values if cmd_response.status == StatusCode.SUCCESS else None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.get_property_list"><code class="name flex">
+<span>def <span class="ident">get_property_list</span></span>(<span>self) ‑> list</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get a list of available properties.</p>
+<p>:return: List of available properties.
+:raises McuBootCommandError: Failure to read properties list</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_property_list(self) -&gt; list:
+    &#34;&#34;&#34;Get a list of available properties.
+
+    :return: List of available properties.
+    :raises McuBootCommandError: Failure to read properties list
+    &#34;&#34;&#34;
+    property_list: List[Any] = []
+    for tag in PropertyTag.tags():
+        try:
+            values = self.get_property(tag)
+        except McuBootCommandError:
+            continue
+
+        if values:
+            property_list.append(parse_property_value(tag, values))
+
+    self._status_code = StatusCode.SUCCESS
+    if not property_list:
+        self._status_code = StatusCode.FAIL
+        if self._cmd_exception:
+            raise McuBootCommandError(&#39;GetPropertyList&#39;, self.status_code)
+
+    return property_list</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_enroll"><code class="name flex">
+<span>def <span class="ident">kp_enroll</span></span>(<span>self) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Enroll Command (start PUF).</p>
+<p>:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_enroll(self) -&gt; bool:
+    &#34;&#34;&#34;Key provisioning: Enroll Command (start PUF).
+
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(&#34;CMD: [KeyProvisioning] Enroll&#34;)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.ENROLL)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_read_key_store"><code class="name flex">
+<span>def <span class="ident">kp_read_key_store</span></span>(<span>self) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Read key data from key store area.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_read_key_store(self) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Key provisioning: Read key data from key store area.&#34;&#34;&#34;
+    logger.info(f&#34;CMD: [KeyProvisioning] ReadKeyStore&#34;)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.READ_KEY_STORE)
+    cmd_response = self._process_cmd(cmd_packet)
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._read_data(CommandTag.KEY_PROVISIONING, cmd_response.length)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_read_nonvolatile"><code class="name flex">
+<span>def <span class="ident">kp_read_nonvolatile</span></span>(<span>self, mem_id: int = 0) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Load the key from a nonvolatile memory to bootloader.</p>
+<p>:param mem_id: The memory ID (default: 0)
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_read_nonvolatile(self, mem_id: int = 0) -&gt; bool:
+    &#34;&#34;&#34;Key provisioning: Load the key from a nonvolatile memory to bootloader.
+
+    :param mem_id: The memory ID (default: 0)
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: [KeyProvisioning] ReadNonVolatileMemory(mem_id={mem_id})&#34;)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.READ_NON_VOLATILE, mem_id)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_set_intrinsic_key"><code class="name flex">
+<span>def <span class="ident">kp_set_intrinsic_key</span></span>(<span>self, key_type: int, key_size: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Generate Intrinsic Key.</p>
+<p>:param key_type: Type of the key
+:param key_size: Size of the key
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_set_intrinsic_key(self, key_type: int, key_size: int) -&gt; bool:
+    &#34;&#34;&#34;Key provisioning: Generate Intrinsic Key.
+
+    :param key_type: Type of the key
+    :param key_size: Size of the key
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: [KeyProvisioning] SetIntrinsicKey(type={key_type}, key_size={key_size})&#34;)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.SET_INTRINSIC_KEY, key_type, key_size)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_set_user_key"><code class="name flex">
+<span>def <span class="ident">kp_set_user_key</span></span>(<span>self, key_type: <a title="spsdk.mboot.commands.KeyProvUserKeyType" href="commands.html#spsdk.mboot.commands.KeyProvUserKeyType">KeyProvUserKeyType</a>, key_data: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Send the user key specified by <key_type> to bootloader.</p>
+<p>:param key_type: type of the user key, see enumeration for details
+:param key_data: binary content of the user key
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_set_user_key(self, key_type: KeyProvUserKeyType, key_data: bytes) -&gt; bool:
+    &#34;&#34;&#34;Key provisioning: Send the user key specified by &lt;key_type&gt; to bootloader.
+
+    :param key_type: type of the user key, see enumeration for details
+    :param key_data: binary content of the user key
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: [KeyProvisioning] SetUserKey(key_type={KeyProvUserKeyType.name(key_type)}, &#34;
+                f&#34;key_len={len(key_data)})&#34;)
+    data_chunks = self._split_data(data=key_data)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 1, KeyProvOperation.SET_USER_KEY, key_type, len(key_data))
+    cmd_response = self._process_cmd(cmd_packet)
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._send_data(CommandTag.KEY_PROVISIONING, data_chunks)
+    return False</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_write_key_store"><code class="name flex">
+<span>def <span class="ident">kp_write_key_store</span></span>(<span>self, key_data: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Write key data into key store area.</p>
+<p>:param key_data: key store binary content to be written to processor
+:return: result of the operation; True means success</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_write_key_store(self, key_data: bytes) -&gt; bool:
+    &#34;&#34;&#34;Key provisioning: Write key data into key store area.
+
+    :param key_data: key store binary content to be written to processor
+    :return: result of the operation; True means success
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: [KeyProvisioning] WriteKeyStore(key_len={len(key_data)})&#34;)
+    data_chunks = self._split_data(data=key_data)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 1, KeyProvOperation.WRITE_KEY_STORE, 0, len(key_data))
+    cmd_response = self._process_cmd(cmd_packet)
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._send_data(CommandTag.KEY_PROVISIONING, data_chunks)
+    return False</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.kp_write_nonvolatile"><code class="name flex">
+<span>def <span class="ident">kp_write_nonvolatile</span></span>(<span>self, mem_id: int = 0) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Key provisioning: Write the key to a nonvolatile memory.</p>
+<p>:param mem_id: The memory ID (default: 0)
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def kp_write_nonvolatile(self, mem_id: int = 0) -&gt; bool:
+    &#34;&#34;&#34;Key provisioning: Write the key to a nonvolatile memory.
+
+    :param mem_id: The memory ID (default: 0)
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: [KeyProvisioning] WriteNonVolatileMemory(mem_id={mem_id})&#34;)
+    cmd_packet = CmdPacket(CommandTag.KEY_PROVISIONING, 0, KeyProvOperation.WRITE_NON_VOLATILE, mem_id)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.open"><code class="name flex">
+<span>def <span class="ident">open</span></span>(<span>self) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Connect to the device.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def open(self) -&gt; None:
+    &#34;&#34;&#34;Connect to the device.&#34;&#34;&#34;
+    if not self._device.is_opened:
+        logger.info(f&#34;Connect: {self._device.info()}&#34;)
+        self._device.open()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.read_memory"><code class="name flex">
+<span>def <span class="ident">read_memory</span></span>(<span>self, address: int, length: int, mem_id: int = 0) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read data from MCU memory.</p>
+<p>:param address: Start address
+:param length: Count of bytes
+:param mem_id: Memory ID
+:return: Data read from the memory; None in case of a failure</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read_memory(self, address: int, length: int, mem_id: int = 0) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Read data from MCU memory.
+
+    :param address: Start address
+    :param length: Count of bytes
+    :param mem_id: Memory ID
+    :return: Data read from the memory; None in case of a failure
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: ReadMemory(address=0x{address:08X}, length={length}, mem_id={mem_id})&#34;)
+    cmd_packet = CmdPacket(CommandTag.READ_MEMORY, 0, address, length, mem_id)
+    cmd_response = self._process_cmd(cmd_packet)
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._read_data(CommandTag.READ_MEMORY, cmd_response.length)
+    return None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.receive_sb_file"><code class="name flex">
+<span>def <span class="ident">receive_sb_file</span></span>(<span>self, data: bytes) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Receive SB file.</p>
+<p>:param
+data: SB file data
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def receive_sb_file(self, data: bytes) -&gt; bool:
+    &#34;&#34;&#34;Receive SB file.
+
+    :param  data: SB file data
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: ReceiveSBfile(data_length={len(data)})&#34;)
+    data_chunks = self._split_data(data=data)
+    cmd_packet = CmdPacket(CommandTag.RECEIVE_SB_FILE, 1, len(data))
+    cmd_response = self._process_cmd(cmd_packet)
+    if cmd_response.status == StatusCode.SUCCESS:
+        return self._send_data(CommandTag.RECEIVE_SB_FILE, data_chunks)
+    return False</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.reliable_update"><code class="name flex">
+<span>def <span class="ident">reliable_update</span></span>(<span>self, address: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reliable Update.</p>
+<p>:param address: Address where new the firmware is stored
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reliable_update(self, address: int) -&gt; bool:
+    &#34;&#34;&#34;Reliable Update.
+
+    :param address: Address where new the firmware is stored
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: ReliableUpdate(address=0x{address:08X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.RELIABLE_UPDATE, 0, address)
+    return self._process_cmd(cmd_packet).status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.reset"><code class="name flex">
+<span>def <span class="ident">reset</span></span>(<span>self, timeout: int = 2000, reopen: bool = True) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reset MCU and reconnect if enabled.</p>
+<p>:param timeout: The maximal waiting time in [ms] for reopen connection
+:param reopen: True for reopen connection after HW reset else False
+:return: False in case of any problem; True otherwise
+:raise ValueError: if reopen is not supported
+:raise McuBootConnectionError: Failure to reopen the device</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reset(self, timeout: int = 2000, reopen: bool = True) -&gt; bool:
+    &#34;&#34;&#34;Reset MCU and reconnect if enabled.
+
+    :param timeout: The maximal waiting time in [ms] for reopen connection
+    :param reopen: True for reopen connection after HW reset else False
+    :return: False in case of any problem; True otherwise
+    :raise ValueError: if reopen is not supported
+    :raise McuBootConnectionError: Failure to reopen the device
+    &#34;&#34;&#34;
+    logger.info(&#39;CMD: Reset MCU&#39;)
+    cmd_packet = CmdPacket(CommandTag.RESET, 0)
+    ret_val = False
+    if self._process_cmd(cmd_packet).status == StatusCode.SUCCESS:
+        self._device.close()
+        ret_val = True
+        if reopen:
+            if not self.reopen:
+                raise ValueError(&#39;reopen is not supported&#39;)
+            time.sleep(timeout / 1000)
+            try:
+                self._device.open()
+            except SPSDKError:
+                ret_val = False
+                if self._cmd_exception:
+                    raise McuBootConnectionError(&#39;reopen failed&#39;)
+    return ret_val</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.set_property"><code class="name flex">
+<span>def <span class="ident">set_property</span></span>(<span>self, prop_tag: <a title="spsdk.mboot.properties.PropertyTag" href="properties.html#spsdk.mboot.properties.PropertyTag">PropertyTag</a>, value: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set value of specified property.</p>
+<p>:param
+prop_tag: Property TAG (see Property enumerator)
+:param
+value: The value of selected property
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_property(self, prop_tag: PropertyTag, value: int) -&gt; bool:
+    &#34;&#34;&#34;Set value of specified property.
+
+    :param  prop_tag: Property TAG (see Property enumerator)
+    :param  value: The value of selected property
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: SetProperty({PropertyTag.name(prop_tag)}, value=0x{value:08X})&#34;)
+    cmd_packet = CmdPacket(CommandTag.SET_PROPERTY, 0, prop_tag, value)
+    cmd_response = self._process_cmd(cmd_packet)
+    return cmd_response.status == StatusCode.SUCCESS</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.McuBoot.write_memory"><code class="name flex">
+<span>def <span class="ident">write_memory</span></span>(<span>self, address: int, data: bytes, mem_id: int = 0) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write data into MCU memory.</p>
+<p>:param address: Start address
+:param data: List of bytes
+:param mem_id: Memory ID, see ExtMemId; additionally use <code>0</code> for internal memory
+:return: False in case of any problem; True otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write_memory(self, address: int, data: bytes, mem_id: int = 0) -&gt; bool:
+    &#34;&#34;&#34;Write data into MCU memory.
+
+    :param address: Start address
+    :param data: List of bytes
+    :param mem_id: Memory ID, see ExtMemId; additionally use `0` for internal memory
+    :return: False in case of any problem; True otherwise
+    &#34;&#34;&#34;
+    logger.info(f&#34;CMD: WriteMemory(address=0x{address:08X}, length={len(data)}, mem_id={mem_id})&#34;)
+    data_chunks = self._split_data(data=data)
+    cmd_packet = CmdPacket(CommandTag.WRITE_MEMORY, 0, address, len(data), mem_id)
+    if self._process_cmd(cmd_packet).status == StatusCode.SUCCESS:
+        return self._send_data(CommandTag.WRITE_MEMORY, data_chunks)
+    return False</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.mboot.McuBootCommandError"><code class="flex name class">
+<span>class <span class="ident">McuBootCommandError</span></span>
+<span>(</span><span>cmd: str, value: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MBoot Module: Command Exception.</p>
+<p>Initialize the Command Error exception.</p>
+<p>:param cmd: Name of the command causing the exception
+:param value: Response value causing the exception</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class McuBootCommandError(McuBootError):
+    &#34;&#34;&#34;MBoot Module: Command Exception.&#34;&#34;&#34;
+    fmt = &#39;MBoot: {cmd_name} interrupted -&gt; {description}&#39;
+
+    def __init__(self, cmd: str, value: int) -&gt; None:
+        &#34;&#34;&#34;Initialize the Command Error exception.
+
+        :param cmd: Name of the command causing the exception
+        :param value: Response value causing the exception
+        &#34;&#34;&#34;
+        super().__init__()
+        self.cmd_name = cmd
+        self.error_value = value
+        self.description = StatusCode.desc(value, f&#34;Unknown Error 0x{value:08X}&#34;)
+
+    def __str__(self) -&gt; str:
+        return self.fmt.format(cmd_name=self.cmd_name, description=self.description)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.exceptions.McuBootError" href="exceptions.html#spsdk.mboot.exceptions.McuBootError">McuBootError</a></li>
+<li><a title="spsdk.exceptions.SPSDKError" href="../exceptions.html#spsdk.exceptions.SPSDKError">SPSDKError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.McuBootCommandError.fmt"><code class="name">var <span class="ident">fmt</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.mboot.McuBootConnectionError"><code class="flex name class">
+<span>class <span class="ident">McuBootConnectionError</span></span>
+<span>(</span><span>desc: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MBoot Module: Connection Exception.</p>
+<p>Initialize the base SPSDK Exception.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class McuBootConnectionError(McuBootError):
+    &#34;&#34;&#34;MBoot Module: Connection Exception.&#34;&#34;&#34;
+    fmt = &#39;MBoot: Connection issue -&gt; {description}&#39;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.exceptions.McuBootError" href="exceptions.html#spsdk.mboot.exceptions.McuBootError">McuBootError</a></li>
+<li><a title="spsdk.exceptions.SPSDKError" href="../exceptions.html#spsdk.exceptions.SPSDKError">SPSDKError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.McuBootConnectionError.fmt"><code class="name">var <span class="ident">fmt</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.mboot.McuBootError"><code class="flex name class">
+<span>class <span class="ident">McuBootError</span></span>
+<span>(</span><span>desc: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MBoot Module: Base Exception.</p>
+<p>Initialize the base SPSDK Exception.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class McuBootError(SPSDKError):
+    &#34;&#34;&#34;MBoot Module: Base Exception.&#34;&#34;&#34;
+    fmt = &#39;MBoot: {description}&#39;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.exceptions.SPSDKError" href="../exceptions.html#spsdk.exceptions.SPSDKError">SPSDKError</a></li>
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.exceptions.McuBootCommandError" href="exceptions.html#spsdk.mboot.exceptions.McuBootCommandError">McuBootCommandError</a></li>
+<li><a title="spsdk.mboot.exceptions.McuBootConnectionError" href="exceptions.html#spsdk.mboot.exceptions.McuBootConnectionError">McuBootConnectionError</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.McuBootError.fmt"><code class="name">var <span class="ident">fmt</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag"><code class="flex name class">
+<span>class <span class="ident">PeripheryTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tags representing peripherals.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PeripheryTag(Enum):
+    &#34;&#34;&#34;Tags representing peripherals.&#34;&#34;&#34;
+    UART = (0x01, &#39;UART&#39;, &#39;UART Interface&#39;)
+    I2C_SLAVE = (0x02, &#39;I2C-Slave&#39;, &#39;I2C Slave Interface&#39;)
+    SPI_SLAVE = (0x04, &#39;SPI-Slave&#39;, &#39;SPI Slave Interface&#39;)
+    CAN = (0x08, &#39;CAN&#39;, &#39;CAN Interface&#39;)
+    USB_HID = (0x10, &#39;USB-HID&#39;, &#39;USB HID-Class Interface&#39;)
+    USB_CDC = (0x20, &#39;USB-CDC&#39;, &#39;USB CDC-Class Interface&#39;)
+    USB_DFU = (0x40, &#39;USB-DFU&#39;, &#39;USB DFU-Class Interface&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.PeripheryTag.CAN"><code class="name">var <span class="ident">CAN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag.I2C_SLAVE"><code class="name">var <span class="ident">I2C_SLAVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag.SPI_SLAVE"><code class="name">var <span class="ident">SPI_SLAVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag.UART"><code class="name">var <span class="ident">UART</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag.USB_CDC"><code class="name">var <span class="ident">USB_CDC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag.USB_DFU"><code class="name">var <span class="ident">USB_DFU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PeripheryTag.USB_HID"><code class="name">var <span class="ident">USB_HID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.PropertyTag"><code class="flex name class">
+<span>class <span class="ident">PropertyTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot Properties.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PropertyTag(Enum):
+    &#34;&#34;&#34;McuBoot Properties.&#34;&#34;&#34;
+
+    # LIST_PROPERTIES = (0x00, &#39;ListProperties&#39;, &#39;List Properties&#39;)
+    CURRENT_VERSION = (0x01, &#39;CurrentVersion&#39;, &#39;Current Version&#39;)
+    AVAILABLE_PERIPHERALS = (0x02, &#39;AvailablePeripherals&#39;, &#39;Available Peripherals&#39;)
+    FLASH_START_ADDRESS = (0x03, &#39;FlashStartAddress&#39;, &#39;Flash Start Address&#39;)
+    FLASH_SIZE = (0x04, &#39;FlashSize&#39;, &#39;Flash Size&#39;)
+    FLASH_SECTOR_SIZE = (0x05, &#39;FlashSectorSize&#39;, &#39;Flash Sector Size&#39;)
+    FLASH_BLOCK_COUNT = (0x06, &#39;FlashBlockCount&#39;, &#39;Flash Block Count&#39;)
+    AVAILABLE_COMMANDS = (0x07, &#39;AvailableCommands&#39;, &#39;Available Commands&#39;)
+    CRC_CHECK_STATUS = (0x08, &#39;CrcCheckStatus&#39;, &#39;CRC Check Status&#39;)
+    LAST_ERROR = (0x09, &#39;LastError&#39;, &#39;Last Error Value&#39;)
+    VERIFY_WRITES = (0x0A, &#39;VerifyWrites&#39;, &#39;Verify Writes&#39;)
+    MAX_PACKET_SIZE = (0x0B, &#39;MaxPacketSize&#39;, &#39;Max Packet Size&#39;)
+    RESERVED_REGIONS = (0x0C, &#39;ReservedRegions&#39;, &#39;Reserved Regions&#39;)
+    VALIDATE_REGIONS = (0x0D, &#39;ValidateRegions&#39;, &#39;Validate Regions&#39;)
+    RAM_START_ADDRESS = (0x0E, &#39;RamStartAddress&#39;, &#39;RAM Start Address&#39;)
+    RAM_SIZE = (0x0F, &#39;RamSize&#39;, &#39;RAM Size&#39;)
+    SYSTEM_DEVICE_IDENT = (0x10, &#39;SystemDeviceIdent&#39;, &#39;System Device Identification&#39;)
+    FLASH_SECURITY_STATE = (0x11, &#39;FlashSecurityState&#39;, &#39;Flash Security State&#39;)
+    UNIQUE_DEVICE_IDENT = (0x12, &#39;UniqueDeviceIdent&#39;, &#39;Unique Device Identification&#39;)
+    FLASH_FAC_SUPPORT = (0x13, &#39;FlashFacSupport&#39;, &#39;Flash Fac. Support&#39;)
+    FLASH_ACCESS_SEGMENT_SIZE = (0x14, &#39;FlashAccessSegmentSize&#39;, &#39;Flash Access Segment Size&#39;)
+    FLASH_ACCESS_SEGMENT_COUNT = (0x15, &#39;FlashAccessSegmentCount&#39;, &#39;Flash Access Segment Count&#39;)
+    FLASH_READ_MARGIN = (0x16, &#39;FlashReadMargin&#39;, &#39;Flash Read Margin&#39;)
+    QSPI_INIT_STATUS = (0x17, &#39;QspiInitStatus&#39;, &#39;QuadSPI Initialization Status&#39;)
+    TARGET_VERSION = (0x18, &#39;TargetVersion&#39;, &#39;Target Version&#39;)
+    EXTERNAL_MEMORY_ATTRIBUTES = (0x19, &#39;ExternalMemoryAttributes&#39;, &#39;External Memory Attributes&#39;)
+    RELIABLE_UPDATE_STATUS = (0x1A, &#39;ReliableUpdateStatus&#39;, &#39;Reliable Update Status&#39;)
+    FLASH_PAGE_SIZE = (0x1B, &#39;FlashPageSize&#39;, &#39;Flash Page Size&#39;)
+    IRQ_NOTIFIER_PIN = (0x1C, &#39;IrqNotifierPin&#39;, &#39;Irq Notifier Pin&#39;)
+    PFR_KEYSTORE_UPDATE_OPT = (0x1D, &#39;PfrKeystoreUpdateOpt&#39;, &#39;PFR Keystore Update Opt&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.PropertyTag.AVAILABLE_COMMANDS"><code class="name">var <span class="ident">AVAILABLE_COMMANDS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.AVAILABLE_PERIPHERALS"><code class="name">var <span class="ident">AVAILABLE_PERIPHERALS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.CRC_CHECK_STATUS"><code class="name">var <span class="ident">CRC_CHECK_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.CURRENT_VERSION"><code class="name">var <span class="ident">CURRENT_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES"><code class="name">var <span class="ident">EXTERNAL_MEMORY_ATTRIBUTES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_ACCESS_SEGMENT_COUNT"><code class="name">var <span class="ident">FLASH_ACCESS_SEGMENT_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_ACCESS_SEGMENT_SIZE"><code class="name">var <span class="ident">FLASH_ACCESS_SEGMENT_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_BLOCK_COUNT"><code class="name">var <span class="ident">FLASH_BLOCK_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_FAC_SUPPORT"><code class="name">var <span class="ident">FLASH_FAC_SUPPORT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_PAGE_SIZE"><code class="name">var <span class="ident">FLASH_PAGE_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_READ_MARGIN"><code class="name">var <span class="ident">FLASH_READ_MARGIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_SECTOR_SIZE"><code class="name">var <span class="ident">FLASH_SECTOR_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_SECURITY_STATE"><code class="name">var <span class="ident">FLASH_SECURITY_STATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_SIZE"><code class="name">var <span class="ident">FLASH_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.FLASH_START_ADDRESS"><code class="name">var <span class="ident">FLASH_START_ADDRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.IRQ_NOTIFIER_PIN"><code class="name">var <span class="ident">IRQ_NOTIFIER_PIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.LAST_ERROR"><code class="name">var <span class="ident">LAST_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.MAX_PACKET_SIZE"><code class="name">var <span class="ident">MAX_PACKET_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.PFR_KEYSTORE_UPDATE_OPT"><code class="name">var <span class="ident">PFR_KEYSTORE_UPDATE_OPT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.QSPI_INIT_STATUS"><code class="name">var <span class="ident">QSPI_INIT_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.RAM_SIZE"><code class="name">var <span class="ident">RAM_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.RAM_START_ADDRESS"><code class="name">var <span class="ident">RAM_START_ADDRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.RELIABLE_UPDATE_STATUS"><code class="name">var <span class="ident">RELIABLE_UPDATE_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.RESERVED_REGIONS"><code class="name">var <span class="ident">RESERVED_REGIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.SYSTEM_DEVICE_IDENT"><code class="name">var <span class="ident">SYSTEM_DEVICE_IDENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.TARGET_VERSION"><code class="name">var <span class="ident">TARGET_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.UNIQUE_DEVICE_IDENT"><code class="name">var <span class="ident">UNIQUE_DEVICE_IDENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.VALIDATE_REGIONS"><code class="name">var <span class="ident">VALIDATE_REGIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.PropertyTag.VERIFY_WRITES"><code class="name">var <span class="ident">VERIFY_WRITES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.StatusCode"><code class="flex name class">
+<span>class <span class="ident">StatusCode</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot status codes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StatusCode(Enum):
+    &#34;&#34;&#34;McuBoot status codes.&#34;&#34;&#34;
+
+    SUCCESS = (0, &#39;Success&#39;, &#39;Success&#39;)
+    FAIL = (1, &#39;Fail&#39;, &#39;Fail&#39;)
+    READ_ONLY = (2, &#39;ReadOnly&#39;, &#39;Read Only Error&#39;)
+    OUT_OF_RANGE = (3, &#39;OutOfRange&#39;, &#39;Out Of Range Error&#39;)
+    INVALID_ARGUMENT = (4, &#39;InvalidArgument&#39;, &#39;Invalid Argument Error&#39;)
+    TIMEOUT = (5, &#39;TimeoutError&#39;, &#39;Timeout Error&#39;)
+    NO_TRANSFER_IN_PROGRESS = (6, &#39;NoTransferInProgress&#39;, &#39;No Transfer In Progress Error&#39;)
+
+    # Flash driver errors.
+    FLASH_SIZE_ERROR = (100, &#39;FlashSizeError&#39;, &#39;FLASH Driver: Size Error&#39;)
+    FLASH_ALIGNMENT_ERROR = (101, &#39;FlashAlignmentError&#39;, &#39;FLASH Driver: Alignment Error&#39;)
+    FLASH_ADDRESS_ERROR = (102, &#39;FlashAddressError&#39;, &#39;FLASH Driver: Address Error&#39;)
+    FLASH_ACCESS_ERROR = (103, &#39;FlashAccessError&#39;, &#39;FLASH Driver: Access Error&#39;)
+    FLASH_PROTECTION_VIOLATION = (104, &#39;FlashProtectionViolation&#39;, &#39;FLASH Driver: Protection Violation&#39;)
+    FLASH_COMMAND_FAILURE = (105, &#39;FlashCommandFailure&#39;, &#39;FLASH Driver: Command Failure&#39;)
+    FLASH_UNKNOWN_PROPERTY = (106, &#39;FlashUnknownProperty&#39;, &#39;FLASH Driver: Unknown Property&#39;)
+    FLASH_REGION_EXECUTE_ONLY = (108, &#39;FlashRegionExecuteOnly&#39;, &#39;FLASH Driver: Region Execute Only&#39;)
+    FLASH_EXEC_IN_RAM_NOT_READY = (109, &#39;FlashExecuteInRamFunctionNotReady&#39;,
+                                   &#39;FLASH Driver: Execute In RAM Function Not Ready&#39;)
+    FLASH_COMMAND_NOT_SUPPORTED = (111, &#39;FlashCommandNotSupported&#39;, &#39;FLASH Driver: Command Not Supported&#39;)
+    FLASH_OUT_OF_DATE_CFPA_PAGE = (132, &#39;FlashOutOfDateCfpaPage&#39;, &#39;FLASH Driver: Out Of Date CFPA Page&#39;)
+
+    # I2C driver errors.
+    I2C_SLAVE_TX_UNDERRUN = (200, &#39;I2cSlaveTxUnderrun&#39;, &#39;I2C Driver: Slave Tx Underrun&#39;)
+    I2C_SLAVE_RX_OVERRUN = (201, &#39;I2cSlaveRxOverrun&#39;, &#39;I2C Driver: Slave Rx Overrun&#39;)
+    I2C_ARBITRATION_LOST = (202, &#39;I2cArbitrationLost&#39;, &#39;I2C Driver: Arbitration Lost&#39;)
+
+    # SPI driver errors.
+    SPI_SLAVE_TX_UNDERRUN = (300, &#39;SpiSlaveTxUnderrun&#39;, &#39;SPI Driver: Slave Tx Underrun&#39;)
+    SPI_SLAVE_RX_OVERRUN = (301, &#39;SpiSlaveRxOverrun&#39;, &#39;SPI Driver: Slave Rx Overrun&#39;)
+
+    # QuadSPI driver errors.
+    QSPI_FLASH_SIZE_ERROR = (400, &#39;QspiFlashSizeError&#39;, &#39;QSPI Driver: Flash Size Error&#39;)
+    QSPI_FLASH_ALIGNMENT_ERROR = (401, &#39;QspiFlashAlignmentError&#39;, &#39;QSPI Driver: Flash Alignment Error&#39;)
+    QSPI_FLASH_ADDRESS_ERROR = (402, &#39;QspiFlashAddressError&#39;, &#39;QSPI Driver: Flash Address Error&#39;)
+    QSPI_FLASH_COMMAND_FAILURE = (403, &#39;QspiFlashCommandFailure&#39;, &#39;QSPI Driver: Flash Command Failure&#39;)
+    QSPI_FLASH_UNKNOWN_PROPERTY = (404, &#39;QspiFlashUnknownProperty&#39;, &#39;QSPI Driver: Flash Unknown Property&#39;)
+    QSPI_NOT_CONFIGURED = (405, &#39;QspiNotConfigured&#39;, &#39;QSPI Driver: Not Configured&#39;)
+    QSPI_COMMAND_NOT_SUPPORTED = (406, &#39;QspiCommandNotSupported&#39;, &#39;QSPI Driver: Command Not Supported&#39;)
+    QSPI_COMMAND_TIMEOUT = (407, &#39;QspiCommandTimeout&#39;, &#39;QSPI Driver: Command Timeout&#39;)
+    QSPI_WRITE_FAILURE = (408, &#39;QspiWriteFailure&#39;, &#39;QSPI Driver: Write Failure&#39;)
+
+    # OTFAD driver errors.
+    OTFAD_SECURITY_VIOLATION = (500, &#39;OtfadSecurityViolation&#39;, &#39;OTFAD Driver: Security Violation&#39;)
+    OTFAD_LOGICALLY_DISABLED = (501, &#39;OtfadLogicallyDisabled&#39;, &#39;OTFAD Driver: Logically Disabled&#39;)
+    OTFAD_INVALID_KEY = (502, &#39;OtfadInvalidKey&#39;, &#39;OTFAD Driver: Invalid Key&#39;)
+    OTFAD_INVALID_KEY_BLOB = (503, &#39;OtfadInvalidKeyBlob&#39;, &#39;OTFAD Driver: Invalid Key Blob&#39;)
+
+    # SDMMC driver errors.
+
+    # Bootloader errors.
+    UNKNOWN_COMMAND = (10000, &#39;UnknownCommand&#39;, &#39;Unknown Command&#39;)
+    SECURITY_VIOLATION = (10001, &#39;SecurityViolation&#39;, &#39;Security Violation&#39;)
+    ABORT_DATA_PHASE = (10002, &#39;AbortDataPhase&#39;, &#39;Abort Data Phase&#39;)
+    PING_ERROR = (10003, &#39;PingError&#39;, &#39;Ping Error&#39;)
+    NO_RESPONSE = (10004, &#39;NoResponse&#39;, &#39;No Response&#39;)
+    NO_RESPONSE_EXPECTED = (10005, &#39;NoResponseExpected&#39;, &#39;No Response Expected&#39;)
+    UNSUPPORTED_COMMAND = (10006, &#39;UnsupportedCommand&#39;, &#39;Unsupported Command&#39;)
+
+    # SB loader errors.
+    ROMLDR_SECTION_OVERRUN = (10100, &#39;RomLdrSectionOverrun&#39;, &#39;ROM Loader: Section Overrun&#39;)
+    ROMLDR_SIGNATURE = (10101, &#39;RomLdrSignature&#39;, &#39;ROM Loader: Signature Error&#39;)
+    ROMLDR_SECTION_LENGTH = (10102, &#39;RomLdrSectionLength&#39;, &#39;ROM Loader: Section Length Error&#39;)
+    ROMLDR_UNENCRYPTED_ONLY = (10103, &#39;RomLdrUnencryptedOnly&#39;, &#39;ROM Loader: Unencrypted Only&#39;)
+    ROMLDR_EOF_REACHED = (10104, &#39;RomLdrEOFReached&#39;, &#39;ROM Loader: EOF Reached&#39;)
+    ROMLDR_CHECKSUM = (10105, &#39;RomLdrChecksum&#39;, &#39;ROM Loader: Checksum Error&#39;)
+    ROMLDR_CRC32_ERROR = (10106, &#39;RomLdrCrc32Error&#39;, &#39;ROM Loader: CRC32 Error&#39;)
+    ROMLDR_UNKNOWN_COMMAND = (10107, &#39;RomLdrUnknownCommand&#39;, &#39;ROM Loader: Unknown Command&#39;)
+    ROMLDR_ID_NOT_FOUND = (10108, &#39;RomLdrIdNotFound&#39;, &#39;ROM Loader: ID Not Found&#39;)
+    ROMLDR_DATA_UNDERRUN = (10109, &#39;RomLdrDataUnderrun&#39;, &#39;ROM Loader: Data Underrun&#39;)
+    ROMLDR_JUMP_RETURNED = (10110, &#39;RomLdrJumpReturned&#39;, &#39;ROM Loader: Jump Returned&#39;)
+    ROMLDR_CALL_FAILED = (10111, &#39;RomLdrCallFailed&#39;, &#39;ROM Loader: Call Failed&#39;)
+    ROMLDR_KEY_NOT_FOUND = (10112, &#39;RomLdrKeyNotFound&#39;, &#39;ROM Loader: Key Not Found&#39;)
+    ROMLDR_SECURE_ONLY = (10113, &#39;RomLdrSecureOnly&#39;, &#39;ROM Loader: Secure Only&#39;)
+    ROMLDR_RESET_RETURNED = (10114, &#39;RomLdrResetReturned&#39;, &#39;ROM Loader: Reset Returned&#39;)
+    ROMLDR_ROLLBACK_BLOCKED = (10115, &#39;RomLdrRollbackBlocked&#39;, &#39;ROM Loader: Rollback Blocked&#39;)
+    ROMLDR_INVALID_SECTION_MAC_COUNT = (10116, &#39;RomLdrInvalidSectionMacCount&#39;, &#39;ROM Loader: Invalid Section Mac Count&#39;)
+    ROMLDR_UNEXPECTED_COMMAND = (10117, &#39;RomLdrUnexpectedCommand&#39;, &#39;ROM Loader: Unexpected Command&#39;)
+
+    # Memory interface errors.
+    MEMORY_RANGE_INVALID = (10200, &#39;MemoryRangeInvalid&#39;, &#39;Memory Range Invalid&#39;)
+    MEMORY_READ_FAILED = (10201, &#39;MemoryReadFailed&#39;, &#39;Memory Read Failed&#39;)
+    MEMORY_WRITE_FAILED = (10202, &#39;MemoryWriteFailed&#39;, &#39;Memory Write Failed&#39;)
+    MEMORY_CUMULATIVE_WRITE = (10203, &#39;MemoryCumulativeWrite&#39;, &#39;Memory Cumulative Write&#39;)
+    MEMORY_NOT_CONFIGURED = (10205, &#39;MemoryNotConfigured&#39;, &#39;Memory Not Configured&#39;)
+
+    # Property store errors.
+    UNKNOWN_PROPERTY = (10300, &#39;UnknownProperty&#39;, &#39;Unknown Property&#39;)
+    READ_ONLY_PROPERTY = (10301, &#39;ReadOnlyProperty&#39;, &#39;Read Only Property&#39;)
+    INVALID_PROPERTY_VALUE = (10302, &#39;InvalidPropertyValue&#39;, &#39;Invalid Property Value&#39;)
+
+    # Property store errors.
+    APP_CRC_CHECK_PASSED = (10400, &#39;AppCrcCheckPassed&#39;, &#39;Application CRC Check: Passed&#39;)
+    APP_CRC_CHECK_FAILED = (10401, &#39;AppCrcCheckFailed&#39;, &#39;Application: CRC Check: Failed&#39;)
+    APP_CRC_CHECK_INACTIVE = (10402, &#39;AppCrcCheckInactive&#39;, &#39;Application CRC Check: Inactive&#39;)
+    APP_CRC_CHECK_INVALID = (10403, &#39;AppCrcCheckInvalid&#39;, &#39;Application CRC Check: Invalid&#39;)
+    APP_CRC_CHECK_OUT_OF_RANGE = (10404, &#39;AppCrcCheckOutOfRange&#39;, &#39;Application CRC Check: Out Of Range&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.StatusCode.ABORT_DATA_PHASE"><code class="name">var <span class="ident">ABORT_DATA_PHASE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.APP_CRC_CHECK_FAILED"><code class="name">var <span class="ident">APP_CRC_CHECK_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.APP_CRC_CHECK_INACTIVE"><code class="name">var <span class="ident">APP_CRC_CHECK_INACTIVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.APP_CRC_CHECK_INVALID"><code class="name">var <span class="ident">APP_CRC_CHECK_INVALID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.APP_CRC_CHECK_OUT_OF_RANGE"><code class="name">var <span class="ident">APP_CRC_CHECK_OUT_OF_RANGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.APP_CRC_CHECK_PASSED"><code class="name">var <span class="ident">APP_CRC_CHECK_PASSED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FAIL"><code class="name">var <span class="ident">FAIL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_ACCESS_ERROR"><code class="name">var <span class="ident">FLASH_ACCESS_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_ADDRESS_ERROR"><code class="name">var <span class="ident">FLASH_ADDRESS_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_ALIGNMENT_ERROR"><code class="name">var <span class="ident">FLASH_ALIGNMENT_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_COMMAND_FAILURE"><code class="name">var <span class="ident">FLASH_COMMAND_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_COMMAND_NOT_SUPPORTED"><code class="name">var <span class="ident">FLASH_COMMAND_NOT_SUPPORTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_EXEC_IN_RAM_NOT_READY"><code class="name">var <span class="ident">FLASH_EXEC_IN_RAM_NOT_READY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_OUT_OF_DATE_CFPA_PAGE"><code class="name">var <span class="ident">FLASH_OUT_OF_DATE_CFPA_PAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_PROTECTION_VIOLATION"><code class="name">var <span class="ident">FLASH_PROTECTION_VIOLATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_REGION_EXECUTE_ONLY"><code class="name">var <span class="ident">FLASH_REGION_EXECUTE_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_SIZE_ERROR"><code class="name">var <span class="ident">FLASH_SIZE_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.FLASH_UNKNOWN_PROPERTY"><code class="name">var <span class="ident">FLASH_UNKNOWN_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.I2C_ARBITRATION_LOST"><code class="name">var <span class="ident">I2C_ARBITRATION_LOST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.I2C_SLAVE_RX_OVERRUN"><code class="name">var <span class="ident">I2C_SLAVE_RX_OVERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.I2C_SLAVE_TX_UNDERRUN"><code class="name">var <span class="ident">I2C_SLAVE_TX_UNDERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.INVALID_ARGUMENT"><code class="name">var <span class="ident">INVALID_ARGUMENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.INVALID_PROPERTY_VALUE"><code class="name">var <span class="ident">INVALID_PROPERTY_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.MEMORY_CUMULATIVE_WRITE"><code class="name">var <span class="ident">MEMORY_CUMULATIVE_WRITE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.MEMORY_NOT_CONFIGURED"><code class="name">var <span class="ident">MEMORY_NOT_CONFIGURED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.MEMORY_RANGE_INVALID"><code class="name">var <span class="ident">MEMORY_RANGE_INVALID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.MEMORY_READ_FAILED"><code class="name">var <span class="ident">MEMORY_READ_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.MEMORY_WRITE_FAILED"><code class="name">var <span class="ident">MEMORY_WRITE_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.NO_RESPONSE"><code class="name">var <span class="ident">NO_RESPONSE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.NO_RESPONSE_EXPECTED"><code class="name">var <span class="ident">NO_RESPONSE_EXPECTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.NO_TRANSFER_IN_PROGRESS"><code class="name">var <span class="ident">NO_TRANSFER_IN_PROGRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.OTFAD_INVALID_KEY"><code class="name">var <span class="ident">OTFAD_INVALID_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.OTFAD_INVALID_KEY_BLOB"><code class="name">var <span class="ident">OTFAD_INVALID_KEY_BLOB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.OTFAD_LOGICALLY_DISABLED"><code class="name">var <span class="ident">OTFAD_LOGICALLY_DISABLED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.OTFAD_SECURITY_VIOLATION"><code class="name">var <span class="ident">OTFAD_SECURITY_VIOLATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.OUT_OF_RANGE"><code class="name">var <span class="ident">OUT_OF_RANGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.PING_ERROR"><code class="name">var <span class="ident">PING_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_COMMAND_NOT_SUPPORTED"><code class="name">var <span class="ident">QSPI_COMMAND_NOT_SUPPORTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_COMMAND_TIMEOUT"><code class="name">var <span class="ident">QSPI_COMMAND_TIMEOUT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_FLASH_ADDRESS_ERROR"><code class="name">var <span class="ident">QSPI_FLASH_ADDRESS_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_FLASH_ALIGNMENT_ERROR"><code class="name">var <span class="ident">QSPI_FLASH_ALIGNMENT_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_FLASH_COMMAND_FAILURE"><code class="name">var <span class="ident">QSPI_FLASH_COMMAND_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_FLASH_SIZE_ERROR"><code class="name">var <span class="ident">QSPI_FLASH_SIZE_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_FLASH_UNKNOWN_PROPERTY"><code class="name">var <span class="ident">QSPI_FLASH_UNKNOWN_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_NOT_CONFIGURED"><code class="name">var <span class="ident">QSPI_NOT_CONFIGURED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.QSPI_WRITE_FAILURE"><code class="name">var <span class="ident">QSPI_WRITE_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.READ_ONLY"><code class="name">var <span class="ident">READ_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.READ_ONLY_PROPERTY"><code class="name">var <span class="ident">READ_ONLY_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_CALL_FAILED"><code class="name">var <span class="ident">ROMLDR_CALL_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_CHECKSUM"><code class="name">var <span class="ident">ROMLDR_CHECKSUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_CRC32_ERROR"><code class="name">var <span class="ident">ROMLDR_CRC32_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_DATA_UNDERRUN"><code class="name">var <span class="ident">ROMLDR_DATA_UNDERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_EOF_REACHED"><code class="name">var <span class="ident">ROMLDR_EOF_REACHED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_ID_NOT_FOUND"><code class="name">var <span class="ident">ROMLDR_ID_NOT_FOUND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_INVALID_SECTION_MAC_COUNT"><code class="name">var <span class="ident">ROMLDR_INVALID_SECTION_MAC_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_JUMP_RETURNED"><code class="name">var <span class="ident">ROMLDR_JUMP_RETURNED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_KEY_NOT_FOUND"><code class="name">var <span class="ident">ROMLDR_KEY_NOT_FOUND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_RESET_RETURNED"><code class="name">var <span class="ident">ROMLDR_RESET_RETURNED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_ROLLBACK_BLOCKED"><code class="name">var <span class="ident">ROMLDR_ROLLBACK_BLOCKED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_SECTION_LENGTH"><code class="name">var <span class="ident">ROMLDR_SECTION_LENGTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_SECTION_OVERRUN"><code class="name">var <span class="ident">ROMLDR_SECTION_OVERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_SECURE_ONLY"><code class="name">var <span class="ident">ROMLDR_SECURE_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_SIGNATURE"><code class="name">var <span class="ident">ROMLDR_SIGNATURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_UNENCRYPTED_ONLY"><code class="name">var <span class="ident">ROMLDR_UNENCRYPTED_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_UNEXPECTED_COMMAND"><code class="name">var <span class="ident">ROMLDR_UNEXPECTED_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.ROMLDR_UNKNOWN_COMMAND"><code class="name">var <span class="ident">ROMLDR_UNKNOWN_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.SECURITY_VIOLATION"><code class="name">var <span class="ident">SECURITY_VIOLATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.SPI_SLAVE_RX_OVERRUN"><code class="name">var <span class="ident">SPI_SLAVE_RX_OVERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.SPI_SLAVE_TX_UNDERRUN"><code class="name">var <span class="ident">SPI_SLAVE_TX_UNDERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.SUCCESS"><code class="name">var <span class="ident">SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.TIMEOUT"><code class="name">var <span class="ident">TIMEOUT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.UNKNOWN_COMMAND"><code class="name">var <span class="ident">UNKNOWN_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.UNKNOWN_PROPERTY"><code class="name">var <span class="ident">UNKNOWN_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.StatusCode.UNSUPPORTED_COMMAND"><code class="name">var <span class="ident">UNSUPPORTED_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.Version"><code class="flex name class">
+<span>class <span class="ident">Version</span></span>
+<span>(</span><span>*args: Union[str, int], **kwargs: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot current and target version type.</p>
+<p>Initialize the Version object.</p>
+<p>:raises TypeError: Argument passed the not str not int</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Version:
+    &#34;&#34;&#34;McuBoot current and target version type.&#34;&#34;&#34;
+
+    def __init__(self, *args: Union[str, int], **kwargs: int):
+        &#34;&#34;&#34;Initialize the Version object.
+
+        :raises TypeError: Argument passed the not str not int
+        &#34;&#34;&#34;
+        self.mark = kwargs.get(&#39;mark&#39;, &#39;K&#39;)
+        self.major = kwargs.get(&#39;major&#39;, 0)
+        self.minor = kwargs.get(&#39;minor&#39;, 0)
+        self.fixation = kwargs.get(&#39;fixation&#39;, 0)
+        if args:
+            if isinstance(args[0], int):
+                self.from_int(args[0])
+            elif isinstance(args[0], str):
+                self.from_str(args[0])
+            else:
+                raise TypeError(&#34;Value must be &#39;str&#39; or &#39;int&#39; type !&#34;)
+
+    def __eq__(self, obj: Any) -&gt; bool:
+        return isinstance(obj, Version) and vars(obj) == vars(self)
+
+    def __ne__(self, obj: Any) -&gt; bool:
+        return not self.__eq__(obj)
+
+    def __lt__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &lt; obj.to_int(True)
+
+    def __le__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &lt;= obj.to_int(True)
+
+    def __gt__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &gt; obj.to_int(True)
+
+    def __ge__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &gt;= obj.to_int(True)
+
+    def __str__(self) -&gt; str:
+        return self.to_str()
+
+    def __repr__(self) -&gt; str:
+        return f&#34;&lt;Version(mark={self.mark}, major={self.major}, minor={self.minor}, fixation={self.fixation})&gt;&#34;
+
+    def from_int(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Parse version data from raw int value.
+
+        :param value: Raw integer input
+        &#34;&#34;&#34;
+        mark = (value &gt;&gt; 24) &amp; 0xFF
+        self.mark = chr(mark) if 64 &lt; mark &lt; 91 else None   # type: ignore
+        self.major = (value &gt;&gt; 16) &amp; 0xFF
+        self.minor = (value &gt;&gt; 8) &amp; 0xFF
+        self.fixation = value &amp; 0xFF
+
+    def from_str(self, value: str) -&gt; None:
+        &#34;&#34;&#34;Parse version data from string value.
+
+        :param value: String representation input
+        &#34;&#34;&#34;
+        mark_major, minor, fixation = value.split(&#39;.&#39;)
+        if len(mark_major) &gt; 1 and mark_major[0] not in &#34;0123456789&#34;:
+            self.mark = mark_major[0]
+            self.major = int(mark_major[1:])
+        else:
+            self.major = int(mark_major)
+        self.minor = int(minor)
+        self.fixation = int(fixation)
+
+    def to_int(self, no_mark: bool = False) -&gt; int:
+        &#34;&#34;&#34;Get version value in raw integer format.
+
+        :param no_mark: If True, return value without mark
+        :return: Integer representation
+        &#34;&#34;&#34;
+        value = self.major &lt;&lt; 16 | self.minor &lt;&lt; 8 | self.fixation
+        mark = 0 if no_mark or self.mark is None else ord(self.mark) &lt;&lt; 24  # type: ignore
+        return value | mark
+
+    def to_str(self, no_mark: bool = False) -&gt; str:
+        &#34;&#34;&#34;Get version value in readable string format.
+
+        :param no_mark: If True, return value without mark
+        :return: String representation
+        &#34;&#34;&#34;
+        value = f&#34;{self.major}.{self.minor}.{self.fixation}&#34;
+        mark = &#39;&#39; if no_mark or self.mark is None else self.mark
+        return f&#34;{mark}{value}&#34;</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.Version.from_int"><code class="name flex">
+<span>def <span class="ident">from_int</span></span>(<span>self, value: int) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse version data from raw int value.</p>
+<p>:param value: Raw integer input</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def from_int(self, value: int) -&gt; None:
+    &#34;&#34;&#34;Parse version data from raw int value.
+
+    :param value: Raw integer input
+    &#34;&#34;&#34;
+    mark = (value &gt;&gt; 24) &amp; 0xFF
+    self.mark = chr(mark) if 64 &lt; mark &lt; 91 else None   # type: ignore
+    self.major = (value &gt;&gt; 16) &amp; 0xFF
+    self.minor = (value &gt;&gt; 8) &amp; 0xFF
+    self.fixation = value &amp; 0xFF</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.Version.from_str"><code class="name flex">
+<span>def <span class="ident">from_str</span></span>(<span>self, value: str) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse version data from string value.</p>
+<p>:param value: String representation input</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def from_str(self, value: str) -&gt; None:
+    &#34;&#34;&#34;Parse version data from string value.
+
+    :param value: String representation input
+    &#34;&#34;&#34;
+    mark_major, minor, fixation = value.split(&#39;.&#39;)
+    if len(mark_major) &gt; 1 and mark_major[0] not in &#34;0123456789&#34;:
+        self.mark = mark_major[0]
+        self.major = int(mark_major[1:])
+    else:
+        self.major = int(mark_major)
+    self.minor = int(minor)
+    self.fixation = int(fixation)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.Version.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self, no_mark: bool = False) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get version value in raw integer format.</p>
+<p>:param no_mark: If True, return value without mark
+:return: Integer representation</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self, no_mark: bool = False) -&gt; int:
+    &#34;&#34;&#34;Get version value in raw integer format.
+
+    :param no_mark: If True, return value without mark
+    :return: Integer representation
+    &#34;&#34;&#34;
+    value = self.major &lt;&lt; 16 | self.minor &lt;&lt; 8 | self.fixation
+    mark = 0 if no_mark or self.mark is None else ord(self.mark) &lt;&lt; 24  # type: ignore
+    return value | mark</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.Version.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self, no_mark: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get version value in readable string format.</p>
+<p>:param no_mark: If True, return value without mark
+:return: String representation</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self, no_mark: bool = False) -&gt; str:
+    &#34;&#34;&#34;Get version value in readable string format.
+
+    :param no_mark: If True, return value without mark
+    :return: String representation
+    &#34;&#34;&#34;
+    value = f&#34;{self.major}.{self.minor}.{self.fixation}&#34;
+    mark = &#39;&#39; if no_mark or self.mark is None else self.mark
+    return f&#34;{mark}{value}&#34;</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk" href="../index.html">spsdk</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="spsdk.mboot.commands" href="commands.html">spsdk.mboot.commands</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes" href="error_codes.html">spsdk.mboot.error_codes</a></code></li>
+<li><code><a title="spsdk.mboot.exceptions" href="exceptions.html">spsdk.mboot.exceptions</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces" href="interfaces/index.html">spsdk.mboot.interfaces</a></code></li>
+<li><code><a title="spsdk.mboot.mcuboot" href="mcuboot.html">spsdk.mboot.mcuboot</a></code></li>
+<li><code><a title="spsdk.mboot.memories" href="memories.html">spsdk.mboot.memories</a></code></li>
+<li><code><a title="spsdk.mboot.properties" href="properties.html">spsdk.mboot.properties</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.mboot.parse_property_value" href="#spsdk.mboot.parse_property_value">parse_property_value</a></code></li>
+<li><code><a title="spsdk.mboot.scan_usb" href="#spsdk.mboot.scan_usb">scan_usb</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.mboot.CommandTag" href="#spsdk.mboot.CommandTag">CommandTag</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.CommandTag.CALL" href="#spsdk.mboot.CommandTag.CALL">CALL</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.CONFIGURE_CAN" href="#spsdk.mboot.CommandTag.CONFIGURE_CAN">CONFIGURE_CAN</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.CONFIGURE_I2C" href="#spsdk.mboot.CommandTag.CONFIGURE_I2C">CONFIGURE_I2C</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.CONFIGURE_MEMORY" href="#spsdk.mboot.CommandTag.CONFIGURE_MEMORY">CONFIGURE_MEMORY</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.CONFIGURE_SPI" href="#spsdk.mboot.CommandTag.CONFIGURE_SPI">CONFIGURE_SPI</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.EXECUTE" href="#spsdk.mboot.CommandTag.EXECUTE">EXECUTE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FILL_MEMORY" href="#spsdk.mboot.CommandTag.FILL_MEMORY">FILL_MEMORY</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_ERASE_ALL" href="#spsdk.mboot.CommandTag.FLASH_ERASE_ALL">FLASH_ERASE_ALL</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_ERASE_ALL_UNSECURE" href="#spsdk.mboot.CommandTag.FLASH_ERASE_ALL_UNSECURE">FLASH_ERASE_ALL_UNSECURE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_ERASE_REGION" href="#spsdk.mboot.CommandTag.FLASH_ERASE_REGION">FLASH_ERASE_REGION</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_PROGRAM_ONCE" href="#spsdk.mboot.CommandTag.FLASH_PROGRAM_ONCE">FLASH_PROGRAM_ONCE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_READ_ONCE" href="#spsdk.mboot.CommandTag.FLASH_READ_ONCE">FLASH_READ_ONCE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_READ_RESOURCE" href="#spsdk.mboot.CommandTag.FLASH_READ_RESOURCE">FLASH_READ_RESOURCE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.FLASH_SECURITY_DISABLE" href="#spsdk.mboot.CommandTag.FLASH_SECURITY_DISABLE">FLASH_SECURITY_DISABLE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.GENERATE_KEY_BLOB" href="#spsdk.mboot.CommandTag.GENERATE_KEY_BLOB">GENERATE_KEY_BLOB</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.GET_PROPERTY" href="#spsdk.mboot.CommandTag.GET_PROPERTY">GET_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.KEY_PROVISIONING" href="#spsdk.mboot.CommandTag.KEY_PROVISIONING">KEY_PROVISIONING</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.READ_MEMORY" href="#spsdk.mboot.CommandTag.READ_MEMORY">READ_MEMORY</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.RECEIVE_SB_FILE" href="#spsdk.mboot.CommandTag.RECEIVE_SB_FILE">RECEIVE_SB_FILE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.RELIABLE_UPDATE" href="#spsdk.mboot.CommandTag.RELIABLE_UPDATE">RELIABLE_UPDATE</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.RESET" href="#spsdk.mboot.CommandTag.RESET">RESET</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.SET_PROPERTY" href="#spsdk.mboot.CommandTag.SET_PROPERTY">SET_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.CommandTag.WRITE_MEMORY" href="#spsdk.mboot.CommandTag.WRITE_MEMORY">WRITE_MEMORY</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.ExtMemId" href="#spsdk.mboot.ExtMemId">ExtMemId</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.mboot.ExtMemId.FLASH_EXEC_ONLY" href="#spsdk.mboot.ExtMemId.FLASH_EXEC_ONLY">FLASH_EXEC_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.FLEX_SPI_NOR" href="#spsdk.mboot.ExtMemId.FLEX_SPI_NOR">FLEX_SPI_NOR</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.I2C_NOR_EEPROM" href="#spsdk.mboot.ExtMemId.I2C_NOR_EEPROM">I2C_NOR_EEPROM</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.IFR0" href="#spsdk.mboot.ExtMemId.IFR0">IFR0</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.MMC_CARD" href="#spsdk.mboot.ExtMemId.MMC_CARD">MMC_CARD</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.QUAD_SPI0" href="#spsdk.mboot.ExtMemId.QUAD_SPI0">QUAD_SPI0</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.SD_CARD" href="#spsdk.mboot.ExtMemId.SD_CARD">SD_CARD</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.SEMC_NAND" href="#spsdk.mboot.ExtMemId.SEMC_NAND">SEMC_NAND</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.SEMC_NOR" href="#spsdk.mboot.ExtMemId.SEMC_NOR">SEMC_NOR</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.SPIFI_NOR" href="#spsdk.mboot.ExtMemId.SPIFI_NOR">SPIFI_NOR</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.SPI_NAND" href="#spsdk.mboot.ExtMemId.SPI_NAND">SPI_NAND</a></code></li>
+<li><code><a title="spsdk.mboot.ExtMemId.SPI_NOR_EEPROM" href="#spsdk.mboot.ExtMemId.SPI_NOR_EEPROM">SPI_NOR_EEPROM</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.KeyProvUserKeyType" href="#spsdk.mboot.KeyProvUserKeyType">KeyProvUserKeyType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.OTFADKEK" href="#spsdk.mboot.KeyProvUserKeyType.OTFADKEK">OTFADKEK</a></code></li>
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_0" href="#spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_0">PRINCE_REGION_0</a></code></li>
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_1" href="#spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_1">PRINCE_REGION_1</a></code></li>
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_2" href="#spsdk.mboot.KeyProvUserKeyType.PRINCE_REGION_2">PRINCE_REGION_2</a></code></li>
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.SBKEK" href="#spsdk.mboot.KeyProvUserKeyType.SBKEK">SBKEK</a></code></li>
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.UDS" href="#spsdk.mboot.KeyProvUserKeyType.UDS">UDS</a></code></li>
+<li><code><a title="spsdk.mboot.KeyProvUserKeyType.USERKEK" href="#spsdk.mboot.KeyProvUserKeyType.USERKEK">USERKEK</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.McuBoot" href="#spsdk.mboot.McuBoot">McuBoot</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.McuBoot.call" href="#spsdk.mboot.McuBoot.call">call</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.close" href="#spsdk.mboot.McuBoot.close">close</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.configure_memory" href="#spsdk.mboot.McuBoot.configure_memory">configure_memory</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.efuse_program_once" href="#spsdk.mboot.McuBoot.efuse_program_once">efuse_program_once</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.efuse_read_once" href="#spsdk.mboot.McuBoot.efuse_read_once">efuse_read_once</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.execute" href="#spsdk.mboot.McuBoot.execute">execute</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.fill_memory" href="#spsdk.mboot.McuBoot.fill_memory">fill_memory</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_erase_all" href="#spsdk.mboot.McuBoot.flash_erase_all">flash_erase_all</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_erase_all_unsecure" href="#spsdk.mboot.McuBoot.flash_erase_all_unsecure">flash_erase_all_unsecure</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_erase_region" href="#spsdk.mboot.McuBoot.flash_erase_region">flash_erase_region</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_program_once" href="#spsdk.mboot.McuBoot.flash_program_once">flash_program_once</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_read_once" href="#spsdk.mboot.McuBoot.flash_read_once">flash_read_once</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_read_resource" href="#spsdk.mboot.McuBoot.flash_read_resource">flash_read_resource</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.flash_security_disable" href="#spsdk.mboot.McuBoot.flash_security_disable">flash_security_disable</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.generate_key_blob" href="#spsdk.mboot.McuBoot.generate_key_blob">generate_key_blob</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.get_memory_list" href="#spsdk.mboot.McuBoot.get_memory_list">get_memory_list</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.get_property" href="#spsdk.mboot.McuBoot.get_property">get_property</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.get_property_list" href="#spsdk.mboot.McuBoot.get_property_list">get_property_list</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.is_opened" href="#spsdk.mboot.McuBoot.is_opened">is_opened</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_enroll" href="#spsdk.mboot.McuBoot.kp_enroll">kp_enroll</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_read_key_store" href="#spsdk.mboot.McuBoot.kp_read_key_store">kp_read_key_store</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_read_nonvolatile" href="#spsdk.mboot.McuBoot.kp_read_nonvolatile">kp_read_nonvolatile</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_set_intrinsic_key" href="#spsdk.mboot.McuBoot.kp_set_intrinsic_key">kp_set_intrinsic_key</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_set_user_key" href="#spsdk.mboot.McuBoot.kp_set_user_key">kp_set_user_key</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_write_key_store" href="#spsdk.mboot.McuBoot.kp_write_key_store">kp_write_key_store</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.kp_write_nonvolatile" href="#spsdk.mboot.McuBoot.kp_write_nonvolatile">kp_write_nonvolatile</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.open" href="#spsdk.mboot.McuBoot.open">open</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.read_memory" href="#spsdk.mboot.McuBoot.read_memory">read_memory</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.receive_sb_file" href="#spsdk.mboot.McuBoot.receive_sb_file">receive_sb_file</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.reliable_update" href="#spsdk.mboot.McuBoot.reliable_update">reliable_update</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.reset" href="#spsdk.mboot.McuBoot.reset">reset</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.set_property" href="#spsdk.mboot.McuBoot.set_property">set_property</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.status_code" href="#spsdk.mboot.McuBoot.status_code">status_code</a></code></li>
+<li><code><a title="spsdk.mboot.McuBoot.write_memory" href="#spsdk.mboot.McuBoot.write_memory">write_memory</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.McuBootCommandError" href="#spsdk.mboot.McuBootCommandError">McuBootCommandError</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.McuBootCommandError.fmt" href="#spsdk.mboot.McuBootCommandError.fmt">fmt</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.McuBootConnectionError" href="#spsdk.mboot.McuBootConnectionError">McuBootConnectionError</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.McuBootConnectionError.fmt" href="#spsdk.mboot.McuBootConnectionError.fmt">fmt</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.McuBootError" href="#spsdk.mboot.McuBootError">McuBootError</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.McuBootError.fmt" href="#spsdk.mboot.McuBootError.fmt">fmt</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.PeripheryTag" href="#spsdk.mboot.PeripheryTag">PeripheryTag</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.mboot.PeripheryTag.CAN" href="#spsdk.mboot.PeripheryTag.CAN">CAN</a></code></li>
+<li><code><a title="spsdk.mboot.PeripheryTag.I2C_SLAVE" href="#spsdk.mboot.PeripheryTag.I2C_SLAVE">I2C_SLAVE</a></code></li>
+<li><code><a title="spsdk.mboot.PeripheryTag.SPI_SLAVE" href="#spsdk.mboot.PeripheryTag.SPI_SLAVE">SPI_SLAVE</a></code></li>
+<li><code><a title="spsdk.mboot.PeripheryTag.UART" href="#spsdk.mboot.PeripheryTag.UART">UART</a></code></li>
+<li><code><a title="spsdk.mboot.PeripheryTag.USB_CDC" href="#spsdk.mboot.PeripheryTag.USB_CDC">USB_CDC</a></code></li>
+<li><code><a title="spsdk.mboot.PeripheryTag.USB_DFU" href="#spsdk.mboot.PeripheryTag.USB_DFU">USB_DFU</a></code></li>
+<li><code><a title="spsdk.mboot.PeripheryTag.USB_HID" href="#spsdk.mboot.PeripheryTag.USB_HID">USB_HID</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.PropertyTag" href="#spsdk.mboot.PropertyTag">PropertyTag</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.PropertyTag.AVAILABLE_COMMANDS" href="#spsdk.mboot.PropertyTag.AVAILABLE_COMMANDS">AVAILABLE_COMMANDS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.AVAILABLE_PERIPHERALS" href="#spsdk.mboot.PropertyTag.AVAILABLE_PERIPHERALS">AVAILABLE_PERIPHERALS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.CRC_CHECK_STATUS" href="#spsdk.mboot.PropertyTag.CRC_CHECK_STATUS">CRC_CHECK_STATUS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.CURRENT_VERSION" href="#spsdk.mboot.PropertyTag.CURRENT_VERSION">CURRENT_VERSION</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES" href="#spsdk.mboot.PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES">EXTERNAL_MEMORY_ATTRIBUTES</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_ACCESS_SEGMENT_COUNT" href="#spsdk.mboot.PropertyTag.FLASH_ACCESS_SEGMENT_COUNT">FLASH_ACCESS_SEGMENT_COUNT</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_ACCESS_SEGMENT_SIZE" href="#spsdk.mboot.PropertyTag.FLASH_ACCESS_SEGMENT_SIZE">FLASH_ACCESS_SEGMENT_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_BLOCK_COUNT" href="#spsdk.mboot.PropertyTag.FLASH_BLOCK_COUNT">FLASH_BLOCK_COUNT</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_FAC_SUPPORT" href="#spsdk.mboot.PropertyTag.FLASH_FAC_SUPPORT">FLASH_FAC_SUPPORT</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_PAGE_SIZE" href="#spsdk.mboot.PropertyTag.FLASH_PAGE_SIZE">FLASH_PAGE_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_READ_MARGIN" href="#spsdk.mboot.PropertyTag.FLASH_READ_MARGIN">FLASH_READ_MARGIN</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_SECTOR_SIZE" href="#spsdk.mboot.PropertyTag.FLASH_SECTOR_SIZE">FLASH_SECTOR_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_SECURITY_STATE" href="#spsdk.mboot.PropertyTag.FLASH_SECURITY_STATE">FLASH_SECURITY_STATE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_SIZE" href="#spsdk.mboot.PropertyTag.FLASH_SIZE">FLASH_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.FLASH_START_ADDRESS" href="#spsdk.mboot.PropertyTag.FLASH_START_ADDRESS">FLASH_START_ADDRESS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.IRQ_NOTIFIER_PIN" href="#spsdk.mboot.PropertyTag.IRQ_NOTIFIER_PIN">IRQ_NOTIFIER_PIN</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.LAST_ERROR" href="#spsdk.mboot.PropertyTag.LAST_ERROR">LAST_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.MAX_PACKET_SIZE" href="#spsdk.mboot.PropertyTag.MAX_PACKET_SIZE">MAX_PACKET_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.PFR_KEYSTORE_UPDATE_OPT" href="#spsdk.mboot.PropertyTag.PFR_KEYSTORE_UPDATE_OPT">PFR_KEYSTORE_UPDATE_OPT</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.QSPI_INIT_STATUS" href="#spsdk.mboot.PropertyTag.QSPI_INIT_STATUS">QSPI_INIT_STATUS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.RAM_SIZE" href="#spsdk.mboot.PropertyTag.RAM_SIZE">RAM_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.RAM_START_ADDRESS" href="#spsdk.mboot.PropertyTag.RAM_START_ADDRESS">RAM_START_ADDRESS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.RELIABLE_UPDATE_STATUS" href="#spsdk.mboot.PropertyTag.RELIABLE_UPDATE_STATUS">RELIABLE_UPDATE_STATUS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.RESERVED_REGIONS" href="#spsdk.mboot.PropertyTag.RESERVED_REGIONS">RESERVED_REGIONS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.SYSTEM_DEVICE_IDENT" href="#spsdk.mboot.PropertyTag.SYSTEM_DEVICE_IDENT">SYSTEM_DEVICE_IDENT</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.TARGET_VERSION" href="#spsdk.mboot.PropertyTag.TARGET_VERSION">TARGET_VERSION</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.UNIQUE_DEVICE_IDENT" href="#spsdk.mboot.PropertyTag.UNIQUE_DEVICE_IDENT">UNIQUE_DEVICE_IDENT</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.VALIDATE_REGIONS" href="#spsdk.mboot.PropertyTag.VALIDATE_REGIONS">VALIDATE_REGIONS</a></code></li>
+<li><code><a title="spsdk.mboot.PropertyTag.VERIFY_WRITES" href="#spsdk.mboot.PropertyTag.VERIFY_WRITES">VERIFY_WRITES</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.StatusCode" href="#spsdk.mboot.StatusCode">StatusCode</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.StatusCode.ABORT_DATA_PHASE" href="#spsdk.mboot.StatusCode.ABORT_DATA_PHASE">ABORT_DATA_PHASE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.APP_CRC_CHECK_FAILED" href="#spsdk.mboot.StatusCode.APP_CRC_CHECK_FAILED">APP_CRC_CHECK_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.APP_CRC_CHECK_INACTIVE" href="#spsdk.mboot.StatusCode.APP_CRC_CHECK_INACTIVE">APP_CRC_CHECK_INACTIVE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.APP_CRC_CHECK_INVALID" href="#spsdk.mboot.StatusCode.APP_CRC_CHECK_INVALID">APP_CRC_CHECK_INVALID</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.APP_CRC_CHECK_OUT_OF_RANGE" href="#spsdk.mboot.StatusCode.APP_CRC_CHECK_OUT_OF_RANGE">APP_CRC_CHECK_OUT_OF_RANGE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.APP_CRC_CHECK_PASSED" href="#spsdk.mboot.StatusCode.APP_CRC_CHECK_PASSED">APP_CRC_CHECK_PASSED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FAIL" href="#spsdk.mboot.StatusCode.FAIL">FAIL</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_ACCESS_ERROR" href="#spsdk.mboot.StatusCode.FLASH_ACCESS_ERROR">FLASH_ACCESS_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_ADDRESS_ERROR" href="#spsdk.mboot.StatusCode.FLASH_ADDRESS_ERROR">FLASH_ADDRESS_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_ALIGNMENT_ERROR" href="#spsdk.mboot.StatusCode.FLASH_ALIGNMENT_ERROR">FLASH_ALIGNMENT_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_COMMAND_FAILURE" href="#spsdk.mboot.StatusCode.FLASH_COMMAND_FAILURE">FLASH_COMMAND_FAILURE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_COMMAND_NOT_SUPPORTED" href="#spsdk.mboot.StatusCode.FLASH_COMMAND_NOT_SUPPORTED">FLASH_COMMAND_NOT_SUPPORTED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_EXEC_IN_RAM_NOT_READY" href="#spsdk.mboot.StatusCode.FLASH_EXEC_IN_RAM_NOT_READY">FLASH_EXEC_IN_RAM_NOT_READY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_OUT_OF_DATE_CFPA_PAGE" href="#spsdk.mboot.StatusCode.FLASH_OUT_OF_DATE_CFPA_PAGE">FLASH_OUT_OF_DATE_CFPA_PAGE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_PROTECTION_VIOLATION" href="#spsdk.mboot.StatusCode.FLASH_PROTECTION_VIOLATION">FLASH_PROTECTION_VIOLATION</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_REGION_EXECUTE_ONLY" href="#spsdk.mboot.StatusCode.FLASH_REGION_EXECUTE_ONLY">FLASH_REGION_EXECUTE_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_SIZE_ERROR" href="#spsdk.mboot.StatusCode.FLASH_SIZE_ERROR">FLASH_SIZE_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.FLASH_UNKNOWN_PROPERTY" href="#spsdk.mboot.StatusCode.FLASH_UNKNOWN_PROPERTY">FLASH_UNKNOWN_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.I2C_ARBITRATION_LOST" href="#spsdk.mboot.StatusCode.I2C_ARBITRATION_LOST">I2C_ARBITRATION_LOST</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.I2C_SLAVE_RX_OVERRUN" href="#spsdk.mboot.StatusCode.I2C_SLAVE_RX_OVERRUN">I2C_SLAVE_RX_OVERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.I2C_SLAVE_TX_UNDERRUN" href="#spsdk.mboot.StatusCode.I2C_SLAVE_TX_UNDERRUN">I2C_SLAVE_TX_UNDERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.INVALID_ARGUMENT" href="#spsdk.mboot.StatusCode.INVALID_ARGUMENT">INVALID_ARGUMENT</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.INVALID_PROPERTY_VALUE" href="#spsdk.mboot.StatusCode.INVALID_PROPERTY_VALUE">INVALID_PROPERTY_VALUE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.MEMORY_CUMULATIVE_WRITE" href="#spsdk.mboot.StatusCode.MEMORY_CUMULATIVE_WRITE">MEMORY_CUMULATIVE_WRITE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.MEMORY_NOT_CONFIGURED" href="#spsdk.mboot.StatusCode.MEMORY_NOT_CONFIGURED">MEMORY_NOT_CONFIGURED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.MEMORY_RANGE_INVALID" href="#spsdk.mboot.StatusCode.MEMORY_RANGE_INVALID">MEMORY_RANGE_INVALID</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.MEMORY_READ_FAILED" href="#spsdk.mboot.StatusCode.MEMORY_READ_FAILED">MEMORY_READ_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.MEMORY_WRITE_FAILED" href="#spsdk.mboot.StatusCode.MEMORY_WRITE_FAILED">MEMORY_WRITE_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.NO_RESPONSE" href="#spsdk.mboot.StatusCode.NO_RESPONSE">NO_RESPONSE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.NO_RESPONSE_EXPECTED" href="#spsdk.mboot.StatusCode.NO_RESPONSE_EXPECTED">NO_RESPONSE_EXPECTED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.NO_TRANSFER_IN_PROGRESS" href="#spsdk.mboot.StatusCode.NO_TRANSFER_IN_PROGRESS">NO_TRANSFER_IN_PROGRESS</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.OTFAD_INVALID_KEY" href="#spsdk.mboot.StatusCode.OTFAD_INVALID_KEY">OTFAD_INVALID_KEY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.OTFAD_INVALID_KEY_BLOB" href="#spsdk.mboot.StatusCode.OTFAD_INVALID_KEY_BLOB">OTFAD_INVALID_KEY_BLOB</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.OTFAD_LOGICALLY_DISABLED" href="#spsdk.mboot.StatusCode.OTFAD_LOGICALLY_DISABLED">OTFAD_LOGICALLY_DISABLED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.OTFAD_SECURITY_VIOLATION" href="#spsdk.mboot.StatusCode.OTFAD_SECURITY_VIOLATION">OTFAD_SECURITY_VIOLATION</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.OUT_OF_RANGE" href="#spsdk.mboot.StatusCode.OUT_OF_RANGE">OUT_OF_RANGE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.PING_ERROR" href="#spsdk.mboot.StatusCode.PING_ERROR">PING_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_COMMAND_NOT_SUPPORTED" href="#spsdk.mboot.StatusCode.QSPI_COMMAND_NOT_SUPPORTED">QSPI_COMMAND_NOT_SUPPORTED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_COMMAND_TIMEOUT" href="#spsdk.mboot.StatusCode.QSPI_COMMAND_TIMEOUT">QSPI_COMMAND_TIMEOUT</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_FLASH_ADDRESS_ERROR" href="#spsdk.mboot.StatusCode.QSPI_FLASH_ADDRESS_ERROR">QSPI_FLASH_ADDRESS_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_FLASH_ALIGNMENT_ERROR" href="#spsdk.mboot.StatusCode.QSPI_FLASH_ALIGNMENT_ERROR">QSPI_FLASH_ALIGNMENT_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_FLASH_COMMAND_FAILURE" href="#spsdk.mboot.StatusCode.QSPI_FLASH_COMMAND_FAILURE">QSPI_FLASH_COMMAND_FAILURE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_FLASH_SIZE_ERROR" href="#spsdk.mboot.StatusCode.QSPI_FLASH_SIZE_ERROR">QSPI_FLASH_SIZE_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_FLASH_UNKNOWN_PROPERTY" href="#spsdk.mboot.StatusCode.QSPI_FLASH_UNKNOWN_PROPERTY">QSPI_FLASH_UNKNOWN_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_NOT_CONFIGURED" href="#spsdk.mboot.StatusCode.QSPI_NOT_CONFIGURED">QSPI_NOT_CONFIGURED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.QSPI_WRITE_FAILURE" href="#spsdk.mboot.StatusCode.QSPI_WRITE_FAILURE">QSPI_WRITE_FAILURE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.READ_ONLY" href="#spsdk.mboot.StatusCode.READ_ONLY">READ_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.READ_ONLY_PROPERTY" href="#spsdk.mboot.StatusCode.READ_ONLY_PROPERTY">READ_ONLY_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_CALL_FAILED" href="#spsdk.mboot.StatusCode.ROMLDR_CALL_FAILED">ROMLDR_CALL_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_CHECKSUM" href="#spsdk.mboot.StatusCode.ROMLDR_CHECKSUM">ROMLDR_CHECKSUM</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_CRC32_ERROR" href="#spsdk.mboot.StatusCode.ROMLDR_CRC32_ERROR">ROMLDR_CRC32_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_DATA_UNDERRUN" href="#spsdk.mboot.StatusCode.ROMLDR_DATA_UNDERRUN">ROMLDR_DATA_UNDERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_EOF_REACHED" href="#spsdk.mboot.StatusCode.ROMLDR_EOF_REACHED">ROMLDR_EOF_REACHED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_ID_NOT_FOUND" href="#spsdk.mboot.StatusCode.ROMLDR_ID_NOT_FOUND">ROMLDR_ID_NOT_FOUND</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_INVALID_SECTION_MAC_COUNT" href="#spsdk.mboot.StatusCode.ROMLDR_INVALID_SECTION_MAC_COUNT">ROMLDR_INVALID_SECTION_MAC_COUNT</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_JUMP_RETURNED" href="#spsdk.mboot.StatusCode.ROMLDR_JUMP_RETURNED">ROMLDR_JUMP_RETURNED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_KEY_NOT_FOUND" href="#spsdk.mboot.StatusCode.ROMLDR_KEY_NOT_FOUND">ROMLDR_KEY_NOT_FOUND</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_RESET_RETURNED" href="#spsdk.mboot.StatusCode.ROMLDR_RESET_RETURNED">ROMLDR_RESET_RETURNED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_ROLLBACK_BLOCKED" href="#spsdk.mboot.StatusCode.ROMLDR_ROLLBACK_BLOCKED">ROMLDR_ROLLBACK_BLOCKED</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_SECTION_LENGTH" href="#spsdk.mboot.StatusCode.ROMLDR_SECTION_LENGTH">ROMLDR_SECTION_LENGTH</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_SECTION_OVERRUN" href="#spsdk.mboot.StatusCode.ROMLDR_SECTION_OVERRUN">ROMLDR_SECTION_OVERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_SECURE_ONLY" href="#spsdk.mboot.StatusCode.ROMLDR_SECURE_ONLY">ROMLDR_SECURE_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_SIGNATURE" href="#spsdk.mboot.StatusCode.ROMLDR_SIGNATURE">ROMLDR_SIGNATURE</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_UNENCRYPTED_ONLY" href="#spsdk.mboot.StatusCode.ROMLDR_UNENCRYPTED_ONLY">ROMLDR_UNENCRYPTED_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_UNEXPECTED_COMMAND" href="#spsdk.mboot.StatusCode.ROMLDR_UNEXPECTED_COMMAND">ROMLDR_UNEXPECTED_COMMAND</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.ROMLDR_UNKNOWN_COMMAND" href="#spsdk.mboot.StatusCode.ROMLDR_UNKNOWN_COMMAND">ROMLDR_UNKNOWN_COMMAND</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.SECURITY_VIOLATION" href="#spsdk.mboot.StatusCode.SECURITY_VIOLATION">SECURITY_VIOLATION</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.SPI_SLAVE_RX_OVERRUN" href="#spsdk.mboot.StatusCode.SPI_SLAVE_RX_OVERRUN">SPI_SLAVE_RX_OVERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.SPI_SLAVE_TX_UNDERRUN" href="#spsdk.mboot.StatusCode.SPI_SLAVE_TX_UNDERRUN">SPI_SLAVE_TX_UNDERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.SUCCESS" href="#spsdk.mboot.StatusCode.SUCCESS">SUCCESS</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.TIMEOUT" href="#spsdk.mboot.StatusCode.TIMEOUT">TIMEOUT</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.UNKNOWN_COMMAND" href="#spsdk.mboot.StatusCode.UNKNOWN_COMMAND">UNKNOWN_COMMAND</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.UNKNOWN_PROPERTY" href="#spsdk.mboot.StatusCode.UNKNOWN_PROPERTY">UNKNOWN_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.StatusCode.UNSUPPORTED_COMMAND" href="#spsdk.mboot.StatusCode.UNSUPPORTED_COMMAND">UNSUPPORTED_COMMAND</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.Version" href="#spsdk.mboot.Version">Version</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.Version.from_int" href="#spsdk.mboot.Version.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.mboot.Version.from_str" href="#spsdk.mboot.Version.from_str">from_str</a></code></li>
+<li><code><a title="spsdk.mboot.Version.to_int" href="#spsdk.mboot.Version.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.Version.to_str" href="#spsdk.mboot.Version.to_str">to_str</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

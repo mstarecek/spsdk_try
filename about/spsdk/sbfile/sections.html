@@ -1,0 +1,1287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.sbfile.sections API documentation</title>
+<meta name="description" content="Sections within SBfile." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.sbfile.sections</code></h1>
+</header>
+<section id="section-intro">
+<p>Sections within SBfile.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Sections within SBfile.&#34;&#34;&#34;
+
+from struct import unpack_from
+from typing import Iterator, List, Optional
+
+from spsdk.utils.crypto import CertBlockV2, Counter
+from spsdk.utils.crypto.abstract import BaseClass
+from spsdk.utils.crypto.common import calc_cypher_block_count, crypto_backend
+from .commands import CmdHeader, CmdBaseClass, EnumCmdTag, EnumSectionFlag, parse_command
+
+
+########################################################################################################################
+# Boot Image Sections
+########################################################################################################################
+
+
+class BootSectionV2(BaseClass):
+    &#34;&#34;&#34;Boot Section V2.&#34;&#34;&#34;
+    HMAC_SIZE = 32
+
+    @property
+    def uid(self) -&gt; int:
+        &#34;&#34;&#34;Boot Section UID.&#34;&#34;&#34;
+        return self._header.address
+
+    @uid.setter
+    def uid(self, value: int) -&gt; None:
+        self._header.address = value
+
+    @property
+    def is_last(self) -&gt; bool:
+        &#34;&#34;&#34;Check whether the section is the last one.&#34;&#34;&#34;
+        return self._header.flags &amp; EnumSectionFlag.LAST_SECT != 0
+
+    @is_last.setter
+    def is_last(self, value: bool) -&gt; None:
+        assert isinstance(value, bool)
+        self._header.flags = EnumSectionFlag.BOOTABLE
+        if value:
+            self._header.flags |= EnumSectionFlag.LAST_SECT
+
+    @property
+    def hmac_count(self) -&gt; int:
+        &#34;&#34;&#34;Number of HMACs.&#34;&#34;&#34;
+        raw_size = 0
+        hmac_count = 0
+        for cmd in self._commands:
+            raw_size += cmd.raw_size
+        if raw_size &gt; 0:
+            block_count = (raw_size + 15) // 16
+            hmac_count = self._hmac_count if block_count &gt;= self._hmac_count else block_count
+        return hmac_count
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Raw size of section.&#34;&#34;&#34;
+        size = CmdHeader.SIZE + self.HMAC_SIZE
+        size += self.hmac_count * self.HMAC_SIZE
+        for cmd in self._commands:
+            size += cmd.raw_size
+        if size % 16:
+            size += 16 - (size % 16)
+        return size
+
+    def __init__(self, uid: int, *commands: CmdBaseClass, hmac_count: int = 1) -&gt; None:
+        &#34;&#34;&#34;Initialize BootSectionV2.
+
+        :param uid: section unique identification
+        :param commands: List of commands
+        :param hmac_count: The number of HMAC entries
+        &#34;&#34;&#34;
+        self._header = CmdHeader(EnumCmdTag.TAG, EnumSectionFlag.BOOTABLE)
+        self._commands: List[CmdBaseClass] = []
+        self._hmac_count = hmac_count
+        for cmd in commands:
+            self.append(cmd)
+        # Initialize HMAC count
+        if not isinstance(self._hmac_count, int) or self._hmac_count == 0:
+            self._hmac_count = 1
+        # section UID
+        self.uid = uid
+
+    def __str__(self) -&gt; str:
+        pass
+
+    def __len__(self) -&gt; int:
+        return len(self._commands)
+
+    def __getitem__(self, key: int) -&gt; CmdBaseClass:
+        return self._commands[key]
+
+    def __setitem__(self, key: int, value: CmdBaseClass) -&gt; None:
+        self._commands[key] = value
+
+    def __iter__(self) -&gt; Iterator[CmdBaseClass]:
+        return self._commands.__iter__()
+
+    def append(self, cmd: CmdBaseClass) -&gt; None:
+        &#34;&#34;&#34;Add command to section.&#34;&#34;&#34;
+        assert isinstance(cmd, CmdBaseClass)
+        self._commands.append(cmd)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Get object info.&#34;&#34;&#34;
+        nfo = &#34;&#34;
+        for index, cmd in enumerate(self._commands):
+            nfo += f&#34; {index}) {cmd.info()}\n&#34;
+        return nfo
+
+    # pylint: disable=too-many-locals
+    def export(self, dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None,
+               dbg_info: Optional[List[str]] = None) -&gt; bytes:
+        &#34;&#34;&#34;Serialize Boot Section object.
+
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :param dbg_info: Optional[List[str]] optional list to export debug information about content in text format
+        :return: exported bytes
+        :raise Exception: raised when dek, mac, counter have invalid format
+        &#34;&#34;&#34;
+        cmd_dbg_info: Optional[List[str]] = None
+        if dbg_info is not None:
+            dbg_info.append(&#39;[bootable_section]&#39;)
+            cmd_dbg_info = list()
+            cmd_dbg_info.append(&#39;[commands]&#39;)
+        if not isinstance(dek, bytes):
+            raise Exception()
+        if not isinstance(mac, bytes):
+            raise Exception()
+        if not isinstance(counter, Counter):
+            raise Exception()
+        # Export commands
+        commands_data = b&#39;&#39;
+        for cmd in self._commands:
+            cmd_data = cmd.export()
+            commands_data += cmd_data
+            if cmd_dbg_info is not None:
+                cmd_dbg_info.append(f&#39;[command:{type(cmd).__name__}]&#39;)
+                cmd_dbg_info.append(cmd_data.hex())
+        if len(commands_data) % 16:
+            commands_data += b&#39;\x00&#39; * (16 - (len(commands_data) % 16))
+        # Encrypt header
+        self._header.data = self.hmac_count
+        self._header.count = len(commands_data) // 16
+        encrypted_header = crypto_backend().aes_ctr_encrypt(dek, self._header.export(), counter.value)
+        hmac_data = crypto_backend().hmac(mac, encrypted_header)
+        counter.increment(1 + (self.hmac_count + 1) * 2)
+        if dbg_info:
+            dbg_info.append(&#39;[header]&#39;)
+            dbg_info.append(self._header.export().hex())
+            dbg_info.append(&#39;[encrypted_header]&#39;)
+            dbg_info.append(encrypted_header.hex())
+            dbg_info.append(&#39;[hmac]&#39;)
+            dbg_info.append(hmac_data.hex())
+            if cmd_dbg_info:
+                dbg_info.extend(cmd_dbg_info)
+        # Encrypt commands
+        encrypted_commands = b&#39;&#39;
+        for index in range(0, len(commands_data), 16):
+            encrypted_block = crypto_backend().aes_ctr_encrypt(dek, commands_data[index: index + 16], counter.value)
+            encrypted_commands += encrypted_block
+            counter.increment()
+        # Calculate HMAC of commands
+        index = 0
+        hmac_count = self._header.data
+        block_size = (self._header.count // hmac_count) * 16
+        while hmac_count &gt; 0:
+            enc_block = encrypted_commands[index:] if hmac_count == 1 else encrypted_commands[index: index + block_size]
+            hmac_data += crypto_backend().hmac(mac, enc_block)
+            hmac_count -= 1
+            index += len(enc_block)
+        return encrypted_header + hmac_data + encrypted_commands
+
+    # pylint: disable=too-many-locals
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, plain_sect: bool = False,
+              dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; &#39;BootSectionV2&#39;:
+        &#34;&#34;&#34;Parse Boot Section from bytes.
+
+        :param data: Raw data of parsed image
+        :param offset: The offset of input data
+        :param plain_sect: If the sections are not encrypted; It is used for debugging only, not supported by ROM code
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :return: exported bytes
+        :raise Exception: raised when dek, mac, counter have invalid format
+        &#34;&#34;&#34;
+        if not isinstance(dek, bytes):
+            raise Exception()
+        if not isinstance(mac, bytes):
+            raise Exception()
+        if not isinstance(counter, Counter):
+            raise Exception()
+        # Get Header specific data
+        header_encrypted = data[offset: offset + CmdHeader.SIZE]
+        header_hmac_data = data[offset + CmdHeader.SIZE: offset + CmdHeader.SIZE + cls.HMAC_SIZE]
+        offset += CmdHeader.SIZE + cls.HMAC_SIZE
+        # Check header HMAC
+        if header_hmac_data != crypto_backend().hmac(mac, header_encrypted):
+            raise Exception()
+        # Decrypt header
+        header_decrypted = crypto_backend().aes_ctr_decrypt(dek, header_encrypted, counter.value)
+        counter.increment()
+        # Parse header
+        header = CmdHeader.parse(header_decrypted)
+        counter.increment((header.data + 1) * 2)
+        # Get HMAC data
+        hmac_data = data[offset: offset + (cls.HMAC_SIZE * header.data)]
+        offset += cls.HMAC_SIZE * header.data
+        encrypted_commands = data[offset: offset + (header.count * 16)]
+        # Check HMAC
+        hmac_index = 0
+        hmac_count = header.data
+        block_size = (header.count // hmac_count) * 16
+        section_size = header.count * 16
+        while hmac_count &gt; 0:
+            if hmac_count == 1:
+                block_size = section_size
+            hmac_block = crypto_backend().hmac(mac, data[offset: offset + block_size])
+            if hmac_block != hmac_data[hmac_index: hmac_index + cls.HMAC_SIZE]:
+                raise Exception()
+            hmac_count -= 1
+            hmac_index += cls.HMAC_SIZE
+            section_size -= block_size
+            offset += block_size
+        # Decrypt commands
+        decrypted_commands = b&#39;&#39;
+        for hmac_index in range(0, len(encrypted_commands), 16):
+            encr_block = encrypted_commands[hmac_index: hmac_index + 16]
+            decrypted_block = encr_block if plain_sect else crypto_backend().aes_ctr_decrypt(dek, encr_block,
+                                                                                             counter.value)
+            decrypted_commands += decrypted_block
+            counter.increment()
+        # ...
+        cmd_offset = 0
+        obj = cls(header.address, hmac_count=header.data)
+        while cmd_offset &lt; len(decrypted_commands):
+            cmd_obj = parse_command(decrypted_commands, cmd_offset)
+            cmd_offset += cmd_obj.raw_size
+            obj.append(cmd_obj)
+        return obj
+
+
+class CertSectionV2(BaseClass):
+    &#34;&#34;&#34;Certificate Section V2 class.&#34;&#34;&#34;
+    HMAC_SIZE = 32
+    SECT_MARK = unpack_from(&#39;&lt;L&#39;, b&#39;sign&#39;)[0]
+
+    @property
+    def cert_block(self) -&gt; CertBlockV2:
+        &#34;&#34;&#34;Return certification block.&#34;&#34;&#34;
+        return self._cert_block
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Calculate raw size of section.&#34;&#34;&#34;
+        # Section header size
+        size = CmdHeader.SIZE
+        # Header HMAC 32 bytes + Certificate block HMAC 32 bytes
+        size += self.HMAC_SIZE * 2
+        # Certificate block size in bytes
+        size += self.cert_block.raw_size
+        return size
+
+    def __init__(self, cert_block: CertBlockV2):
+        &#34;&#34;&#34;Initialize CertBlockV2.&#34;&#34;&#34;
+        assert isinstance(cert_block, CertBlockV2)
+        self._header = CmdHeader(EnumCmdTag.TAG, EnumSectionFlag.CLEARTEXT | EnumSectionFlag.LAST_SECT)
+        self._header.address = self.SECT_MARK
+        self._header.count = cert_block.raw_size // 16
+        self._header.data = 1
+        self._cert_block = cert_block
+
+    def __str__(self) -&gt; str:
+        return f&#34;CertSectionV2: Length={self._header.count * 16}&#34;
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Get object info.&#34;&#34;&#34;
+        return self.cert_block.info()
+
+    def export(self, dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; bytes:
+        &#34;&#34;&#34;Serialize Certificate Section object.
+
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :return: exported bytes
+        :raise Exception: raised when dek, mac, counter have invalid format
+        &#34;&#34;&#34;
+        if not isinstance(dek, bytes):
+            raise Exception()
+        if not isinstance(mac, bytes):
+            raise Exception()
+        if not isinstance(counter, Counter):
+            raise Exception()
+        # Prepare Header data
+        header_data = self._header.export()
+        header_encrypted = crypto_backend().aes_ctr_encrypt(dek, header_data, counter.value)
+        # counter.increment()
+        # Prepare Certificate Block data
+        body_data = self.cert_block.export()
+        # Prepare HMAC data
+        hmac_data = crypto_backend().hmac(mac, header_encrypted)
+        hmac_data += crypto_backend().hmac(mac, body_data)
+        result = header_encrypted + hmac_data + body_data
+        assert len(result) == self.raw_size
+        return result
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0,
+              dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; &#39;CertSectionV2&#39;:
+        &#34;&#34;&#34;Parse Certificate Section from bytes array.
+
+        :param data: Raw data of parsed image
+        :param offset: The offset of input data
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :return: parsed cert section v2 object
+        :raise AttributeError: raised when dek, mac, counter are not valid
+        :raise Exception: raised when there is invalid header HMAC, TAG, FLAGS, Mark
+        :raise Exception: raised when there is invalid certificate block HMAC
+        &#34;&#34;&#34;
+        if not isinstance(dek, bytes):
+            raise AttributeError()
+        if not isinstance(mac, bytes):
+            raise AttributeError()
+        if not isinstance(counter, Counter):
+            raise AttributeError()
+        index = offset
+        header_encrypted = data[index: index + CmdHeader.SIZE]
+        index += CmdHeader.SIZE
+        header_hmac = data[index: index + cls.HMAC_SIZE]
+        index += cls.HMAC_SIZE
+        cert_block_hmac = data[index: index + cls.HMAC_SIZE]
+        index += cls.HMAC_SIZE
+        if header_hmac != crypto_backend().hmac(mac, header_encrypted):
+            raise Exception(&#34;Invalid Header HMAC&#34;)
+        header_encrypted = crypto_backend().aes_ctr_decrypt(dek, header_encrypted, counter.value)
+        header = CmdHeader.parse(header_encrypted)
+        if header.tag != EnumCmdTag.TAG:
+            raise Exception(f&#34;Invalid Header TAG: 0x{header.tag:02X}&#34;)
+        if header.flags != (EnumSectionFlag.CLEARTEXT | EnumSectionFlag.LAST_SECT):
+            raise Exception(f&#34;Invalid Header FLAGS: 0x{header.flags:02X}&#34;)
+        if header.address != cls.SECT_MARK:
+            raise Exception(f&#34;Invalid Section Mark: 0x{header.address:08X}&#34;)
+        # Parse Certificate Block
+        cert_block = CertBlockV2.parse(data, index)
+        if cert_block_hmac != crypto_backend().hmac(mac, data[index: index + cert_block.raw_size]):
+            raise Exception(&#34;Invalid Certificate Block HMAC&#34;)
+        index += cert_block.raw_size
+        cert_section_obj = cls(cert_block)
+        counter.increment(calc_cypher_block_count(index - offset))
+        return cert_section_obj</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.sbfile.sections.BootSectionV2"><code class="flex name class">
+<span>class <span class="ident">BootSectionV2</span></span>
+<span>(</span><span>uid: int, *commands: <a title="spsdk.sbfile.commands.CmdBaseClass" href="commands.html#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a>, hmac_count: int = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Boot Section V2.</p>
+<p>Initialize BootSectionV2.</p>
+<p>:param uid: section unique identification
+:param commands: List of commands
+:param hmac_count: The number of HMAC entries</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BootSectionV2(BaseClass):
+    &#34;&#34;&#34;Boot Section V2.&#34;&#34;&#34;
+    HMAC_SIZE = 32
+
+    @property
+    def uid(self) -&gt; int:
+        &#34;&#34;&#34;Boot Section UID.&#34;&#34;&#34;
+        return self._header.address
+
+    @uid.setter
+    def uid(self, value: int) -&gt; None:
+        self._header.address = value
+
+    @property
+    def is_last(self) -&gt; bool:
+        &#34;&#34;&#34;Check whether the section is the last one.&#34;&#34;&#34;
+        return self._header.flags &amp; EnumSectionFlag.LAST_SECT != 0
+
+    @is_last.setter
+    def is_last(self, value: bool) -&gt; None:
+        assert isinstance(value, bool)
+        self._header.flags = EnumSectionFlag.BOOTABLE
+        if value:
+            self._header.flags |= EnumSectionFlag.LAST_SECT
+
+    @property
+    def hmac_count(self) -&gt; int:
+        &#34;&#34;&#34;Number of HMACs.&#34;&#34;&#34;
+        raw_size = 0
+        hmac_count = 0
+        for cmd in self._commands:
+            raw_size += cmd.raw_size
+        if raw_size &gt; 0:
+            block_count = (raw_size + 15) // 16
+            hmac_count = self._hmac_count if block_count &gt;= self._hmac_count else block_count
+        return hmac_count
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Raw size of section.&#34;&#34;&#34;
+        size = CmdHeader.SIZE + self.HMAC_SIZE
+        size += self.hmac_count * self.HMAC_SIZE
+        for cmd in self._commands:
+            size += cmd.raw_size
+        if size % 16:
+            size += 16 - (size % 16)
+        return size
+
+    def __init__(self, uid: int, *commands: CmdBaseClass, hmac_count: int = 1) -&gt; None:
+        &#34;&#34;&#34;Initialize BootSectionV2.
+
+        :param uid: section unique identification
+        :param commands: List of commands
+        :param hmac_count: The number of HMAC entries
+        &#34;&#34;&#34;
+        self._header = CmdHeader(EnumCmdTag.TAG, EnumSectionFlag.BOOTABLE)
+        self._commands: List[CmdBaseClass] = []
+        self._hmac_count = hmac_count
+        for cmd in commands:
+            self.append(cmd)
+        # Initialize HMAC count
+        if not isinstance(self._hmac_count, int) or self._hmac_count == 0:
+            self._hmac_count = 1
+        # section UID
+        self.uid = uid
+
+    def __str__(self) -&gt; str:
+        pass
+
+    def __len__(self) -&gt; int:
+        return len(self._commands)
+
+    def __getitem__(self, key: int) -&gt; CmdBaseClass:
+        return self._commands[key]
+
+    def __setitem__(self, key: int, value: CmdBaseClass) -&gt; None:
+        self._commands[key] = value
+
+    def __iter__(self) -&gt; Iterator[CmdBaseClass]:
+        return self._commands.__iter__()
+
+    def append(self, cmd: CmdBaseClass) -&gt; None:
+        &#34;&#34;&#34;Add command to section.&#34;&#34;&#34;
+        assert isinstance(cmd, CmdBaseClass)
+        self._commands.append(cmd)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Get object info.&#34;&#34;&#34;
+        nfo = &#34;&#34;
+        for index, cmd in enumerate(self._commands):
+            nfo += f&#34; {index}) {cmd.info()}\n&#34;
+        return nfo
+
+    # pylint: disable=too-many-locals
+    def export(self, dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None,
+               dbg_info: Optional[List[str]] = None) -&gt; bytes:
+        &#34;&#34;&#34;Serialize Boot Section object.
+
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :param dbg_info: Optional[List[str]] optional list to export debug information about content in text format
+        :return: exported bytes
+        :raise Exception: raised when dek, mac, counter have invalid format
+        &#34;&#34;&#34;
+        cmd_dbg_info: Optional[List[str]] = None
+        if dbg_info is not None:
+            dbg_info.append(&#39;[bootable_section]&#39;)
+            cmd_dbg_info = list()
+            cmd_dbg_info.append(&#39;[commands]&#39;)
+        if not isinstance(dek, bytes):
+            raise Exception()
+        if not isinstance(mac, bytes):
+            raise Exception()
+        if not isinstance(counter, Counter):
+            raise Exception()
+        # Export commands
+        commands_data = b&#39;&#39;
+        for cmd in self._commands:
+            cmd_data = cmd.export()
+            commands_data += cmd_data
+            if cmd_dbg_info is not None:
+                cmd_dbg_info.append(f&#39;[command:{type(cmd).__name__}]&#39;)
+                cmd_dbg_info.append(cmd_data.hex())
+        if len(commands_data) % 16:
+            commands_data += b&#39;\x00&#39; * (16 - (len(commands_data) % 16))
+        # Encrypt header
+        self._header.data = self.hmac_count
+        self._header.count = len(commands_data) // 16
+        encrypted_header = crypto_backend().aes_ctr_encrypt(dek, self._header.export(), counter.value)
+        hmac_data = crypto_backend().hmac(mac, encrypted_header)
+        counter.increment(1 + (self.hmac_count + 1) * 2)
+        if dbg_info:
+            dbg_info.append(&#39;[header]&#39;)
+            dbg_info.append(self._header.export().hex())
+            dbg_info.append(&#39;[encrypted_header]&#39;)
+            dbg_info.append(encrypted_header.hex())
+            dbg_info.append(&#39;[hmac]&#39;)
+            dbg_info.append(hmac_data.hex())
+            if cmd_dbg_info:
+                dbg_info.extend(cmd_dbg_info)
+        # Encrypt commands
+        encrypted_commands = b&#39;&#39;
+        for index in range(0, len(commands_data), 16):
+            encrypted_block = crypto_backend().aes_ctr_encrypt(dek, commands_data[index: index + 16], counter.value)
+            encrypted_commands += encrypted_block
+            counter.increment()
+        # Calculate HMAC of commands
+        index = 0
+        hmac_count = self._header.data
+        block_size = (self._header.count // hmac_count) * 16
+        while hmac_count &gt; 0:
+            enc_block = encrypted_commands[index:] if hmac_count == 1 else encrypted_commands[index: index + block_size]
+            hmac_data += crypto_backend().hmac(mac, enc_block)
+            hmac_count -= 1
+            index += len(enc_block)
+        return encrypted_header + hmac_data + encrypted_commands
+
+    # pylint: disable=too-many-locals
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, plain_sect: bool = False,
+              dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; &#39;BootSectionV2&#39;:
+        &#34;&#34;&#34;Parse Boot Section from bytes.
+
+        :param data: Raw data of parsed image
+        :param offset: The offset of input data
+        :param plain_sect: If the sections are not encrypted; It is used for debugging only, not supported by ROM code
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :return: exported bytes
+        :raise Exception: raised when dek, mac, counter have invalid format
+        &#34;&#34;&#34;
+        if not isinstance(dek, bytes):
+            raise Exception()
+        if not isinstance(mac, bytes):
+            raise Exception()
+        if not isinstance(counter, Counter):
+            raise Exception()
+        # Get Header specific data
+        header_encrypted = data[offset: offset + CmdHeader.SIZE]
+        header_hmac_data = data[offset + CmdHeader.SIZE: offset + CmdHeader.SIZE + cls.HMAC_SIZE]
+        offset += CmdHeader.SIZE + cls.HMAC_SIZE
+        # Check header HMAC
+        if header_hmac_data != crypto_backend().hmac(mac, header_encrypted):
+            raise Exception()
+        # Decrypt header
+        header_decrypted = crypto_backend().aes_ctr_decrypt(dek, header_encrypted, counter.value)
+        counter.increment()
+        # Parse header
+        header = CmdHeader.parse(header_decrypted)
+        counter.increment((header.data + 1) * 2)
+        # Get HMAC data
+        hmac_data = data[offset: offset + (cls.HMAC_SIZE * header.data)]
+        offset += cls.HMAC_SIZE * header.data
+        encrypted_commands = data[offset: offset + (header.count * 16)]
+        # Check HMAC
+        hmac_index = 0
+        hmac_count = header.data
+        block_size = (header.count // hmac_count) * 16
+        section_size = header.count * 16
+        while hmac_count &gt; 0:
+            if hmac_count == 1:
+                block_size = section_size
+            hmac_block = crypto_backend().hmac(mac, data[offset: offset + block_size])
+            if hmac_block != hmac_data[hmac_index: hmac_index + cls.HMAC_SIZE]:
+                raise Exception()
+            hmac_count -= 1
+            hmac_index += cls.HMAC_SIZE
+            section_size -= block_size
+            offset += block_size
+        # Decrypt commands
+        decrypted_commands = b&#39;&#39;
+        for hmac_index in range(0, len(encrypted_commands), 16):
+            encr_block = encrypted_commands[hmac_index: hmac_index + 16]
+            decrypted_block = encr_block if plain_sect else crypto_backend().aes_ctr_decrypt(dek, encr_block,
+                                                                                             counter.value)
+            decrypted_commands += decrypted_block
+            counter.increment()
+        # ...
+        cmd_offset = 0
+        obj = cls(header.address, hmac_count=header.data)
+        while cmd_offset &lt; len(decrypted_commands):
+            cmd_obj = parse_command(decrypted_commands, cmd_offset)
+            cmd_offset += cmd_obj.raw_size
+            obj.append(cmd_obj)
+        return obj</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.BootSectionV2.HMAC_SIZE"><code class="name">var <span class="ident">HMAC_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.BootSectionV2.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0, plain_sect: bool = False, dek: bytes = b'', mac: bytes = b'', counter: Union[<a title="spsdk.utils.crypto.common.Counter" href="../utils/crypto/common.html#spsdk.utils.crypto.common.Counter">Counter</a>, NoneType] = None) ‑> <a title="spsdk.sbfile.sections.BootSectionV2" href="#spsdk.sbfile.sections.BootSectionV2">BootSectionV2</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse Boot Section from bytes.</p>
+<p>:param data: Raw data of parsed image
+:param offset: The offset of input data
+:param plain_sect: If the sections are not encrypted; It is used for debugging only, not supported by ROM code
+:param dek: The DEK value in bytes (required)
+:param mac: The MAC value in bytes (required)
+:param counter: The counter object (required)
+:return: exported bytes
+:raise Exception: raised when dek, mac, counter have invalid format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0, plain_sect: bool = False,
+          dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; &#39;BootSectionV2&#39;:
+    &#34;&#34;&#34;Parse Boot Section from bytes.
+
+    :param data: Raw data of parsed image
+    :param offset: The offset of input data
+    :param plain_sect: If the sections are not encrypted; It is used for debugging only, not supported by ROM code
+    :param dek: The DEK value in bytes (required)
+    :param mac: The MAC value in bytes (required)
+    :param counter: The counter object (required)
+    :return: exported bytes
+    :raise Exception: raised when dek, mac, counter have invalid format
+    &#34;&#34;&#34;
+    if not isinstance(dek, bytes):
+        raise Exception()
+    if not isinstance(mac, bytes):
+        raise Exception()
+    if not isinstance(counter, Counter):
+        raise Exception()
+    # Get Header specific data
+    header_encrypted = data[offset: offset + CmdHeader.SIZE]
+    header_hmac_data = data[offset + CmdHeader.SIZE: offset + CmdHeader.SIZE + cls.HMAC_SIZE]
+    offset += CmdHeader.SIZE + cls.HMAC_SIZE
+    # Check header HMAC
+    if header_hmac_data != crypto_backend().hmac(mac, header_encrypted):
+        raise Exception()
+    # Decrypt header
+    header_decrypted = crypto_backend().aes_ctr_decrypt(dek, header_encrypted, counter.value)
+    counter.increment()
+    # Parse header
+    header = CmdHeader.parse(header_decrypted)
+    counter.increment((header.data + 1) * 2)
+    # Get HMAC data
+    hmac_data = data[offset: offset + (cls.HMAC_SIZE * header.data)]
+    offset += cls.HMAC_SIZE * header.data
+    encrypted_commands = data[offset: offset + (header.count * 16)]
+    # Check HMAC
+    hmac_index = 0
+    hmac_count = header.data
+    block_size = (header.count // hmac_count) * 16
+    section_size = header.count * 16
+    while hmac_count &gt; 0:
+        if hmac_count == 1:
+            block_size = section_size
+        hmac_block = crypto_backend().hmac(mac, data[offset: offset + block_size])
+        if hmac_block != hmac_data[hmac_index: hmac_index + cls.HMAC_SIZE]:
+            raise Exception()
+        hmac_count -= 1
+        hmac_index += cls.HMAC_SIZE
+        section_size -= block_size
+        offset += block_size
+    # Decrypt commands
+    decrypted_commands = b&#39;&#39;
+    for hmac_index in range(0, len(encrypted_commands), 16):
+        encr_block = encrypted_commands[hmac_index: hmac_index + 16]
+        decrypted_block = encr_block if plain_sect else crypto_backend().aes_ctr_decrypt(dek, encr_block,
+                                                                                         counter.value)
+        decrypted_commands += decrypted_block
+        counter.increment()
+    # ...
+    cmd_offset = 0
+    obj = cls(header.address, hmac_count=header.data)
+    while cmd_offset &lt; len(decrypted_commands):
+        cmd_obj = parse_command(decrypted_commands, cmd_offset)
+        cmd_offset += cmd_obj.raw_size
+        obj.append(cmd_obj)
+    return obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.BootSectionV2.hmac_count"><code class="name">var <span class="ident">hmac_count</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Number of HMACs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def hmac_count(self) -&gt; int:
+    &#34;&#34;&#34;Number of HMACs.&#34;&#34;&#34;
+    raw_size = 0
+    hmac_count = 0
+    for cmd in self._commands:
+        raw_size += cmd.raw_size
+    if raw_size &gt; 0:
+        block_count = (raw_size + 15) // 16
+        hmac_count = self._hmac_count if block_count &gt;= self._hmac_count else block_count
+    return hmac_count</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.BootSectionV2.is_last"><code class="name">var <span class="ident">is_last</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Check whether the section is the last one.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def is_last(self) -&gt; bool:
+    &#34;&#34;&#34;Check whether the section is the last one.&#34;&#34;&#34;
+    return self._header.flags &amp; EnumSectionFlag.LAST_SECT != 0</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.BootSectionV2.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Raw size of section.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Raw size of section.&#34;&#34;&#34;
+    size = CmdHeader.SIZE + self.HMAC_SIZE
+    size += self.hmac_count * self.HMAC_SIZE
+    for cmd in self._commands:
+        size += cmd.raw_size
+    if size % 16:
+        size += 16 - (size % 16)
+    return size</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.BootSectionV2.uid"><code class="name">var <span class="ident">uid</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Boot Section UID.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def uid(self) -&gt; int:
+    &#34;&#34;&#34;Boot Section UID.&#34;&#34;&#34;
+    return self._header.address</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.BootSectionV2.append"><code class="name flex">
+<span>def <span class="ident">append</span></span>(<span>self, cmd: <a title="spsdk.sbfile.commands.CmdBaseClass" href="commands.html#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a>) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add command to section.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append(self, cmd: CmdBaseClass) -&gt; None:
+    &#34;&#34;&#34;Add command to section.&#34;&#34;&#34;
+    assert isinstance(cmd, CmdBaseClass)
+    self._commands.append(cmd)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.BootSectionV2.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, dek: bytes = b'', mac: bytes = b'', counter: Union[<a title="spsdk.utils.crypto.common.Counter" href="../utils/crypto/common.html#spsdk.utils.crypto.common.Counter">Counter</a>, NoneType] = None, dbg_info: Union[List[str], NoneType] = None) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Serialize Boot Section object.</p>
+<p>:param dek: The DEK value in bytes (required)
+:param mac: The MAC value in bytes (required)
+:param counter: The counter object (required)
+:param dbg_info: Optional[List[str]] optional list to export debug information about content in text format
+:return: exported bytes
+:raise Exception: raised when dek, mac, counter have invalid format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None,
+           dbg_info: Optional[List[str]] = None) -&gt; bytes:
+    &#34;&#34;&#34;Serialize Boot Section object.
+
+    :param dek: The DEK value in bytes (required)
+    :param mac: The MAC value in bytes (required)
+    :param counter: The counter object (required)
+    :param dbg_info: Optional[List[str]] optional list to export debug information about content in text format
+    :return: exported bytes
+    :raise Exception: raised when dek, mac, counter have invalid format
+    &#34;&#34;&#34;
+    cmd_dbg_info: Optional[List[str]] = None
+    if dbg_info is not None:
+        dbg_info.append(&#39;[bootable_section]&#39;)
+        cmd_dbg_info = list()
+        cmd_dbg_info.append(&#39;[commands]&#39;)
+    if not isinstance(dek, bytes):
+        raise Exception()
+    if not isinstance(mac, bytes):
+        raise Exception()
+    if not isinstance(counter, Counter):
+        raise Exception()
+    # Export commands
+    commands_data = b&#39;&#39;
+    for cmd in self._commands:
+        cmd_data = cmd.export()
+        commands_data += cmd_data
+        if cmd_dbg_info is not None:
+            cmd_dbg_info.append(f&#39;[command:{type(cmd).__name__}]&#39;)
+            cmd_dbg_info.append(cmd_data.hex())
+    if len(commands_data) % 16:
+        commands_data += b&#39;\x00&#39; * (16 - (len(commands_data) % 16))
+    # Encrypt header
+    self._header.data = self.hmac_count
+    self._header.count = len(commands_data) // 16
+    encrypted_header = crypto_backend().aes_ctr_encrypt(dek, self._header.export(), counter.value)
+    hmac_data = crypto_backend().hmac(mac, encrypted_header)
+    counter.increment(1 + (self.hmac_count + 1) * 2)
+    if dbg_info:
+        dbg_info.append(&#39;[header]&#39;)
+        dbg_info.append(self._header.export().hex())
+        dbg_info.append(&#39;[encrypted_header]&#39;)
+        dbg_info.append(encrypted_header.hex())
+        dbg_info.append(&#39;[hmac]&#39;)
+        dbg_info.append(hmac_data.hex())
+        if cmd_dbg_info:
+            dbg_info.extend(cmd_dbg_info)
+    # Encrypt commands
+    encrypted_commands = b&#39;&#39;
+    for index in range(0, len(commands_data), 16):
+        encrypted_block = crypto_backend().aes_ctr_encrypt(dek, commands_data[index: index + 16], counter.value)
+        encrypted_commands += encrypted_block
+        counter.increment()
+    # Calculate HMAC of commands
+    index = 0
+    hmac_count = self._header.data
+    block_size = (self._header.count // hmac_count) * 16
+    while hmac_count &gt; 0:
+        enc_block = encrypted_commands[index:] if hmac_count == 1 else encrypted_commands[index: index + block_size]
+        hmac_data += crypto_backend().hmac(mac, enc_block)
+        hmac_count -= 1
+        index += len(enc_block)
+    return encrypted_header + hmac_data + encrypted_commands</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.BootSectionV2.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get object info.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Get object info.&#34;&#34;&#34;
+    nfo = &#34;&#34;
+    for index, cmd in enumerate(self._commands):
+        nfo += f&#34; {index}) {cmd.info()}\n&#34;
+    return nfo</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.sbfile.sections.CertSectionV2"><code class="flex name class">
+<span>class <span class="ident">CertSectionV2</span></span>
+<span>(</span><span>cert_block: <a title="spsdk.utils.crypto.cert_blocks.CertBlockV2" href="../utils/crypto/cert_blocks.html#spsdk.utils.crypto.cert_blocks.CertBlockV2">CertBlockV2</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Certificate Section V2 class.</p>
+<p>Initialize CertBlockV2.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CertSectionV2(BaseClass):
+    &#34;&#34;&#34;Certificate Section V2 class.&#34;&#34;&#34;
+    HMAC_SIZE = 32
+    SECT_MARK = unpack_from(&#39;&lt;L&#39;, b&#39;sign&#39;)[0]
+
+    @property
+    def cert_block(self) -&gt; CertBlockV2:
+        &#34;&#34;&#34;Return certification block.&#34;&#34;&#34;
+        return self._cert_block
+
+    @property
+    def raw_size(self) -&gt; int:
+        &#34;&#34;&#34;Calculate raw size of section.&#34;&#34;&#34;
+        # Section header size
+        size = CmdHeader.SIZE
+        # Header HMAC 32 bytes + Certificate block HMAC 32 bytes
+        size += self.HMAC_SIZE * 2
+        # Certificate block size in bytes
+        size += self.cert_block.raw_size
+        return size
+
+    def __init__(self, cert_block: CertBlockV2):
+        &#34;&#34;&#34;Initialize CertBlockV2.&#34;&#34;&#34;
+        assert isinstance(cert_block, CertBlockV2)
+        self._header = CmdHeader(EnumCmdTag.TAG, EnumSectionFlag.CLEARTEXT | EnumSectionFlag.LAST_SECT)
+        self._header.address = self.SECT_MARK
+        self._header.count = cert_block.raw_size // 16
+        self._header.data = 1
+        self._cert_block = cert_block
+
+    def __str__(self) -&gt; str:
+        return f&#34;CertSectionV2: Length={self._header.count * 16}&#34;
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Get object info.&#34;&#34;&#34;
+        return self.cert_block.info()
+
+    def export(self, dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; bytes:
+        &#34;&#34;&#34;Serialize Certificate Section object.
+
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :return: exported bytes
+        :raise Exception: raised when dek, mac, counter have invalid format
+        &#34;&#34;&#34;
+        if not isinstance(dek, bytes):
+            raise Exception()
+        if not isinstance(mac, bytes):
+            raise Exception()
+        if not isinstance(counter, Counter):
+            raise Exception()
+        # Prepare Header data
+        header_data = self._header.export()
+        header_encrypted = crypto_backend().aes_ctr_encrypt(dek, header_data, counter.value)
+        # counter.increment()
+        # Prepare Certificate Block data
+        body_data = self.cert_block.export()
+        # Prepare HMAC data
+        hmac_data = crypto_backend().hmac(mac, header_encrypted)
+        hmac_data += crypto_backend().hmac(mac, body_data)
+        result = header_encrypted + hmac_data + body_data
+        assert len(result) == self.raw_size
+        return result
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0,
+              dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; &#39;CertSectionV2&#39;:
+        &#34;&#34;&#34;Parse Certificate Section from bytes array.
+
+        :param data: Raw data of parsed image
+        :param offset: The offset of input data
+        :param dek: The DEK value in bytes (required)
+        :param mac: The MAC value in bytes (required)
+        :param counter: The counter object (required)
+        :return: parsed cert section v2 object
+        :raise AttributeError: raised when dek, mac, counter are not valid
+        :raise Exception: raised when there is invalid header HMAC, TAG, FLAGS, Mark
+        :raise Exception: raised when there is invalid certificate block HMAC
+        &#34;&#34;&#34;
+        if not isinstance(dek, bytes):
+            raise AttributeError()
+        if not isinstance(mac, bytes):
+            raise AttributeError()
+        if not isinstance(counter, Counter):
+            raise AttributeError()
+        index = offset
+        header_encrypted = data[index: index + CmdHeader.SIZE]
+        index += CmdHeader.SIZE
+        header_hmac = data[index: index + cls.HMAC_SIZE]
+        index += cls.HMAC_SIZE
+        cert_block_hmac = data[index: index + cls.HMAC_SIZE]
+        index += cls.HMAC_SIZE
+        if header_hmac != crypto_backend().hmac(mac, header_encrypted):
+            raise Exception(&#34;Invalid Header HMAC&#34;)
+        header_encrypted = crypto_backend().aes_ctr_decrypt(dek, header_encrypted, counter.value)
+        header = CmdHeader.parse(header_encrypted)
+        if header.tag != EnumCmdTag.TAG:
+            raise Exception(f&#34;Invalid Header TAG: 0x{header.tag:02X}&#34;)
+        if header.flags != (EnumSectionFlag.CLEARTEXT | EnumSectionFlag.LAST_SECT):
+            raise Exception(f&#34;Invalid Header FLAGS: 0x{header.flags:02X}&#34;)
+        if header.address != cls.SECT_MARK:
+            raise Exception(f&#34;Invalid Section Mark: 0x{header.address:08X}&#34;)
+        # Parse Certificate Block
+        cert_block = CertBlockV2.parse(data, index)
+        if cert_block_hmac != crypto_backend().hmac(mac, data[index: index + cert_block.raw_size]):
+            raise Exception(&#34;Invalid Certificate Block HMAC&#34;)
+        index += cert_block.raw_size
+        cert_section_obj = cls(cert_block)
+        counter.increment(calc_cypher_block_count(index - offset))
+        return cert_section_obj</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.CertSectionV2.HMAC_SIZE"><code class="name">var <span class="ident">HMAC_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.sections.CertSectionV2.SECT_MARK"><code class="name">var <span class="ident">SECT_MARK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.CertSectionV2.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0, dek: bytes = b'', mac: bytes = b'', counter: Union[<a title="spsdk.utils.crypto.common.Counter" href="../utils/crypto/common.html#spsdk.utils.crypto.common.Counter">Counter</a>, NoneType] = None) ‑> <a title="spsdk.sbfile.sections.CertSectionV2" href="#spsdk.sbfile.sections.CertSectionV2">CertSectionV2</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse Certificate Section from bytes array.</p>
+<p>:param data: Raw data of parsed image
+:param offset: The offset of input data
+:param dek: The DEK value in bytes (required)
+:param mac: The MAC value in bytes (required)
+:param counter: The counter object (required)
+:return: parsed cert section v2 object
+:raise AttributeError: raised when dek, mac, counter are not valid
+:raise Exception: raised when there is invalid header HMAC, TAG, FLAGS, Mark
+:raise Exception: raised when there is invalid certificate block HMAC</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0,
+          dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; &#39;CertSectionV2&#39;:
+    &#34;&#34;&#34;Parse Certificate Section from bytes array.
+
+    :param data: Raw data of parsed image
+    :param offset: The offset of input data
+    :param dek: The DEK value in bytes (required)
+    :param mac: The MAC value in bytes (required)
+    :param counter: The counter object (required)
+    :return: parsed cert section v2 object
+    :raise AttributeError: raised when dek, mac, counter are not valid
+    :raise Exception: raised when there is invalid header HMAC, TAG, FLAGS, Mark
+    :raise Exception: raised when there is invalid certificate block HMAC
+    &#34;&#34;&#34;
+    if not isinstance(dek, bytes):
+        raise AttributeError()
+    if not isinstance(mac, bytes):
+        raise AttributeError()
+    if not isinstance(counter, Counter):
+        raise AttributeError()
+    index = offset
+    header_encrypted = data[index: index + CmdHeader.SIZE]
+    index += CmdHeader.SIZE
+    header_hmac = data[index: index + cls.HMAC_SIZE]
+    index += cls.HMAC_SIZE
+    cert_block_hmac = data[index: index + cls.HMAC_SIZE]
+    index += cls.HMAC_SIZE
+    if header_hmac != crypto_backend().hmac(mac, header_encrypted):
+        raise Exception(&#34;Invalid Header HMAC&#34;)
+    header_encrypted = crypto_backend().aes_ctr_decrypt(dek, header_encrypted, counter.value)
+    header = CmdHeader.parse(header_encrypted)
+    if header.tag != EnumCmdTag.TAG:
+        raise Exception(f&#34;Invalid Header TAG: 0x{header.tag:02X}&#34;)
+    if header.flags != (EnumSectionFlag.CLEARTEXT | EnumSectionFlag.LAST_SECT):
+        raise Exception(f&#34;Invalid Header FLAGS: 0x{header.flags:02X}&#34;)
+    if header.address != cls.SECT_MARK:
+        raise Exception(f&#34;Invalid Section Mark: 0x{header.address:08X}&#34;)
+    # Parse Certificate Block
+    cert_block = CertBlockV2.parse(data, index)
+    if cert_block_hmac != crypto_backend().hmac(mac, data[index: index + cert_block.raw_size]):
+        raise Exception(&#34;Invalid Certificate Block HMAC&#34;)
+    index += cert_block.raw_size
+    cert_section_obj = cls(cert_block)
+    counter.increment(calc_cypher_block_count(index - offset))
+    return cert_section_obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.CertSectionV2.cert_block"><code class="name">var <span class="ident">cert_block</span> : <a title="spsdk.utils.crypto.cert_blocks.CertBlockV2" href="../utils/crypto/cert_blocks.html#spsdk.utils.crypto.cert_blocks.CertBlockV2">CertBlockV2</a></code></dt>
+<dd>
+<div class="desc"><p>Return certification block.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def cert_block(self) -&gt; CertBlockV2:
+    &#34;&#34;&#34;Return certification block.&#34;&#34;&#34;
+    return self._cert_block</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.CertSectionV2.raw_size"><code class="name">var <span class="ident">raw_size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Calculate raw size of section.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def raw_size(self) -&gt; int:
+    &#34;&#34;&#34;Calculate raw size of section.&#34;&#34;&#34;
+    # Section header size
+    size = CmdHeader.SIZE
+    # Header HMAC 32 bytes + Certificate block HMAC 32 bytes
+    size += self.HMAC_SIZE * 2
+    # Certificate block size in bytes
+    size += self.cert_block.raw_size
+    return size</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sections.CertSectionV2.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, dek: bytes = b'', mac: bytes = b'', counter: Union[<a title="spsdk.utils.crypto.common.Counter" href="../utils/crypto/common.html#spsdk.utils.crypto.common.Counter">Counter</a>, NoneType] = None) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Serialize Certificate Section object.</p>
+<p>:param dek: The DEK value in bytes (required)
+:param mac: The MAC value in bytes (required)
+:param counter: The counter object (required)
+:return: exported bytes
+:raise Exception: raised when dek, mac, counter have invalid format</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, dek: bytes = b&#39;&#39;, mac: bytes = b&#39;&#39;, counter: Optional[Counter] = None) -&gt; bytes:
+    &#34;&#34;&#34;Serialize Certificate Section object.
+
+    :param dek: The DEK value in bytes (required)
+    :param mac: The MAC value in bytes (required)
+    :param counter: The counter object (required)
+    :return: exported bytes
+    :raise Exception: raised when dek, mac, counter have invalid format
+    &#34;&#34;&#34;
+    if not isinstance(dek, bytes):
+        raise Exception()
+    if not isinstance(mac, bytes):
+        raise Exception()
+    if not isinstance(counter, Counter):
+        raise Exception()
+    # Prepare Header data
+    header_data = self._header.export()
+    header_encrypted = crypto_backend().aes_ctr_encrypt(dek, header_data, counter.value)
+    # counter.increment()
+    # Prepare Certificate Block data
+    body_data = self.cert_block.export()
+    # Prepare HMAC data
+    hmac_data = crypto_backend().hmac(mac, header_encrypted)
+    hmac_data += crypto_backend().hmac(mac, body_data)
+    result = header_encrypted + hmac_data + body_data
+    assert len(result) == self.raw_size
+    return result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sections.CertSectionV2.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get object info.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Get object info.&#34;&#34;&#34;
+    return self.cert_block.info()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.sbfile" href="index.html">spsdk.sbfile</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.sbfile.sections.BootSectionV2" href="#spsdk.sbfile.sections.BootSectionV2">BootSectionV2</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.HMAC_SIZE" href="#spsdk.sbfile.sections.BootSectionV2.HMAC_SIZE">HMAC_SIZE</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.append" href="#spsdk.sbfile.sections.BootSectionV2.append">append</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.export" href="#spsdk.sbfile.sections.BootSectionV2.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.hmac_count" href="#spsdk.sbfile.sections.BootSectionV2.hmac_count">hmac_count</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.info" href="#spsdk.sbfile.sections.BootSectionV2.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.is_last" href="#spsdk.sbfile.sections.BootSectionV2.is_last">is_last</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.parse" href="#spsdk.sbfile.sections.BootSectionV2.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.raw_size" href="#spsdk.sbfile.sections.BootSectionV2.raw_size">raw_size</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.BootSectionV2.uid" href="#spsdk.sbfile.sections.BootSectionV2.uid">uid</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.sections.CertSectionV2" href="#spsdk.sbfile.sections.CertSectionV2">CertSectionV2</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.HMAC_SIZE" href="#spsdk.sbfile.sections.CertSectionV2.HMAC_SIZE">HMAC_SIZE</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.SECT_MARK" href="#spsdk.sbfile.sections.CertSectionV2.SECT_MARK">SECT_MARK</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.cert_block" href="#spsdk.sbfile.sections.CertSectionV2.cert_block">cert_block</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.export" href="#spsdk.sbfile.sections.CertSectionV2.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.info" href="#spsdk.sbfile.sections.CertSectionV2.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.parse" href="#spsdk.sbfile.sections.CertSectionV2.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.sections.CertSectionV2.raw_size" href="#spsdk.sbfile.sections.CertSectionV2.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

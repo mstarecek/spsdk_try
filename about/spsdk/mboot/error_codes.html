@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.mboot.error_codes API documentation</title>
+<meta name="description" content="Status and error codes used by the MBoot protocol." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.mboot.error_codes</code></h1>
+</header>
+<section id="section-intro">
+<p>Status and error codes used by the MBoot protocol.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2016-2018 Martin Olejar
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Status and error codes used by the MBoot protocol.&#34;&#34;&#34;
+
+from spsdk.utils.easy_enum import Enum
+
+
+########################################################################################################################
+# McuBoot Status Codes (Errors)
+########################################################################################################################
+
+class StatusCode(Enum):
+    &#34;&#34;&#34;McuBoot status codes.&#34;&#34;&#34;
+
+    SUCCESS = (0, &#39;Success&#39;, &#39;Success&#39;)
+    FAIL = (1, &#39;Fail&#39;, &#39;Fail&#39;)
+    READ_ONLY = (2, &#39;ReadOnly&#39;, &#39;Read Only Error&#39;)
+    OUT_OF_RANGE = (3, &#39;OutOfRange&#39;, &#39;Out Of Range Error&#39;)
+    INVALID_ARGUMENT = (4, &#39;InvalidArgument&#39;, &#39;Invalid Argument Error&#39;)
+    TIMEOUT = (5, &#39;TimeoutError&#39;, &#39;Timeout Error&#39;)
+    NO_TRANSFER_IN_PROGRESS = (6, &#39;NoTransferInProgress&#39;, &#39;No Transfer In Progress Error&#39;)
+
+    # Flash driver errors.
+    FLASH_SIZE_ERROR = (100, &#39;FlashSizeError&#39;, &#39;FLASH Driver: Size Error&#39;)
+    FLASH_ALIGNMENT_ERROR = (101, &#39;FlashAlignmentError&#39;, &#39;FLASH Driver: Alignment Error&#39;)
+    FLASH_ADDRESS_ERROR = (102, &#39;FlashAddressError&#39;, &#39;FLASH Driver: Address Error&#39;)
+    FLASH_ACCESS_ERROR = (103, &#39;FlashAccessError&#39;, &#39;FLASH Driver: Access Error&#39;)
+    FLASH_PROTECTION_VIOLATION = (104, &#39;FlashProtectionViolation&#39;, &#39;FLASH Driver: Protection Violation&#39;)
+    FLASH_COMMAND_FAILURE = (105, &#39;FlashCommandFailure&#39;, &#39;FLASH Driver: Command Failure&#39;)
+    FLASH_UNKNOWN_PROPERTY = (106, &#39;FlashUnknownProperty&#39;, &#39;FLASH Driver: Unknown Property&#39;)
+    FLASH_REGION_EXECUTE_ONLY = (108, &#39;FlashRegionExecuteOnly&#39;, &#39;FLASH Driver: Region Execute Only&#39;)
+    FLASH_EXEC_IN_RAM_NOT_READY = (109, &#39;FlashExecuteInRamFunctionNotReady&#39;,
+                                   &#39;FLASH Driver: Execute In RAM Function Not Ready&#39;)
+    FLASH_COMMAND_NOT_SUPPORTED = (111, &#39;FlashCommandNotSupported&#39;, &#39;FLASH Driver: Command Not Supported&#39;)
+    FLASH_OUT_OF_DATE_CFPA_PAGE = (132, &#39;FlashOutOfDateCfpaPage&#39;, &#39;FLASH Driver: Out Of Date CFPA Page&#39;)
+
+    # I2C driver errors.
+    I2C_SLAVE_TX_UNDERRUN = (200, &#39;I2cSlaveTxUnderrun&#39;, &#39;I2C Driver: Slave Tx Underrun&#39;)
+    I2C_SLAVE_RX_OVERRUN = (201, &#39;I2cSlaveRxOverrun&#39;, &#39;I2C Driver: Slave Rx Overrun&#39;)
+    I2C_ARBITRATION_LOST = (202, &#39;I2cArbitrationLost&#39;, &#39;I2C Driver: Arbitration Lost&#39;)
+
+    # SPI driver errors.
+    SPI_SLAVE_TX_UNDERRUN = (300, &#39;SpiSlaveTxUnderrun&#39;, &#39;SPI Driver: Slave Tx Underrun&#39;)
+    SPI_SLAVE_RX_OVERRUN = (301, &#39;SpiSlaveRxOverrun&#39;, &#39;SPI Driver: Slave Rx Overrun&#39;)
+
+    # QuadSPI driver errors.
+    QSPI_FLASH_SIZE_ERROR = (400, &#39;QspiFlashSizeError&#39;, &#39;QSPI Driver: Flash Size Error&#39;)
+    QSPI_FLASH_ALIGNMENT_ERROR = (401, &#39;QspiFlashAlignmentError&#39;, &#39;QSPI Driver: Flash Alignment Error&#39;)
+    QSPI_FLASH_ADDRESS_ERROR = (402, &#39;QspiFlashAddressError&#39;, &#39;QSPI Driver: Flash Address Error&#39;)
+    QSPI_FLASH_COMMAND_FAILURE = (403, &#39;QspiFlashCommandFailure&#39;, &#39;QSPI Driver: Flash Command Failure&#39;)
+    QSPI_FLASH_UNKNOWN_PROPERTY = (404, &#39;QspiFlashUnknownProperty&#39;, &#39;QSPI Driver: Flash Unknown Property&#39;)
+    QSPI_NOT_CONFIGURED = (405, &#39;QspiNotConfigured&#39;, &#39;QSPI Driver: Not Configured&#39;)
+    QSPI_COMMAND_NOT_SUPPORTED = (406, &#39;QspiCommandNotSupported&#39;, &#39;QSPI Driver: Command Not Supported&#39;)
+    QSPI_COMMAND_TIMEOUT = (407, &#39;QspiCommandTimeout&#39;, &#39;QSPI Driver: Command Timeout&#39;)
+    QSPI_WRITE_FAILURE = (408, &#39;QspiWriteFailure&#39;, &#39;QSPI Driver: Write Failure&#39;)
+
+    # OTFAD driver errors.
+    OTFAD_SECURITY_VIOLATION = (500, &#39;OtfadSecurityViolation&#39;, &#39;OTFAD Driver: Security Violation&#39;)
+    OTFAD_LOGICALLY_DISABLED = (501, &#39;OtfadLogicallyDisabled&#39;, &#39;OTFAD Driver: Logically Disabled&#39;)
+    OTFAD_INVALID_KEY = (502, &#39;OtfadInvalidKey&#39;, &#39;OTFAD Driver: Invalid Key&#39;)
+    OTFAD_INVALID_KEY_BLOB = (503, &#39;OtfadInvalidKeyBlob&#39;, &#39;OTFAD Driver: Invalid Key Blob&#39;)
+
+    # SDMMC driver errors.
+
+    # Bootloader errors.
+    UNKNOWN_COMMAND = (10000, &#39;UnknownCommand&#39;, &#39;Unknown Command&#39;)
+    SECURITY_VIOLATION = (10001, &#39;SecurityViolation&#39;, &#39;Security Violation&#39;)
+    ABORT_DATA_PHASE = (10002, &#39;AbortDataPhase&#39;, &#39;Abort Data Phase&#39;)
+    PING_ERROR = (10003, &#39;PingError&#39;, &#39;Ping Error&#39;)
+    NO_RESPONSE = (10004, &#39;NoResponse&#39;, &#39;No Response&#39;)
+    NO_RESPONSE_EXPECTED = (10005, &#39;NoResponseExpected&#39;, &#39;No Response Expected&#39;)
+    UNSUPPORTED_COMMAND = (10006, &#39;UnsupportedCommand&#39;, &#39;Unsupported Command&#39;)
+
+    # SB loader errors.
+    ROMLDR_SECTION_OVERRUN = (10100, &#39;RomLdrSectionOverrun&#39;, &#39;ROM Loader: Section Overrun&#39;)
+    ROMLDR_SIGNATURE = (10101, &#39;RomLdrSignature&#39;, &#39;ROM Loader: Signature Error&#39;)
+    ROMLDR_SECTION_LENGTH = (10102, &#39;RomLdrSectionLength&#39;, &#39;ROM Loader: Section Length Error&#39;)
+    ROMLDR_UNENCRYPTED_ONLY = (10103, &#39;RomLdrUnencryptedOnly&#39;, &#39;ROM Loader: Unencrypted Only&#39;)
+    ROMLDR_EOF_REACHED = (10104, &#39;RomLdrEOFReached&#39;, &#39;ROM Loader: EOF Reached&#39;)
+    ROMLDR_CHECKSUM = (10105, &#39;RomLdrChecksum&#39;, &#39;ROM Loader: Checksum Error&#39;)
+    ROMLDR_CRC32_ERROR = (10106, &#39;RomLdrCrc32Error&#39;, &#39;ROM Loader: CRC32 Error&#39;)
+    ROMLDR_UNKNOWN_COMMAND = (10107, &#39;RomLdrUnknownCommand&#39;, &#39;ROM Loader: Unknown Command&#39;)
+    ROMLDR_ID_NOT_FOUND = (10108, &#39;RomLdrIdNotFound&#39;, &#39;ROM Loader: ID Not Found&#39;)
+    ROMLDR_DATA_UNDERRUN = (10109, &#39;RomLdrDataUnderrun&#39;, &#39;ROM Loader: Data Underrun&#39;)
+    ROMLDR_JUMP_RETURNED = (10110, &#39;RomLdrJumpReturned&#39;, &#39;ROM Loader: Jump Returned&#39;)
+    ROMLDR_CALL_FAILED = (10111, &#39;RomLdrCallFailed&#39;, &#39;ROM Loader: Call Failed&#39;)
+    ROMLDR_KEY_NOT_FOUND = (10112, &#39;RomLdrKeyNotFound&#39;, &#39;ROM Loader: Key Not Found&#39;)
+    ROMLDR_SECURE_ONLY = (10113, &#39;RomLdrSecureOnly&#39;, &#39;ROM Loader: Secure Only&#39;)
+    ROMLDR_RESET_RETURNED = (10114, &#39;RomLdrResetReturned&#39;, &#39;ROM Loader: Reset Returned&#39;)
+    ROMLDR_ROLLBACK_BLOCKED = (10115, &#39;RomLdrRollbackBlocked&#39;, &#39;ROM Loader: Rollback Blocked&#39;)
+    ROMLDR_INVALID_SECTION_MAC_COUNT = (10116, &#39;RomLdrInvalidSectionMacCount&#39;, &#39;ROM Loader: Invalid Section Mac Count&#39;)
+    ROMLDR_UNEXPECTED_COMMAND = (10117, &#39;RomLdrUnexpectedCommand&#39;, &#39;ROM Loader: Unexpected Command&#39;)
+
+    # Memory interface errors.
+    MEMORY_RANGE_INVALID = (10200, &#39;MemoryRangeInvalid&#39;, &#39;Memory Range Invalid&#39;)
+    MEMORY_READ_FAILED = (10201, &#39;MemoryReadFailed&#39;, &#39;Memory Read Failed&#39;)
+    MEMORY_WRITE_FAILED = (10202, &#39;MemoryWriteFailed&#39;, &#39;Memory Write Failed&#39;)
+    MEMORY_CUMULATIVE_WRITE = (10203, &#39;MemoryCumulativeWrite&#39;, &#39;Memory Cumulative Write&#39;)
+    MEMORY_NOT_CONFIGURED = (10205, &#39;MemoryNotConfigured&#39;, &#39;Memory Not Configured&#39;)
+
+    # Property store errors.
+    UNKNOWN_PROPERTY = (10300, &#39;UnknownProperty&#39;, &#39;Unknown Property&#39;)
+    READ_ONLY_PROPERTY = (10301, &#39;ReadOnlyProperty&#39;, &#39;Read Only Property&#39;)
+    INVALID_PROPERTY_VALUE = (10302, &#39;InvalidPropertyValue&#39;, &#39;Invalid Property Value&#39;)
+
+    # Property store errors.
+    APP_CRC_CHECK_PASSED = (10400, &#39;AppCrcCheckPassed&#39;, &#39;Application CRC Check: Passed&#39;)
+    APP_CRC_CHECK_FAILED = (10401, &#39;AppCrcCheckFailed&#39;, &#39;Application: CRC Check: Failed&#39;)
+    APP_CRC_CHECK_INACTIVE = (10402, &#39;AppCrcCheckInactive&#39;, &#39;Application CRC Check: Inactive&#39;)
+    APP_CRC_CHECK_INVALID = (10403, &#39;AppCrcCheckInvalid&#39;, &#39;Application CRC Check: Invalid&#39;)
+    APP_CRC_CHECK_OUT_OF_RANGE = (10404, &#39;AppCrcCheckOutOfRange&#39;, &#39;Application CRC Check: Out Of Range&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.mboot.error_codes.StatusCode"><code class="flex name class">
+<span>class <span class="ident">StatusCode</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot status codes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StatusCode(Enum):
+    &#34;&#34;&#34;McuBoot status codes.&#34;&#34;&#34;
+
+    SUCCESS = (0, &#39;Success&#39;, &#39;Success&#39;)
+    FAIL = (1, &#39;Fail&#39;, &#39;Fail&#39;)
+    READ_ONLY = (2, &#39;ReadOnly&#39;, &#39;Read Only Error&#39;)
+    OUT_OF_RANGE = (3, &#39;OutOfRange&#39;, &#39;Out Of Range Error&#39;)
+    INVALID_ARGUMENT = (4, &#39;InvalidArgument&#39;, &#39;Invalid Argument Error&#39;)
+    TIMEOUT = (5, &#39;TimeoutError&#39;, &#39;Timeout Error&#39;)
+    NO_TRANSFER_IN_PROGRESS = (6, &#39;NoTransferInProgress&#39;, &#39;No Transfer In Progress Error&#39;)
+
+    # Flash driver errors.
+    FLASH_SIZE_ERROR = (100, &#39;FlashSizeError&#39;, &#39;FLASH Driver: Size Error&#39;)
+    FLASH_ALIGNMENT_ERROR = (101, &#39;FlashAlignmentError&#39;, &#39;FLASH Driver: Alignment Error&#39;)
+    FLASH_ADDRESS_ERROR = (102, &#39;FlashAddressError&#39;, &#39;FLASH Driver: Address Error&#39;)
+    FLASH_ACCESS_ERROR = (103, &#39;FlashAccessError&#39;, &#39;FLASH Driver: Access Error&#39;)
+    FLASH_PROTECTION_VIOLATION = (104, &#39;FlashProtectionViolation&#39;, &#39;FLASH Driver: Protection Violation&#39;)
+    FLASH_COMMAND_FAILURE = (105, &#39;FlashCommandFailure&#39;, &#39;FLASH Driver: Command Failure&#39;)
+    FLASH_UNKNOWN_PROPERTY = (106, &#39;FlashUnknownProperty&#39;, &#39;FLASH Driver: Unknown Property&#39;)
+    FLASH_REGION_EXECUTE_ONLY = (108, &#39;FlashRegionExecuteOnly&#39;, &#39;FLASH Driver: Region Execute Only&#39;)
+    FLASH_EXEC_IN_RAM_NOT_READY = (109, &#39;FlashExecuteInRamFunctionNotReady&#39;,
+                                   &#39;FLASH Driver: Execute In RAM Function Not Ready&#39;)
+    FLASH_COMMAND_NOT_SUPPORTED = (111, &#39;FlashCommandNotSupported&#39;, &#39;FLASH Driver: Command Not Supported&#39;)
+    FLASH_OUT_OF_DATE_CFPA_PAGE = (132, &#39;FlashOutOfDateCfpaPage&#39;, &#39;FLASH Driver: Out Of Date CFPA Page&#39;)
+
+    # I2C driver errors.
+    I2C_SLAVE_TX_UNDERRUN = (200, &#39;I2cSlaveTxUnderrun&#39;, &#39;I2C Driver: Slave Tx Underrun&#39;)
+    I2C_SLAVE_RX_OVERRUN = (201, &#39;I2cSlaveRxOverrun&#39;, &#39;I2C Driver: Slave Rx Overrun&#39;)
+    I2C_ARBITRATION_LOST = (202, &#39;I2cArbitrationLost&#39;, &#39;I2C Driver: Arbitration Lost&#39;)
+
+    # SPI driver errors.
+    SPI_SLAVE_TX_UNDERRUN = (300, &#39;SpiSlaveTxUnderrun&#39;, &#39;SPI Driver: Slave Tx Underrun&#39;)
+    SPI_SLAVE_RX_OVERRUN = (301, &#39;SpiSlaveRxOverrun&#39;, &#39;SPI Driver: Slave Rx Overrun&#39;)
+
+    # QuadSPI driver errors.
+    QSPI_FLASH_SIZE_ERROR = (400, &#39;QspiFlashSizeError&#39;, &#39;QSPI Driver: Flash Size Error&#39;)
+    QSPI_FLASH_ALIGNMENT_ERROR = (401, &#39;QspiFlashAlignmentError&#39;, &#39;QSPI Driver: Flash Alignment Error&#39;)
+    QSPI_FLASH_ADDRESS_ERROR = (402, &#39;QspiFlashAddressError&#39;, &#39;QSPI Driver: Flash Address Error&#39;)
+    QSPI_FLASH_COMMAND_FAILURE = (403, &#39;QspiFlashCommandFailure&#39;, &#39;QSPI Driver: Flash Command Failure&#39;)
+    QSPI_FLASH_UNKNOWN_PROPERTY = (404, &#39;QspiFlashUnknownProperty&#39;, &#39;QSPI Driver: Flash Unknown Property&#39;)
+    QSPI_NOT_CONFIGURED = (405, &#39;QspiNotConfigured&#39;, &#39;QSPI Driver: Not Configured&#39;)
+    QSPI_COMMAND_NOT_SUPPORTED = (406, &#39;QspiCommandNotSupported&#39;, &#39;QSPI Driver: Command Not Supported&#39;)
+    QSPI_COMMAND_TIMEOUT = (407, &#39;QspiCommandTimeout&#39;, &#39;QSPI Driver: Command Timeout&#39;)
+    QSPI_WRITE_FAILURE = (408, &#39;QspiWriteFailure&#39;, &#39;QSPI Driver: Write Failure&#39;)
+
+    # OTFAD driver errors.
+    OTFAD_SECURITY_VIOLATION = (500, &#39;OtfadSecurityViolation&#39;, &#39;OTFAD Driver: Security Violation&#39;)
+    OTFAD_LOGICALLY_DISABLED = (501, &#39;OtfadLogicallyDisabled&#39;, &#39;OTFAD Driver: Logically Disabled&#39;)
+    OTFAD_INVALID_KEY = (502, &#39;OtfadInvalidKey&#39;, &#39;OTFAD Driver: Invalid Key&#39;)
+    OTFAD_INVALID_KEY_BLOB = (503, &#39;OtfadInvalidKeyBlob&#39;, &#39;OTFAD Driver: Invalid Key Blob&#39;)
+
+    # SDMMC driver errors.
+
+    # Bootloader errors.
+    UNKNOWN_COMMAND = (10000, &#39;UnknownCommand&#39;, &#39;Unknown Command&#39;)
+    SECURITY_VIOLATION = (10001, &#39;SecurityViolation&#39;, &#39;Security Violation&#39;)
+    ABORT_DATA_PHASE = (10002, &#39;AbortDataPhase&#39;, &#39;Abort Data Phase&#39;)
+    PING_ERROR = (10003, &#39;PingError&#39;, &#39;Ping Error&#39;)
+    NO_RESPONSE = (10004, &#39;NoResponse&#39;, &#39;No Response&#39;)
+    NO_RESPONSE_EXPECTED = (10005, &#39;NoResponseExpected&#39;, &#39;No Response Expected&#39;)
+    UNSUPPORTED_COMMAND = (10006, &#39;UnsupportedCommand&#39;, &#39;Unsupported Command&#39;)
+
+    # SB loader errors.
+    ROMLDR_SECTION_OVERRUN = (10100, &#39;RomLdrSectionOverrun&#39;, &#39;ROM Loader: Section Overrun&#39;)
+    ROMLDR_SIGNATURE = (10101, &#39;RomLdrSignature&#39;, &#39;ROM Loader: Signature Error&#39;)
+    ROMLDR_SECTION_LENGTH = (10102, &#39;RomLdrSectionLength&#39;, &#39;ROM Loader: Section Length Error&#39;)
+    ROMLDR_UNENCRYPTED_ONLY = (10103, &#39;RomLdrUnencryptedOnly&#39;, &#39;ROM Loader: Unencrypted Only&#39;)
+    ROMLDR_EOF_REACHED = (10104, &#39;RomLdrEOFReached&#39;, &#39;ROM Loader: EOF Reached&#39;)
+    ROMLDR_CHECKSUM = (10105, &#39;RomLdrChecksum&#39;, &#39;ROM Loader: Checksum Error&#39;)
+    ROMLDR_CRC32_ERROR = (10106, &#39;RomLdrCrc32Error&#39;, &#39;ROM Loader: CRC32 Error&#39;)
+    ROMLDR_UNKNOWN_COMMAND = (10107, &#39;RomLdrUnknownCommand&#39;, &#39;ROM Loader: Unknown Command&#39;)
+    ROMLDR_ID_NOT_FOUND = (10108, &#39;RomLdrIdNotFound&#39;, &#39;ROM Loader: ID Not Found&#39;)
+    ROMLDR_DATA_UNDERRUN = (10109, &#39;RomLdrDataUnderrun&#39;, &#39;ROM Loader: Data Underrun&#39;)
+    ROMLDR_JUMP_RETURNED = (10110, &#39;RomLdrJumpReturned&#39;, &#39;ROM Loader: Jump Returned&#39;)
+    ROMLDR_CALL_FAILED = (10111, &#39;RomLdrCallFailed&#39;, &#39;ROM Loader: Call Failed&#39;)
+    ROMLDR_KEY_NOT_FOUND = (10112, &#39;RomLdrKeyNotFound&#39;, &#39;ROM Loader: Key Not Found&#39;)
+    ROMLDR_SECURE_ONLY = (10113, &#39;RomLdrSecureOnly&#39;, &#39;ROM Loader: Secure Only&#39;)
+    ROMLDR_RESET_RETURNED = (10114, &#39;RomLdrResetReturned&#39;, &#39;ROM Loader: Reset Returned&#39;)
+    ROMLDR_ROLLBACK_BLOCKED = (10115, &#39;RomLdrRollbackBlocked&#39;, &#39;ROM Loader: Rollback Blocked&#39;)
+    ROMLDR_INVALID_SECTION_MAC_COUNT = (10116, &#39;RomLdrInvalidSectionMacCount&#39;, &#39;ROM Loader: Invalid Section Mac Count&#39;)
+    ROMLDR_UNEXPECTED_COMMAND = (10117, &#39;RomLdrUnexpectedCommand&#39;, &#39;ROM Loader: Unexpected Command&#39;)
+
+    # Memory interface errors.
+    MEMORY_RANGE_INVALID = (10200, &#39;MemoryRangeInvalid&#39;, &#39;Memory Range Invalid&#39;)
+    MEMORY_READ_FAILED = (10201, &#39;MemoryReadFailed&#39;, &#39;Memory Read Failed&#39;)
+    MEMORY_WRITE_FAILED = (10202, &#39;MemoryWriteFailed&#39;, &#39;Memory Write Failed&#39;)
+    MEMORY_CUMULATIVE_WRITE = (10203, &#39;MemoryCumulativeWrite&#39;, &#39;Memory Cumulative Write&#39;)
+    MEMORY_NOT_CONFIGURED = (10205, &#39;MemoryNotConfigured&#39;, &#39;Memory Not Configured&#39;)
+
+    # Property store errors.
+    UNKNOWN_PROPERTY = (10300, &#39;UnknownProperty&#39;, &#39;Unknown Property&#39;)
+    READ_ONLY_PROPERTY = (10301, &#39;ReadOnlyProperty&#39;, &#39;Read Only Property&#39;)
+    INVALID_PROPERTY_VALUE = (10302, &#39;InvalidPropertyValue&#39;, &#39;Invalid Property Value&#39;)
+
+    # Property store errors.
+    APP_CRC_CHECK_PASSED = (10400, &#39;AppCrcCheckPassed&#39;, &#39;Application CRC Check: Passed&#39;)
+    APP_CRC_CHECK_FAILED = (10401, &#39;AppCrcCheckFailed&#39;, &#39;Application: CRC Check: Failed&#39;)
+    APP_CRC_CHECK_INACTIVE = (10402, &#39;AppCrcCheckInactive&#39;, &#39;Application CRC Check: Inactive&#39;)
+    APP_CRC_CHECK_INVALID = (10403, &#39;AppCrcCheckInvalid&#39;, &#39;Application CRC Check: Invalid&#39;)
+    APP_CRC_CHECK_OUT_OF_RANGE = (10404, &#39;AppCrcCheckOutOfRange&#39;, &#39;Application CRC Check: Out Of Range&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.error_codes.StatusCode.ABORT_DATA_PHASE"><code class="name">var <span class="ident">ABORT_DATA_PHASE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_FAILED"><code class="name">var <span class="ident">APP_CRC_CHECK_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_INACTIVE"><code class="name">var <span class="ident">APP_CRC_CHECK_INACTIVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_INVALID"><code class="name">var <span class="ident">APP_CRC_CHECK_INVALID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_OUT_OF_RANGE"><code class="name">var <span class="ident">APP_CRC_CHECK_OUT_OF_RANGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_PASSED"><code class="name">var <span class="ident">APP_CRC_CHECK_PASSED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FAIL"><code class="name">var <span class="ident">FAIL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_ACCESS_ERROR"><code class="name">var <span class="ident">FLASH_ACCESS_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_ADDRESS_ERROR"><code class="name">var <span class="ident">FLASH_ADDRESS_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_ALIGNMENT_ERROR"><code class="name">var <span class="ident">FLASH_ALIGNMENT_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_COMMAND_FAILURE"><code class="name">var <span class="ident">FLASH_COMMAND_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_COMMAND_NOT_SUPPORTED"><code class="name">var <span class="ident">FLASH_COMMAND_NOT_SUPPORTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_EXEC_IN_RAM_NOT_READY"><code class="name">var <span class="ident">FLASH_EXEC_IN_RAM_NOT_READY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_OUT_OF_DATE_CFPA_PAGE"><code class="name">var <span class="ident">FLASH_OUT_OF_DATE_CFPA_PAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_PROTECTION_VIOLATION"><code class="name">var <span class="ident">FLASH_PROTECTION_VIOLATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_REGION_EXECUTE_ONLY"><code class="name">var <span class="ident">FLASH_REGION_EXECUTE_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_SIZE_ERROR"><code class="name">var <span class="ident">FLASH_SIZE_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.FLASH_UNKNOWN_PROPERTY"><code class="name">var <span class="ident">FLASH_UNKNOWN_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.I2C_ARBITRATION_LOST"><code class="name">var <span class="ident">I2C_ARBITRATION_LOST</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.I2C_SLAVE_RX_OVERRUN"><code class="name">var <span class="ident">I2C_SLAVE_RX_OVERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.I2C_SLAVE_TX_UNDERRUN"><code class="name">var <span class="ident">I2C_SLAVE_TX_UNDERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.INVALID_ARGUMENT"><code class="name">var <span class="ident">INVALID_ARGUMENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.INVALID_PROPERTY_VALUE"><code class="name">var <span class="ident">INVALID_PROPERTY_VALUE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.MEMORY_CUMULATIVE_WRITE"><code class="name">var <span class="ident">MEMORY_CUMULATIVE_WRITE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.MEMORY_NOT_CONFIGURED"><code class="name">var <span class="ident">MEMORY_NOT_CONFIGURED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.MEMORY_RANGE_INVALID"><code class="name">var <span class="ident">MEMORY_RANGE_INVALID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.MEMORY_READ_FAILED"><code class="name">var <span class="ident">MEMORY_READ_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.MEMORY_WRITE_FAILED"><code class="name">var <span class="ident">MEMORY_WRITE_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.NO_RESPONSE"><code class="name">var <span class="ident">NO_RESPONSE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.NO_RESPONSE_EXPECTED"><code class="name">var <span class="ident">NO_RESPONSE_EXPECTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.NO_TRANSFER_IN_PROGRESS"><code class="name">var <span class="ident">NO_TRANSFER_IN_PROGRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.OTFAD_INVALID_KEY"><code class="name">var <span class="ident">OTFAD_INVALID_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.OTFAD_INVALID_KEY_BLOB"><code class="name">var <span class="ident">OTFAD_INVALID_KEY_BLOB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.OTFAD_LOGICALLY_DISABLED"><code class="name">var <span class="ident">OTFAD_LOGICALLY_DISABLED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.OTFAD_SECURITY_VIOLATION"><code class="name">var <span class="ident">OTFAD_SECURITY_VIOLATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.OUT_OF_RANGE"><code class="name">var <span class="ident">OUT_OF_RANGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.PING_ERROR"><code class="name">var <span class="ident">PING_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_COMMAND_NOT_SUPPORTED"><code class="name">var <span class="ident">QSPI_COMMAND_NOT_SUPPORTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_COMMAND_TIMEOUT"><code class="name">var <span class="ident">QSPI_COMMAND_TIMEOUT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_ADDRESS_ERROR"><code class="name">var <span class="ident">QSPI_FLASH_ADDRESS_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_ALIGNMENT_ERROR"><code class="name">var <span class="ident">QSPI_FLASH_ALIGNMENT_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_COMMAND_FAILURE"><code class="name">var <span class="ident">QSPI_FLASH_COMMAND_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_SIZE_ERROR"><code class="name">var <span class="ident">QSPI_FLASH_SIZE_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_UNKNOWN_PROPERTY"><code class="name">var <span class="ident">QSPI_FLASH_UNKNOWN_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_NOT_CONFIGURED"><code class="name">var <span class="ident">QSPI_NOT_CONFIGURED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.QSPI_WRITE_FAILURE"><code class="name">var <span class="ident">QSPI_WRITE_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.READ_ONLY"><code class="name">var <span class="ident">READ_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.READ_ONLY_PROPERTY"><code class="name">var <span class="ident">READ_ONLY_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_CALL_FAILED"><code class="name">var <span class="ident">ROMLDR_CALL_FAILED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_CHECKSUM"><code class="name">var <span class="ident">ROMLDR_CHECKSUM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_CRC32_ERROR"><code class="name">var <span class="ident">ROMLDR_CRC32_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_DATA_UNDERRUN"><code class="name">var <span class="ident">ROMLDR_DATA_UNDERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_EOF_REACHED"><code class="name">var <span class="ident">ROMLDR_EOF_REACHED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_ID_NOT_FOUND"><code class="name">var <span class="ident">ROMLDR_ID_NOT_FOUND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_INVALID_SECTION_MAC_COUNT"><code class="name">var <span class="ident">ROMLDR_INVALID_SECTION_MAC_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_JUMP_RETURNED"><code class="name">var <span class="ident">ROMLDR_JUMP_RETURNED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_KEY_NOT_FOUND"><code class="name">var <span class="ident">ROMLDR_KEY_NOT_FOUND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_RESET_RETURNED"><code class="name">var <span class="ident">ROMLDR_RESET_RETURNED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_ROLLBACK_BLOCKED"><code class="name">var <span class="ident">ROMLDR_ROLLBACK_BLOCKED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_SECTION_LENGTH"><code class="name">var <span class="ident">ROMLDR_SECTION_LENGTH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_SECTION_OVERRUN"><code class="name">var <span class="ident">ROMLDR_SECTION_OVERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_SECURE_ONLY"><code class="name">var <span class="ident">ROMLDR_SECURE_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_SIGNATURE"><code class="name">var <span class="ident">ROMLDR_SIGNATURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_UNENCRYPTED_ONLY"><code class="name">var <span class="ident">ROMLDR_UNENCRYPTED_ONLY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_UNEXPECTED_COMMAND"><code class="name">var <span class="ident">ROMLDR_UNEXPECTED_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.ROMLDR_UNKNOWN_COMMAND"><code class="name">var <span class="ident">ROMLDR_UNKNOWN_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.SECURITY_VIOLATION"><code class="name">var <span class="ident">SECURITY_VIOLATION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.SPI_SLAVE_RX_OVERRUN"><code class="name">var <span class="ident">SPI_SLAVE_RX_OVERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.SPI_SLAVE_TX_UNDERRUN"><code class="name">var <span class="ident">SPI_SLAVE_TX_UNDERRUN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.SUCCESS"><code class="name">var <span class="ident">SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.TIMEOUT"><code class="name">var <span class="ident">TIMEOUT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.UNKNOWN_COMMAND"><code class="name">var <span class="ident">UNKNOWN_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.UNKNOWN_PROPERTY"><code class="name">var <span class="ident">UNKNOWN_PROPERTY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.error_codes.StatusCode.UNSUPPORTED_COMMAND"><code class="name">var <span class="ident">UNSUPPORTED_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.mboot" href="index.html">spsdk.mboot</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.mboot.error_codes.StatusCode" href="#spsdk.mboot.error_codes.StatusCode">StatusCode</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ABORT_DATA_PHASE" href="#spsdk.mboot.error_codes.StatusCode.ABORT_DATA_PHASE">ABORT_DATA_PHASE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_FAILED" href="#spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_FAILED">APP_CRC_CHECK_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_INACTIVE" href="#spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_INACTIVE">APP_CRC_CHECK_INACTIVE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_INVALID" href="#spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_INVALID">APP_CRC_CHECK_INVALID</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_OUT_OF_RANGE" href="#spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_OUT_OF_RANGE">APP_CRC_CHECK_OUT_OF_RANGE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_PASSED" href="#spsdk.mboot.error_codes.StatusCode.APP_CRC_CHECK_PASSED">APP_CRC_CHECK_PASSED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FAIL" href="#spsdk.mboot.error_codes.StatusCode.FAIL">FAIL</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_ACCESS_ERROR" href="#spsdk.mboot.error_codes.StatusCode.FLASH_ACCESS_ERROR">FLASH_ACCESS_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_ADDRESS_ERROR" href="#spsdk.mboot.error_codes.StatusCode.FLASH_ADDRESS_ERROR">FLASH_ADDRESS_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_ALIGNMENT_ERROR" href="#spsdk.mboot.error_codes.StatusCode.FLASH_ALIGNMENT_ERROR">FLASH_ALIGNMENT_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_COMMAND_FAILURE" href="#spsdk.mboot.error_codes.StatusCode.FLASH_COMMAND_FAILURE">FLASH_COMMAND_FAILURE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_COMMAND_NOT_SUPPORTED" href="#spsdk.mboot.error_codes.StatusCode.FLASH_COMMAND_NOT_SUPPORTED">FLASH_COMMAND_NOT_SUPPORTED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_EXEC_IN_RAM_NOT_READY" href="#spsdk.mboot.error_codes.StatusCode.FLASH_EXEC_IN_RAM_NOT_READY">FLASH_EXEC_IN_RAM_NOT_READY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_OUT_OF_DATE_CFPA_PAGE" href="#spsdk.mboot.error_codes.StatusCode.FLASH_OUT_OF_DATE_CFPA_PAGE">FLASH_OUT_OF_DATE_CFPA_PAGE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_PROTECTION_VIOLATION" href="#spsdk.mboot.error_codes.StatusCode.FLASH_PROTECTION_VIOLATION">FLASH_PROTECTION_VIOLATION</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_REGION_EXECUTE_ONLY" href="#spsdk.mboot.error_codes.StatusCode.FLASH_REGION_EXECUTE_ONLY">FLASH_REGION_EXECUTE_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_SIZE_ERROR" href="#spsdk.mboot.error_codes.StatusCode.FLASH_SIZE_ERROR">FLASH_SIZE_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.FLASH_UNKNOWN_PROPERTY" href="#spsdk.mboot.error_codes.StatusCode.FLASH_UNKNOWN_PROPERTY">FLASH_UNKNOWN_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.I2C_ARBITRATION_LOST" href="#spsdk.mboot.error_codes.StatusCode.I2C_ARBITRATION_LOST">I2C_ARBITRATION_LOST</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.I2C_SLAVE_RX_OVERRUN" href="#spsdk.mboot.error_codes.StatusCode.I2C_SLAVE_RX_OVERRUN">I2C_SLAVE_RX_OVERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.I2C_SLAVE_TX_UNDERRUN" href="#spsdk.mboot.error_codes.StatusCode.I2C_SLAVE_TX_UNDERRUN">I2C_SLAVE_TX_UNDERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.INVALID_ARGUMENT" href="#spsdk.mboot.error_codes.StatusCode.INVALID_ARGUMENT">INVALID_ARGUMENT</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.INVALID_PROPERTY_VALUE" href="#spsdk.mboot.error_codes.StatusCode.INVALID_PROPERTY_VALUE">INVALID_PROPERTY_VALUE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.MEMORY_CUMULATIVE_WRITE" href="#spsdk.mboot.error_codes.StatusCode.MEMORY_CUMULATIVE_WRITE">MEMORY_CUMULATIVE_WRITE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.MEMORY_NOT_CONFIGURED" href="#spsdk.mboot.error_codes.StatusCode.MEMORY_NOT_CONFIGURED">MEMORY_NOT_CONFIGURED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.MEMORY_RANGE_INVALID" href="#spsdk.mboot.error_codes.StatusCode.MEMORY_RANGE_INVALID">MEMORY_RANGE_INVALID</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.MEMORY_READ_FAILED" href="#spsdk.mboot.error_codes.StatusCode.MEMORY_READ_FAILED">MEMORY_READ_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.MEMORY_WRITE_FAILED" href="#spsdk.mboot.error_codes.StatusCode.MEMORY_WRITE_FAILED">MEMORY_WRITE_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.NO_RESPONSE" href="#spsdk.mboot.error_codes.StatusCode.NO_RESPONSE">NO_RESPONSE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.NO_RESPONSE_EXPECTED" href="#spsdk.mboot.error_codes.StatusCode.NO_RESPONSE_EXPECTED">NO_RESPONSE_EXPECTED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.NO_TRANSFER_IN_PROGRESS" href="#spsdk.mboot.error_codes.StatusCode.NO_TRANSFER_IN_PROGRESS">NO_TRANSFER_IN_PROGRESS</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.OTFAD_INVALID_KEY" href="#spsdk.mboot.error_codes.StatusCode.OTFAD_INVALID_KEY">OTFAD_INVALID_KEY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.OTFAD_INVALID_KEY_BLOB" href="#spsdk.mboot.error_codes.StatusCode.OTFAD_INVALID_KEY_BLOB">OTFAD_INVALID_KEY_BLOB</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.OTFAD_LOGICALLY_DISABLED" href="#spsdk.mboot.error_codes.StatusCode.OTFAD_LOGICALLY_DISABLED">OTFAD_LOGICALLY_DISABLED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.OTFAD_SECURITY_VIOLATION" href="#spsdk.mboot.error_codes.StatusCode.OTFAD_SECURITY_VIOLATION">OTFAD_SECURITY_VIOLATION</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.OUT_OF_RANGE" href="#spsdk.mboot.error_codes.StatusCode.OUT_OF_RANGE">OUT_OF_RANGE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.PING_ERROR" href="#spsdk.mboot.error_codes.StatusCode.PING_ERROR">PING_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_COMMAND_NOT_SUPPORTED" href="#spsdk.mboot.error_codes.StatusCode.QSPI_COMMAND_NOT_SUPPORTED">QSPI_COMMAND_NOT_SUPPORTED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_COMMAND_TIMEOUT" href="#spsdk.mboot.error_codes.StatusCode.QSPI_COMMAND_TIMEOUT">QSPI_COMMAND_TIMEOUT</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_ADDRESS_ERROR" href="#spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_ADDRESS_ERROR">QSPI_FLASH_ADDRESS_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_ALIGNMENT_ERROR" href="#spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_ALIGNMENT_ERROR">QSPI_FLASH_ALIGNMENT_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_COMMAND_FAILURE" href="#spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_COMMAND_FAILURE">QSPI_FLASH_COMMAND_FAILURE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_SIZE_ERROR" href="#spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_SIZE_ERROR">QSPI_FLASH_SIZE_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_UNKNOWN_PROPERTY" href="#spsdk.mboot.error_codes.StatusCode.QSPI_FLASH_UNKNOWN_PROPERTY">QSPI_FLASH_UNKNOWN_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_NOT_CONFIGURED" href="#spsdk.mboot.error_codes.StatusCode.QSPI_NOT_CONFIGURED">QSPI_NOT_CONFIGURED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.QSPI_WRITE_FAILURE" href="#spsdk.mboot.error_codes.StatusCode.QSPI_WRITE_FAILURE">QSPI_WRITE_FAILURE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.READ_ONLY" href="#spsdk.mboot.error_codes.StatusCode.READ_ONLY">READ_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.READ_ONLY_PROPERTY" href="#spsdk.mboot.error_codes.StatusCode.READ_ONLY_PROPERTY">READ_ONLY_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_CALL_FAILED" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_CALL_FAILED">ROMLDR_CALL_FAILED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_CHECKSUM" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_CHECKSUM">ROMLDR_CHECKSUM</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_CRC32_ERROR" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_CRC32_ERROR">ROMLDR_CRC32_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_DATA_UNDERRUN" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_DATA_UNDERRUN">ROMLDR_DATA_UNDERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_EOF_REACHED" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_EOF_REACHED">ROMLDR_EOF_REACHED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_ID_NOT_FOUND" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_ID_NOT_FOUND">ROMLDR_ID_NOT_FOUND</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_INVALID_SECTION_MAC_COUNT" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_INVALID_SECTION_MAC_COUNT">ROMLDR_INVALID_SECTION_MAC_COUNT</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_JUMP_RETURNED" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_JUMP_RETURNED">ROMLDR_JUMP_RETURNED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_KEY_NOT_FOUND" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_KEY_NOT_FOUND">ROMLDR_KEY_NOT_FOUND</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_RESET_RETURNED" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_RESET_RETURNED">ROMLDR_RESET_RETURNED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_ROLLBACK_BLOCKED" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_ROLLBACK_BLOCKED">ROMLDR_ROLLBACK_BLOCKED</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_SECTION_LENGTH" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_SECTION_LENGTH">ROMLDR_SECTION_LENGTH</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_SECTION_OVERRUN" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_SECTION_OVERRUN">ROMLDR_SECTION_OVERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_SECURE_ONLY" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_SECURE_ONLY">ROMLDR_SECURE_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_SIGNATURE" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_SIGNATURE">ROMLDR_SIGNATURE</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_UNENCRYPTED_ONLY" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_UNENCRYPTED_ONLY">ROMLDR_UNENCRYPTED_ONLY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_UNEXPECTED_COMMAND" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_UNEXPECTED_COMMAND">ROMLDR_UNEXPECTED_COMMAND</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.ROMLDR_UNKNOWN_COMMAND" href="#spsdk.mboot.error_codes.StatusCode.ROMLDR_UNKNOWN_COMMAND">ROMLDR_UNKNOWN_COMMAND</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.SECURITY_VIOLATION" href="#spsdk.mboot.error_codes.StatusCode.SECURITY_VIOLATION">SECURITY_VIOLATION</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.SPI_SLAVE_RX_OVERRUN" href="#spsdk.mboot.error_codes.StatusCode.SPI_SLAVE_RX_OVERRUN">SPI_SLAVE_RX_OVERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.SPI_SLAVE_TX_UNDERRUN" href="#spsdk.mboot.error_codes.StatusCode.SPI_SLAVE_TX_UNDERRUN">SPI_SLAVE_TX_UNDERRUN</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.SUCCESS" href="#spsdk.mboot.error_codes.StatusCode.SUCCESS">SUCCESS</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.TIMEOUT" href="#spsdk.mboot.error_codes.StatusCode.TIMEOUT">TIMEOUT</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.UNKNOWN_COMMAND" href="#spsdk.mboot.error_codes.StatusCode.UNKNOWN_COMMAND">UNKNOWN_COMMAND</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.UNKNOWN_PROPERTY" href="#spsdk.mboot.error_codes.StatusCode.UNKNOWN_PROPERTY">UNKNOWN_PROPERTY</a></code></li>
+<li><code><a title="spsdk.mboot.error_codes.StatusCode.UNSUPPORTED_COMMAND" href="#spsdk.mboot.error_codes.StatusCode.UNSUPPORTED_COMMAND">UNSUPPORTED_COMMAND</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

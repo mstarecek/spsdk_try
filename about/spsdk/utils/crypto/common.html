@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.utils.crypto.common API documentation</title>
+<meta name="description" content="Common cryptographic functions." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.utils.crypto.common</code></h1>
+</header>
+<section id="section-intro">
+<p>Common cryptographic functions.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Common cryptographic functions.&#34;&#34;&#34;
+
+from datetime import datetime
+
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPublicKey
+from cryptography.x509 import Certificate
+
+from .abstract import BackendClass
+from .backend_openssl import openssl_backend
+
+
+def crypto_backend() -&gt; BackendClass:
+    &#34;&#34;&#34;Return default crypto backend instance.&#34;&#34;&#34;
+    return openssl_backend
+
+
+class Counter:
+    &#34;&#34;&#34;AES counter with specified counter byte ordering and customizable increment.&#34;&#34;&#34;
+
+    @property
+    def value(self) -&gt; bytes:
+        &#34;&#34;&#34;Initial vector for AES encryption.&#34;&#34;&#34;
+        return self._nonce + self._ctr.to_bytes(4, self._ctr_byteorder_encoding)
+
+    def __init__(self, nonce: bytes, ctr_value: int = None, ctr_byteorder_encoding: str = &#39;little&#39;):
+        &#34;&#34;&#34;Constructor.
+
+        :param nonce: last for bytes are used as initial value for counter
+        :param ctr_value: counter initial value; it is added to counter value retrieved from nonce
+        :param ctr_byteorder_encoding: way how the counter is encoded into output value: either &#39;little&#39; or &#39;big&#39;
+        &#34;&#34;&#34;
+        assert isinstance(nonce, bytes) and len(nonce) == 16
+        assert ctr_byteorder_encoding in [&#39;little&#39;, &#39;big&#39;]
+        self._nonce = nonce[:-4]
+        self._ctr_byteorder_encoding = ctr_byteorder_encoding
+        self._ctr = int.from_bytes(nonce[-4:], ctr_byteorder_encoding)
+        if ctr_value is not None:
+            self._ctr += ctr_value
+
+    def increment(self, value: int = 1) -&gt; None:
+        &#34;&#34;&#34;Increment counter by specified value.
+
+        :param value: to add to counter
+        &#34;&#34;&#34;
+        self._ctr += value
+
+
+# TODO refactor: This should be replaced by SecBootBlckSize.to_num_blocks
+def calc_cypher_block_count(size: int) -&gt; int:
+    &#34;&#34;&#34;Calculate the amount if cypher blocks.
+
+    :param size: Number of bytes for the cypher area
+    :return: Number of blocks covering the cypher area
+    &#34;&#34;&#34;
+    return (size + 15) // 16
+
+
+# TODO refactor: this should not be part of the crypto module
+def swap16(x: int) -&gt; int:
+    &#34;&#34;&#34;Swap bytes in half word (16bit).
+
+    :param x: Original number
+    :return: Number with swapped bytes
+    &#34;&#34;&#34;
+    assert 0 &lt;= x &lt;= 0xFFFF
+    return ((x &lt;&lt; 8) &amp; 0xFF00) | ((x &gt;&gt; 8) &amp; 0x00FF)
+
+
+# TODO refactor: this should not be part of the crypto module
+def pack_timestamp(value: datetime) -&gt; int:
+    &#34;&#34;&#34;Converts datetime to millisec since 1.1.2000.
+
+    :param value: datetime to be converted
+    :return: number of milliseconds since 1.1.2000  00:00:00; 64-bit integer
+    &#34;&#34;&#34;
+    assert isinstance(value, datetime)
+    start = datetime(2000, 1, 1, 0, 0, 0, 0).timestamp()
+    result = int((value.timestamp() - start) * 1000000)
+    assert 0 &lt;= result &lt;= 0xFFFFFFFFFFFFFFFF
+    return result
+
+
+# TODO refactor: this should not be part of the crypto module
+def unpack_timestamp(value: int) -&gt; datetime:
+    &#34;&#34;&#34;Converts timestamp in millisec into datetime.
+
+    :param value: number of milliseconds since 1.1.2000  00:00:00; 64-bit integer
+    :return: corresponding datetime
+    &#34;&#34;&#34;
+    assert isinstance(value, int)
+    assert 0 &lt;= value &lt;= 0xFFFFFFFFFFFFFFFF
+    start = int(datetime(2000, 1, 1, 0, 0, 0, 0).timestamp() * 1000000)
+    return datetime.fromtimestamp((start + value) / 1000000)
+
+
+def matches_key_and_cert(priv_key: bytes, cert: Certificate) -&gt; bool:
+    &#34;&#34;&#34;Verify that given private key matches the public certificate.
+
+    :param priv_key: to be tested; decrypted binary data in PEM format
+    :param cert: to be used for verification
+    :return: True if yes; False otherwise
+    &#34;&#34;&#34;
+    signature = crypto_backend().rsa_sign(priv_key, bytes())
+    assert isinstance(cert, Certificate)
+    cert_pub_key = cert.public_key()  # public key of last certificate
+    assert isinstance(cert_pub_key, RSAPublicKey)
+    return crypto_backend().rsa_verify(
+        cert_pub_key.public_numbers().n, cert_pub_key.public_numbers().e, signature, bytes()
+    )</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.utils.crypto.common.calc_cypher_block_count"><code class="name flex">
+<span>def <span class="ident">calc_cypher_block_count</span></span>(<span>size: int) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate the amount if cypher blocks.</p>
+<p>:param size: Number of bytes for the cypher area
+:return: Number of blocks covering the cypher area</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calc_cypher_block_count(size: int) -&gt; int:
+    &#34;&#34;&#34;Calculate the amount if cypher blocks.
+
+    :param size: Number of bytes for the cypher area
+    :return: Number of blocks covering the cypher area
+    &#34;&#34;&#34;
+    return (size + 15) // 16</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.common.crypto_backend"><code class="name flex">
+<span>def <span class="ident">crypto_backend</span></span>(<span>) ‑> <a title="spsdk.utils.crypto.abstract.BackendClass" href="abstract.html#spsdk.utils.crypto.abstract.BackendClass">BackendClass</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return default crypto backend instance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def crypto_backend() -&gt; BackendClass:
+    &#34;&#34;&#34;Return default crypto backend instance.&#34;&#34;&#34;
+    return openssl_backend</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.common.matches_key_and_cert"><code class="name flex">
+<span>def <span class="ident">matches_key_and_cert</span></span>(<span>priv_key: bytes, cert: cryptography.x509.base.Certificate) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify that given private key matches the public certificate.</p>
+<p>:param priv_key: to be tested; decrypted binary data in PEM format
+:param cert: to be used for verification
+:return: True if yes; False otherwise</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def matches_key_and_cert(priv_key: bytes, cert: Certificate) -&gt; bool:
+    &#34;&#34;&#34;Verify that given private key matches the public certificate.
+
+    :param priv_key: to be tested; decrypted binary data in PEM format
+    :param cert: to be used for verification
+    :return: True if yes; False otherwise
+    &#34;&#34;&#34;
+    signature = crypto_backend().rsa_sign(priv_key, bytes())
+    assert isinstance(cert, Certificate)
+    cert_pub_key = cert.public_key()  # public key of last certificate
+    assert isinstance(cert_pub_key, RSAPublicKey)
+    return crypto_backend().rsa_verify(
+        cert_pub_key.public_numbers().n, cert_pub_key.public_numbers().e, signature, bytes()
+    )</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.common.pack_timestamp"><code class="name flex">
+<span>def <span class="ident">pack_timestamp</span></span>(<span>value: datetime.datetime) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts datetime to millisec since 1.1.2000.</p>
+<p>:param value: datetime to be converted
+:return: number of milliseconds since 1.1.2000
+00:00:00; 64-bit integer</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pack_timestamp(value: datetime) -&gt; int:
+    &#34;&#34;&#34;Converts datetime to millisec since 1.1.2000.
+
+    :param value: datetime to be converted
+    :return: number of milliseconds since 1.1.2000  00:00:00; 64-bit integer
+    &#34;&#34;&#34;
+    assert isinstance(value, datetime)
+    start = datetime(2000, 1, 1, 0, 0, 0, 0).timestamp()
+    result = int((value.timestamp() - start) * 1000000)
+    assert 0 &lt;= result &lt;= 0xFFFFFFFFFFFFFFFF
+    return result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.common.swap16"><code class="name flex">
+<span>def <span class="ident">swap16</span></span>(<span>x: int) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Swap bytes in half word (16bit).</p>
+<p>:param x: Original number
+:return: Number with swapped bytes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def swap16(x: int) -&gt; int:
+    &#34;&#34;&#34;Swap bytes in half word (16bit).
+
+    :param x: Original number
+    :return: Number with swapped bytes
+    &#34;&#34;&#34;
+    assert 0 &lt;= x &lt;= 0xFFFF
+    return ((x &lt;&lt; 8) &amp; 0xFF00) | ((x &gt;&gt; 8) &amp; 0x00FF)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.common.unpack_timestamp"><code class="name flex">
+<span>def <span class="ident">unpack_timestamp</span></span>(<span>value: int) ‑> datetime.datetime</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts timestamp in millisec into datetime.</p>
+<p>:param value: number of milliseconds since 1.1.2000
+00:00:00; 64-bit integer
+:return: corresponding datetime</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unpack_timestamp(value: int) -&gt; datetime:
+    &#34;&#34;&#34;Converts timestamp in millisec into datetime.
+
+    :param value: number of milliseconds since 1.1.2000  00:00:00; 64-bit integer
+    :return: corresponding datetime
+    &#34;&#34;&#34;
+    assert isinstance(value, int)
+    assert 0 &lt;= value &lt;= 0xFFFFFFFFFFFFFFFF
+    start = int(datetime(2000, 1, 1, 0, 0, 0, 0).timestamp() * 1000000)
+    return datetime.fromtimestamp((start + value) / 1000000)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.utils.crypto.common.Counter"><code class="flex name class">
+<span>class <span class="ident">Counter</span></span>
+<span>(</span><span>nonce: bytes, ctr_value: int = None, ctr_byteorder_encoding: str = 'little')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>AES counter with specified counter byte ordering and customizable increment.</p>
+<p>Constructor.</p>
+<p>:param nonce: last for bytes are used as initial value for counter
+:param ctr_value: counter initial value; it is added to counter value retrieved from nonce
+:param ctr_byteorder_encoding: way how the counter is encoded into output value: either 'little' or 'big'</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Counter:
+    &#34;&#34;&#34;AES counter with specified counter byte ordering and customizable increment.&#34;&#34;&#34;
+
+    @property
+    def value(self) -&gt; bytes:
+        &#34;&#34;&#34;Initial vector for AES encryption.&#34;&#34;&#34;
+        return self._nonce + self._ctr.to_bytes(4, self._ctr_byteorder_encoding)
+
+    def __init__(self, nonce: bytes, ctr_value: int = None, ctr_byteorder_encoding: str = &#39;little&#39;):
+        &#34;&#34;&#34;Constructor.
+
+        :param nonce: last for bytes are used as initial value for counter
+        :param ctr_value: counter initial value; it is added to counter value retrieved from nonce
+        :param ctr_byteorder_encoding: way how the counter is encoded into output value: either &#39;little&#39; or &#39;big&#39;
+        &#34;&#34;&#34;
+        assert isinstance(nonce, bytes) and len(nonce) == 16
+        assert ctr_byteorder_encoding in [&#39;little&#39;, &#39;big&#39;]
+        self._nonce = nonce[:-4]
+        self._ctr_byteorder_encoding = ctr_byteorder_encoding
+        self._ctr = int.from_bytes(nonce[-4:], ctr_byteorder_encoding)
+        if ctr_value is not None:
+            self._ctr += ctr_value
+
+    def increment(self, value: int = 1) -&gt; None:
+        &#34;&#34;&#34;Increment counter by specified value.
+
+        :param value: to add to counter
+        &#34;&#34;&#34;
+        self._ctr += value</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.utils.crypto.common.Counter.value"><code class="name">var <span class="ident">value</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>Initial vector for AES encryption.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def value(self) -&gt; bytes:
+    &#34;&#34;&#34;Initial vector for AES encryption.&#34;&#34;&#34;
+    return self._nonce + self._ctr.to_bytes(4, self._ctr_byteorder_encoding)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.common.Counter.increment"><code class="name flex">
+<span>def <span class="ident">increment</span></span>(<span>self, value: int = 1) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Increment counter by specified value.</p>
+<p>:param value: to add to counter</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def increment(self, value: int = 1) -&gt; None:
+    &#34;&#34;&#34;Increment counter by specified value.
+
+    :param value: to add to counter
+    &#34;&#34;&#34;
+    self._ctr += value</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.utils.crypto" href="index.html">spsdk.utils.crypto</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.utils.crypto.common.calc_cypher_block_count" href="#spsdk.utils.crypto.common.calc_cypher_block_count">calc_cypher_block_count</a></code></li>
+<li><code><a title="spsdk.utils.crypto.common.crypto_backend" href="#spsdk.utils.crypto.common.crypto_backend">crypto_backend</a></code></li>
+<li><code><a title="spsdk.utils.crypto.common.matches_key_and_cert" href="#spsdk.utils.crypto.common.matches_key_and_cert">matches_key_and_cert</a></code></li>
+<li><code><a title="spsdk.utils.crypto.common.pack_timestamp" href="#spsdk.utils.crypto.common.pack_timestamp">pack_timestamp</a></code></li>
+<li><code><a title="spsdk.utils.crypto.common.swap16" href="#spsdk.utils.crypto.common.swap16">swap16</a></code></li>
+<li><code><a title="spsdk.utils.crypto.common.unpack_timestamp" href="#spsdk.utils.crypto.common.unpack_timestamp">unpack_timestamp</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.utils.crypto.common.Counter" href="#spsdk.utils.crypto.common.Counter">Counter</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.utils.crypto.common.Counter.increment" href="#spsdk.utils.crypto.common.Counter.increment">increment</a></code></li>
+<li><code><a title="spsdk.utils.crypto.common.Counter.value" href="#spsdk.utils.crypto.common.Counter.value">value</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.image.pfr API documentation</title>
+<meta name="description" content="Module provides support for Protected Flash Region." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.image.pfr</code></h1>
+</header>
+<section id="section-intro">
+<p>Module provides support for Protected Flash Region.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Module provides support for Protected Flash Region.&#34;&#34;&#34;
+import json
+import math
+import os
+from typing import List, Union
+from xml.etree import ElementTree as ET
+
+from bitstring import BitArray  # type: ignore #Type info for bitstring is not available
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPublicKey
+
+from spsdk import SPSDK_DATA_FOLDER
+from spsdk.image.misc import format_value, parse_int
+from spsdk.utils.crypto.abstract import BackendClass
+from spsdk.utils.crypto.backend_openssl import openssl_backend
+
+
+class BaseConfigArea:
+    &#34;&#34;&#34;Base for CMPA and CFPA classes.&#34;&#34;&#34;
+    CONFIG_DIR = SPSDK_DATA_FOLDER
+    CONFIG_FILE = &#34;database.json&#34;
+    BINARY_SIZE = 512
+    HAS_ROTKH = True
+    ROTKH_SIZE = 32
+    ROTKH_START_REGISTER = &#34;ROTKH0&#34;
+    SHA_SIZE = 32
+    SHA_START_REGISTER = &#34;SHA256_DIGEST0&#34;
+
+    def __init__(self, device: str, keys: List[RSAPublicKey] = None,
+                 revision: str = None, user_config: dict = None,
+                 rotkh: bytes = None) -&gt; None:
+        &#34;&#34;&#34;Initialize an instance.
+
+        :param device: device to use, list of supported devices is available via &#39;devices&#39; method
+        :param keys: list of RSA Public Keys to compute ROTKH
+        :param revision: silicon revision, if not specified, the latest is being used
+        :param user_config: dict with user configuration
+        :param rotkh: pre-computed ROTKH
+        &#34;&#34;&#34;
+        self.config = self._load_config()
+        assert device in self.get_devices(), f&#34;Device &#39;{device}&#39; is not supported&#34;
+        self.device = device
+        self.revision = revision or self._get_latest_revision(device)
+        assert self.revision in self.get_revisions(device), f&#34;Invalid revision &#39;{revision}&#39; for &#39;{device}&#39;&#34;
+        self.data = self._load_data()
+        self.user_config = user_config or dict()
+        self.keys = keys
+        self.rotkh = rotkh
+
+    @classmethod
+    def _load_config(cls) -&gt; dict:
+        &#34;&#34;&#34;Load config file.&#34;&#34;&#34;
+        with open(os.path.join(cls.CONFIG_DIR, cls.CONFIG_FILE)) as config_file:
+            return json.load(config_file)
+
+    def _get_latest_revision(self, device: str) -&gt; str:
+        &#34;&#34;&#34;Get latest revision for device.&#34;&#34;&#34;
+        return self.config[&#34;devices&#34;][device][&#34;latest&#34;]
+
+    @classmethod
+    def devices(cls) -&gt; List[str]:
+        &#34;&#34;&#34;Classmethod to get list of supppoted devices.&#34;&#34;&#34;
+        config = cls._load_config()
+        return list(config[&#39;devices&#39;].keys())
+
+    def get_devices(self) -&gt; List[str]:
+        &#34;&#34;&#34;Get list of supported devices.&#34;&#34;&#34;
+        return list(self.config[&#34;devices&#34;].keys())
+
+    def get_revisions(self, device: str) -&gt; List[str]:
+        &#34;&#34;&#34;Get list of revisions for given device.&#34;&#34;&#34;
+        return list(self.config[&#34;devices&#34;][device][&#34;revisions&#34;].keys())
+
+    def get_address(self, remove_underscore: bool = False) -&gt; str:
+        &#34;&#34;&#34;Get the area address in chip memory.&#34;&#34;&#34;
+        address = self.config[&#34;devices&#34;][self.device][&#34;address&#34;]
+        if remove_underscore:
+            return address.replace(&#34;_&#34;, &#34;&#34;)
+        return address
+
+    def _get_data_file(self) -&gt; str:
+        &#34;&#34;&#34;Return the full path to data file (xml).&#34;&#34;&#34;
+        file_name = self.config[&#34;devices&#34;][self.device][&#34;revisions&#34;][self.revision]
+        return os.path.join(self.CONFIG_DIR, file_name)
+
+    def _load_data(self) -&gt; ET.ElementTree:
+        &#34;&#34;&#34;Load the register data.&#34;&#34;&#34;
+        reg_file = self._get_data_file()
+        return ET.parse(reg_file)
+
+    # pylint: disable=no-self-use   #It&#39;s better to have this function visually close to callies
+    def _filter_by_names(self, items: List[ET.Element], names: List[str]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter out all items in the &#34;items&#34; tree,whose name starts with one of the strings in &#34;names&#34; list.&#34;&#34;&#34;
+        filtered = [
+            item for item in items if not item.attrib[&#34;name&#34;].startswith(tuple(names))
+        ]
+        return filtered
+
+    def _filter_computed_registers(self, items: List[ET.Element]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter computed registers.&#34;&#34;&#34;
+        regs = self.config[&#34;computed_registers&#34;]
+        return self._filter_by_names(items, regs)
+
+    def _filter_computed_fields(self, items: List[ET.Element]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter computerd fields.&#34;&#34;&#34;
+        fields = self.config[&#34;computed_fields&#34;]
+        return self._filter_by_names(items, fields)
+
+    def _filter_ignored_registers(self, items: List[ET.Element]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter registers that shall be ignored.&#34;&#34;&#34;
+        regs = self.config.get(&#34;ignored_registers&#34;, &#34;&#34;)
+        return self._filter_by_names(items, regs)
+
+    def _get_registers(self, exclude_computed: bool = True) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Get a list of all registers as ElementTree.&#34;&#34;&#34;
+        registers = self.data.findall(&#34;register&#34;)
+        registers = self._filter_ignored_registers(registers)
+        if exclude_computed:
+            return self._filter_computed_registers(registers)
+        return registers
+
+    def _get_register(self, register_name: str) -&gt; ET.Element:
+        &#34;&#34;&#34;Get single register tree by the register&#39;s name.&#34;&#34;&#34;
+        reg = self.data.find(f&#34;register[@name=&#39;{register_name}&#39;]&#34;)
+        assert reg, f&#34;Register &#39;{register_name}&#39; wasn&#39;t found!&#34;
+        return reg
+
+    def _get_register_names(self, exclude_computed: bool = True) -&gt; List[str]:
+        &#34;&#34;&#34;Get a list of all register names.&#34;&#34;&#34;
+        registers = self._get_registers(exclude_computed)
+        return [r.attrib[&#34;name&#34;] for r in registers]
+
+    def _get_bitfields(self, register_name: str, exclude_computed: bool = True) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Get bitfields for register as ElementTree.&#34;&#34;&#34;
+        fields = self.data.findall(f&#34;register[@name=&#39;{register_name}&#39;]/bit_field&#34;)
+        if exclude_computed:
+            return self._filter_computed_fields(fields)
+        return fields
+
+    def _get_bitfield_names(self, register_name: str, exclude_computed: bool = True) -&gt; List[str]:
+        &#34;&#34;&#34;Get a list of bitfield names for given register.&#34;&#34;&#34;
+        bit_fiels = self._get_bitfields(register_name, exclude_computed)
+        return [bf.attrib[&#34;name&#34;] for bf in bit_fiels]
+
+    def _get_bitfield_config(self, register_name: str, exclude: bool) -&gt; dict:
+        &#34;&#34;&#34;Get bitfield configuration.&#34;&#34;&#34;
+        field_config = {}
+        for field in self._get_bitfields(register_name, exclude):
+            name = field.attrib[&#34;name&#34;]
+            value = format_value(int(field.attrib[&#34;reset_value&#34;]), int(field.attrib[&#34;width&#34;]))
+            field_config[name] = value
+        return field_config
+
+    def generate_config(self, exclude_computed: bool = True) -&gt; dict:
+        &#34;&#34;&#34;Generate configuration structure for user configuration.&#34;&#34;&#34;
+        config = {}
+        for reg in self._get_register_names(exclude_computed):
+            field_config = self._get_bitfield_config(reg, exclude_computed)
+            if len(field_config) == 1 and field_config.get(&#39;FIELD&#39;):
+                config[reg] = field_config.popitem()[1]
+            else:
+                config[reg] = field_config
+        return config
+
+    def _export_register(self, register_name: str, compute_inverses: bool) -&gt; bytes:
+        &#34;&#34;&#34;Generate binary output for single register.&#34;&#34;&#34;
+        register = BitArray(length=32)
+        user_config = self.user_config.get(register_name, dict())
+        inverse_present = False
+        for field in self._get_bitfields(register_name, exclude_computed=False):
+            name = field.attrib[&#34;name&#34;]
+            offset = parse_int(field.attrib[&#34;offset&#34;])
+            width = parse_int(field.attrib[&#34;width&#34;])
+            # chcek whether there&#39;s a need to calculate inverse values
+            inverse_present |= name == &#34;INVERSE_VALUE&#34;
+
+            # The configuration allows to configure the whole register with single value
+            if isinstance(user_config, str):
+                temp_value = user_config
+            else:
+                temp_value = user_config.get(name) or field.attrib[&#34;reset_value&#34;]
+            value = parse_int(temp_value)
+            # due to endianess we fill the bits from the end, therefore there&#39;s &#39;-&#39; in position
+            # pos = 0 means offset = 0, means end of the BitArray
+            register.overwrite(bs=BitArray(f&#34;uint:{width}={value}&#34;), pos=-(offset + width))
+        if compute_inverses and inverse_present:
+            # NOTE: For now we&#39;ll assume the INVERSES are 16b long and inverts bits[15:0]
+            # should this change in the future a data model change is necessary
+            # NOTE: invert method changes bits in-place, thus we need to call it on separate object
+            # calling invert() after slicing doesn&#39;t work for BitArray
+            b_lower = register[16:]
+            b_lower.invert()
+            register.overwrite(b_lower, 0)
+        # swapping bytes from big endian into little
+        register.byteswap()
+        return register.bytes
+
+    def _calc_rotkh(self) -&gt; bytes:
+        &#34;&#34;&#34;Calculate ROTKH (Root Of Trust Key Hash).&#34;&#34;&#34;
+        # the data structure use for computing final ROTKH is 4*32B long
+        # 32B is a hash of individual keys
+        # 4 is the max number of keys, if a key is not provided the slot is filled with &#39;\x00&#39;
+        assert self.keys, f&#34;Key&#39;s were not set, can&#39;t compute ROTKH&#34;
+        key_hashes = [calc_pub_key_hash(key, openssl_backend) for key in self.keys]
+        data = [key_hashes[i] if i &lt; len(key_hashes) else bytes(32) for i in range(4)]
+        return openssl_backend.hash(bytearray().join(data))
+
+    def _get_rotkh_start_address(self) -&gt; int:
+        &#34;&#34;&#34;Return the offset of the first ROTKHx register defined as ROTKH_START_REGISTER.&#34;&#34;&#34;
+        return parse_int(self._get_register(self.ROTKH_START_REGISTER).attrib[&#34;offset&#34;])
+
+    def _get_sha_start_address(self) -&gt; int:
+        &#34;&#34;&#34;Return the offset of the first SHA_DIGEST register.&#34;&#34;&#34;
+        return parse_int(self._get_register(self.SHA_START_REGISTER).attrib[&#34;offset&#34;])
+
+    def export(self, add_hash: bool = False, compute_inverses: bool = False) -&gt; bytes:
+        &#34;&#34;&#34;Generate binary output.&#34;&#34;&#34;
+        data = bytearray(self.BINARY_SIZE)
+        for reg in self._get_registers(exclude_computed=False):
+            name = reg.attrib[&#34;name&#34;]
+            width = parse_int(reg.attrib[&#34;width&#34;])
+            offset = parse_int(reg.attrib[&#34;offset&#34;])
+            assert width == 32, &#34;Don&#39;t know how to handle non-32b registers&#34;
+            register = self._export_register(name, compute_inverses)
+            # rewriting 4B at the time
+            data[offset: offset + 4] = register
+
+        # ROTKH may or may not be present, derived class defines its presense
+        if self.HAS_ROTKH:
+            rotkh_data = self.rotkh or self._calc_rotkh()
+            rothk_start = self._get_rotkh_start_address()
+            data[rothk_start: rothk_start + self.ROTKH_SIZE] = rotkh_data
+
+        if add_hash:
+            sha_start = self._get_sha_start_address()
+            data[sha_start: sha_start + self.SHA_SIZE] = openssl_backend.hash(data[:sha_start])
+        return bytes(data)
+
+    def _parse_register(self, register_name: str, data: bytes) -&gt; Union[str, dict]:
+        &#34;&#34;&#34;Parse individual register, returns wither one 32b value or dict of bitfields.&#34;&#34;&#34;
+        register = {}
+        bits = BitArray(data)
+        # data is stored in little endian, but processed in big endian
+        bits.byteswap()
+        for field in self._get_bitfields(register_name, exclude_computed=False):
+            width = parse_int(field.attrib[&#34;width&#34;])
+            # exit early if we found a single 32b field
+            if width == 32:
+                return format_value(bits.uint, width)
+            name = field.attrib[&#34;name&#34;]
+            offset = parse_int(field.attrib[&#34;offset&#34;])
+            # OK, what the hell is that slicing about?!
+            # offset is marked from the end of the bitarray not the begging like in a list
+            # e.g.: ba = BitArray(&#39;0b00001100&#39;), we want to extract bitfields of width=2 and offset=2 (&#39;11&#39;)
+            # again offset=2 means 2 bits from the end
+            # BitArray supports negative indexing like an regular python list does: last bit has index -1
+            # that means we want to extract bits with indecies -4,-3 =&gt; [-4:-2]
+            # HOWEVER: if we would want to extract 2 bits in the end (offset=0)
+            # we would need to use [-offset:] slice or [-offset:None]
+            slice_end = None if offset == 0 else -offset
+            filed_bits = bits[-(offset + width): slice_end]
+            register[name] = format_value(filed_bits.uint, width)
+        return register
+
+    def parse(self, data: bytes, exclude_computed: bool = True) -&gt; dict:
+        &#34;&#34;&#34;Return a user config JSON object based on input data.&#34;&#34;&#34;
+        user_config = {}
+        for reg in self._get_registers(exclude_computed=exclude_computed):
+            name = reg.attrib[&#34;name&#34;]
+            width = parse_int(reg.attrib[&#34;width&#34;])
+            offset = parse_int(reg.attrib[&#34;offset&#34;])
+            assert width == 32, &#34;Don&#39;t know how to handle non-32b registers&#34;
+            reg_config = self._parse_register(name, data[offset: offset + 4])
+            user_config[name] = reg_config
+        return user_config
+
+
+class CMPA(BaseConfigArea):
+    &#34;&#34;&#34;Customer Manufacturing Configuration Area.&#34;&#34;&#34;
+    CONFIG_DIR = os.path.join(BaseConfigArea.CONFIG_DIR, &#34;cmpa&#34;)
+
+
+class CFPA(BaseConfigArea):
+    &#34;&#34;&#34;Customer In-Field Configuration Area.&#34;&#34;&#34;
+    CONFIG_DIR = os.path.join(BaseConfigArea.CONFIG_DIR, &#34;cfpa&#34;)
+    HAS_ROTKH = False
+
+
+def calc_pub_key_hash(public_key: RSAPublicKey, backend: BackendClass = openssl_backend) -&gt; bytes:
+    &#34;&#34;&#34;Calculate a hash out of public key&#39;s exponent and modulus.&#34;&#34;&#34;
+    exponent = public_key.public_numbers().e  # type: ignore # MyPy is unable to pickup the class member
+    exp_len = math.ceil(exponent.bit_length() / 8)
+    exp_bytes = exponent.to_bytes(exp_len, &#34;big&#34;)
+
+    modulus = public_key.public_numbers().n  # type: ignore # MyPy is unable to pickup the class member
+    mod_len = math.ceil(modulus.bit_length() / 8)
+    mod_bytes = modulus.to_bytes(mod_len, &#34;big&#34;)
+
+    return backend.hash(mod_bytes + exp_bytes)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.image.pfr.calc_pub_key_hash"><code class="name flex">
+<span>def <span class="ident">calc_pub_key_hash</span></span>(<span>public_key: cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey, backend: <a title="spsdk.utils.crypto.abstract.BackendClass" href="../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BackendClass">BackendClass</a> = &lt;spsdk.utils.crypto.backend_openssl.Backend object&gt;) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculate a hash out of public key's exponent and modulus.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def calc_pub_key_hash(public_key: RSAPublicKey, backend: BackendClass = openssl_backend) -&gt; bytes:
+    &#34;&#34;&#34;Calculate a hash out of public key&#39;s exponent and modulus.&#34;&#34;&#34;
+    exponent = public_key.public_numbers().e  # type: ignore # MyPy is unable to pickup the class member
+    exp_len = math.ceil(exponent.bit_length() / 8)
+    exp_bytes = exponent.to_bytes(exp_len, &#34;big&#34;)
+
+    modulus = public_key.public_numbers().n  # type: ignore # MyPy is unable to pickup the class member
+    mod_len = math.ceil(modulus.bit_length() / 8)
+    mod_bytes = modulus.to_bytes(mod_len, &#34;big&#34;)
+
+    return backend.hash(mod_bytes + exp_bytes)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.image.pfr.BaseConfigArea"><code class="flex name class">
+<span>class <span class="ident">BaseConfigArea</span></span>
+<span>(</span><span>device: str, keys: List[cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey] = None, revision: str = None, user_config: dict = None, rotkh: bytes = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base for CMPA and CFPA classes.</p>
+<p>Initialize an instance.</p>
+<p>:param device: device to use, list of supported devices is available via 'devices' method
+:param keys: list of RSA Public Keys to compute ROTKH
+:param revision: silicon revision, if not specified, the latest is being used
+:param user_config: dict with user configuration
+:param rotkh: pre-computed ROTKH</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BaseConfigArea:
+    &#34;&#34;&#34;Base for CMPA and CFPA classes.&#34;&#34;&#34;
+    CONFIG_DIR = SPSDK_DATA_FOLDER
+    CONFIG_FILE = &#34;database.json&#34;
+    BINARY_SIZE = 512
+    HAS_ROTKH = True
+    ROTKH_SIZE = 32
+    ROTKH_START_REGISTER = &#34;ROTKH0&#34;
+    SHA_SIZE = 32
+    SHA_START_REGISTER = &#34;SHA256_DIGEST0&#34;
+
+    def __init__(self, device: str, keys: List[RSAPublicKey] = None,
+                 revision: str = None, user_config: dict = None,
+                 rotkh: bytes = None) -&gt; None:
+        &#34;&#34;&#34;Initialize an instance.
+
+        :param device: device to use, list of supported devices is available via &#39;devices&#39; method
+        :param keys: list of RSA Public Keys to compute ROTKH
+        :param revision: silicon revision, if not specified, the latest is being used
+        :param user_config: dict with user configuration
+        :param rotkh: pre-computed ROTKH
+        &#34;&#34;&#34;
+        self.config = self._load_config()
+        assert device in self.get_devices(), f&#34;Device &#39;{device}&#39; is not supported&#34;
+        self.device = device
+        self.revision = revision or self._get_latest_revision(device)
+        assert self.revision in self.get_revisions(device), f&#34;Invalid revision &#39;{revision}&#39; for &#39;{device}&#39;&#34;
+        self.data = self._load_data()
+        self.user_config = user_config or dict()
+        self.keys = keys
+        self.rotkh = rotkh
+
+    @classmethod
+    def _load_config(cls) -&gt; dict:
+        &#34;&#34;&#34;Load config file.&#34;&#34;&#34;
+        with open(os.path.join(cls.CONFIG_DIR, cls.CONFIG_FILE)) as config_file:
+            return json.load(config_file)
+
+    def _get_latest_revision(self, device: str) -&gt; str:
+        &#34;&#34;&#34;Get latest revision for device.&#34;&#34;&#34;
+        return self.config[&#34;devices&#34;][device][&#34;latest&#34;]
+
+    @classmethod
+    def devices(cls) -&gt; List[str]:
+        &#34;&#34;&#34;Classmethod to get list of supppoted devices.&#34;&#34;&#34;
+        config = cls._load_config()
+        return list(config[&#39;devices&#39;].keys())
+
+    def get_devices(self) -&gt; List[str]:
+        &#34;&#34;&#34;Get list of supported devices.&#34;&#34;&#34;
+        return list(self.config[&#34;devices&#34;].keys())
+
+    def get_revisions(self, device: str) -&gt; List[str]:
+        &#34;&#34;&#34;Get list of revisions for given device.&#34;&#34;&#34;
+        return list(self.config[&#34;devices&#34;][device][&#34;revisions&#34;].keys())
+
+    def get_address(self, remove_underscore: bool = False) -&gt; str:
+        &#34;&#34;&#34;Get the area address in chip memory.&#34;&#34;&#34;
+        address = self.config[&#34;devices&#34;][self.device][&#34;address&#34;]
+        if remove_underscore:
+            return address.replace(&#34;_&#34;, &#34;&#34;)
+        return address
+
+    def _get_data_file(self) -&gt; str:
+        &#34;&#34;&#34;Return the full path to data file (xml).&#34;&#34;&#34;
+        file_name = self.config[&#34;devices&#34;][self.device][&#34;revisions&#34;][self.revision]
+        return os.path.join(self.CONFIG_DIR, file_name)
+
+    def _load_data(self) -&gt; ET.ElementTree:
+        &#34;&#34;&#34;Load the register data.&#34;&#34;&#34;
+        reg_file = self._get_data_file()
+        return ET.parse(reg_file)
+
+    # pylint: disable=no-self-use   #It&#39;s better to have this function visually close to callies
+    def _filter_by_names(self, items: List[ET.Element], names: List[str]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter out all items in the &#34;items&#34; tree,whose name starts with one of the strings in &#34;names&#34; list.&#34;&#34;&#34;
+        filtered = [
+            item for item in items if not item.attrib[&#34;name&#34;].startswith(tuple(names))
+        ]
+        return filtered
+
+    def _filter_computed_registers(self, items: List[ET.Element]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter computed registers.&#34;&#34;&#34;
+        regs = self.config[&#34;computed_registers&#34;]
+        return self._filter_by_names(items, regs)
+
+    def _filter_computed_fields(self, items: List[ET.Element]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter computerd fields.&#34;&#34;&#34;
+        fields = self.config[&#34;computed_fields&#34;]
+        return self._filter_by_names(items, fields)
+
+    def _filter_ignored_registers(self, items: List[ET.Element]) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Filter registers that shall be ignored.&#34;&#34;&#34;
+        regs = self.config.get(&#34;ignored_registers&#34;, &#34;&#34;)
+        return self._filter_by_names(items, regs)
+
+    def _get_registers(self, exclude_computed: bool = True) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Get a list of all registers as ElementTree.&#34;&#34;&#34;
+        registers = self.data.findall(&#34;register&#34;)
+        registers = self._filter_ignored_registers(registers)
+        if exclude_computed:
+            return self._filter_computed_registers(registers)
+        return registers
+
+    def _get_register(self, register_name: str) -&gt; ET.Element:
+        &#34;&#34;&#34;Get single register tree by the register&#39;s name.&#34;&#34;&#34;
+        reg = self.data.find(f&#34;register[@name=&#39;{register_name}&#39;]&#34;)
+        assert reg, f&#34;Register &#39;{register_name}&#39; wasn&#39;t found!&#34;
+        return reg
+
+    def _get_register_names(self, exclude_computed: bool = True) -&gt; List[str]:
+        &#34;&#34;&#34;Get a list of all register names.&#34;&#34;&#34;
+        registers = self._get_registers(exclude_computed)
+        return [r.attrib[&#34;name&#34;] for r in registers]
+
+    def _get_bitfields(self, register_name: str, exclude_computed: bool = True) -&gt; List[ET.Element]:
+        &#34;&#34;&#34;Get bitfields for register as ElementTree.&#34;&#34;&#34;
+        fields = self.data.findall(f&#34;register[@name=&#39;{register_name}&#39;]/bit_field&#34;)
+        if exclude_computed:
+            return self._filter_computed_fields(fields)
+        return fields
+
+    def _get_bitfield_names(self, register_name: str, exclude_computed: bool = True) -&gt; List[str]:
+        &#34;&#34;&#34;Get a list of bitfield names for given register.&#34;&#34;&#34;
+        bit_fiels = self._get_bitfields(register_name, exclude_computed)
+        return [bf.attrib[&#34;name&#34;] for bf in bit_fiels]
+
+    def _get_bitfield_config(self, register_name: str, exclude: bool) -&gt; dict:
+        &#34;&#34;&#34;Get bitfield configuration.&#34;&#34;&#34;
+        field_config = {}
+        for field in self._get_bitfields(register_name, exclude):
+            name = field.attrib[&#34;name&#34;]
+            value = format_value(int(field.attrib[&#34;reset_value&#34;]), int(field.attrib[&#34;width&#34;]))
+            field_config[name] = value
+        return field_config
+
+    def generate_config(self, exclude_computed: bool = True) -&gt; dict:
+        &#34;&#34;&#34;Generate configuration structure for user configuration.&#34;&#34;&#34;
+        config = {}
+        for reg in self._get_register_names(exclude_computed):
+            field_config = self._get_bitfield_config(reg, exclude_computed)
+            if len(field_config) == 1 and field_config.get(&#39;FIELD&#39;):
+                config[reg] = field_config.popitem()[1]
+            else:
+                config[reg] = field_config
+        return config
+
+    def _export_register(self, register_name: str, compute_inverses: bool) -&gt; bytes:
+        &#34;&#34;&#34;Generate binary output for single register.&#34;&#34;&#34;
+        register = BitArray(length=32)
+        user_config = self.user_config.get(register_name, dict())
+        inverse_present = False
+        for field in self._get_bitfields(register_name, exclude_computed=False):
+            name = field.attrib[&#34;name&#34;]
+            offset = parse_int(field.attrib[&#34;offset&#34;])
+            width = parse_int(field.attrib[&#34;width&#34;])
+            # chcek whether there&#39;s a need to calculate inverse values
+            inverse_present |= name == &#34;INVERSE_VALUE&#34;
+
+            # The configuration allows to configure the whole register with single value
+            if isinstance(user_config, str):
+                temp_value = user_config
+            else:
+                temp_value = user_config.get(name) or field.attrib[&#34;reset_value&#34;]
+            value = parse_int(temp_value)
+            # due to endianess we fill the bits from the end, therefore there&#39;s &#39;-&#39; in position
+            # pos = 0 means offset = 0, means end of the BitArray
+            register.overwrite(bs=BitArray(f&#34;uint:{width}={value}&#34;), pos=-(offset + width))
+        if compute_inverses and inverse_present:
+            # NOTE: For now we&#39;ll assume the INVERSES are 16b long and inverts bits[15:0]
+            # should this change in the future a data model change is necessary
+            # NOTE: invert method changes bits in-place, thus we need to call it on separate object
+            # calling invert() after slicing doesn&#39;t work for BitArray
+            b_lower = register[16:]
+            b_lower.invert()
+            register.overwrite(b_lower, 0)
+        # swapping bytes from big endian into little
+        register.byteswap()
+        return register.bytes
+
+    def _calc_rotkh(self) -&gt; bytes:
+        &#34;&#34;&#34;Calculate ROTKH (Root Of Trust Key Hash).&#34;&#34;&#34;
+        # the data structure use for computing final ROTKH is 4*32B long
+        # 32B is a hash of individual keys
+        # 4 is the max number of keys, if a key is not provided the slot is filled with &#39;\x00&#39;
+        assert self.keys, f&#34;Key&#39;s were not set, can&#39;t compute ROTKH&#34;
+        key_hashes = [calc_pub_key_hash(key, openssl_backend) for key in self.keys]
+        data = [key_hashes[i] if i &lt; len(key_hashes) else bytes(32) for i in range(4)]
+        return openssl_backend.hash(bytearray().join(data))
+
+    def _get_rotkh_start_address(self) -&gt; int:
+        &#34;&#34;&#34;Return the offset of the first ROTKHx register defined as ROTKH_START_REGISTER.&#34;&#34;&#34;
+        return parse_int(self._get_register(self.ROTKH_START_REGISTER).attrib[&#34;offset&#34;])
+
+    def _get_sha_start_address(self) -&gt; int:
+        &#34;&#34;&#34;Return the offset of the first SHA_DIGEST register.&#34;&#34;&#34;
+        return parse_int(self._get_register(self.SHA_START_REGISTER).attrib[&#34;offset&#34;])
+
+    def export(self, add_hash: bool = False, compute_inverses: bool = False) -&gt; bytes:
+        &#34;&#34;&#34;Generate binary output.&#34;&#34;&#34;
+        data = bytearray(self.BINARY_SIZE)
+        for reg in self._get_registers(exclude_computed=False):
+            name = reg.attrib[&#34;name&#34;]
+            width = parse_int(reg.attrib[&#34;width&#34;])
+            offset = parse_int(reg.attrib[&#34;offset&#34;])
+            assert width == 32, &#34;Don&#39;t know how to handle non-32b registers&#34;
+            register = self._export_register(name, compute_inverses)
+            # rewriting 4B at the time
+            data[offset: offset + 4] = register
+
+        # ROTKH may or may not be present, derived class defines its presense
+        if self.HAS_ROTKH:
+            rotkh_data = self.rotkh or self._calc_rotkh()
+            rothk_start = self._get_rotkh_start_address()
+            data[rothk_start: rothk_start + self.ROTKH_SIZE] = rotkh_data
+
+        if add_hash:
+            sha_start = self._get_sha_start_address()
+            data[sha_start: sha_start + self.SHA_SIZE] = openssl_backend.hash(data[:sha_start])
+        return bytes(data)
+
+    def _parse_register(self, register_name: str, data: bytes) -&gt; Union[str, dict]:
+        &#34;&#34;&#34;Parse individual register, returns wither one 32b value or dict of bitfields.&#34;&#34;&#34;
+        register = {}
+        bits = BitArray(data)
+        # data is stored in little endian, but processed in big endian
+        bits.byteswap()
+        for field in self._get_bitfields(register_name, exclude_computed=False):
+            width = parse_int(field.attrib[&#34;width&#34;])
+            # exit early if we found a single 32b field
+            if width == 32:
+                return format_value(bits.uint, width)
+            name = field.attrib[&#34;name&#34;]
+            offset = parse_int(field.attrib[&#34;offset&#34;])
+            # OK, what the hell is that slicing about?!
+            # offset is marked from the end of the bitarray not the begging like in a list
+            # e.g.: ba = BitArray(&#39;0b00001100&#39;), we want to extract bitfields of width=2 and offset=2 (&#39;11&#39;)
+            # again offset=2 means 2 bits from the end
+            # BitArray supports negative indexing like an regular python list does: last bit has index -1
+            # that means we want to extract bits with indecies -4,-3 =&gt; [-4:-2]
+            # HOWEVER: if we would want to extract 2 bits in the end (offset=0)
+            # we would need to use [-offset:] slice or [-offset:None]
+            slice_end = None if offset == 0 else -offset
+            filed_bits = bits[-(offset + width): slice_end]
+            register[name] = format_value(filed_bits.uint, width)
+        return register
+
+    def parse(self, data: bytes, exclude_computed: bool = True) -&gt; dict:
+        &#34;&#34;&#34;Return a user config JSON object based on input data.&#34;&#34;&#34;
+        user_config = {}
+        for reg in self._get_registers(exclude_computed=exclude_computed):
+            name = reg.attrib[&#34;name&#34;]
+            width = parse_int(reg.attrib[&#34;width&#34;])
+            offset = parse_int(reg.attrib[&#34;offset&#34;])
+            assert width == 32, &#34;Don&#39;t know how to handle non-32b registers&#34;
+            reg_config = self._parse_register(name, data[offset: offset + 4])
+            user_config[name] = reg_config
+        return user_config</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.image.pfr.CFPA" href="#spsdk.image.pfr.CFPA">CFPA</a></li>
+<li><a title="spsdk.image.pfr.CMPA" href="#spsdk.image.pfr.CMPA">CMPA</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.pfr.BaseConfigArea.BINARY_SIZE"><code class="name">var <span class="ident">BINARY_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.CONFIG_DIR"><code class="name">var <span class="ident">CONFIG_DIR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.CONFIG_FILE"><code class="name">var <span class="ident">CONFIG_FILE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.HAS_ROTKH"><code class="name">var <span class="ident">HAS_ROTKH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.ROTKH_SIZE"><code class="name">var <span class="ident">ROTKH_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.ROTKH_START_REGISTER"><code class="name">var <span class="ident">ROTKH_START_REGISTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.SHA_SIZE"><code class="name">var <span class="ident">SHA_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.SHA_START_REGISTER"><code class="name">var <span class="ident">SHA_START_REGISTER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.image.pfr.BaseConfigArea.devices"><code class="name flex">
+<span>def <span class="ident">devices</span></span>(<span>) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Classmethod to get list of supppoted devices.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def devices(cls) -&gt; List[str]:
+    &#34;&#34;&#34;Classmethod to get list of supppoted devices.&#34;&#34;&#34;
+    config = cls._load_config()
+    return list(config[&#39;devices&#39;].keys())</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.image.pfr.BaseConfigArea.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, add_hash: bool = False, compute_inverses: bool = False) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate binary output.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, add_hash: bool = False, compute_inverses: bool = False) -&gt; bytes:
+    &#34;&#34;&#34;Generate binary output.&#34;&#34;&#34;
+    data = bytearray(self.BINARY_SIZE)
+    for reg in self._get_registers(exclude_computed=False):
+        name = reg.attrib[&#34;name&#34;]
+        width = parse_int(reg.attrib[&#34;width&#34;])
+        offset = parse_int(reg.attrib[&#34;offset&#34;])
+        assert width == 32, &#34;Don&#39;t know how to handle non-32b registers&#34;
+        register = self._export_register(name, compute_inverses)
+        # rewriting 4B at the time
+        data[offset: offset + 4] = register
+
+    # ROTKH may or may not be present, derived class defines its presense
+    if self.HAS_ROTKH:
+        rotkh_data = self.rotkh or self._calc_rotkh()
+        rothk_start = self._get_rotkh_start_address()
+        data[rothk_start: rothk_start + self.ROTKH_SIZE] = rotkh_data
+
+    if add_hash:
+        sha_start = self._get_sha_start_address()
+        data[sha_start: sha_start + self.SHA_SIZE] = openssl_backend.hash(data[:sha_start])
+    return bytes(data)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.generate_config"><code class="name flex">
+<span>def <span class="ident">generate_config</span></span>(<span>self, exclude_computed: bool = True) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate configuration structure for user configuration.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_config(self, exclude_computed: bool = True) -&gt; dict:
+    &#34;&#34;&#34;Generate configuration structure for user configuration.&#34;&#34;&#34;
+    config = {}
+    for reg in self._get_register_names(exclude_computed):
+        field_config = self._get_bitfield_config(reg, exclude_computed)
+        if len(field_config) == 1 and field_config.get(&#39;FIELD&#39;):
+            config[reg] = field_config.popitem()[1]
+        else:
+            config[reg] = field_config
+    return config</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.get_address"><code class="name flex">
+<span>def <span class="ident">get_address</span></span>(<span>self, remove_underscore: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the area address in chip memory.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_address(self, remove_underscore: bool = False) -&gt; str:
+    &#34;&#34;&#34;Get the area address in chip memory.&#34;&#34;&#34;
+    address = self.config[&#34;devices&#34;][self.device][&#34;address&#34;]
+    if remove_underscore:
+        return address.replace(&#34;_&#34;, &#34;&#34;)
+    return address</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.get_devices"><code class="name flex">
+<span>def <span class="ident">get_devices</span></span>(<span>self) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get list of supported devices.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_devices(self) -&gt; List[str]:
+    &#34;&#34;&#34;Get list of supported devices.&#34;&#34;&#34;
+    return list(self.config[&#34;devices&#34;].keys())</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.get_revisions"><code class="name flex">
+<span>def <span class="ident">get_revisions</span></span>(<span>self, device: str) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get list of revisions for given device.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_revisions(self, device: str) -&gt; List[str]:
+    &#34;&#34;&#34;Get list of revisions for given device.&#34;&#34;&#34;
+    return list(self.config[&#34;devices&#34;][device][&#34;revisions&#34;].keys())</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.pfr.BaseConfigArea.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>self, data: bytes, exclude_computed: bool = True) ‑> dict</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a user config JSON object based on input data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse(self, data: bytes, exclude_computed: bool = True) -&gt; dict:
+    &#34;&#34;&#34;Return a user config JSON object based on input data.&#34;&#34;&#34;
+    user_config = {}
+    for reg in self._get_registers(exclude_computed=exclude_computed):
+        name = reg.attrib[&#34;name&#34;]
+        width = parse_int(reg.attrib[&#34;width&#34;])
+        offset = parse_int(reg.attrib[&#34;offset&#34;])
+        assert width == 32, &#34;Don&#39;t know how to handle non-32b registers&#34;
+        reg_config = self._parse_register(name, data[offset: offset + 4])
+        user_config[name] = reg_config
+    return user_config</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.image.pfr.CFPA"><code class="flex name class">
+<span>class <span class="ident">CFPA</span></span>
+<span>(</span><span>device: str, keys: List[cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey] = None, revision: str = None, user_config: dict = None, rotkh: bytes = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Customer In-Field Configuration Area.</p>
+<p>Initialize an instance.</p>
+<p>:param device: device to use, list of supported devices is available via 'devices' method
+:param keys: list of RSA Public Keys to compute ROTKH
+:param revision: silicon revision, if not specified, the latest is being used
+:param user_config: dict with user configuration
+:param rotkh: pre-computed ROTKH</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CFPA(BaseConfigArea):
+    &#34;&#34;&#34;Customer In-Field Configuration Area.&#34;&#34;&#34;
+    CONFIG_DIR = os.path.join(BaseConfigArea.CONFIG_DIR, &#34;cfpa&#34;)
+    HAS_ROTKH = False</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.image.pfr.BaseConfigArea" href="#spsdk.image.pfr.BaseConfigArea">BaseConfigArea</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.pfr.CFPA.CONFIG_DIR"><code class="name">var <span class="ident">CONFIG_DIR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.pfr.CFPA.HAS_ROTKH"><code class="name">var <span class="ident">HAS_ROTKH</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.image.pfr.BaseConfigArea" href="#spsdk.image.pfr.BaseConfigArea">BaseConfigArea</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.devices" href="#spsdk.image.pfr.BaseConfigArea.devices">devices</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.export" href="#spsdk.image.pfr.BaseConfigArea.export">export</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.generate_config" href="#spsdk.image.pfr.BaseConfigArea.generate_config">generate_config</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_address" href="#spsdk.image.pfr.BaseConfigArea.get_address">get_address</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_devices" href="#spsdk.image.pfr.BaseConfigArea.get_devices">get_devices</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_revisions" href="#spsdk.image.pfr.BaseConfigArea.get_revisions">get_revisions</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.parse" href="#spsdk.image.pfr.BaseConfigArea.parse">parse</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.pfr.CMPA"><code class="flex name class">
+<span>class <span class="ident">CMPA</span></span>
+<span>(</span><span>device: str, keys: List[cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey] = None, revision: str = None, user_config: dict = None, rotkh: bytes = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Customer Manufacturing Configuration Area.</p>
+<p>Initialize an instance.</p>
+<p>:param device: device to use, list of supported devices is available via 'devices' method
+:param keys: list of RSA Public Keys to compute ROTKH
+:param revision: silicon revision, if not specified, the latest is being used
+:param user_config: dict with user configuration
+:param rotkh: pre-computed ROTKH</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CMPA(BaseConfigArea):
+    &#34;&#34;&#34;Customer Manufacturing Configuration Area.&#34;&#34;&#34;
+    CONFIG_DIR = os.path.join(BaseConfigArea.CONFIG_DIR, &#34;cmpa&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.image.pfr.BaseConfigArea" href="#spsdk.image.pfr.BaseConfigArea">BaseConfigArea</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.pfr.CMPA.CONFIG_DIR"><code class="name">var <span class="ident">CONFIG_DIR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.image.pfr.BaseConfigArea" href="#spsdk.image.pfr.BaseConfigArea">BaseConfigArea</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.devices" href="#spsdk.image.pfr.BaseConfigArea.devices">devices</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.export" href="#spsdk.image.pfr.BaseConfigArea.export">export</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.generate_config" href="#spsdk.image.pfr.BaseConfigArea.generate_config">generate_config</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_address" href="#spsdk.image.pfr.BaseConfigArea.get_address">get_address</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_devices" href="#spsdk.image.pfr.BaseConfigArea.get_devices">get_devices</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_revisions" href="#spsdk.image.pfr.BaseConfigArea.get_revisions">get_revisions</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.parse" href="#spsdk.image.pfr.BaseConfigArea.parse">parse</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.image" href="index.html">spsdk.image</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.image.pfr.calc_pub_key_hash" href="#spsdk.image.pfr.calc_pub_key_hash">calc_pub_key_hash</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.image.pfr.BaseConfigArea" href="#spsdk.image.pfr.BaseConfigArea">BaseConfigArea</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.BINARY_SIZE" href="#spsdk.image.pfr.BaseConfigArea.BINARY_SIZE">BINARY_SIZE</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.CONFIG_DIR" href="#spsdk.image.pfr.BaseConfigArea.CONFIG_DIR">CONFIG_DIR</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.CONFIG_FILE" href="#spsdk.image.pfr.BaseConfigArea.CONFIG_FILE">CONFIG_FILE</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.HAS_ROTKH" href="#spsdk.image.pfr.BaseConfigArea.HAS_ROTKH">HAS_ROTKH</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.ROTKH_SIZE" href="#spsdk.image.pfr.BaseConfigArea.ROTKH_SIZE">ROTKH_SIZE</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.ROTKH_START_REGISTER" href="#spsdk.image.pfr.BaseConfigArea.ROTKH_START_REGISTER">ROTKH_START_REGISTER</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.SHA_SIZE" href="#spsdk.image.pfr.BaseConfigArea.SHA_SIZE">SHA_SIZE</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.SHA_START_REGISTER" href="#spsdk.image.pfr.BaseConfigArea.SHA_START_REGISTER">SHA_START_REGISTER</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.devices" href="#spsdk.image.pfr.BaseConfigArea.devices">devices</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.export" href="#spsdk.image.pfr.BaseConfigArea.export">export</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.generate_config" href="#spsdk.image.pfr.BaseConfigArea.generate_config">generate_config</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_address" href="#spsdk.image.pfr.BaseConfigArea.get_address">get_address</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_devices" href="#spsdk.image.pfr.BaseConfigArea.get_devices">get_devices</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.get_revisions" href="#spsdk.image.pfr.BaseConfigArea.get_revisions">get_revisions</a></code></li>
+<li><code><a title="spsdk.image.pfr.BaseConfigArea.parse" href="#spsdk.image.pfr.BaseConfigArea.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.pfr.CFPA" href="#spsdk.image.pfr.CFPA">CFPA</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.pfr.CFPA.CONFIG_DIR" href="#spsdk.image.pfr.CFPA.CONFIG_DIR">CONFIG_DIR</a></code></li>
+<li><code><a title="spsdk.image.pfr.CFPA.HAS_ROTKH" href="#spsdk.image.pfr.CFPA.HAS_ROTKH">HAS_ROTKH</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.pfr.CMPA" href="#spsdk.image.pfr.CMPA">CMPA</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.pfr.CMPA.CONFIG_DIR" href="#spsdk.image.pfr.CMPA.CONFIG_DIR">CONFIG_DIR</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.crypto.signature_provider API documentation</title>
+<meta name="description" content="SignatureProvider is am Interface for all potential signature providers …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.crypto.signature_provider</code></h1>
+</header>
+<section id="section-intro">
+<p>SignatureProvider is am Interface for all potential signature providers.</p>
+<p>Each concrete signature provider needs to implement:
+- sign(data: bytes) -&gt; bytes
+- into() -&gt; str</p>
+<p>PlainFileSP is a SignatureProvider implementation that uses local files.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;SignatureProvider is am Interface for all potential signature providers.
+
+Each concrete signature provider needs to implement:
+- sign(data: bytes) -&gt; bytes
+- into() -&gt; str
+
+PlainFileSP is a SignatureProvider implementation that uses local files.
+&#34;&#34;&#34;
+
+import abc
+from typing import Dict, List, Optional
+
+from spsdk import crypto
+
+class SignatureProvider(abc.ABC):
+    &#34;&#34;&#34;Abstract class (Interface) for all signature providers.&#34;&#34;&#34;
+    # Subclasses override the following signature provider type
+    sp_type = &#39;INVALID&#39;
+
+    @abc.abstractmethod
+    def sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return signature for data.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Provide information about the Signature provide.&#34;&#34;&#34;
+
+    @staticmethod
+    def _convert_params(params: str) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;Coverts creation params from string into dictionary.
+
+        e.g.: &#34;type=file;file_path=some_path&#34; -&gt; {&#39;type&#39;: &#39;file&#39;, &#39;file_path&#39;: &#39;some_path&#39;}
+        &#34;&#34;&#34;
+        result = dict([tuple(p.split(&#34;=&#34;)) for p in params.split(&#34;;&#34;)])     #type: ignore  #oh dear Mypy
+        return result
+
+    @classmethod
+    def get_types(cls) -&gt; List[str]:
+        &#34;&#34;&#34;Returns a list of all available signature provider types.&#34;&#34;&#34;
+        return [sub_class.sp_type for sub_class in cls.__subclasses__()]
+
+    @classmethod
+    def create(cls, create_params: str) -&gt; Optional[&#39;SignatureProvider&#39;]:
+        &#34;&#34;&#34;Creates an concrete instance of signature provider.&#34;&#34;&#34;
+        params = cls._convert_params(create_params)
+        for klass in cls.__subclasses__():
+            if klass.sp_type == params[&#39;type&#39;]:
+                del params[&#39;type&#39;]
+                return klass(**params)  #type: ignore  #oh dear Mypy
+        return None
+
+
+class PlainFileSP(SignatureProvider):
+    &#34;&#34;&#34;Signature provider that uses plain local files.&#34;&#34;&#34;
+    sp_type = &#39;file&#39;
+
+    def __init__(self, file_path: str, password: str = &#39;&#39;, encoding: str = &#39;PEM&#39;, hash_alg: str = &#39;sha256&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the plain file signature provider.
+
+        :param file_path: Path to private file
+        :param password: Password in case of encrypted private file, defaults to &#39;&#39;
+        :param encoding: Private file encoding, defaults to &#39;PEM&#39;
+        :param hash_alg: Hash for the signature, defaults to &#39;sha256&#39;
+        &#34;&#34;&#34;
+        self.file_path = file_path
+        self.private_key = crypto.load_private_key(file_path)
+        self.hash_alg = hash_alg
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return basic into about the signature provider.&#34;&#34;&#34;
+        msg = &#34;Plain File Signature Provider\n&#34;
+        msg += f&#34;Key path: {self.file_path}\n&#34;
+        return msg
+
+    def sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return the signature for data.&#34;&#34;&#34;
+        if isinstance(self.private_key, crypto.RSAPrivateKey):
+            return self._rsa_sign(data)
+        if isinstance(self.private_key, crypto.EllipticCurvePrivateKey):
+            return self._ecc_sign(data)
+        return None
+
+    def _rsa_sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return RSA signature.&#34;&#34;&#34;
+        assert isinstance(self.private_key, crypto.RSAPrivateKey)
+        signature = self.private_key.sign(
+            data=data,
+            padding=crypto.padding.PKCS1v15(),
+            algorithm=crypto.hashes.SHA256()
+        )
+        return signature
+
+    def _ecc_sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return ECC signature.&#34;&#34;&#34;
+        assert isinstance(self.private_key, crypto.EllipticCurvePrivateKey)
+        signature = self.private_key.sign(
+            data=data,
+            signature_algorithm=crypto.ec.ECDSA(crypto.hashes.SHA256())
+        )
+        return signature</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.crypto.signature_provider.PlainFileSP"><code class="flex name class">
+<span>class <span class="ident">PlainFileSP</span></span>
+<span>(</span><span>file_path: str, password: str = '', encoding: str = 'PEM', hash_alg: str = 'sha256')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Signature provider that uses plain local files.</p>
+<p>Initialize the plain file signature provider.</p>
+<p>:param file_path: Path to private file
+:param password: Password in case of encrypted private file, defaults to ''
+:param encoding: Private file encoding, defaults to 'PEM'
+:param hash_alg: Hash for the signature, defaults to 'sha256'</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PlainFileSP(SignatureProvider):
+    &#34;&#34;&#34;Signature provider that uses plain local files.&#34;&#34;&#34;
+    sp_type = &#39;file&#39;
+
+    def __init__(self, file_path: str, password: str = &#39;&#39;, encoding: str = &#39;PEM&#39;, hash_alg: str = &#39;sha256&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the plain file signature provider.
+
+        :param file_path: Path to private file
+        :param password: Password in case of encrypted private file, defaults to &#39;&#39;
+        :param encoding: Private file encoding, defaults to &#39;PEM&#39;
+        :param hash_alg: Hash for the signature, defaults to &#39;sha256&#39;
+        &#34;&#34;&#34;
+        self.file_path = file_path
+        self.private_key = crypto.load_private_key(file_path)
+        self.hash_alg = hash_alg
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return basic into about the signature provider.&#34;&#34;&#34;
+        msg = &#34;Plain File Signature Provider\n&#34;
+        msg += f&#34;Key path: {self.file_path}\n&#34;
+        return msg
+
+    def sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return the signature for data.&#34;&#34;&#34;
+        if isinstance(self.private_key, crypto.RSAPrivateKey):
+            return self._rsa_sign(data)
+        if isinstance(self.private_key, crypto.EllipticCurvePrivateKey):
+            return self._ecc_sign(data)
+        return None
+
+    def _rsa_sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return RSA signature.&#34;&#34;&#34;
+        assert isinstance(self.private_key, crypto.RSAPrivateKey)
+        signature = self.private_key.sign(
+            data=data,
+            padding=crypto.padding.PKCS1v15(),
+            algorithm=crypto.hashes.SHA256()
+        )
+        return signature
+
+    def _ecc_sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return ECC signature.&#34;&#34;&#34;
+        assert isinstance(self.private_key, crypto.EllipticCurvePrivateKey)
+        signature = self.private_key.sign(
+            data=data,
+            signature_algorithm=crypto.ec.ECDSA(crypto.hashes.SHA256())
+        )
+        return signature</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.crypto.signature_provider.SignatureProvider" href="#spsdk.crypto.signature_provider.SignatureProvider">SignatureProvider</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.crypto.signature_provider.PlainFileSP.sp_type"><code class="name">var <span class="ident">sp_type</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.crypto.signature_provider.PlainFileSP.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return basic into about the signature provider.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Return basic into about the signature provider.&#34;&#34;&#34;
+    msg = &#34;Plain File Signature Provider\n&#34;
+    msg += f&#34;Key path: {self.file_path}\n&#34;
+    return msg</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.signature_provider.PlainFileSP.sign"><code class="name flex">
+<span>def <span class="ident">sign</span></span>(<span>self, data: bytes) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return the signature for data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sign(self, data: bytes) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Return the signature for data.&#34;&#34;&#34;
+    if isinstance(self.private_key, crypto.RSAPrivateKey):
+        return self._rsa_sign(data)
+    if isinstance(self.private_key, crypto.EllipticCurvePrivateKey):
+        return self._ecc_sign(data)
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.crypto.signature_provider.SignatureProvider" href="#spsdk.crypto.signature_provider.SignatureProvider">SignatureProvider</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.create" href="#spsdk.crypto.signature_provider.SignatureProvider.create">create</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.get_types" href="#spsdk.crypto.signature_provider.SignatureProvider.get_types">get_types</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.crypto.signature_provider.SignatureProvider"><code class="flex name class">
+<span>class <span class="ident">SignatureProvider</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Abstract class (Interface) for all signature providers.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SignatureProvider(abc.ABC):
+    &#34;&#34;&#34;Abstract class (Interface) for all signature providers.&#34;&#34;&#34;
+    # Subclasses override the following signature provider type
+    sp_type = &#39;INVALID&#39;
+
+    @abc.abstractmethod
+    def sign(self, data: bytes) -&gt; Optional[bytes]:
+        &#34;&#34;&#34;Return signature for data.&#34;&#34;&#34;
+
+    @abc.abstractmethod
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Provide information about the Signature provide.&#34;&#34;&#34;
+
+    @staticmethod
+    def _convert_params(params: str) -&gt; Dict[str, str]:
+        &#34;&#34;&#34;Coverts creation params from string into dictionary.
+
+        e.g.: &#34;type=file;file_path=some_path&#34; -&gt; {&#39;type&#39;: &#39;file&#39;, &#39;file_path&#39;: &#39;some_path&#39;}
+        &#34;&#34;&#34;
+        result = dict([tuple(p.split(&#34;=&#34;)) for p in params.split(&#34;;&#34;)])     #type: ignore  #oh dear Mypy
+        return result
+
+    @classmethod
+    def get_types(cls) -&gt; List[str]:
+        &#34;&#34;&#34;Returns a list of all available signature provider types.&#34;&#34;&#34;
+        return [sub_class.sp_type for sub_class in cls.__subclasses__()]
+
+    @classmethod
+    def create(cls, create_params: str) -&gt; Optional[&#39;SignatureProvider&#39;]:
+        &#34;&#34;&#34;Creates an concrete instance of signature provider.&#34;&#34;&#34;
+        params = cls._convert_params(create_params)
+        for klass in cls.__subclasses__():
+            if klass.sp_type == params[&#39;type&#39;]:
+                del params[&#39;type&#39;]
+                return klass(**params)  #type: ignore  #oh dear Mypy
+        return None</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.crypto.signature_provider.PlainFileSP" href="#spsdk.crypto.signature_provider.PlainFileSP">PlainFileSP</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.crypto.signature_provider.SignatureProvider.sp_type"><code class="name">var <span class="ident">sp_type</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.crypto.signature_provider.SignatureProvider.create"><code class="name flex">
+<span>def <span class="ident">create</span></span>(<span>create_params: str) ‑> Union[<a title="spsdk.crypto.signature_provider.SignatureProvider" href="#spsdk.crypto.signature_provider.SignatureProvider">SignatureProvider</a>, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates an concrete instance of signature provider.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def create(cls, create_params: str) -&gt; Optional[&#39;SignatureProvider&#39;]:
+    &#34;&#34;&#34;Creates an concrete instance of signature provider.&#34;&#34;&#34;
+    params = cls._convert_params(create_params)
+    for klass in cls.__subclasses__():
+        if klass.sp_type == params[&#39;type&#39;]:
+            del params[&#39;type&#39;]
+            return klass(**params)  #type: ignore  #oh dear Mypy
+    return None</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.signature_provider.SignatureProvider.get_types"><code class="name flex">
+<span>def <span class="ident">get_types</span></span>(<span>) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a list of all available signature provider types.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def get_types(cls) -&gt; List[str]:
+    &#34;&#34;&#34;Returns a list of all available signature provider types.&#34;&#34;&#34;
+    return [sub_class.sp_type for sub_class in cls.__subclasses__()]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.crypto.signature_provider.SignatureProvider.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Provide information about the Signature provide.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def info(self) -&gt; str:
+    &#34;&#34;&#34;Provide information about the Signature provide.&#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+<dt id="spsdk.crypto.signature_provider.SignatureProvider.sign"><code class="name flex">
+<span>def <span class="ident">sign</span></span>(<span>self, data: bytes) ‑> Union[bytes, NoneType]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return signature for data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@abc.abstractmethod
+def sign(self, data: bytes) -&gt; Optional[bytes]:
+    &#34;&#34;&#34;Return signature for data.&#34;&#34;&#34;</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.crypto" href="index.html">spsdk.crypto</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.crypto.signature_provider.PlainFileSP" href="#spsdk.crypto.signature_provider.PlainFileSP">PlainFileSP</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.crypto.signature_provider.PlainFileSP.info" href="#spsdk.crypto.signature_provider.PlainFileSP.info">info</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.PlainFileSP.sign" href="#spsdk.crypto.signature_provider.PlainFileSP.sign">sign</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.PlainFileSP.sp_type" href="#spsdk.crypto.signature_provider.PlainFileSP.sp_type">sp_type</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.crypto.signature_provider.SignatureProvider" href="#spsdk.crypto.signature_provider.SignatureProvider">SignatureProvider</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.create" href="#spsdk.crypto.signature_provider.SignatureProvider.create">create</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.get_types" href="#spsdk.crypto.signature_provider.SignatureProvider.get_types">get_types</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.info" href="#spsdk.crypto.signature_provider.SignatureProvider.info">info</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.sign" href="#spsdk.crypto.signature_provider.SignatureProvider.sign">sign</a></code></li>
+<li><code><a title="spsdk.crypto.signature_provider.SignatureProvider.sp_type" href="#spsdk.crypto.signature_provider.SignatureProvider.sp_type">sp_type</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.mboot.properties API documentation</title>
+<meta name="description" content="Helper module for more human-friendly interpretation of the target device properties." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.mboot.properties</code></h1>
+</header>
+<section id="section-intro">
+<p>Helper module for more human-friendly interpretation of the target device properties.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2016-2018 Martin Olejar
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Helper module for more human-friendly interpretation of the target device properties.&#34;&#34;&#34;
+
+
+from typing import Any, List, Tuple, Type, Union
+
+from spsdk.utils.easy_enum import Enum
+
+from .commands import CommandTag
+from .error_codes import StatusCode
+from .memories import ExtMemPropTags
+
+
+########################################################################################################################
+# McuBoot helper functions
+########################################################################################################################
+def size_fmt(value: Union[int, float], kibibyte: bool = True) -&gt; str:
+    &#34;&#34;&#34;Convert size value into string format.
+
+    :param value: The raw value
+    :param kibibyte: True if 1024 Bytes represent 1kB or False if 1000 Bytes represent 1kB
+    :return: Stringified value
+    &#34;&#34;&#34;
+    base, suffix = [(1000., &#39;B&#39;), (1024., &#39;iB&#39;)][kibibyte]
+    x = &#39;B&#39;
+    for x in [&#39;B&#39;] + [prefix + suffix for prefix in list(&#39;kMGTP&#39;)]:
+        if -base &lt; value &lt; base:
+            break
+        value /= base
+
+    return &#34;{} {}&#34;.format(value, x) if x == &#39;B&#39; else &#34;{:3.1f} {}&#34;.format(value, x)
+
+
+########################################################################################################################
+# McuBoot helper classes
+########################################################################################################################
+
+class Version:
+    &#34;&#34;&#34;McuBoot current and target version type.&#34;&#34;&#34;
+
+    def __init__(self, *args: Union[str, int], **kwargs: int):
+        &#34;&#34;&#34;Initialize the Version object.
+
+        :raises TypeError: Argument passed the not str not int
+        &#34;&#34;&#34;
+        self.mark = kwargs.get(&#39;mark&#39;, &#39;K&#39;)
+        self.major = kwargs.get(&#39;major&#39;, 0)
+        self.minor = kwargs.get(&#39;minor&#39;, 0)
+        self.fixation = kwargs.get(&#39;fixation&#39;, 0)
+        if args:
+            if isinstance(args[0], int):
+                self.from_int(args[0])
+            elif isinstance(args[0], str):
+                self.from_str(args[0])
+            else:
+                raise TypeError(&#34;Value must be &#39;str&#39; or &#39;int&#39; type !&#34;)
+
+    def __eq__(self, obj: Any) -&gt; bool:
+        return isinstance(obj, Version) and vars(obj) == vars(self)
+
+    def __ne__(self, obj: Any) -&gt; bool:
+        return not self.__eq__(obj)
+
+    def __lt__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &lt; obj.to_int(True)
+
+    def __le__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &lt;= obj.to_int(True)
+
+    def __gt__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &gt; obj.to_int(True)
+
+    def __ge__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &gt;= obj.to_int(True)
+
+    def __str__(self) -&gt; str:
+        return self.to_str()
+
+    def __repr__(self) -&gt; str:
+        return f&#34;&lt;Version(mark={self.mark}, major={self.major}, minor={self.minor}, fixation={self.fixation})&gt;&#34;
+
+    def from_int(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Parse version data from raw int value.
+
+        :param value: Raw integer input
+        &#34;&#34;&#34;
+        mark = (value &gt;&gt; 24) &amp; 0xFF
+        self.mark = chr(mark) if 64 &lt; mark &lt; 91 else None   # type: ignore
+        self.major = (value &gt;&gt; 16) &amp; 0xFF
+        self.minor = (value &gt;&gt; 8) &amp; 0xFF
+        self.fixation = value &amp; 0xFF
+
+    def from_str(self, value: str) -&gt; None:
+        &#34;&#34;&#34;Parse version data from string value.
+
+        :param value: String representation input
+        &#34;&#34;&#34;
+        mark_major, minor, fixation = value.split(&#39;.&#39;)
+        if len(mark_major) &gt; 1 and mark_major[0] not in &#34;0123456789&#34;:
+            self.mark = mark_major[0]
+            self.major = int(mark_major[1:])
+        else:
+            self.major = int(mark_major)
+        self.minor = int(minor)
+        self.fixation = int(fixation)
+
+    def to_int(self, no_mark: bool = False) -&gt; int:
+        &#34;&#34;&#34;Get version value in raw integer format.
+
+        :param no_mark: If True, return value without mark
+        :return: Integer representation
+        &#34;&#34;&#34;
+        value = self.major &lt;&lt; 16 | self.minor &lt;&lt; 8 | self.fixation
+        mark = 0 if no_mark or self.mark is None else ord(self.mark) &lt;&lt; 24  # type: ignore
+        return value | mark
+
+    def to_str(self, no_mark: bool = False) -&gt; str:
+        &#34;&#34;&#34;Get version value in readable string format.
+
+        :param no_mark: If True, return value without mark
+        :return: String representation
+        &#34;&#34;&#34;
+        value = f&#34;{self.major}.{self.minor}.{self.fixation}&#34;
+        mark = &#39;&#39; if no_mark or self.mark is None else self.mark
+        return f&#34;{mark}{value}&#34;
+
+
+########################################################################################################################
+# McuBoot Properties
+########################################################################################################################
+
+class PropertyTag(Enum):
+    &#34;&#34;&#34;McuBoot Properties.&#34;&#34;&#34;
+
+    # LIST_PROPERTIES = (0x00, &#39;ListProperties&#39;, &#39;List Properties&#39;)
+    CURRENT_VERSION = (0x01, &#39;CurrentVersion&#39;, &#39;Current Version&#39;)
+    AVAILABLE_PERIPHERALS = (0x02, &#39;AvailablePeripherals&#39;, &#39;Available Peripherals&#39;)
+    FLASH_START_ADDRESS = (0x03, &#39;FlashStartAddress&#39;, &#39;Flash Start Address&#39;)
+    FLASH_SIZE = (0x04, &#39;FlashSize&#39;, &#39;Flash Size&#39;)
+    FLASH_SECTOR_SIZE = (0x05, &#39;FlashSectorSize&#39;, &#39;Flash Sector Size&#39;)
+    FLASH_BLOCK_COUNT = (0x06, &#39;FlashBlockCount&#39;, &#39;Flash Block Count&#39;)
+    AVAILABLE_COMMANDS = (0x07, &#39;AvailableCommands&#39;, &#39;Available Commands&#39;)
+    CRC_CHECK_STATUS = (0x08, &#39;CrcCheckStatus&#39;, &#39;CRC Check Status&#39;)
+    LAST_ERROR = (0x09, &#39;LastError&#39;, &#39;Last Error Value&#39;)
+    VERIFY_WRITES = (0x0A, &#39;VerifyWrites&#39;, &#39;Verify Writes&#39;)
+    MAX_PACKET_SIZE = (0x0B, &#39;MaxPacketSize&#39;, &#39;Max Packet Size&#39;)
+    RESERVED_REGIONS = (0x0C, &#39;ReservedRegions&#39;, &#39;Reserved Regions&#39;)
+    VALIDATE_REGIONS = (0x0D, &#39;ValidateRegions&#39;, &#39;Validate Regions&#39;)
+    RAM_START_ADDRESS = (0x0E, &#39;RamStartAddress&#39;, &#39;RAM Start Address&#39;)
+    RAM_SIZE = (0x0F, &#39;RamSize&#39;, &#39;RAM Size&#39;)
+    SYSTEM_DEVICE_IDENT = (0x10, &#39;SystemDeviceIdent&#39;, &#39;System Device Identification&#39;)
+    FLASH_SECURITY_STATE = (0x11, &#39;FlashSecurityState&#39;, &#39;Flash Security State&#39;)
+    UNIQUE_DEVICE_IDENT = (0x12, &#39;UniqueDeviceIdent&#39;, &#39;Unique Device Identification&#39;)
+    FLASH_FAC_SUPPORT = (0x13, &#39;FlashFacSupport&#39;, &#39;Flash Fac. Support&#39;)
+    FLASH_ACCESS_SEGMENT_SIZE = (0x14, &#39;FlashAccessSegmentSize&#39;, &#39;Flash Access Segment Size&#39;)
+    FLASH_ACCESS_SEGMENT_COUNT = (0x15, &#39;FlashAccessSegmentCount&#39;, &#39;Flash Access Segment Count&#39;)
+    FLASH_READ_MARGIN = (0x16, &#39;FlashReadMargin&#39;, &#39;Flash Read Margin&#39;)
+    QSPI_INIT_STATUS = (0x17, &#39;QspiInitStatus&#39;, &#39;QuadSPI Initialization Status&#39;)
+    TARGET_VERSION = (0x18, &#39;TargetVersion&#39;, &#39;Target Version&#39;)
+    EXTERNAL_MEMORY_ATTRIBUTES = (0x19, &#39;ExternalMemoryAttributes&#39;, &#39;External Memory Attributes&#39;)
+    RELIABLE_UPDATE_STATUS = (0x1A, &#39;ReliableUpdateStatus&#39;, &#39;Reliable Update Status&#39;)
+    FLASH_PAGE_SIZE = (0x1B, &#39;FlashPageSize&#39;, &#39;Flash Page Size&#39;)
+    IRQ_NOTIFIER_PIN = (0x1C, &#39;IrqNotifierPin&#39;, &#39;Irq Notifier Pin&#39;)
+    PFR_KEYSTORE_UPDATE_OPT = (0x1D, &#39;PfrKeystoreUpdateOpt&#39;, &#39;PFR Keystore Update Opt&#39;)
+
+
+class PeripheryTag(Enum):
+    &#34;&#34;&#34;Tags representing peripherals.&#34;&#34;&#34;
+    UART = (0x01, &#39;UART&#39;, &#39;UART Interface&#39;)
+    I2C_SLAVE = (0x02, &#39;I2C-Slave&#39;, &#39;I2C Slave Interface&#39;)
+    SPI_SLAVE = (0x04, &#39;SPI-Slave&#39;, &#39;SPI Slave Interface&#39;)
+    CAN = (0x08, &#39;CAN&#39;, &#39;CAN Interface&#39;)
+    USB_HID = (0x10, &#39;USB-HID&#39;, &#39;USB HID-Class Interface&#39;)
+    USB_CDC = (0x20, &#39;USB-CDC&#39;, &#39;USB CDC-Class Interface&#39;)
+    USB_DFU = (0x40, &#39;USB-DFU&#39;, &#39;USB DFU-Class Interface&#39;)
+
+
+class FlashReadMargin(Enum):
+    &#34;&#34;&#34;Scopes for flash read.&#34;&#34;&#34;
+    NORMAL = (0, &#39;Normal&#39;)
+    USER = (1, &#39;User&#39;)
+    FACTORY = (2, &#39;Factory&#39;)
+
+
+class PfrKeystoreUpdateOpt(Enum):
+    &#34;&#34;&#34;Options for PFR updating.&#34;&#34;&#34;
+    KEY_PROVISIONING = (0, &#39;KeyProvisioning&#39;)
+    WRITE_MEMORY = (1, &#39;WriteMemory&#39;)
+
+
+########################################################################################################################
+# McuBoot Properties Values
+########################################################################################################################
+
+class PropertyValueBase:
+    &#34;&#34;&#34;Base class for property value.&#34;&#34;&#34;
+
+    __slots__ = (&#39;tag&#39;, &#39;name&#39;, &#39;desc&#39;)
+
+    def __init__(self, tag: int, name: str = None, desc: str = None) -&gt; None:
+        &#34;&#34;&#34;Initialize the base of property.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param name: Optional name for the property
+        :param desc: Optional description for the property
+        &#34;&#34;&#34;
+        self.tag = tag
+        self.name = name or PropertyTag.get(tag, &#39;&#39;)
+        self.desc = desc or PropertyTag.desc(tag)
+
+    def __str__(self) -&gt; str:
+        return f&#34;{self.desc} = {self.to_str()}&#34;
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Stringified representation of a property.
+
+        Derived classes should implement this function.
+
+        :raises NotImplementedError: Derived class didn&#39;t provide implementation
+        :return: String representation
+        &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class IntValue(PropertyValueBase):
+    &#34;&#34;&#34;Integer-based value property.&#34;&#34;&#34;
+
+    __slots__ = (&#39;value&#39;, &#39;_fmt&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int], str_format: str = &#39;dec&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the integer-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param str_format: Format to display the value (&#39;dec&#39;, &#39;hex&#39;, &#39;size&#39;)
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._fmt = str_format
+        self.value = raw_values[0]
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer property representation.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        if self._fmt == &#39;size&#39;:
+            str_value = size_fmt(self.value)
+        elif self._fmt == &#39;hex&#39;:
+            str_value = f&#34;0x{self.value:08X}&#34;
+        elif self._fmt == &#39;dec&#39;:
+            str_value = str(self.value)
+        else:
+            str_value = self._fmt.format(self.value)
+        return str_value
+
+
+class BoolValue(PropertyValueBase):
+    &#34;&#34;&#34;Boolean-based value property.&#34;&#34;&#34;
+
+    __slots__ = (&#39;value&#39;, &#39;_true_values&#39;, &#39;_false_values&#39;, &#39;_true_string&#39;, &#39;_false_string&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int],
+                 true_values: Tuple = (1,), true_string: str = &#39;YES&#39;,
+                 false_values: Tuple = (0,), false_string: str = &#39;NO&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the Boolean-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param true_values: Values representing &#39;True&#39;, defaults to (1,)
+        :param true_string: String representing &#39;True, defaults to &#39;YES&#39;
+        :param false_values: Values representing &#39;False&#39;, defaults to (0,)
+        :param false_string: String representing &#39;False, defaults to &#39;NO&#39;
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._true_values = true_values
+        self._true_string = true_string
+        self._false_values = false_values
+        self._false_string = false_string
+        self.value = raw_values[0]
+
+    def __bool__(self) -&gt; bool:
+        return self.value in self._true_values
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return self._true_string if self.value in self._true_values else self._false_string
+
+
+class EnumValue(PropertyValueBase):
+    &#34;&#34;&#34;Enumeration value property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;, &#39;enum&#39;, &#39;_na_msg&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int], enum: Type[Enum], na_msg: str = &#39;Unknown Item&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the enumeration-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param enum: Enumeration to pick from
+        :param na_msg: Message to display if an item is not found in the enum
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._na_msg = na_msg
+        self.enum = enum
+        self.value = raw_values[0]
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return self.enum.name(self.value, f&#34;{self._na_msg}: {self.value}&#34;)
+
+
+class VersionValue(PropertyValueBase):
+    &#34;&#34;&#34;Version property class.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the Version-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = Version(raw_values[0])
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value.to_int()
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return self.value.to_str()
+
+
+class DeviceUidValue(PropertyValueBase):
+    &#34;&#34;&#34;Device UID value property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;, &#39;_count&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the Version-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._count = len(raw_values)
+        self.value = 0
+        for i, val in enumerate(raw_values):
+            self.value |= val &lt;&lt; (i * 32)
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        fmt = f&#34;{{:0{self._count * 8}X}}&#34;
+        return fmt.format(self.value)
+
+
+class ReservedRegionsValue(PropertyValueBase):
+    &#34;&#34;&#34;Reserver Regions property.&#34;&#34;&#34;
+    __slots__ = (&#39;regions&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the ReserverRegion-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.regions = []
+        for i in range(0, len(raw_values), 2):
+            self.regions.append((raw_values[i], raw_values[i + 1]))
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return &#34;\n&#34;.join([f&#34;0x{r[0]:08X} - 0x{r[1]:08X}, {size_fmt(r[1] - r[0])}&#34; for r in self.regions])
+
+
+class AvailablePeripheralsValue(PropertyValueBase):
+    &#34;&#34;&#34;Available Peripherals property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the AvailablePeripherals-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = raw_values[0]
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return &#34;, &#34;.join([key for key, value, _ in PeripheryTag if value &amp; self.value]) # type: ignore
+
+
+class AvailableCommandsValue(PropertyValueBase):
+    &#34;&#34;&#34;Available commands property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    @property
+    def tags(self) -&gt; List[str]:
+        &#34;&#34;&#34;List of tags representing Available commands.&#34;&#34;&#34;
+        return [tag_value for _, tag_value, _ in CommandTag if (1 &lt;&lt; tag_value) &amp; self.value]   # type: ignore
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the AvailableCommands-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = raw_values[0]
+
+    def __contains__(self, item: int) -&gt; bool:
+        return isinstance(item, int) and bool((1 &lt;&lt; item) &amp; self.value)
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return [name for name, value, _ in CommandTag if (1 &lt;&lt; value) &amp; self.value] # type: ignore
+
+
+class IrqNotifierPinValue(PropertyValueBase):
+    &#34;&#34;&#34;IRQ notifier pin property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    @property
+    def pin(self) -&gt; int:
+        &#34;&#34;&#34;Number of the pin used for reporting IRQ.&#34;&#34;&#34;
+        return self.value &amp; 0xFF
+
+    @property
+    def port(self) -&gt; int:
+        &#34;&#34;&#34;Number of the port used for reporting IRQ.&#34;&#34;&#34;
+        return (self.value &gt;&gt; 8) &amp; 0xFF
+
+    @property
+    def enabled(self) -&gt; bool:
+        &#34;&#34;&#34;Indicates whether IRQ reporting is enabled.&#34;&#34;&#34;
+        return bool(self.value &amp; (1 &lt;&lt; 32))
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the IrqNotifierPin-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = raw_values[0]
+
+    def __bool__(self) -&gt; bool:
+        return self.enabled
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return f&#34;IRQ Port[{self.port}], Pin[{self.pin}] is {&#39;enabled&#39; if self.enabled else &#39;disabled&#39;}&#34;
+
+
+class ExternalMemoryAttributesValue(PropertyValueBase):
+    &#34;&#34;&#34;Attributes for external memories.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;, &#39;mem_id&#39;, &#39;start_address&#39;, &#39;total_size&#39;, &#39;page_size&#39;, &#39;sector_size&#39;, &#39;block_size&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int], mem_id: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize the ExternalMemoryAttributes-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param mem_id: ID of the external memory
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.mem_id = mem_id
+        self.start_address = raw_values[1] if raw_values[0] &amp; ExtMemPropTags.START_ADDRESS else None
+        self.total_size = raw_values[2] * 1024 if raw_values[0] &amp; ExtMemPropTags.SIZE_IN_KBYTES else None
+        self.page_size = raw_values[3] if raw_values[0] &amp; ExtMemPropTags.PAGE_SIZE else None
+        self.sector_size = raw_values[4] if raw_values[0] &amp; ExtMemPropTags.SECTOR_SIZE else None
+        self.block_size = raw_values[5] if raw_values[0] &amp; ExtMemPropTags.BLOCK_SIZE else None
+        self.value = raw_values[0]
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        str_values = []
+        if self.start_address is not None:
+            str_values.append(f&#34;Start Address: 0x{self.start_address:08X}&#34;)
+        if self.total_size is not None:
+            str_values.append(f&#34;Total Size:    {size_fmt(self.total_size)}&#34;)
+        if self.page_size is not None:
+            str_values.append(f&#34;Page Size:     {size_fmt(self.page_size)}&#34;)
+        if self.sector_size is not None:
+            str_values.append(f&#34;Sector Size:   {size_fmt(self.sector_size)}&#34;)
+        if self.block_size is not None:
+            str_values.append(f&#34;Block Size:    {size_fmt(self.block_size)}&#34;)
+        return &#34;, &#34;.join(str_values)
+
+
+########################################################################################################################
+# McuBoot property response parser
+########################################################################################################################
+
+PROPERTIES = {
+    PropertyTag.CURRENT_VERSION: {
+        &#39;class&#39;: VersionValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.AVAILABLE_PERIPHERALS: {
+        &#39;class&#39;: AvailablePeripheralsValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.FLASH_START_ADDRESS: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;hex&#39;}},
+    PropertyTag.FLASH_SIZE: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;size&#39;}},
+    PropertyTag.FLASH_SECTOR_SIZE: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;size&#39;}},
+    PropertyTag.FLASH_BLOCK_COUNT: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;dec&#39;}},
+    PropertyTag.AVAILABLE_COMMANDS: {
+        &#39;class&#39;: AvailableCommandsValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.CRC_CHECK_STATUS: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;hex&#39;}},
+    PropertyTag.VERIFY_WRITES: {
+        &#39;class&#39;: BoolValue,
+        &#39;kwargs&#39;: {&#39;true_string&#39;: &#39;ON&#39;, &#39;false_string&#39;: &#39;OFF&#39;}},
+    PropertyTag.LAST_ERROR: {
+        &#39;class&#39;: EnumValue,
+        &#39;kwargs&#39;: {&#39;enum&#39;: StatusCode, &#39;na_msg&#39;: &#39;Unknown Error&#39;}},
+    PropertyTag.MAX_PACKET_SIZE: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;size&#39;}},
+    PropertyTag.RESERVED_REGIONS: {
+        &#39;class&#39;: ReservedRegionsValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.VALIDATE_REGIONS: {
+        &#39;class&#39;: BoolValue,
+        &#39;kwargs&#39;: {&#39;true_string&#39;: &#39;ON&#39;, &#39;false_string&#39;: &#39;OFF&#39;}},
+    PropertyTag.RAM_START_ADDRESS: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;hex&#39;}},
+    PropertyTag.RAM_SIZE: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;size&#39;}},
+    PropertyTag.SYSTEM_DEVICE_IDENT: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;hex&#39;}},
+    PropertyTag.FLASH_SECURITY_STATE: {
+        &#39;class&#39;: BoolValue,
+        &#39;kwargs&#39;: {&#39;true_values&#39;: (0x00000000, 0x5AA55AA5), &#39;true_string&#39;: &#39;Unlocked&#39;,
+                   &#39;false_values&#39;: (0x00000001, 0xC33CC33C), &#39;false_string&#39;: &#39;Locked&#39;}},
+    PropertyTag.UNIQUE_DEVICE_IDENT: {
+        &#39;class&#39;: DeviceUidValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.FLASH_FAC_SUPPORT: {
+        &#39;class&#39;: BoolValue,
+        &#39;kwargs&#39;: {&#39;true_string&#39;: &#39;ON&#39;, &#39;false_string&#39;: &#39;OFF&#39;}},
+    PropertyTag.FLASH_ACCESS_SEGMENT_SIZE: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;size&#39;}},
+    PropertyTag.FLASH_ACCESS_SEGMENT_COUNT: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;dec&#39;}},
+    PropertyTag.FLASH_READ_MARGIN: {
+        &#39;class&#39;: EnumValue,
+        &#39;kwargs&#39;: {&#39;enum&#39;: FlashReadMargin, &#39;na_msg&#39;: &#39;Unknown Margin&#39;}},
+    PropertyTag.QSPI_INIT_STATUS: {
+        &#39;class&#39;: EnumValue,
+        &#39;kwargs&#39;: {&#39;enum&#39;: StatusCode, &#39;na_msg&#39;: &#39;Unknown Error&#39;}},
+    PropertyTag.TARGET_VERSION: {
+        &#39;class&#39;: VersionValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES: {
+        &#39;class&#39;: ExternalMemoryAttributesValue,
+        &#39;kwargs&#39;: {&#39;mem_id&#39;: None}},
+    PropertyTag.RELIABLE_UPDATE_STATUS: {
+        &#39;class&#39;: EnumValue,
+        &#39;kwargs&#39;: {&#39;enum&#39;: StatusCode, &#39;na_msg&#39;: &#39;Unknown Error&#39;}},
+    PropertyTag.FLASH_PAGE_SIZE: {
+        &#39;class&#39;: IntValue,
+        &#39;kwargs&#39;: {&#39;str_format&#39;: &#39;size&#39;}},
+    PropertyTag.IRQ_NOTIFIER_PIN: {
+        &#39;class&#39;: IrqNotifierPinValue,
+        &#39;kwargs&#39;: {}},
+    PropertyTag.PFR_KEYSTORE_UPDATE_OPT: {
+        &#39;class&#39;: EnumValue,
+        &#39;kwargs&#39;: {&#39;enum&#39;: PfrKeystoreUpdateOpt, &#39;na_msg&#39;: &#39;Unknown&#39;}},
+}
+
+
+def parse_property_value(property_tag: int, raw_values: list, ext_mem_id: int = None) -&gt; Any:
+    &#34;&#34;&#34;Parse the property value received from the device.
+
+    :param property_tag: Tag representing the property
+    :param raw_values: Data received from the device
+    :param ext_mem_id: ID of the external memory used to read the property, defaults to None
+    :return: Object representing the property
+    &#34;&#34;&#34;
+    assert isinstance(property_tag, int)
+    assert isinstance(raw_values, list)
+
+    if property_tag not in PROPERTIES.keys():
+        return None
+
+    cls = PROPERTIES[property_tag][&#39;class&#39;]  # type: ignore
+    kwargs: dict = PROPERTIES[property_tag][&#39;kwargs&#39;]  # type: ignore
+    if &#39;mem_id&#39; in kwargs:
+        kwargs[&#39;mem_id&#39;] = ext_mem_id  # type: ignore
+
+    return cls(property_tag, raw_values, **kwargs)  # type: ignore</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.mboot.properties.parse_property_value"><code class="name flex">
+<span>def <span class="ident">parse_property_value</span></span>(<span>property_tag: int, raw_values: list, ext_mem_id: int = None) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse the property value received from the device.</p>
+<p>:param property_tag: Tag representing the property
+:param raw_values: Data received from the device
+:param ext_mem_id: ID of the external memory used to read the property, defaults to None
+:return: Object representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_property_value(property_tag: int, raw_values: list, ext_mem_id: int = None) -&gt; Any:
+    &#34;&#34;&#34;Parse the property value received from the device.
+
+    :param property_tag: Tag representing the property
+    :param raw_values: Data received from the device
+    :param ext_mem_id: ID of the external memory used to read the property, defaults to None
+    :return: Object representing the property
+    &#34;&#34;&#34;
+    assert isinstance(property_tag, int)
+    assert isinstance(raw_values, list)
+
+    if property_tag not in PROPERTIES.keys():
+        return None
+
+    cls = PROPERTIES[property_tag][&#39;class&#39;]  # type: ignore
+    kwargs: dict = PROPERTIES[property_tag][&#39;kwargs&#39;]  # type: ignore
+    if &#39;mem_id&#39; in kwargs:
+        kwargs[&#39;mem_id&#39;] = ext_mem_id  # type: ignore
+
+    return cls(property_tag, raw_values, **kwargs)  # type: ignore</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.size_fmt"><code class="name flex">
+<span>def <span class="ident">size_fmt</span></span>(<span>value: Union[int, float], kibibyte: bool = True) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert size value into string format.</p>
+<p>:param value: The raw value
+:param kibibyte: True if 1024 Bytes represent 1kB or False if 1000 Bytes represent 1kB
+:return: Stringified value</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def size_fmt(value: Union[int, float], kibibyte: bool = True) -&gt; str:
+    &#34;&#34;&#34;Convert size value into string format.
+
+    :param value: The raw value
+    :param kibibyte: True if 1024 Bytes represent 1kB or False if 1000 Bytes represent 1kB
+    :return: Stringified value
+    &#34;&#34;&#34;
+    base, suffix = [(1000., &#39;B&#39;), (1024., &#39;iB&#39;)][kibibyte]
+    x = &#39;B&#39;
+    for x in [&#39;B&#39;] + [prefix + suffix for prefix in list(&#39;kMGTP&#39;)]:
+        if -base &lt; value &lt; base:
+            break
+        value /= base
+
+    return &#34;{} {}&#34;.format(value, x) if x == &#39;B&#39; else &#34;{:3.1f} {}&#34;.format(value, x)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.mboot.properties.AvailableCommandsValue"><code class="flex name class">
+<span>class <span class="ident">AvailableCommandsValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Available commands property.</p>
+<p>Initialize the AvailableCommands-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AvailableCommandsValue(PropertyValueBase):
+    &#34;&#34;&#34;Available commands property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    @property
+    def tags(self) -&gt; List[str]:
+        &#34;&#34;&#34;List of tags representing Available commands.&#34;&#34;&#34;
+        return [tag_value for _, tag_value, _ in CommandTag if (1 &lt;&lt; tag_value) &amp; self.value]   # type: ignore
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the AvailableCommands-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = raw_values[0]
+
+    def __contains__(self, item: int) -&gt; bool:
+        return isinstance(item, int) and bool((1 &lt;&lt; item) &amp; self.value)
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return [name for name, value, _ in CommandTag if (1 &lt;&lt; value) &amp; self.value] # type: ignore</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.AvailableCommandsValue.tags"><code class="name">var <span class="ident">tags</span> : List[str]</code></dt>
+<dd>
+<div class="desc"><p>List of tags representing Available commands.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def tags(self) -&gt; List[str]:
+    &#34;&#34;&#34;List of tags representing Available commands.&#34;&#34;&#34;
+    return [tag_value for _, tag_value, _ in CommandTag if (1 &lt;&lt; tag_value) &amp; self.value]   # type: ignore</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.AvailableCommandsValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.AvailableCommandsValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return [name for name, value, _ in CommandTag if (1 &lt;&lt; value) &amp; self.value] # type: ignore</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.AvailablePeripheralsValue"><code class="flex name class">
+<span>class <span class="ident">AvailablePeripheralsValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Available Peripherals property.</p>
+<p>Initialize the AvailablePeripherals-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AvailablePeripheralsValue(PropertyValueBase):
+    &#34;&#34;&#34;Available Peripherals property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the AvailablePeripherals-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = raw_values[0]
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return &#34;, &#34;.join([key for key, value, _ in PeripheryTag if value &amp; self.value]) # type: ignore</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.AvailablePeripheralsValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.AvailablePeripheralsValue.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the raw integer portion of the property.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self) -&gt; int:
+    &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+    return self.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.AvailablePeripheralsValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return &#34;, &#34;.join([key for key, value, _ in PeripheryTag if value &amp; self.value]) # type: ignore</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.BoolValue"><code class="flex name class">
+<span>class <span class="ident">BoolValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int], true_values: Tuple = (1,), true_string: str = 'YES', false_values: Tuple = (0,), false_string: str = 'NO')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Boolean-based value property.</p>
+<p>Initialize the Boolean-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property
+:param true_values: Values representing 'True', defaults to (1,)
+:param true_string: String representing 'True, defaults to 'YES'
+:param false_values: Values representing 'False', defaults to (0,)
+:param false_string: String representing 'False, defaults to 'NO'</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BoolValue(PropertyValueBase):
+    &#34;&#34;&#34;Boolean-based value property.&#34;&#34;&#34;
+
+    __slots__ = (&#39;value&#39;, &#39;_true_values&#39;, &#39;_false_values&#39;, &#39;_true_string&#39;, &#39;_false_string&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int],
+                 true_values: Tuple = (1,), true_string: str = &#39;YES&#39;,
+                 false_values: Tuple = (0,), false_string: str = &#39;NO&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the Boolean-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param true_values: Values representing &#39;True&#39;, defaults to (1,)
+        :param true_string: String representing &#39;True, defaults to &#39;YES&#39;
+        :param false_values: Values representing &#39;False&#39;, defaults to (0,)
+        :param false_string: String representing &#39;False, defaults to &#39;NO&#39;
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._true_values = true_values
+        self._true_string = true_string
+        self._false_values = false_values
+        self._false_string = false_string
+        self.value = raw_values[0]
+
+    def __bool__(self) -&gt; bool:
+        return self.value in self._true_values
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return self._true_string if self.value in self._true_values else self._false_string</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.BoolValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.BoolValue.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the raw integer portion of the property.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self) -&gt; int:
+    &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+    return self.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.BoolValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return self._true_string if self.value in self._true_values else self._false_string</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.DeviceUidValue"><code class="flex name class">
+<span>class <span class="ident">DeviceUidValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Device UID value property.</p>
+<p>Initialize the Version-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DeviceUidValue(PropertyValueBase):
+    &#34;&#34;&#34;Device UID value property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;, &#39;_count&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the Version-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._count = len(raw_values)
+        self.value = 0
+        for i, val in enumerate(raw_values):
+            self.value |= val &lt;&lt; (i * 32)
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        fmt = f&#34;{{:0{self._count * 8}X}}&#34;
+        return fmt.format(self.value)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.DeviceUidValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.DeviceUidValue.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the raw integer portion of the property.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self) -&gt; int:
+    &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+    return self.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.DeviceUidValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    fmt = f&#34;{{:0{self._count * 8}X}}&#34;
+    return fmt.format(self.value)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.EnumValue"><code class="flex name class">
+<span>class <span class="ident">EnumValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int], enum: Type[<a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a>], na_msg: str = 'Unknown Item')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumeration value property.</p>
+<p>Initialize the enumeration-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property
+:param enum: Enumeration to pick from
+:param na_msg: Message to display if an item is not found in the enum</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EnumValue(PropertyValueBase):
+    &#34;&#34;&#34;Enumeration value property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;, &#39;enum&#39;, &#39;_na_msg&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int], enum: Type[Enum], na_msg: str = &#39;Unknown Item&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the enumeration-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param enum: Enumeration to pick from
+        :param na_msg: Message to display if an item is not found in the enum
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._na_msg = na_msg
+        self.enum = enum
+        self.value = raw_values[0]
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return self.enum.name(self.value, f&#34;{self._na_msg}: {self.value}&#34;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.EnumValue.enum"><code class="name">var <span class="ident">enum</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.EnumValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.EnumValue.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the raw integer portion of the property.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self) -&gt; int:
+    &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+    return self.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.EnumValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return self.enum.name(self.value, f&#34;{self._na_msg}: {self.value}&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue"><code class="flex name class">
+<span>class <span class="ident">ExternalMemoryAttributesValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int], mem_id: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Attributes for external memories.</p>
+<p>Initialize the ExternalMemoryAttributes-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property
+:param mem_id: ID of the external memory</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ExternalMemoryAttributesValue(PropertyValueBase):
+    &#34;&#34;&#34;Attributes for external memories.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;, &#39;mem_id&#39;, &#39;start_address&#39;, &#39;total_size&#39;, &#39;page_size&#39;, &#39;sector_size&#39;, &#39;block_size&#39;)
+
+    def __init__(self, tag: int, raw_values: List[int], mem_id: int = 0) -&gt; None:
+        &#34;&#34;&#34;Initialize the ExternalMemoryAttributes-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param mem_id: ID of the external memory
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.mem_id = mem_id
+        self.start_address = raw_values[1] if raw_values[0] &amp; ExtMemPropTags.START_ADDRESS else None
+        self.total_size = raw_values[2] * 1024 if raw_values[0] &amp; ExtMemPropTags.SIZE_IN_KBYTES else None
+        self.page_size = raw_values[3] if raw_values[0] &amp; ExtMemPropTags.PAGE_SIZE else None
+        self.sector_size = raw_values[4] if raw_values[0] &amp; ExtMemPropTags.SECTOR_SIZE else None
+        self.block_size = raw_values[5] if raw_values[0] &amp; ExtMemPropTags.BLOCK_SIZE else None
+        self.value = raw_values[0]
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        str_values = []
+        if self.start_address is not None:
+            str_values.append(f&#34;Start Address: 0x{self.start_address:08X}&#34;)
+        if self.total_size is not None:
+            str_values.append(f&#34;Total Size:    {size_fmt(self.total_size)}&#34;)
+        if self.page_size is not None:
+            str_values.append(f&#34;Page Size:     {size_fmt(self.page_size)}&#34;)
+        if self.sector_size is not None:
+            str_values.append(f&#34;Sector Size:   {size_fmt(self.sector_size)}&#34;)
+        if self.block_size is not None:
+            str_values.append(f&#34;Block Size:    {size_fmt(self.block_size)}&#34;)
+        return &#34;, &#34;.join(str_values)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.block_size"><code class="name">var <span class="ident">block_size</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.mem_id"><code class="name">var <span class="ident">mem_id</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.page_size"><code class="name">var <span class="ident">page_size</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.sector_size"><code class="name">var <span class="ident">sector_size</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.start_address"><code class="name">var <span class="ident">start_address</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.total_size"><code class="name">var <span class="ident">total_size</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.ExternalMemoryAttributesValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    str_values = []
+    if self.start_address is not None:
+        str_values.append(f&#34;Start Address: 0x{self.start_address:08X}&#34;)
+    if self.total_size is not None:
+        str_values.append(f&#34;Total Size:    {size_fmt(self.total_size)}&#34;)
+    if self.page_size is not None:
+        str_values.append(f&#34;Page Size:     {size_fmt(self.page_size)}&#34;)
+    if self.sector_size is not None:
+        str_values.append(f&#34;Sector Size:   {size_fmt(self.sector_size)}&#34;)
+    if self.block_size is not None:
+        str_values.append(f&#34;Block Size:    {size_fmt(self.block_size)}&#34;)
+    return &#34;, &#34;.join(str_values)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.FlashReadMargin"><code class="flex name class">
+<span>class <span class="ident">FlashReadMargin</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Scopes for flash read.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FlashReadMargin(Enum):
+    &#34;&#34;&#34;Scopes for flash read.&#34;&#34;&#34;
+    NORMAL = (0, &#39;Normal&#39;)
+    USER = (1, &#39;User&#39;)
+    FACTORY = (2, &#39;Factory&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.FlashReadMargin.FACTORY"><code class="name">var <span class="ident">FACTORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.FlashReadMargin.NORMAL"><code class="name">var <span class="ident">NORMAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.FlashReadMargin.USER"><code class="name">var <span class="ident">USER</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.IntValue"><code class="flex name class">
+<span>class <span class="ident">IntValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int], str_format: str = 'dec')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Integer-based value property.</p>
+<p>Initialize the integer-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property
+:param str_format: Format to display the value ('dec', 'hex', 'size')</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class IntValue(PropertyValueBase):
+    &#34;&#34;&#34;Integer-based value property.&#34;&#34;&#34;
+
+    __slots__ = (&#39;value&#39;, &#39;_fmt&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int], str_format: str = &#39;dec&#39;) -&gt; None:
+        &#34;&#34;&#34;Initialize the integer-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        :param str_format: Format to display the value (&#39;dec&#39;, &#39;hex&#39;, &#39;size&#39;)
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self._fmt = str_format
+        self.value = raw_values[0]
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer property representation.&#34;&#34;&#34;
+        return self.value
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        if self._fmt == &#39;size&#39;:
+            str_value = size_fmt(self.value)
+        elif self._fmt == &#39;hex&#39;:
+            str_value = f&#34;0x{self.value:08X}&#34;
+        elif self._fmt == &#39;dec&#39;:
+            str_value = str(self.value)
+        else:
+            str_value = self._fmt.format(self.value)
+        return str_value</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.IntValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.IntValue.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the raw integer property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self) -&gt; int:
+    &#34;&#34;&#34;Get the raw integer property representation.&#34;&#34;&#34;
+    return self.value</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.IntValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    if self._fmt == &#39;size&#39;:
+        str_value = size_fmt(self.value)
+    elif self._fmt == &#39;hex&#39;:
+        str_value = f&#34;0x{self.value:08X}&#34;
+    elif self._fmt == &#39;dec&#39;:
+        str_value = str(self.value)
+    else:
+        str_value = self._fmt.format(self.value)
+    return str_value</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.IrqNotifierPinValue"><code class="flex name class">
+<span>class <span class="ident">IrqNotifierPinValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>IRQ notifier pin property.</p>
+<p>Initialize the IrqNotifierPin-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class IrqNotifierPinValue(PropertyValueBase):
+    &#34;&#34;&#34;IRQ notifier pin property.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    @property
+    def pin(self) -&gt; int:
+        &#34;&#34;&#34;Number of the pin used for reporting IRQ.&#34;&#34;&#34;
+        return self.value &amp; 0xFF
+
+    @property
+    def port(self) -&gt; int:
+        &#34;&#34;&#34;Number of the port used for reporting IRQ.&#34;&#34;&#34;
+        return (self.value &gt;&gt; 8) &amp; 0xFF
+
+    @property
+    def enabled(self) -&gt; bool:
+        &#34;&#34;&#34;Indicates whether IRQ reporting is enabled.&#34;&#34;&#34;
+        return bool(self.value &amp; (1 &lt;&lt; 32))
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the IrqNotifierPin-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = raw_values[0]
+
+    def __bool__(self) -&gt; bool:
+        return self.enabled
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return f&#34;IRQ Port[{self.port}], Pin[{self.pin}] is {&#39;enabled&#39; if self.enabled else &#39;disabled&#39;}&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.IrqNotifierPinValue.enabled"><code class="name">var <span class="ident">enabled</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Indicates whether IRQ reporting is enabled.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def enabled(self) -&gt; bool:
+    &#34;&#34;&#34;Indicates whether IRQ reporting is enabled.&#34;&#34;&#34;
+    return bool(self.value &amp; (1 &lt;&lt; 32))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.IrqNotifierPinValue.pin"><code class="name">var <span class="ident">pin</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Number of the pin used for reporting IRQ.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def pin(self) -&gt; int:
+    &#34;&#34;&#34;Number of the pin used for reporting IRQ.&#34;&#34;&#34;
+    return self.value &amp; 0xFF</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.IrqNotifierPinValue.port"><code class="name">var <span class="ident">port</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Number of the port used for reporting IRQ.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def port(self) -&gt; int:
+    &#34;&#34;&#34;Number of the port used for reporting IRQ.&#34;&#34;&#34;
+    return (self.value &gt;&gt; 8) &amp; 0xFF</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.IrqNotifierPinValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.IrqNotifierPinValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return f&#34;IRQ Port[{self.port}], Pin[{self.pin}] is {&#39;enabled&#39; if self.enabled else &#39;disabled&#39;}&#34;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag"><code class="flex name class">
+<span>class <span class="ident">PeripheryTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tags representing peripherals.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PeripheryTag(Enum):
+    &#34;&#34;&#34;Tags representing peripherals.&#34;&#34;&#34;
+    UART = (0x01, &#39;UART&#39;, &#39;UART Interface&#39;)
+    I2C_SLAVE = (0x02, &#39;I2C-Slave&#39;, &#39;I2C Slave Interface&#39;)
+    SPI_SLAVE = (0x04, &#39;SPI-Slave&#39;, &#39;SPI Slave Interface&#39;)
+    CAN = (0x08, &#39;CAN&#39;, &#39;CAN Interface&#39;)
+    USB_HID = (0x10, &#39;USB-HID&#39;, &#39;USB HID-Class Interface&#39;)
+    USB_CDC = (0x20, &#39;USB-CDC&#39;, &#39;USB CDC-Class Interface&#39;)
+    USB_DFU = (0x40, &#39;USB-DFU&#39;, &#39;USB DFU-Class Interface&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.PeripheryTag.CAN"><code class="name">var <span class="ident">CAN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag.I2C_SLAVE"><code class="name">var <span class="ident">I2C_SLAVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag.SPI_SLAVE"><code class="name">var <span class="ident">SPI_SLAVE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag.UART"><code class="name">var <span class="ident">UART</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag.USB_CDC"><code class="name">var <span class="ident">USB_CDC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag.USB_DFU"><code class="name">var <span class="ident">USB_DFU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PeripheryTag.USB_HID"><code class="name">var <span class="ident">USB_HID</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.PfrKeystoreUpdateOpt"><code class="flex name class">
+<span>class <span class="ident">PfrKeystoreUpdateOpt</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Options for PFR updating.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PfrKeystoreUpdateOpt(Enum):
+    &#34;&#34;&#34;Options for PFR updating.&#34;&#34;&#34;
+    KEY_PROVISIONING = (0, &#39;KeyProvisioning&#39;)
+    WRITE_MEMORY = (1, &#39;WriteMemory&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.PfrKeystoreUpdateOpt.KEY_PROVISIONING"><code class="name">var <span class="ident">KEY_PROVISIONING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PfrKeystoreUpdateOpt.WRITE_MEMORY"><code class="name">var <span class="ident">WRITE_MEMORY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag"><code class="flex name class">
+<span>class <span class="ident">PropertyTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot Properties.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PropertyTag(Enum):
+    &#34;&#34;&#34;McuBoot Properties.&#34;&#34;&#34;
+
+    # LIST_PROPERTIES = (0x00, &#39;ListProperties&#39;, &#39;List Properties&#39;)
+    CURRENT_VERSION = (0x01, &#39;CurrentVersion&#39;, &#39;Current Version&#39;)
+    AVAILABLE_PERIPHERALS = (0x02, &#39;AvailablePeripherals&#39;, &#39;Available Peripherals&#39;)
+    FLASH_START_ADDRESS = (0x03, &#39;FlashStartAddress&#39;, &#39;Flash Start Address&#39;)
+    FLASH_SIZE = (0x04, &#39;FlashSize&#39;, &#39;Flash Size&#39;)
+    FLASH_SECTOR_SIZE = (0x05, &#39;FlashSectorSize&#39;, &#39;Flash Sector Size&#39;)
+    FLASH_BLOCK_COUNT = (0x06, &#39;FlashBlockCount&#39;, &#39;Flash Block Count&#39;)
+    AVAILABLE_COMMANDS = (0x07, &#39;AvailableCommands&#39;, &#39;Available Commands&#39;)
+    CRC_CHECK_STATUS = (0x08, &#39;CrcCheckStatus&#39;, &#39;CRC Check Status&#39;)
+    LAST_ERROR = (0x09, &#39;LastError&#39;, &#39;Last Error Value&#39;)
+    VERIFY_WRITES = (0x0A, &#39;VerifyWrites&#39;, &#39;Verify Writes&#39;)
+    MAX_PACKET_SIZE = (0x0B, &#39;MaxPacketSize&#39;, &#39;Max Packet Size&#39;)
+    RESERVED_REGIONS = (0x0C, &#39;ReservedRegions&#39;, &#39;Reserved Regions&#39;)
+    VALIDATE_REGIONS = (0x0D, &#39;ValidateRegions&#39;, &#39;Validate Regions&#39;)
+    RAM_START_ADDRESS = (0x0E, &#39;RamStartAddress&#39;, &#39;RAM Start Address&#39;)
+    RAM_SIZE = (0x0F, &#39;RamSize&#39;, &#39;RAM Size&#39;)
+    SYSTEM_DEVICE_IDENT = (0x10, &#39;SystemDeviceIdent&#39;, &#39;System Device Identification&#39;)
+    FLASH_SECURITY_STATE = (0x11, &#39;FlashSecurityState&#39;, &#39;Flash Security State&#39;)
+    UNIQUE_DEVICE_IDENT = (0x12, &#39;UniqueDeviceIdent&#39;, &#39;Unique Device Identification&#39;)
+    FLASH_FAC_SUPPORT = (0x13, &#39;FlashFacSupport&#39;, &#39;Flash Fac. Support&#39;)
+    FLASH_ACCESS_SEGMENT_SIZE = (0x14, &#39;FlashAccessSegmentSize&#39;, &#39;Flash Access Segment Size&#39;)
+    FLASH_ACCESS_SEGMENT_COUNT = (0x15, &#39;FlashAccessSegmentCount&#39;, &#39;Flash Access Segment Count&#39;)
+    FLASH_READ_MARGIN = (0x16, &#39;FlashReadMargin&#39;, &#39;Flash Read Margin&#39;)
+    QSPI_INIT_STATUS = (0x17, &#39;QspiInitStatus&#39;, &#39;QuadSPI Initialization Status&#39;)
+    TARGET_VERSION = (0x18, &#39;TargetVersion&#39;, &#39;Target Version&#39;)
+    EXTERNAL_MEMORY_ATTRIBUTES = (0x19, &#39;ExternalMemoryAttributes&#39;, &#39;External Memory Attributes&#39;)
+    RELIABLE_UPDATE_STATUS = (0x1A, &#39;ReliableUpdateStatus&#39;, &#39;Reliable Update Status&#39;)
+    FLASH_PAGE_SIZE = (0x1B, &#39;FlashPageSize&#39;, &#39;Flash Page Size&#39;)
+    IRQ_NOTIFIER_PIN = (0x1C, &#39;IrqNotifierPin&#39;, &#39;Irq Notifier Pin&#39;)
+    PFR_KEYSTORE_UPDATE_OPT = (0x1D, &#39;PfrKeystoreUpdateOpt&#39;, &#39;PFR Keystore Update Opt&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.PropertyTag.AVAILABLE_COMMANDS"><code class="name">var <span class="ident">AVAILABLE_COMMANDS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.AVAILABLE_PERIPHERALS"><code class="name">var <span class="ident">AVAILABLE_PERIPHERALS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.CRC_CHECK_STATUS"><code class="name">var <span class="ident">CRC_CHECK_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.CURRENT_VERSION"><code class="name">var <span class="ident">CURRENT_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES"><code class="name">var <span class="ident">EXTERNAL_MEMORY_ATTRIBUTES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_ACCESS_SEGMENT_COUNT"><code class="name">var <span class="ident">FLASH_ACCESS_SEGMENT_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_ACCESS_SEGMENT_SIZE"><code class="name">var <span class="ident">FLASH_ACCESS_SEGMENT_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_BLOCK_COUNT"><code class="name">var <span class="ident">FLASH_BLOCK_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_FAC_SUPPORT"><code class="name">var <span class="ident">FLASH_FAC_SUPPORT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_PAGE_SIZE"><code class="name">var <span class="ident">FLASH_PAGE_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_READ_MARGIN"><code class="name">var <span class="ident">FLASH_READ_MARGIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_SECTOR_SIZE"><code class="name">var <span class="ident">FLASH_SECTOR_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_SECURITY_STATE"><code class="name">var <span class="ident">FLASH_SECURITY_STATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_SIZE"><code class="name">var <span class="ident">FLASH_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.FLASH_START_ADDRESS"><code class="name">var <span class="ident">FLASH_START_ADDRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.IRQ_NOTIFIER_PIN"><code class="name">var <span class="ident">IRQ_NOTIFIER_PIN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.LAST_ERROR"><code class="name">var <span class="ident">LAST_ERROR</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.MAX_PACKET_SIZE"><code class="name">var <span class="ident">MAX_PACKET_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.PFR_KEYSTORE_UPDATE_OPT"><code class="name">var <span class="ident">PFR_KEYSTORE_UPDATE_OPT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.QSPI_INIT_STATUS"><code class="name">var <span class="ident">QSPI_INIT_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.RAM_SIZE"><code class="name">var <span class="ident">RAM_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.RAM_START_ADDRESS"><code class="name">var <span class="ident">RAM_START_ADDRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.RELIABLE_UPDATE_STATUS"><code class="name">var <span class="ident">RELIABLE_UPDATE_STATUS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.RESERVED_REGIONS"><code class="name">var <span class="ident">RESERVED_REGIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.SYSTEM_DEVICE_IDENT"><code class="name">var <span class="ident">SYSTEM_DEVICE_IDENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.TARGET_VERSION"><code class="name">var <span class="ident">TARGET_VERSION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.UNIQUE_DEVICE_IDENT"><code class="name">var <span class="ident">UNIQUE_DEVICE_IDENT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.VALIDATE_REGIONS"><code class="name">var <span class="ident">VALIDATE_REGIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyTag.VERIFY_WRITES"><code class="name">var <span class="ident">VERIFY_WRITES</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyValueBase"><code class="flex name class">
+<span>class <span class="ident">PropertyValueBase</span></span>
+<span>(</span><span>tag: int, name: str = None, desc: str = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for property value.</p>
+<p>Initialize the base of property.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param name: Optional name for the property
+:param desc: Optional description for the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PropertyValueBase:
+    &#34;&#34;&#34;Base class for property value.&#34;&#34;&#34;
+
+    __slots__ = (&#39;tag&#39;, &#39;name&#39;, &#39;desc&#39;)
+
+    def __init__(self, tag: int, name: str = None, desc: str = None) -&gt; None:
+        &#34;&#34;&#34;Initialize the base of property.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param name: Optional name for the property
+        :param desc: Optional description for the property
+        &#34;&#34;&#34;
+        self.tag = tag
+        self.name = name or PropertyTag.get(tag, &#39;&#39;)
+        self.desc = desc or PropertyTag.desc(tag)
+
+    def __str__(self) -&gt; str:
+        return f&#34;{self.desc} = {self.to_str()}&#34;
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Stringified representation of a property.
+
+        Derived classes should implement this function.
+
+        :raises NotImplementedError: Derived class didn&#39;t provide implementation
+        :return: String representation
+        &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.AvailableCommandsValue" href="#spsdk.mboot.properties.AvailableCommandsValue">AvailableCommandsValue</a></li>
+<li><a title="spsdk.mboot.properties.AvailablePeripheralsValue" href="#spsdk.mboot.properties.AvailablePeripheralsValue">AvailablePeripheralsValue</a></li>
+<li><a title="spsdk.mboot.properties.BoolValue" href="#spsdk.mboot.properties.BoolValue">BoolValue</a></li>
+<li><a title="spsdk.mboot.properties.DeviceUidValue" href="#spsdk.mboot.properties.DeviceUidValue">DeviceUidValue</a></li>
+<li><a title="spsdk.mboot.properties.EnumValue" href="#spsdk.mboot.properties.EnumValue">EnumValue</a></li>
+<li><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue">ExternalMemoryAttributesValue</a></li>
+<li><a title="spsdk.mboot.properties.IntValue" href="#spsdk.mboot.properties.IntValue">IntValue</a></li>
+<li><a title="spsdk.mboot.properties.IrqNotifierPinValue" href="#spsdk.mboot.properties.IrqNotifierPinValue">IrqNotifierPinValue</a></li>
+<li><a title="spsdk.mboot.properties.ReservedRegionsValue" href="#spsdk.mboot.properties.ReservedRegionsValue">ReservedRegionsValue</a></li>
+<li><a title="spsdk.mboot.properties.VersionValue" href="#spsdk.mboot.properties.VersionValue">VersionValue</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.PropertyValueBase.desc"><code class="name">var <span class="ident">desc</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyValueBase.name"><code class="name">var <span class="ident">name</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+<dt id="spsdk.mboot.properties.PropertyValueBase.tag"><code class="name">var <span class="ident">tag</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.PropertyValueBase.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Stringified representation of a property.</p>
+<p>Derived classes should implement this function.</p>
+<p>:raises NotImplementedError: Derived class didn't provide implementation
+:return: String representation</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Stringified representation of a property.
+
+    Derived classes should implement this function.
+
+    :raises NotImplementedError: Derived class didn&#39;t provide implementation
+    :return: String representation
+    &#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.mboot.properties.ReservedRegionsValue"><code class="flex name class">
+<span>class <span class="ident">ReservedRegionsValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Reserver Regions property.</p>
+<p>Initialize the ReserverRegion-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ReservedRegionsValue(PropertyValueBase):
+    &#34;&#34;&#34;Reserver Regions property.&#34;&#34;&#34;
+    __slots__ = (&#39;regions&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the ReserverRegion-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.regions = []
+        for i in range(0, len(raw_values), 2):
+            self.regions.append((raw_values[i], raw_values[i + 1]))
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return &#34;\n&#34;.join([f&#34;0x{r[0]:08X} - 0x{r[1]:08X}, {size_fmt(r[1] - r[0])}&#34; for r in self.regions])</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.ReservedRegionsValue.regions"><code class="name">var <span class="ident">regions</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.ReservedRegionsValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return &#34;\n&#34;.join([f&#34;0x{r[0]:08X} - 0x{r[1]:08X}, {size_fmt(r[1] - r[0])}&#34; for r in self.regions])</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.properties.Version"><code class="flex name class">
+<span>class <span class="ident">Version</span></span>
+<span>(</span><span>*args: Union[str, int], **kwargs: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>McuBoot current and target version type.</p>
+<p>Initialize the Version object.</p>
+<p>:raises TypeError: Argument passed the not str not int</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Version:
+    &#34;&#34;&#34;McuBoot current and target version type.&#34;&#34;&#34;
+
+    def __init__(self, *args: Union[str, int], **kwargs: int):
+        &#34;&#34;&#34;Initialize the Version object.
+
+        :raises TypeError: Argument passed the not str not int
+        &#34;&#34;&#34;
+        self.mark = kwargs.get(&#39;mark&#39;, &#39;K&#39;)
+        self.major = kwargs.get(&#39;major&#39;, 0)
+        self.minor = kwargs.get(&#39;minor&#39;, 0)
+        self.fixation = kwargs.get(&#39;fixation&#39;, 0)
+        if args:
+            if isinstance(args[0], int):
+                self.from_int(args[0])
+            elif isinstance(args[0], str):
+                self.from_str(args[0])
+            else:
+                raise TypeError(&#34;Value must be &#39;str&#39; or &#39;int&#39; type !&#34;)
+
+    def __eq__(self, obj: Any) -&gt; bool:
+        return isinstance(obj, Version) and vars(obj) == vars(self)
+
+    def __ne__(self, obj: Any) -&gt; bool:
+        return not self.__eq__(obj)
+
+    def __lt__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &lt; obj.to_int(True)
+
+    def __le__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &lt;= obj.to_int(True)
+
+    def __gt__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &gt; obj.to_int(True)
+
+    def __ge__(self, obj: &#39;Version&#39;) -&gt; bool:
+        return self.to_int(True) &gt;= obj.to_int(True)
+
+    def __str__(self) -&gt; str:
+        return self.to_str()
+
+    def __repr__(self) -&gt; str:
+        return f&#34;&lt;Version(mark={self.mark}, major={self.major}, minor={self.minor}, fixation={self.fixation})&gt;&#34;
+
+    def from_int(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Parse version data from raw int value.
+
+        :param value: Raw integer input
+        &#34;&#34;&#34;
+        mark = (value &gt;&gt; 24) &amp; 0xFF
+        self.mark = chr(mark) if 64 &lt; mark &lt; 91 else None   # type: ignore
+        self.major = (value &gt;&gt; 16) &amp; 0xFF
+        self.minor = (value &gt;&gt; 8) &amp; 0xFF
+        self.fixation = value &amp; 0xFF
+
+    def from_str(self, value: str) -&gt; None:
+        &#34;&#34;&#34;Parse version data from string value.
+
+        :param value: String representation input
+        &#34;&#34;&#34;
+        mark_major, minor, fixation = value.split(&#39;.&#39;)
+        if len(mark_major) &gt; 1 and mark_major[0] not in &#34;0123456789&#34;:
+            self.mark = mark_major[0]
+            self.major = int(mark_major[1:])
+        else:
+            self.major = int(mark_major)
+        self.minor = int(minor)
+        self.fixation = int(fixation)
+
+    def to_int(self, no_mark: bool = False) -&gt; int:
+        &#34;&#34;&#34;Get version value in raw integer format.
+
+        :param no_mark: If True, return value without mark
+        :return: Integer representation
+        &#34;&#34;&#34;
+        value = self.major &lt;&lt; 16 | self.minor &lt;&lt; 8 | self.fixation
+        mark = 0 if no_mark or self.mark is None else ord(self.mark) &lt;&lt; 24  # type: ignore
+        return value | mark
+
+    def to_str(self, no_mark: bool = False) -&gt; str:
+        &#34;&#34;&#34;Get version value in readable string format.
+
+        :param no_mark: If True, return value without mark
+        :return: String representation
+        &#34;&#34;&#34;
+        value = f&#34;{self.major}.{self.minor}.{self.fixation}&#34;
+        mark = &#39;&#39; if no_mark or self.mark is None else self.mark
+        return f&#34;{mark}{value}&#34;</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.Version.from_int"><code class="name flex">
+<span>def <span class="ident">from_int</span></span>(<span>self, value: int) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse version data from raw int value.</p>
+<p>:param value: Raw integer input</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def from_int(self, value: int) -&gt; None:
+    &#34;&#34;&#34;Parse version data from raw int value.
+
+    :param value: Raw integer input
+    &#34;&#34;&#34;
+    mark = (value &gt;&gt; 24) &amp; 0xFF
+    self.mark = chr(mark) if 64 &lt; mark &lt; 91 else None   # type: ignore
+    self.major = (value &gt;&gt; 16) &amp; 0xFF
+    self.minor = (value &gt;&gt; 8) &amp; 0xFF
+    self.fixation = value &amp; 0xFF</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.Version.from_str"><code class="name flex">
+<span>def <span class="ident">from_str</span></span>(<span>self, value: str) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse version data from string value.</p>
+<p>:param value: String representation input</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def from_str(self, value: str) -&gt; None:
+    &#34;&#34;&#34;Parse version data from string value.
+
+    :param value: String representation input
+    &#34;&#34;&#34;
+    mark_major, minor, fixation = value.split(&#39;.&#39;)
+    if len(mark_major) &gt; 1 and mark_major[0] not in &#34;0123456789&#34;:
+        self.mark = mark_major[0]
+        self.major = int(mark_major[1:])
+    else:
+        self.major = int(mark_major)
+    self.minor = int(minor)
+    self.fixation = int(fixation)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.Version.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self, no_mark: bool = False) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get version value in raw integer format.</p>
+<p>:param no_mark: If True, return value without mark
+:return: Integer representation</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self, no_mark: bool = False) -&gt; int:
+    &#34;&#34;&#34;Get version value in raw integer format.
+
+    :param no_mark: If True, return value without mark
+    :return: Integer representation
+    &#34;&#34;&#34;
+    value = self.major &lt;&lt; 16 | self.minor &lt;&lt; 8 | self.fixation
+    mark = 0 if no_mark or self.mark is None else ord(self.mark) &lt;&lt; 24  # type: ignore
+    return value | mark</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.Version.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self, no_mark: bool = False) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get version value in readable string format.</p>
+<p>:param no_mark: If True, return value without mark
+:return: String representation</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self, no_mark: bool = False) -&gt; str:
+    &#34;&#34;&#34;Get version value in readable string format.
+
+    :param no_mark: If True, return value without mark
+    :return: String representation
+    &#34;&#34;&#34;
+    value = f&#34;{self.major}.{self.minor}.{self.fixation}&#34;
+    mark = &#39;&#39; if no_mark or self.mark is None else self.mark
+    return f&#34;{mark}{value}&#34;</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.mboot.properties.VersionValue"><code class="flex name class">
+<span>class <span class="ident">VersionValue</span></span>
+<span>(</span><span>tag: int, raw_values: List[int])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Version property class.</p>
+<p>Initialize the Version-based property object.</p>
+<p>:param tag: Property tag, see: <code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code>
+:param raw_values: List of integers representing the property</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class VersionValue(PropertyValueBase):
+    &#34;&#34;&#34;Version property class.&#34;&#34;&#34;
+    __slots__ = (&#39;value&#39;,)
+
+    def __init__(self, tag: int, raw_values: List[int]) -&gt; None:
+        &#34;&#34;&#34;Initialize the Version-based property object.
+
+        :param tag: Property tag, see: `PropertyTag`
+        :param raw_values: List of integers representing the property
+        &#34;&#34;&#34;
+        super().__init__(tag)
+        self.value = Version(raw_values[0])
+
+    def to_int(self) -&gt; int:
+        &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+        return self.value.to_int()
+
+    def to_str(self) -&gt; str:
+        &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+        return self.value.to_str()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.properties.VersionValue.value"><code class="name">var <span class="ident">value</span></code></dt>
+<dd>
+<div class="desc"><p>Return an attribute of instance, which is of type owner.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.properties.VersionValue.to_int"><code class="name flex">
+<span>def <span class="ident">to_int</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the raw integer portion of the property.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_int(self) -&gt; int:
+    &#34;&#34;&#34;Get the raw integer portion of the property.&#34;&#34;&#34;
+    return self.value.to_int()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.properties.VersionValue.to_str"><code class="name flex">
+<span>def <span class="ident">to_str</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get stringified property representation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_str(self) -&gt; str:
+    &#34;&#34;&#34;Get stringified property representation.&#34;&#34;&#34;
+    return self.value.to_str()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.mboot" href="index.html">spsdk.mboot</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.parse_property_value" href="#spsdk.mboot.properties.parse_property_value">parse_property_value</a></code></li>
+<li><code><a title="spsdk.mboot.properties.size_fmt" href="#spsdk.mboot.properties.size_fmt">size_fmt</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.mboot.properties.AvailableCommandsValue" href="#spsdk.mboot.properties.AvailableCommandsValue">AvailableCommandsValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.AvailableCommandsValue.tags" href="#spsdk.mboot.properties.AvailableCommandsValue.tags">tags</a></code></li>
+<li><code><a title="spsdk.mboot.properties.AvailableCommandsValue.to_str" href="#spsdk.mboot.properties.AvailableCommandsValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.AvailableCommandsValue.value" href="#spsdk.mboot.properties.AvailableCommandsValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.AvailablePeripheralsValue" href="#spsdk.mboot.properties.AvailablePeripheralsValue">AvailablePeripheralsValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.AvailablePeripheralsValue.to_int" href="#spsdk.mboot.properties.AvailablePeripheralsValue.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.AvailablePeripheralsValue.to_str" href="#spsdk.mboot.properties.AvailablePeripheralsValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.AvailablePeripheralsValue.value" href="#spsdk.mboot.properties.AvailablePeripheralsValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.BoolValue" href="#spsdk.mboot.properties.BoolValue">BoolValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.BoolValue.to_int" href="#spsdk.mboot.properties.BoolValue.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.BoolValue.to_str" href="#spsdk.mboot.properties.BoolValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.BoolValue.value" href="#spsdk.mboot.properties.BoolValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.DeviceUidValue" href="#spsdk.mboot.properties.DeviceUidValue">DeviceUidValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.DeviceUidValue.to_int" href="#spsdk.mboot.properties.DeviceUidValue.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.DeviceUidValue.to_str" href="#spsdk.mboot.properties.DeviceUidValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.DeviceUidValue.value" href="#spsdk.mboot.properties.DeviceUidValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.EnumValue" href="#spsdk.mboot.properties.EnumValue">EnumValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.EnumValue.enum" href="#spsdk.mboot.properties.EnumValue.enum">enum</a></code></li>
+<li><code><a title="spsdk.mboot.properties.EnumValue.to_int" href="#spsdk.mboot.properties.EnumValue.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.EnumValue.to_str" href="#spsdk.mboot.properties.EnumValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.EnumValue.value" href="#spsdk.mboot.properties.EnumValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue">ExternalMemoryAttributesValue</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.block_size" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.block_size">block_size</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.mem_id" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.mem_id">mem_id</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.page_size" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.page_size">page_size</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.sector_size" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.sector_size">sector_size</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.start_address" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.start_address">start_address</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.to_str" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.total_size" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.total_size">total_size</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ExternalMemoryAttributesValue.value" href="#spsdk.mboot.properties.ExternalMemoryAttributesValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.FlashReadMargin" href="#spsdk.mboot.properties.FlashReadMargin">FlashReadMargin</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.FlashReadMargin.FACTORY" href="#spsdk.mboot.properties.FlashReadMargin.FACTORY">FACTORY</a></code></li>
+<li><code><a title="spsdk.mboot.properties.FlashReadMargin.NORMAL" href="#spsdk.mboot.properties.FlashReadMargin.NORMAL">NORMAL</a></code></li>
+<li><code><a title="spsdk.mboot.properties.FlashReadMargin.USER" href="#spsdk.mboot.properties.FlashReadMargin.USER">USER</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.IntValue" href="#spsdk.mboot.properties.IntValue">IntValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.IntValue.to_int" href="#spsdk.mboot.properties.IntValue.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.IntValue.to_str" href="#spsdk.mboot.properties.IntValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.IntValue.value" href="#spsdk.mboot.properties.IntValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.IrqNotifierPinValue" href="#spsdk.mboot.properties.IrqNotifierPinValue">IrqNotifierPinValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.IrqNotifierPinValue.enabled" href="#spsdk.mboot.properties.IrqNotifierPinValue.enabled">enabled</a></code></li>
+<li><code><a title="spsdk.mboot.properties.IrqNotifierPinValue.pin" href="#spsdk.mboot.properties.IrqNotifierPinValue.pin">pin</a></code></li>
+<li><code><a title="spsdk.mboot.properties.IrqNotifierPinValue.port" href="#spsdk.mboot.properties.IrqNotifierPinValue.port">port</a></code></li>
+<li><code><a title="spsdk.mboot.properties.IrqNotifierPinValue.to_str" href="#spsdk.mboot.properties.IrqNotifierPinValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.IrqNotifierPinValue.value" href="#spsdk.mboot.properties.IrqNotifierPinValue.value">value</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.PeripheryTag" href="#spsdk.mboot.properties.PeripheryTag">PeripheryTag</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.CAN" href="#spsdk.mboot.properties.PeripheryTag.CAN">CAN</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.I2C_SLAVE" href="#spsdk.mboot.properties.PeripheryTag.I2C_SLAVE">I2C_SLAVE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.SPI_SLAVE" href="#spsdk.mboot.properties.PeripheryTag.SPI_SLAVE">SPI_SLAVE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.UART" href="#spsdk.mboot.properties.PeripheryTag.UART">UART</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.USB_CDC" href="#spsdk.mboot.properties.PeripheryTag.USB_CDC">USB_CDC</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.USB_DFU" href="#spsdk.mboot.properties.PeripheryTag.USB_DFU">USB_DFU</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PeripheryTag.USB_HID" href="#spsdk.mboot.properties.PeripheryTag.USB_HID">USB_HID</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.PfrKeystoreUpdateOpt" href="#spsdk.mboot.properties.PfrKeystoreUpdateOpt">PfrKeystoreUpdateOpt</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.PfrKeystoreUpdateOpt.KEY_PROVISIONING" href="#spsdk.mboot.properties.PfrKeystoreUpdateOpt.KEY_PROVISIONING">KEY_PROVISIONING</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PfrKeystoreUpdateOpt.WRITE_MEMORY" href="#spsdk.mboot.properties.PfrKeystoreUpdateOpt.WRITE_MEMORY">WRITE_MEMORY</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.PropertyTag" href="#spsdk.mboot.properties.PropertyTag">PropertyTag</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.PropertyTag.AVAILABLE_COMMANDS" href="#spsdk.mboot.properties.PropertyTag.AVAILABLE_COMMANDS">AVAILABLE_COMMANDS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.AVAILABLE_PERIPHERALS" href="#spsdk.mboot.properties.PropertyTag.AVAILABLE_PERIPHERALS">AVAILABLE_PERIPHERALS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.CRC_CHECK_STATUS" href="#spsdk.mboot.properties.PropertyTag.CRC_CHECK_STATUS">CRC_CHECK_STATUS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.CURRENT_VERSION" href="#spsdk.mboot.properties.PropertyTag.CURRENT_VERSION">CURRENT_VERSION</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES" href="#spsdk.mboot.properties.PropertyTag.EXTERNAL_MEMORY_ATTRIBUTES">EXTERNAL_MEMORY_ATTRIBUTES</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_ACCESS_SEGMENT_COUNT" href="#spsdk.mboot.properties.PropertyTag.FLASH_ACCESS_SEGMENT_COUNT">FLASH_ACCESS_SEGMENT_COUNT</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_ACCESS_SEGMENT_SIZE" href="#spsdk.mboot.properties.PropertyTag.FLASH_ACCESS_SEGMENT_SIZE">FLASH_ACCESS_SEGMENT_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_BLOCK_COUNT" href="#spsdk.mboot.properties.PropertyTag.FLASH_BLOCK_COUNT">FLASH_BLOCK_COUNT</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_FAC_SUPPORT" href="#spsdk.mboot.properties.PropertyTag.FLASH_FAC_SUPPORT">FLASH_FAC_SUPPORT</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_PAGE_SIZE" href="#spsdk.mboot.properties.PropertyTag.FLASH_PAGE_SIZE">FLASH_PAGE_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_READ_MARGIN" href="#spsdk.mboot.properties.PropertyTag.FLASH_READ_MARGIN">FLASH_READ_MARGIN</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_SECTOR_SIZE" href="#spsdk.mboot.properties.PropertyTag.FLASH_SECTOR_SIZE">FLASH_SECTOR_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_SECURITY_STATE" href="#spsdk.mboot.properties.PropertyTag.FLASH_SECURITY_STATE">FLASH_SECURITY_STATE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_SIZE" href="#spsdk.mboot.properties.PropertyTag.FLASH_SIZE">FLASH_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.FLASH_START_ADDRESS" href="#spsdk.mboot.properties.PropertyTag.FLASH_START_ADDRESS">FLASH_START_ADDRESS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.IRQ_NOTIFIER_PIN" href="#spsdk.mboot.properties.PropertyTag.IRQ_NOTIFIER_PIN">IRQ_NOTIFIER_PIN</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.LAST_ERROR" href="#spsdk.mboot.properties.PropertyTag.LAST_ERROR">LAST_ERROR</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.MAX_PACKET_SIZE" href="#spsdk.mboot.properties.PropertyTag.MAX_PACKET_SIZE">MAX_PACKET_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.PFR_KEYSTORE_UPDATE_OPT" href="#spsdk.mboot.properties.PropertyTag.PFR_KEYSTORE_UPDATE_OPT">PFR_KEYSTORE_UPDATE_OPT</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.QSPI_INIT_STATUS" href="#spsdk.mboot.properties.PropertyTag.QSPI_INIT_STATUS">QSPI_INIT_STATUS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.RAM_SIZE" href="#spsdk.mboot.properties.PropertyTag.RAM_SIZE">RAM_SIZE</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.RAM_START_ADDRESS" href="#spsdk.mboot.properties.PropertyTag.RAM_START_ADDRESS">RAM_START_ADDRESS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.RELIABLE_UPDATE_STATUS" href="#spsdk.mboot.properties.PropertyTag.RELIABLE_UPDATE_STATUS">RELIABLE_UPDATE_STATUS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.RESERVED_REGIONS" href="#spsdk.mboot.properties.PropertyTag.RESERVED_REGIONS">RESERVED_REGIONS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.SYSTEM_DEVICE_IDENT" href="#spsdk.mboot.properties.PropertyTag.SYSTEM_DEVICE_IDENT">SYSTEM_DEVICE_IDENT</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.TARGET_VERSION" href="#spsdk.mboot.properties.PropertyTag.TARGET_VERSION">TARGET_VERSION</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.UNIQUE_DEVICE_IDENT" href="#spsdk.mboot.properties.PropertyTag.UNIQUE_DEVICE_IDENT">UNIQUE_DEVICE_IDENT</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.VALIDATE_REGIONS" href="#spsdk.mboot.properties.PropertyTag.VALIDATE_REGIONS">VALIDATE_REGIONS</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyTag.VERIFY_WRITES" href="#spsdk.mboot.properties.PropertyTag.VERIFY_WRITES">VERIFY_WRITES</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.PropertyValueBase" href="#spsdk.mboot.properties.PropertyValueBase">PropertyValueBase</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.desc" href="#spsdk.mboot.properties.PropertyValueBase.desc">desc</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.name" href="#spsdk.mboot.properties.PropertyValueBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.tag" href="#spsdk.mboot.properties.PropertyValueBase.tag">tag</a></code></li>
+<li><code><a title="spsdk.mboot.properties.PropertyValueBase.to_str" href="#spsdk.mboot.properties.PropertyValueBase.to_str">to_str</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.ReservedRegionsValue" href="#spsdk.mboot.properties.ReservedRegionsValue">ReservedRegionsValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.ReservedRegionsValue.regions" href="#spsdk.mboot.properties.ReservedRegionsValue.regions">regions</a></code></li>
+<li><code><a title="spsdk.mboot.properties.ReservedRegionsValue.to_str" href="#spsdk.mboot.properties.ReservedRegionsValue.to_str">to_str</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.Version" href="#spsdk.mboot.properties.Version">Version</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.Version.from_int" href="#spsdk.mboot.properties.Version.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.Version.from_str" href="#spsdk.mboot.properties.Version.from_str">from_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.Version.to_int" href="#spsdk.mboot.properties.Version.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.Version.to_str" href="#spsdk.mboot.properties.Version.to_str">to_str</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.properties.VersionValue" href="#spsdk.mboot.properties.VersionValue">VersionValue</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.properties.VersionValue.to_int" href="#spsdk.mboot.properties.VersionValue.to_int">to_int</a></code></li>
+<li><code><a title="spsdk.mboot.properties.VersionValue.to_str" href="#spsdk.mboot.properties.VersionValue.to_str">to_str</a></code></li>
+<li><code><a title="spsdk.mboot.properties.VersionValue.value" href="#spsdk.mboot.properties.VersionValue.value">value</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.image.header API documentation</title>
+<meta name="description" content="Header." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.image.header</code></h1>
+</header>
+<section id="section-intro">
+<p>Header.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2017-2018 Martin Olejar
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Header.&#34;&#34;&#34;
+
+from struct import pack, unpack_from, calcsize
+from typing import Optional
+
+from spsdk.utils.easy_enum import Enum
+
+
+########################################################################################################################
+# Enums
+########################################################################################################################
+
+
+class SegTag(Enum):
+    &#34;&#34;&#34;Segments Tag.&#34;&#34;&#34;
+    DCD = (0xD2, &#39;Device Configuration Data&#39;)
+    CSF = (0xD4, &#39;Command Sequence File Data&#39;)
+    # i.MX6, i.MX7, i.MX8M
+    IVT2 = (0xD1, &#39;Image Vector Table (Version 2)&#39;)
+    CRT = (0xD7, &#39;Certificate&#39;)
+    SIG = (0xD8, &#39;Signature&#39;)
+    EVT = (0xDB, &#39;Event&#39;)
+    RVT = (0xDD, &#39;ROM Vector Table&#39;)
+    WRP = (0x81, &#39;Wrapped Key&#39;)
+    MAC = (0xAC, &#39;Message Authentication Code&#39;)
+    # i.MX8QXP_A0, i.MX8QM_A0
+    IVT3 = (0xDE, &#39;Image Vector Table (Version 3)&#39;)
+    # i.MX8QXP_B0, i.MX8QM_B0
+    BIC1 = (0x87, &#39;Boot Images Container&#39;)
+    SIGB = (0x90, &#39;Signature block&#39;)
+
+
+class CmdTag(Enum):
+    &#34;&#34;&#34;CSF/DCD Command Tag.&#34;&#34;&#34;
+    SET = (0xB1, &#39;Set&#39;)
+    INS_KEY = (0xBE, &#39;Install Key&#39;)
+    AUT_DAT = (0xCA, &#39;Authenticate Data&#39;)
+    WRT_DAT = (0xCC, &#39;Write Data&#39;)
+    CHK_DAT = (0xCF, &#39;Check Data&#39;)
+    NOP = (0xC0, &#39;No Operation (NOP)&#39;)
+    INIT = (0xB4, &#39;Initialize&#39;)
+    UNLK = (0xB2, &#39;Unlock&#39;)
+
+
+########################################################################################################################
+# Exceptions
+########################################################################################################################
+
+class UnparsedException(Exception):
+    &#34;&#34;&#34;Unparsed Exception.&#34;&#34;&#34;
+
+
+class CorruptedException(Exception):
+    &#34;&#34;&#34;Corrupted Exception.&#34;&#34;&#34;
+
+
+########################################################################################################################
+# Classes
+########################################################################################################################
+
+class Header:
+    &#34;&#34;&#34;Header element type.&#34;&#34;&#34;
+    FORMAT = &#34;&gt;BHB&#34;
+    SIZE = calcsize(FORMAT)
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Header size in bytes.&#34;&#34;&#34;
+        return self.SIZE
+
+    def __init__(self, tag: int = 0, param: int = 0, length: Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param tag: section tag
+        :param param: TODO
+        :param length: length of the segment or command; if not specified, size of the header is used
+        &#34;&#34;&#34;
+        self._tag = tag
+        self.param: int = param
+        self.length: int = self.SIZE if length is None else length
+        assert self.SIZE &lt;= self.length &lt; 65536
+
+    @property
+    def tag(self) -&gt; int:
+        &#34;&#34;&#34;:return: section tag: command tag or segment tag, ...&#34;&#34;&#34;
+        return self._tag
+
+    def __repr__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__}({self.tag}, {self.param}, {self.length})&#34;
+
+    def __str__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__} &lt;TAG:0x{self.tag:02X}, PARAM:0x{self.param:02X}, LEN:{self.length}B&gt;&#34;
+
+    def __eq__(self, other: object) -&gt; bool:
+        return isinstance(other, self.__class__) and vars(other) == vars(self)
+
+    def __ne__(self, other: object) -&gt; bool:
+        return not self.__eq__(other)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text representation of the header.&#34;&#34;&#34;
+        return str(self)
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary representation of the header.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.tag, self.length, self.param)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, required_tag: Optional[int] = None) -&gt; &#39;Header&#39;:
+        &#34;&#34;&#34;Parse header.
+
+        :param data: Raw data as bytes or bytearray
+        :param offset: Offset of input data
+        :param required_tag: Check header TAG if specified value or ignore if is None
+        :return: Header object
+        :raise UnparsedException: if required header tag does not match
+        &#34;&#34;&#34;
+        tag, length, param = unpack_from(cls.FORMAT, data, offset)
+        if required_tag is not None and tag != required_tag:
+            raise UnparsedException(&#34; Invalid header tag: &#39;0x{:02X}&#39; expected &#39;0x{:02X}&#39; &#34;.format(tag, required_tag))
+
+        return cls(tag, param, length)
+
+
+class CmdHeader(Header):
+    &#34;&#34;&#34;Command header.&#34;&#34;&#34;
+
+    def __init__(self, tag: CmdTag, param: int = 0, length: Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param tag: command tag
+        :param param: TODO
+        :param length: of the command binary section, in bytes
+        &#34;&#34;&#34;
+        super().__init__(tag, param, length)
+        assert tag in CmdTag.tags()
+
+    @property
+    def tag(self) -&gt; CmdTag:
+        &#34;&#34;&#34;Command tag.&#34;&#34;&#34;
+        return CmdTag.from_int(self._tag)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, required_tag: Optional[int] = None) -&gt; Header:
+        &#34;&#34;&#34;Create Header from binary data.
+
+        :param data: binary data to convert into header
+        :param offset: to start reading binary data
+        :param required_tag: CmdTag, None if not required
+        :return: parsed instance
+        :raise UnparsedException: if required header tag does not match
+        &#34;&#34;&#34;
+        if required_tag is not None:
+            assert required_tag in CmdTag.tags()
+        return super(CmdHeader, cls).parse(data, offset, required_tag)
+
+
+class Header2(Header):
+    &#34;&#34;&#34;Header element type.&#34;&#34;&#34;
+    FORMAT = &#34;&lt;BHB&#34;
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary representation of the header.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.param, self.length, self.tag)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0,
+              required_tag: int = None) -&gt; &#39;Header&#39;:
+        &#34;&#34;&#34;Parse header.
+
+        :param data: Raw data as bytes or bytearray
+        :param offset: Offset of input data
+        :param required_tag: Check header TAG if specified value or ignore if is None
+        :raises UnparsedException: Raises an error if required tag is empty or not valid
+        :return: Header2 object
+        &#34;&#34;&#34;
+        param, length, tag = unpack_from(cls.FORMAT, data, offset)
+        if required_tag is not None and tag != required_tag:
+            raise UnparsedException(&#34; Invalid header tag: &#39;0x{:02X}&#39; expected &#39;0x{:02X}&#39; &#34;.format(tag, required_tag))
+
+        return cls(tag, param, length)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.image.header.CmdHeader"><code class="flex name class">
+<span>class <span class="ident">CmdHeader</span></span>
+<span>(</span><span>tag: <a title="spsdk.image.header.CmdTag" href="#spsdk.image.header.CmdTag">CmdTag</a>, param: int = 0, length: Union[int, NoneType] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Command header.</p>
+<p>Constructor.</p>
+<p>:param tag: command tag
+:param param: TODO
+:param length: of the command binary section, in bytes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdHeader(Header):
+    &#34;&#34;&#34;Command header.&#34;&#34;&#34;
+
+    def __init__(self, tag: CmdTag, param: int = 0, length: Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param tag: command tag
+        :param param: TODO
+        :param length: of the command binary section, in bytes
+        &#34;&#34;&#34;
+        super().__init__(tag, param, length)
+        assert tag in CmdTag.tags()
+
+    @property
+    def tag(self) -&gt; CmdTag:
+        &#34;&#34;&#34;Command tag.&#34;&#34;&#34;
+        return CmdTag.from_int(self._tag)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, required_tag: Optional[int] = None) -&gt; Header:
+        &#34;&#34;&#34;Create Header from binary data.
+
+        :param data: binary data to convert into header
+        :param offset: to start reading binary data
+        :param required_tag: CmdTag, None if not required
+        :return: parsed instance
+        :raise UnparsedException: if required header tag does not match
+        &#34;&#34;&#34;
+        if required_tag is not None:
+            assert required_tag in CmdTag.tags()
+        return super(CmdHeader, cls).parse(data, offset, required_tag)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.image.header.CmdHeader.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0, required_tag: Union[int, NoneType] = None) ‑> <a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create Header from binary data.</p>
+<p>:param data: binary data to convert into header
+:param offset: to start reading binary data
+:param required_tag: CmdTag, None if not required
+:return: parsed instance
+:raise UnparsedException: if required header tag does not match</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0, required_tag: Optional[int] = None) -&gt; Header:
+    &#34;&#34;&#34;Create Header from binary data.
+
+    :param data: binary data to convert into header
+    :param offset: to start reading binary data
+    :param required_tag: CmdTag, None if not required
+    :return: parsed instance
+    :raise UnparsedException: if required header tag does not match
+    &#34;&#34;&#34;
+    if required_tag is not None:
+        assert required_tag in CmdTag.tags()
+    return super(CmdHeader, cls).parse(data, offset, required_tag)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.image.header.CmdHeader.tag"><code class="name">var <span class="ident">tag</span> : <a title="spsdk.image.header.CmdTag" href="#spsdk.image.header.CmdTag">CmdTag</a></code></dt>
+<dd>
+<div class="desc"><p>Command tag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def tag(self) -&gt; CmdTag:
+    &#34;&#34;&#34;Command tag.&#34;&#34;&#34;
+    return CmdTag.from_int(self._tag)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.image.header.Header.export" href="#spsdk.image.header.Header.export">export</a></code></li>
+<li><code><a title="spsdk.image.header.Header.info" href="#spsdk.image.header.Header.info">info</a></code></li>
+<li><code><a title="spsdk.image.header.Header.size" href="#spsdk.image.header.Header.size">size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.header.CmdTag"><code class="flex name class">
+<span>class <span class="ident">CmdTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>CSF/DCD Command Tag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CmdTag(Enum):
+    &#34;&#34;&#34;CSF/DCD Command Tag.&#34;&#34;&#34;
+    SET = (0xB1, &#39;Set&#39;)
+    INS_KEY = (0xBE, &#39;Install Key&#39;)
+    AUT_DAT = (0xCA, &#39;Authenticate Data&#39;)
+    WRT_DAT = (0xCC, &#39;Write Data&#39;)
+    CHK_DAT = (0xCF, &#39;Check Data&#39;)
+    NOP = (0xC0, &#39;No Operation (NOP)&#39;)
+    INIT = (0xB4, &#39;Initialize&#39;)
+    UNLK = (0xB2, &#39;Unlock&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.header.CmdTag.AUT_DAT"><code class="name">var <span class="ident">AUT_DAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.CHK_DAT"><code class="name">var <span class="ident">CHK_DAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.INIT"><code class="name">var <span class="ident">INIT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.INS_KEY"><code class="name">var <span class="ident">INS_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.NOP"><code class="name">var <span class="ident">NOP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.SET"><code class="name">var <span class="ident">SET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.UNLK"><code class="name">var <span class="ident">UNLK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.CmdTag.WRT_DAT"><code class="name">var <span class="ident">WRT_DAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.header.CorruptedException"><code class="flex name class">
+<span>class <span class="ident">CorruptedException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Corrupted Exception.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CorruptedException(Exception):
+    &#34;&#34;&#34;Corrupted Exception.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+<dt id="spsdk.image.header.Header"><code class="flex name class">
+<span>class <span class="ident">Header</span></span>
+<span>(</span><span>tag: int = 0, param: int = 0, length: Union[int, NoneType] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Header element type.</p>
+<p>Constructor.</p>
+<p>:param tag: section tag
+:param param: TODO
+:param length: length of the segment or command; if not specified, size of the header is used</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Header:
+    &#34;&#34;&#34;Header element type.&#34;&#34;&#34;
+    FORMAT = &#34;&gt;BHB&#34;
+    SIZE = calcsize(FORMAT)
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Header size in bytes.&#34;&#34;&#34;
+        return self.SIZE
+
+    def __init__(self, tag: int = 0, param: int = 0, length: Optional[int] = None) -&gt; None:
+        &#34;&#34;&#34;Constructor.
+
+        :param tag: section tag
+        :param param: TODO
+        :param length: length of the segment or command; if not specified, size of the header is used
+        &#34;&#34;&#34;
+        self._tag = tag
+        self.param: int = param
+        self.length: int = self.SIZE if length is None else length
+        assert self.SIZE &lt;= self.length &lt; 65536
+
+    @property
+    def tag(self) -&gt; int:
+        &#34;&#34;&#34;:return: section tag: command tag or segment tag, ...&#34;&#34;&#34;
+        return self._tag
+
+    def __repr__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__}({self.tag}, {self.param}, {self.length})&#34;
+
+    def __str__(self) -&gt; str:
+        return f&#34;{self.__class__.__name__} &lt;TAG:0x{self.tag:02X}, PARAM:0x{self.param:02X}, LEN:{self.length}B&gt;&#34;
+
+    def __eq__(self, other: object) -&gt; bool:
+        return isinstance(other, self.__class__) and vars(other) == vars(self)
+
+    def __ne__(self, other: object) -&gt; bool:
+        return not self.__eq__(other)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text representation of the header.&#34;&#34;&#34;
+        return str(self)
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary representation of the header.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.tag, self.length, self.param)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, required_tag: Optional[int] = None) -&gt; &#39;Header&#39;:
+        &#34;&#34;&#34;Parse header.
+
+        :param data: Raw data as bytes or bytearray
+        :param offset: Offset of input data
+        :param required_tag: Check header TAG if specified value or ignore if is None
+        :return: Header object
+        :raise UnparsedException: if required header tag does not match
+        &#34;&#34;&#34;
+        tag, length, param = unpack_from(cls.FORMAT, data, offset)
+        if required_tag is not None and tag != required_tag:
+            raise UnparsedException(&#34; Invalid header tag: &#39;0x{:02X}&#39; expected &#39;0x{:02X}&#39; &#34;.format(tag, required_tag))
+
+        return cls(tag, param, length)</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.image.header.CmdHeader" href="#spsdk.image.header.CmdHeader">CmdHeader</a></li>
+<li><a title="spsdk.image.header.Header2" href="#spsdk.image.header.Header2">Header2</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.header.Header.FORMAT"><code class="name">var <span class="ident">FORMAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.Header.SIZE"><code class="name">var <span class="ident">SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.image.header.Header.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0, required_tag: Union[int, NoneType] = None) ‑> <a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse header.</p>
+<p>:param data: Raw data as bytes or bytearray
+:param offset: Offset of input data
+:param required_tag: Check header TAG if specified value or ignore if is None
+:return: Header object
+:raise UnparsedException: if required header tag does not match</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0, required_tag: Optional[int] = None) -&gt; &#39;Header&#39;:
+    &#34;&#34;&#34;Parse header.
+
+    :param data: Raw data as bytes or bytearray
+    :param offset: Offset of input data
+    :param required_tag: Check header TAG if specified value or ignore if is None
+    :return: Header object
+    :raise UnparsedException: if required header tag does not match
+    &#34;&#34;&#34;
+    tag, length, param = unpack_from(cls.FORMAT, data, offset)
+    if required_tag is not None and tag != required_tag:
+        raise UnparsedException(&#34; Invalid header tag: &#39;0x{:02X}&#39; expected &#39;0x{:02X}&#39; &#34;.format(tag, required_tag))
+
+    return cls(tag, param, length)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.image.header.Header.size"><code class="name">var <span class="ident">size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Header size in bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def size(self) -&gt; int:
+    &#34;&#34;&#34;Header size in bytes.&#34;&#34;&#34;
+    return self.SIZE</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.header.Header.tag"><code class="name">var <span class="ident">tag</span> : int</code></dt>
+<dd>
+<div class="desc"><p>:return: section tag: command tag or segment tag, &hellip;</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def tag(self) -&gt; int:
+    &#34;&#34;&#34;:return: section tag: command tag or segment tag, ...&#34;&#34;&#34;
+    return self._tag</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.image.header.Header.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Binary representation of the header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Binary representation of the header.&#34;&#34;&#34;
+    return pack(self.FORMAT, self.tag, self.length, self.param)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.header.Header.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Text representation of the header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Text representation of the header.&#34;&#34;&#34;
+    return str(self)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.image.header.Header2"><code class="flex name class">
+<span>class <span class="ident">Header2</span></span>
+<span>(</span><span>tag: int = 0, param: int = 0, length: Union[int, NoneType] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Header element type.</p>
+<p>Constructor.</p>
+<p>:param tag: section tag
+:param param: TODO
+:param length: length of the segment or command; if not specified, size of the header is used</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Header2(Header):
+    &#34;&#34;&#34;Header element type.&#34;&#34;&#34;
+    FORMAT = &#34;&lt;BHB&#34;
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary representation of the header.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.param, self.length, self.tag)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0,
+              required_tag: int = None) -&gt; &#39;Header&#39;:
+        &#34;&#34;&#34;Parse header.
+
+        :param data: Raw data as bytes or bytearray
+        :param offset: Offset of input data
+        :param required_tag: Check header TAG if specified value or ignore if is None
+        :raises UnparsedException: Raises an error if required tag is empty or not valid
+        :return: Header2 object
+        &#34;&#34;&#34;
+        param, length, tag = unpack_from(cls.FORMAT, data, offset)
+        if required_tag is not None and tag != required_tag:
+            raise UnparsedException(&#34; Invalid header tag: &#39;0x{:02X}&#39; expected &#39;0x{:02X}&#39; &#34;.format(tag, required_tag))
+
+        return cls(tag, param, length)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.header.Header2.FORMAT"><code class="name">var <span class="ident">FORMAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.image.header.Header2.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0, required_tag: int = None) ‑> <a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse header.</p>
+<p>:param data: Raw data as bytes or bytearray
+:param offset: Offset of input data
+:param required_tag: Check header TAG if specified value or ignore if is None
+:raises UnparsedException: Raises an error if required tag is empty or not valid
+:return: Header2 object</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0,
+          required_tag: int = None) -&gt; &#39;Header&#39;:
+    &#34;&#34;&#34;Parse header.
+
+    :param data: Raw data as bytes or bytearray
+    :param offset: Offset of input data
+    :param required_tag: Check header TAG if specified value or ignore if is None
+    :raises UnparsedException: Raises an error if required tag is empty or not valid
+    :return: Header2 object
+    &#34;&#34;&#34;
+    param, length, tag = unpack_from(cls.FORMAT, data, offset)
+    if required_tag is not None and tag != required_tag:
+        raise UnparsedException(&#34; Invalid header tag: &#39;0x{:02X}&#39; expected &#39;0x{:02X}&#39; &#34;.format(tag, required_tag))
+
+    return cls(tag, param, length)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.image.header.Header.export" href="#spsdk.image.header.Header.export">export</a></code></li>
+<li><code><a title="spsdk.image.header.Header.info" href="#spsdk.image.header.Header.info">info</a></code></li>
+<li><code><a title="spsdk.image.header.Header.size" href="#spsdk.image.header.Header.size">size</a></code></li>
+<li><code><a title="spsdk.image.header.Header.tag" href="#spsdk.image.header.Header.tag">tag</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.header.SegTag"><code class="flex name class">
+<span>class <span class="ident">SegTag</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Segments Tag.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SegTag(Enum):
+    &#34;&#34;&#34;Segments Tag.&#34;&#34;&#34;
+    DCD = (0xD2, &#39;Device Configuration Data&#39;)
+    CSF = (0xD4, &#39;Command Sequence File Data&#39;)
+    # i.MX6, i.MX7, i.MX8M
+    IVT2 = (0xD1, &#39;Image Vector Table (Version 2)&#39;)
+    CRT = (0xD7, &#39;Certificate&#39;)
+    SIG = (0xD8, &#39;Signature&#39;)
+    EVT = (0xDB, &#39;Event&#39;)
+    RVT = (0xDD, &#39;ROM Vector Table&#39;)
+    WRP = (0x81, &#39;Wrapped Key&#39;)
+    MAC = (0xAC, &#39;Message Authentication Code&#39;)
+    # i.MX8QXP_A0, i.MX8QM_A0
+    IVT3 = (0xDE, &#39;Image Vector Table (Version 3)&#39;)
+    # i.MX8QXP_B0, i.MX8QM_B0
+    BIC1 = (0x87, &#39;Boot Images Container&#39;)
+    SIGB = (0x90, &#39;Signature block&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.header.SegTag.BIC1"><code class="name">var <span class="ident">BIC1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.CRT"><code class="name">var <span class="ident">CRT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.CSF"><code class="name">var <span class="ident">CSF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.DCD"><code class="name">var <span class="ident">DCD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.EVT"><code class="name">var <span class="ident">EVT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.IVT2"><code class="name">var <span class="ident">IVT2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.IVT3"><code class="name">var <span class="ident">IVT3</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.MAC"><code class="name">var <span class="ident">MAC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.RVT"><code class="name">var <span class="ident">RVT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.SIG"><code class="name">var <span class="ident">SIG</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.SIGB"><code class="name">var <span class="ident">SIGB</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.header.SegTag.WRP"><code class="name">var <span class="ident">WRP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.header.UnparsedException"><code class="flex name class">
+<span>class <span class="ident">UnparsedException</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unparsed Exception.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnparsedException(Exception):
+    &#34;&#34;&#34;Unparsed Exception.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.Exception</li>
+<li>builtins.BaseException</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.image" href="index.html">spsdk.image</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.image.header.CmdHeader" href="#spsdk.image.header.CmdHeader">CmdHeader</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.header.CmdHeader.parse" href="#spsdk.image.header.CmdHeader.parse">parse</a></code></li>
+<li><code><a title="spsdk.image.header.CmdHeader.tag" href="#spsdk.image.header.CmdHeader.tag">tag</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.header.CmdTag" href="#spsdk.image.header.CmdTag">CmdTag</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.header.CmdTag.AUT_DAT" href="#spsdk.image.header.CmdTag.AUT_DAT">AUT_DAT</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.CHK_DAT" href="#spsdk.image.header.CmdTag.CHK_DAT">CHK_DAT</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.INIT" href="#spsdk.image.header.CmdTag.INIT">INIT</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.INS_KEY" href="#spsdk.image.header.CmdTag.INS_KEY">INS_KEY</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.NOP" href="#spsdk.image.header.CmdTag.NOP">NOP</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.SET" href="#spsdk.image.header.CmdTag.SET">SET</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.UNLK" href="#spsdk.image.header.CmdTag.UNLK">UNLK</a></code></li>
+<li><code><a title="spsdk.image.header.CmdTag.WRT_DAT" href="#spsdk.image.header.CmdTag.WRT_DAT">WRT_DAT</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.header.CorruptedException" href="#spsdk.image.header.CorruptedException">CorruptedException</a></code></h4>
+</li>
+<li>
+<h4><code><a title="spsdk.image.header.Header" href="#spsdk.image.header.Header">Header</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.header.Header.FORMAT" href="#spsdk.image.header.Header.FORMAT">FORMAT</a></code></li>
+<li><code><a title="spsdk.image.header.Header.SIZE" href="#spsdk.image.header.Header.SIZE">SIZE</a></code></li>
+<li><code><a title="spsdk.image.header.Header.export" href="#spsdk.image.header.Header.export">export</a></code></li>
+<li><code><a title="spsdk.image.header.Header.info" href="#spsdk.image.header.Header.info">info</a></code></li>
+<li><code><a title="spsdk.image.header.Header.parse" href="#spsdk.image.header.Header.parse">parse</a></code></li>
+<li><code><a title="spsdk.image.header.Header.size" href="#spsdk.image.header.Header.size">size</a></code></li>
+<li><code><a title="spsdk.image.header.Header.tag" href="#spsdk.image.header.Header.tag">tag</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.header.Header2" href="#spsdk.image.header.Header2">Header2</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.header.Header2.FORMAT" href="#spsdk.image.header.Header2.FORMAT">FORMAT</a></code></li>
+<li><code><a title="spsdk.image.header.Header2.parse" href="#spsdk.image.header.Header2.parse">parse</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.header.SegTag" href="#spsdk.image.header.SegTag">SegTag</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.header.SegTag.BIC1" href="#spsdk.image.header.SegTag.BIC1">BIC1</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.CRT" href="#spsdk.image.header.SegTag.CRT">CRT</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.CSF" href="#spsdk.image.header.SegTag.CSF">CSF</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.DCD" href="#spsdk.image.header.SegTag.DCD">DCD</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.EVT" href="#spsdk.image.header.SegTag.EVT">EVT</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.IVT2" href="#spsdk.image.header.SegTag.IVT2">IVT2</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.IVT3" href="#spsdk.image.header.SegTag.IVT3">IVT3</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.MAC" href="#spsdk.image.header.SegTag.MAC">MAC</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.RVT" href="#spsdk.image.header.SegTag.RVT">RVT</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.SIG" href="#spsdk.image.header.SegTag.SIG">SIG</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.SIGB" href="#spsdk.image.header.SegTag.SIGB">SIGB</a></code></li>
+<li><code><a title="spsdk.image.header.SegTag.WRP" href="#spsdk.image.header.SegTag.WRP">WRP</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.header.UnparsedException" href="#spsdk.image.header.UnparsedException">UnparsedException</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

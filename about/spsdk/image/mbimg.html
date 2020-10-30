@@ -1,0 +1,1774 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.image.mbimg API documentation</title>
+<meta name="description" content="Master Boot Image." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.image.mbimg</code></h1>
+</header>
+<section id="section-intro">
+<p>Master Boot Image.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Master Boot Image.&#34;&#34;&#34;
+
+import struct
+from typing import Any, List, Optional, Sequence, Union
+
+from Crypto.Cipher import AES
+from crccheck.crc import Crc32Mpeg2
+
+from spsdk.image.keystore import KeySourceType, KeyStore
+from spsdk.image.trustzone import TrustZone, TrustZoneType
+from spsdk.utils import misc
+from spsdk.utils.crypto import crypto_backend, CertBlockV2
+from spsdk.utils.easy_enum import Enum
+
+
+########################################################################################################################
+# Master Boot Image Class (LPC55)
+########################################################################################################################
+class MasterBootImageType(Enum):
+    &#34;&#34;&#34;Enumeration of various types of MBIs.&#34;&#34;&#34;
+    PLAIN_IMAGE = (0x00, &#34;Plain Image (either XIP or Load-to-RAM)&#34;)
+    SIGNED_RAM_IMAGE = (0x01, &#34;Plain Signed Load-to-RAM Image&#34;)
+    CRC_RAM_IMAGE = (0x02, &#34;Plain CRC Load-to-RAM Image&#34;)
+    ENCRYPTED_RAM_IMAGE = (0x03, &#34;Encrypted Load-to-RAM Image&#34;)
+    SIGNED_XIP_IMAGE = (0x04, &#34;Plain Signed XIP Image&#34;)
+    CRC_XIP_IMAGE = (0x05, &#34;Plain CRC XIP Image&#34;)
+
+    @staticmethod
+    def is_xip(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is executed in place (XIP).&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.PLAIN_IMAGE,
+                              MasterBootImageType.SIGNED_XIP_IMAGE,
+                              MasterBootImageType.CRC_XIP_IMAGE]
+
+    @staticmethod
+    def is_copied_to_ram(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is copied and executed in RAM.&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.CRC_RAM_IMAGE,
+                              MasterBootImageType.SIGNED_RAM_IMAGE,
+                              MasterBootImageType.ENCRYPTED_RAM_IMAGE]
+
+    @staticmethod
+    def has_crc(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type contains CRC; False otherwise.&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.CRC_XIP_IMAGE, MasterBootImageType.CRC_RAM_IMAGE]
+
+    @staticmethod
+    def is_signed(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is signed; False otherwise.&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.SIGNED_XIP_IMAGE,
+                              MasterBootImageType.SIGNED_RAM_IMAGE,
+                              MasterBootImageType.ENCRYPTED_RAM_IMAGE]
+
+    @staticmethod
+    def is_encrypted(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is encrypted; False otherwise.&#34;&#34;&#34;
+        return image_type == MasterBootImageType.ENCRYPTED_RAM_IMAGE
+
+    @staticmethod
+    def has_hmac(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;Whether the image contains HMAC.&#34;&#34;&#34;
+        return MasterBootImageType.is_signed(image_type) and MasterBootImageType.is_copied_to_ram(image_type)
+
+
+class MultipleImageEntry:
+    &#34;&#34;&#34;The class represents an entry in relocation table.
+
+    It also contains a corresponding image (binary)
+    &#34;&#34;&#34;
+    # flag to simply copy load segment into target memory
+    LTI_LOAD = (1 &lt;&lt; 0)
+
+    def __init__(self, img: bytes, dst_addr: int, flags: int = LTI_LOAD):
+        &#34;&#34;&#34;Constructor.
+
+        :param img: binary image data
+        :param dst_addr: destination address
+        :param flags: see LTI constants
+        &#34;&#34;&#34;
+        assert 0 &lt;= dst_addr &lt;= 0xFFFFFFFF
+        assert flags == self.LTI_LOAD  # for now, other section types (INIT) are not supported
+        self._img = img
+        self._src_addr = 0
+        self._dst_addr = dst_addr
+        self._flags = flags
+
+    @property
+    def image(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary image data.&#34;&#34;&#34;
+        return self._img
+
+    @property
+    def src_addr(self) -&gt; int:
+        &#34;&#34;&#34;Source address; this value is calculated automatically when building the image.&#34;&#34;&#34;
+        return self._src_addr
+
+    @src_addr.setter
+    def src_addr(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: to set
+        &#34;&#34;&#34;
+        self._src_addr = value
+
+    @property
+    def dst_addr(self) -&gt; int:
+        &#34;&#34;&#34;Destination address.&#34;&#34;&#34;
+        return self._dst_addr
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Size of the image (not aligned).&#34;&#34;&#34;
+        return len(self.image)
+
+    @property
+    def flags(self) -&gt; int:
+        &#34;&#34;&#34;Flags, currently not used.&#34;&#34;&#34;
+        return self._flags
+
+    @property
+    def is_load(self) -&gt; bool:
+        &#34;&#34;&#34;True if entry represents LOAD section.&#34;&#34;&#34;
+        return (self.flags &amp; self.LTI_LOAD) != 0
+
+    def export_entry(self) -&gt; bytes:
+        &#34;&#34;&#34;Export relocation table entry in binary form.&#34;&#34;&#34;
+        result = bytes()
+        result += struct.pack(&#34;&lt;I&#34;, self.src_addr)  # source address
+        result += struct.pack(&#34;&lt;I&#34;, self.dst_addr)  # dest address
+        result += struct.pack(&#34;&lt;I&#34;, self.size)  # length
+        result += struct.pack(&#34;&lt;I&#34;, self.flags)  # flags
+        return result
+
+    def export_image(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary image aligned to the 4-bytes boundary.&#34;&#34;&#34;
+        return misc.align_block(self.image, 4)
+
+
+class MultipleImageTable:
+    &#34;&#34;&#34;The class allows to merge several images into single image and add relocation table.
+
+    It can be used for multicore images (one image for each core)
+    or trustzone images (merging secure and non-secure image)
+    &#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize the Multiple Image Table.&#34;&#34;&#34;
+        self._entries: List[MultipleImageEntry] = list()
+
+    @property
+    def header_version(self) -&gt; int:
+        &#34;&#34;&#34;Format version of the structure for the header.&#34;&#34;&#34;
+        return 0
+
+    @property
+    def entries(self) -&gt; Sequence[MultipleImageEntry]:
+        &#34;&#34;&#34;List of all entries.&#34;&#34;&#34;
+        return self._entries
+
+    def add_entry(self, entry: MultipleImageEntry) -&gt; None:
+        &#34;&#34;&#34;Add entry into relocation table.
+
+        :param entry: to add
+        &#34;&#34;&#34;
+        self._entries.append(entry)
+
+    def reloc_table(self, start_addr: int) -&gt; bytes:
+        &#34;&#34;&#34;Relocate table.
+
+        :param start_addr: start address of the relocation table
+        :return: export relocation table in binary form
+        &#34;&#34;&#34;
+        result = bytes()
+        # export relocation entries table
+        for entry in self.entries:
+            result += entry.export_entry()
+        # export relocation table header
+        result += struct.pack(&#34;&lt;I&#34;, 0x4C54424C)  # header marker
+        result += struct.pack(&#34;&lt;I&#34;, self.header_version)  # version
+        result += struct.pack(&#34;&lt;I&#34;, len(self._entries))  # number of entries
+        result += struct.pack(&#34;&lt;I&#34;, start_addr)  # pointer to entries
+        return result
+
+    def export(self, start_addr: int) -&gt; bytes:
+        &#34;&#34;&#34;Export.
+
+        :param start_addr: start address where the images are exported;
+                        the value matches source address for the first image
+        :return: images with relocation table
+        &#34;&#34;&#34;
+        assert self._entries, &#39;There must be at least one entry for export&#39;
+        src_addr = start_addr
+        result = bytes()
+        for entry in self.entries:
+            if entry.is_load:
+                entry.src_addr = src_addr
+                entry_img = entry.export_image()
+                result += entry_img
+                src_addr += len(entry_img)
+        result += self.reloc_table(start_addr + len(result))
+        # TODO result += struct.pack(&#34;&lt;I&#34;, src_addr)  # pointer to relocation table
+        return result
+
+
+# pylint: disable=too-many-instance-attributes
+class MasterBootImage:
+    &#34;&#34;&#34;Basic representation of Master Boot Image layout.&#34;&#34;&#34;
+
+    # offset alignment of the certificate position
+    _IMAGE_ALIGNMENT = 4
+
+    IMAGE_LENGTH_OFFSET = 0x20
+    # offset with flags: image type, trust zone, key-store and HW_USER_KEY_EN
+    IMAGE_FLAGS_OFFSET = 0x24
+    # flag for image type, if the image contains key-store
+    _KEY_STORE_FLAG = 0x8000
+    # flag that image contains relocation table
+    _RELOC_TABLE_FLAG = 0x800
+    # enableHwUserModeKeys : flag for controlling secure hardware key bus. If enabled(1), then it is possible to access
+    # keys on hardware secure bus from non-secure application, else non-secure application will read zeros.
+    _HW_USER_KEY_EN_FLAG = 0x1000
+
+    CRC_BLOCK_OFFSET = 0x28
+    CERTIFICATE_OFFSET = 0x28
+    LOAD_ADDR_OFFSET = 0x34
+    # offset in the image, where the HMAC table is located
+    HMAC_OFFSET = 64
+    # size of HMAC table in bytes
+    HMAC_SIZE = 32
+    # length of user key or master key, in bytes
+    _HMAC_KEY_LENGTH = 32
+    # length of derived key for HMAC, in bytes
+    _HMAC_DERIVED_KEY_LEN = 16
+    # length of counter initialization vector
+    _CTR_INIT_VECTOR_SIZE = 16
+
+    @property
+    def app_len(self) -&gt; int:
+        &#34;&#34;&#34;Length of binary app data; this includes also size of the relocation table.&#34;&#34;&#34;
+        result = len(self.app)
+        if self.app_table:
+            result += len(self.app_table.export(0))
+        return result
+
+    @property
+    def data(self) -&gt; bytes:
+        &#34;&#34;&#34;Plain, unsigned binary data for the image.
+
+        It consists of:
+        - application image
+        - optionally trust zone data
+        Please mind the result does not contain: certification block, HMAC, keystore and signature
+        &#34;&#34;&#34;
+        # binary image
+        data = self.app
+        if self.app_table:
+            data += self.app_table.export(len(data))
+        # trust zone data
+        data += self.trust_zone.export()
+        return data
+
+    @property
+    def total_len(self) -&gt; int:
+        &#34;&#34;&#34;Total length of the image.
+
+        It is sum of:
+        - image length + length of trust zone data
+        - HMAC length
+        - KeyStore length
+        - certificate length (+ for encrypted images also encrypted header and CRT init vector)
+        - signature length
+        &#34;&#34;&#34;
+        plain_data = self.data
+        certificate_len = len(self._certificate(plain_data))
+        hmac_data_len = len(self._hmac(self.data))
+        key_store_len = len(self.key_store.export()) if self.key_store else 0
+        return len(plain_data) + hmac_data_len + key_store_len + certificate_len + self.signature_len
+
+    # pylint: disable=too-many-arguments
+    def __init__(self, app: Union[bytes, bytearray],
+                 load_addr: int,
+                 image_type: MasterBootImageType = MasterBootImageType.PLAIN_IMAGE,
+                 trust_zone: Optional[TrustZone] = None, app_table: Optional[MultipleImageTable] = None,
+                 cert_block: Optional[CertBlockV2] = None, priv_key_pem_data: Optional[bytes] = None,
+                 hmac_key: Union[bytes, str] = None, key_store: KeyStore = None,
+                 enable_hw_user_mode_keys: bool = False, ctr_init_vector: bytes = None):
+        &#34;&#34;&#34;Constructor.
+
+        :param app: input image (binary)
+        :param load_addr: address in RAM, where &#39;RAM&#39; image will be copied;
+                    for XIP images address, where the image is located in FLASH memory
+        :param image_type: type of the master boot image
+        :param trust_zone: TrustZone instance; None to use default settings (TrustZone enabled)
+        :param app_table: optional table with additional images; None if no additional images needed
+        :param cert_block: block of certificates; None for unsigned image
+        :param priv_key_pem_data: private key to sign the image, decrypted binary data in PEM format
+        :param hmac_key: optional key for HMAC generation (either binary ot HEX string; 32 bytes);
+                                None if HMAC is not in the image
+                If key_store.key_source == KeySourceType.KEYSTORE, this is a user-key from key-store
+                If key_store.key_source == KeySourceType.OTP, this is a master-key burned in OTP
+        :param key_store: optional key store binary content; None if key store is not in the image
+        :param enable_hw_user_mode_keys: flag for controlling secure hardware key bus. If true, then it is possible to
+            access keys on hardware secure bus from non-secure application, else non-secure application will read zeros.
+        :param ctr_init_vector: optional initial vector for encryption counter; None to use random vector
+        :raises TypeError: if type is not binary data
+        :raises ValueError: if images are not loaded from RAM
+        &#34;&#34;&#34;
+        if not isinstance(app, (bytes, bytearray)):
+            raise TypeError(&#34;app must be binary data (bytes, bytearray)&#34;)
+        if app_table and not MasterBootImageType.is_copied_to_ram(image_type):
+            raise ValueError(&#39;app_table can be used only for images loaded to RAM&#39;)
+        assert load_addr &gt;= 0
+        self.load_addr = load_addr
+        self.image_type = image_type
+        alignment = MasterBootImage._IMAGE_ALIGNMENT
+        self.app = misc.align_block(bytes(app), alignment)
+        self.app_table = app_table
+        # hmac + key store
+        self.hmac_key = bytes.fromhex(hmac_key) if isinstance(hmac_key, str) else hmac_key
+        self.key_store = key_store
+        # trust zone
+        self.trust_zone = trust_zone or TrustZone.enabled()
+        # security stuff
+        self.cert_block = cert_block
+        if self.cert_block:
+            self.cert_block.alignment = 4  # this value is used by elf-to-sb-gui
+            self.signature_len = self.cert_block.signature_size
+        else:
+            self.signature_len = 0
+        self._priv_key_pem_data = priv_key_pem_data
+        self.enable_hw_user_mode_keys = enable_hw_user_mode_keys
+        self.ctr_init_vector = ctr_init_vector
+        if MasterBootImageType.is_encrypted(self.image_type) and not ctr_init_vector:
+            self.ctr_init_vector = crypto_backend().random_bytes(self._CTR_INIT_VECTOR_SIZE)
+        self._verify_private_key()
+        # validate parameters
+        self._validate_new_instance()
+
+    def _validate_new_instance(self) -&gt; None:
+        &#34;&#34;&#34;Validate new instance.
+
+        :raise ValueError: if there are invalid or conflicting parameters
+        &#34;&#34;&#34;
+        # table
+        if self.app_table:
+            if not self.app_table.entries:
+                raise ValueError(&#34;app_table is empty&#34;)
+
+        # image size
+        if len(self.data) &lt; self.HMAC_OFFSET:
+            raise ValueError(&#34;Image must be at least {} bytes&#34;.format(str(self.HMAC_OFFSET)))
+
+        # security stuff
+        if MasterBootImageType.is_signed(self.image_type):
+            if not self.cert_block:
+                raise ValueError(&#34;Certificate block must be specified for signed image (cert_block)&#34;)
+            if not self._priv_key_pem_data:
+                raise ValueError(&#34;Private Key must be specified for signed image (priv_key_path)&#34;)
+        else:
+            if self.cert_block:
+                raise ValueError(&#34;Certificate block must be specified only for signed image (cert_block)&#34;)
+            if self._priv_key_pem_data:
+                raise ValueError(&#34;Private Key must be specified only for signed image (priv_key_path)&#34;)
+
+        if MasterBootImageType.is_encrypted(self.image_type):
+            if not self.ctr_init_vector or (len(self.ctr_init_vector) != self._CTR_INIT_VECTOR_SIZE):
+                raise ValueError(f&#34;Invalid length of CTR init vector, expected {str(self._CTR_INIT_VECTOR_SIZE)} bytes&#34;)
+
+        # hmac
+        if MasterBootImageType.has_hmac(self.image_type):
+            if not self.hmac_key:
+                raise ValueError(&#34;HMAC key must be specified for load-to-ram signed images (hmac_key)&#34;)
+        else:
+            if self.hmac_key:
+                raise ValueError(&#34;HMAC user key cannot be applied into selected image (hmac_user_key)&#34;)
+            if self.key_store:
+                raise ValueError(&#34;KeyStore cannot be applied into selected image (key_store)&#34;)
+
+    def _verify_private_key(self) -&gt; None:
+        &#34;&#34;&#34;Verifies private key.
+
+        :raise ValueError: if any parameter not valid
+        &#34;&#34;&#34;
+        if self._priv_key_pem_data:
+            cert_blk = self.cert_block
+            assert cert_blk is not None
+            if not cert_blk.verify_private_key(self._priv_key_pem_data):
+                raise ValueError(&#39;Signature verification failed, private key does not match to certificate&#39;)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text description of the instance.&#34;&#34;&#34;
+        msg = &#34;Master Boot Image&#34;
+        msg += &#34;Image type       : {}\n&#34;.format(MasterBootImageType.desc(self.image_type))
+        msg += &#34;Img load addr    : {}\n&#34;.format(hex(self.load_addr))
+        msg += &#34;Image length     : {}\n&#34;.format(len(self.data))
+        msg += &#34;HW user mode keys: {}\n&#34;.format(&#34;enabled&#34; if self.enable_hw_user_mode_keys else &#34;disabled&#34;)
+        msg += &#34;TrustZone        : {}\n&#34;.format(TrustZoneType.desc(self.trust_zone.type))
+        if self.cert_block:
+            msg += &#34;[Certificate Block]\n&#34;
+            msg += self.cert_block.info()
+        if self._priv_key_pem_data:
+            msg += &#34;Private Key  : {Yes}\n&#34;
+        return msg
+
+    def _update_ivt(self, data: bytes) -&gt; bytes:
+        data = bytearray(data)
+        data[self.IMAGE_LENGTH_OFFSET: self.IMAGE_LENGTH_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, self.total_len)
+        # flags
+        flags = (self.trust_zone.type &lt;&lt; 8) + self.image_type
+        if self.key_store and self.key_store.export():
+            flags |= self._KEY_STORE_FLAG
+        if self.app_table:
+            flags |= self._RELOC_TABLE_FLAG
+        if self.enable_hw_user_mode_keys:
+            flags |= self._HW_USER_KEY_EN_FLAG
+        data[self.IMAGE_FLAGS_OFFSET: self.IMAGE_FLAGS_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, flags)
+        #
+        data[self.LOAD_ADDR_OFFSET: self.LOAD_ADDR_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, self.load_addr)
+        if MasterBootImageType.is_signed(self.image_type):
+            data[self.CERTIFICATE_OFFSET: self.CERTIFICATE_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, self.app_len)
+        if MasterBootImageType.has_crc(self.image_type):
+            # calculate CRC using MPEG2 specification over all of data (app and trustzone)
+            # expect for 4 bytes at CRC_BLOCK_OFFSET and put the resulting CRC there
+            crc = Crc32Mpeg2.calc(data[:self.CRC_BLOCK_OFFSET])
+            crc = Crc32Mpeg2.calc(data[self.CRC_BLOCK_OFFSET + 4:], crc)
+            data[self.CRC_BLOCK_OFFSET: self.CRC_BLOCK_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, crc)
+        return bytes(data)
+
+    def _certificate(self, encr_data: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Create certificate optionally followed by encrypted image header and CTR init vector.
+
+        :param encr_data: encrypted data for encrypted image; plain data otherwise
+        :return:
+        - for encrypted image: certificate with encrypted image header and CTR init vector
+        - for signed image: certificate
+        - for plain image: empty bytes
+        &#34;&#34;&#34;
+        if not self.cert_block:
+            return bytes()
+
+        # for encrypted image create encrypted header located behind certificate
+        if MasterBootImageType.is_encrypted(self.image_type):
+            assert self.ctr_init_vector
+            encr_header = encr_data[:56] + self.ctr_init_vector
+        else:
+            encr_header = bytes()
+        self.cert_block.image_length = len(encr_data) + len(self.cert_block.export()) + len(encr_header)
+        return self.cert_block.export() + encr_header
+
+    def _hmac(self, data: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Calculate HMAC for provided data.
+
+        :param data: to calculate hmac
+        :return: calculated hmac; empty bytes if the block does not contain any HMAC
+        &#34;&#34;&#34;
+        if not MasterBootImageType.has_hmac(self.image_type):
+            return bytes()
+
+        assert self.hmac_key and len(self.hmac_key) == self._HMAC_KEY_LENGTH
+        key = KeyStore.derive_hmac_key(self.hmac_key)
+        assert len(key) == self._HMAC_DERIVED_KEY_LEN
+        result = crypto_backend().hmac(key, data)
+        assert len(result) == self.HMAC_SIZE
+        return result
+
+    def _encrypt(self, data: bytes) -&gt; bytes:
+        if not MasterBootImageType.is_encrypted(self.image_type):
+            return data
+
+        assert self.key_store, &#34;key_store must be specified for encrypted image&#34;
+        assert self.hmac_key and len(self.hmac_key) == self._HMAC_KEY_LENGTH
+        assert self.ctr_init_vector
+
+        if self.key_store.key_source == KeySourceType.KEYSTORE:
+            key = self.hmac_key  # user_key, the key not derived
+        elif self.key_store.key_source == KeySourceType.OTP:
+            key = self.key_store.derive_enc_image_key(self.hmac_key)
+        else:
+            assert False, &#34;Unsupported key_source&#34;
+
+        aes = AES.new(key, AES.MODE_CTR, initial_value=self.ctr_init_vector, nonce=bytes())
+        return aes.encrypt(data)
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Master boot image (binary).&#34;&#34;&#34;
+        data = self._update_ivt(self.data)
+
+        # signed or encrypted
+        if MasterBootImageType.is_signed(self.image_type):
+            assert self._priv_key_pem_data
+            cb = self.cert_block
+            assert (cb is not None) and cb.verify_private_key(self._priv_key_pem_data)
+            # encrypt
+            encr_data = self._encrypt(data)
+            encr_data = (self._update_ivt(encr_data[:self.HMAC_OFFSET]) +  # header
+                         encr_data[self.HMAC_OFFSET:self.app_len] +  # encrypted image
+                         self._certificate(encr_data) +  # certificate + encoded image header + CTR init vector
+                         encr_data[self.app_len:])  # TZ encoded data
+            encr_data += crypto_backend().rsa_sign(self._priv_key_pem_data, encr_data)  # signature
+            # hmac + key store
+            if MasterBootImageType.has_hmac(self.image_type):
+                hmac_keystore = self._hmac(encr_data[:self.HMAC_OFFSET])
+                if self.key_store:
+                    hmac_keystore += self.key_store.export()
+                encr_data = encr_data[:self.HMAC_OFFSET] + hmac_keystore + encr_data[self.HMAC_OFFSET:]
+            return bytes(encr_data)
+
+        return bytes(data)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, **kwargs: Any) -&gt; None:
+        &#34;&#34;&#34;Parse.&#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImage"><code class="flex name class">
+<span>class <span class="ident">MasterBootImage</span></span>
+<span>(</span><span>app: Union[bytes, bytearray], load_addr: int, image_type: <a title="spsdk.image.mbimg.MasterBootImageType" href="#spsdk.image.mbimg.MasterBootImageType">MasterBootImageType</a> = 0, trust_zone: Union[<a title="spsdk.image.trustzone.TrustZone" href="trustzone.html#spsdk.image.trustzone.TrustZone">TrustZone</a>, NoneType] = None, app_table: Union[<a title="spsdk.image.mbimg.MultipleImageTable" href="#spsdk.image.mbimg.MultipleImageTable">MultipleImageTable</a>, NoneType] = None, cert_block: Union[<a title="spsdk.utils.crypto.cert_blocks.CertBlockV2" href="../utils/crypto/cert_blocks.html#spsdk.utils.crypto.cert_blocks.CertBlockV2">CertBlockV2</a>, NoneType] = None, priv_key_pem_data: Union[bytes, NoneType] = None, hmac_key: Union[bytes, str] = None, key_store: <a title="spsdk.image.keystore.KeyStore" href="keystore.html#spsdk.image.keystore.KeyStore">KeyStore</a> = None, enable_hw_user_mode_keys: bool = False, ctr_init_vector: bytes = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Basic representation of Master Boot Image layout.</p>
+<p>Constructor.</p>
+<p>:param app: input image (binary)
+:param load_addr: address in RAM, where 'RAM' image will be copied;
+for XIP images address, where the image is located in FLASH memory
+:param image_type: type of the master boot image
+:param trust_zone: TrustZone instance; None to use default settings (TrustZone enabled)
+:param app_table: optional table with additional images; None if no additional images needed
+:param cert_block: block of certificates; None for unsigned image
+:param priv_key_pem_data: private key to sign the image, decrypted binary data in PEM format
+:param hmac_key: optional key for HMAC generation (either binary ot HEX string; 32 bytes);
+None if HMAC is not in the image
+If key_store.key_source == KeySourceType.KEYSTORE, this is a user-key from key-store
+If key_store.key_source == KeySourceType.OTP, this is a master-key burned in OTP
+:param key_store: optional key store binary content; None if key store is not in the image
+:param enable_hw_user_mode_keys: flag for controlling secure hardware key bus. If true, then it is possible to
+access keys on hardware secure bus from non-secure application, else non-secure application will read zeros.
+:param ctr_init_vector: optional initial vector for encryption counter; None to use random vector
+:raises TypeError: if type is not binary data
+:raises ValueError: if images are not loaded from RAM</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MasterBootImage:
+    &#34;&#34;&#34;Basic representation of Master Boot Image layout.&#34;&#34;&#34;
+
+    # offset alignment of the certificate position
+    _IMAGE_ALIGNMENT = 4
+
+    IMAGE_LENGTH_OFFSET = 0x20
+    # offset with flags: image type, trust zone, key-store and HW_USER_KEY_EN
+    IMAGE_FLAGS_OFFSET = 0x24
+    # flag for image type, if the image contains key-store
+    _KEY_STORE_FLAG = 0x8000
+    # flag that image contains relocation table
+    _RELOC_TABLE_FLAG = 0x800
+    # enableHwUserModeKeys : flag for controlling secure hardware key bus. If enabled(1), then it is possible to access
+    # keys on hardware secure bus from non-secure application, else non-secure application will read zeros.
+    _HW_USER_KEY_EN_FLAG = 0x1000
+
+    CRC_BLOCK_OFFSET = 0x28
+    CERTIFICATE_OFFSET = 0x28
+    LOAD_ADDR_OFFSET = 0x34
+    # offset in the image, where the HMAC table is located
+    HMAC_OFFSET = 64
+    # size of HMAC table in bytes
+    HMAC_SIZE = 32
+    # length of user key or master key, in bytes
+    _HMAC_KEY_LENGTH = 32
+    # length of derived key for HMAC, in bytes
+    _HMAC_DERIVED_KEY_LEN = 16
+    # length of counter initialization vector
+    _CTR_INIT_VECTOR_SIZE = 16
+
+    @property
+    def app_len(self) -&gt; int:
+        &#34;&#34;&#34;Length of binary app data; this includes also size of the relocation table.&#34;&#34;&#34;
+        result = len(self.app)
+        if self.app_table:
+            result += len(self.app_table.export(0))
+        return result
+
+    @property
+    def data(self) -&gt; bytes:
+        &#34;&#34;&#34;Plain, unsigned binary data for the image.
+
+        It consists of:
+        - application image
+        - optionally trust zone data
+        Please mind the result does not contain: certification block, HMAC, keystore and signature
+        &#34;&#34;&#34;
+        # binary image
+        data = self.app
+        if self.app_table:
+            data += self.app_table.export(len(data))
+        # trust zone data
+        data += self.trust_zone.export()
+        return data
+
+    @property
+    def total_len(self) -&gt; int:
+        &#34;&#34;&#34;Total length of the image.
+
+        It is sum of:
+        - image length + length of trust zone data
+        - HMAC length
+        - KeyStore length
+        - certificate length (+ for encrypted images also encrypted header and CRT init vector)
+        - signature length
+        &#34;&#34;&#34;
+        plain_data = self.data
+        certificate_len = len(self._certificate(plain_data))
+        hmac_data_len = len(self._hmac(self.data))
+        key_store_len = len(self.key_store.export()) if self.key_store else 0
+        return len(plain_data) + hmac_data_len + key_store_len + certificate_len + self.signature_len
+
+    # pylint: disable=too-many-arguments
+    def __init__(self, app: Union[bytes, bytearray],
+                 load_addr: int,
+                 image_type: MasterBootImageType = MasterBootImageType.PLAIN_IMAGE,
+                 trust_zone: Optional[TrustZone] = None, app_table: Optional[MultipleImageTable] = None,
+                 cert_block: Optional[CertBlockV2] = None, priv_key_pem_data: Optional[bytes] = None,
+                 hmac_key: Union[bytes, str] = None, key_store: KeyStore = None,
+                 enable_hw_user_mode_keys: bool = False, ctr_init_vector: bytes = None):
+        &#34;&#34;&#34;Constructor.
+
+        :param app: input image (binary)
+        :param load_addr: address in RAM, where &#39;RAM&#39; image will be copied;
+                    for XIP images address, where the image is located in FLASH memory
+        :param image_type: type of the master boot image
+        :param trust_zone: TrustZone instance; None to use default settings (TrustZone enabled)
+        :param app_table: optional table with additional images; None if no additional images needed
+        :param cert_block: block of certificates; None for unsigned image
+        :param priv_key_pem_data: private key to sign the image, decrypted binary data in PEM format
+        :param hmac_key: optional key for HMAC generation (either binary ot HEX string; 32 bytes);
+                                None if HMAC is not in the image
+                If key_store.key_source == KeySourceType.KEYSTORE, this is a user-key from key-store
+                If key_store.key_source == KeySourceType.OTP, this is a master-key burned in OTP
+        :param key_store: optional key store binary content; None if key store is not in the image
+        :param enable_hw_user_mode_keys: flag for controlling secure hardware key bus. If true, then it is possible to
+            access keys on hardware secure bus from non-secure application, else non-secure application will read zeros.
+        :param ctr_init_vector: optional initial vector for encryption counter; None to use random vector
+        :raises TypeError: if type is not binary data
+        :raises ValueError: if images are not loaded from RAM
+        &#34;&#34;&#34;
+        if not isinstance(app, (bytes, bytearray)):
+            raise TypeError(&#34;app must be binary data (bytes, bytearray)&#34;)
+        if app_table and not MasterBootImageType.is_copied_to_ram(image_type):
+            raise ValueError(&#39;app_table can be used only for images loaded to RAM&#39;)
+        assert load_addr &gt;= 0
+        self.load_addr = load_addr
+        self.image_type = image_type
+        alignment = MasterBootImage._IMAGE_ALIGNMENT
+        self.app = misc.align_block(bytes(app), alignment)
+        self.app_table = app_table
+        # hmac + key store
+        self.hmac_key = bytes.fromhex(hmac_key) if isinstance(hmac_key, str) else hmac_key
+        self.key_store = key_store
+        # trust zone
+        self.trust_zone = trust_zone or TrustZone.enabled()
+        # security stuff
+        self.cert_block = cert_block
+        if self.cert_block:
+            self.cert_block.alignment = 4  # this value is used by elf-to-sb-gui
+            self.signature_len = self.cert_block.signature_size
+        else:
+            self.signature_len = 0
+        self._priv_key_pem_data = priv_key_pem_data
+        self.enable_hw_user_mode_keys = enable_hw_user_mode_keys
+        self.ctr_init_vector = ctr_init_vector
+        if MasterBootImageType.is_encrypted(self.image_type) and not ctr_init_vector:
+            self.ctr_init_vector = crypto_backend().random_bytes(self._CTR_INIT_VECTOR_SIZE)
+        self._verify_private_key()
+        # validate parameters
+        self._validate_new_instance()
+
+    def _validate_new_instance(self) -&gt; None:
+        &#34;&#34;&#34;Validate new instance.
+
+        :raise ValueError: if there are invalid or conflicting parameters
+        &#34;&#34;&#34;
+        # table
+        if self.app_table:
+            if not self.app_table.entries:
+                raise ValueError(&#34;app_table is empty&#34;)
+
+        # image size
+        if len(self.data) &lt; self.HMAC_OFFSET:
+            raise ValueError(&#34;Image must be at least {} bytes&#34;.format(str(self.HMAC_OFFSET)))
+
+        # security stuff
+        if MasterBootImageType.is_signed(self.image_type):
+            if not self.cert_block:
+                raise ValueError(&#34;Certificate block must be specified for signed image (cert_block)&#34;)
+            if not self._priv_key_pem_data:
+                raise ValueError(&#34;Private Key must be specified for signed image (priv_key_path)&#34;)
+        else:
+            if self.cert_block:
+                raise ValueError(&#34;Certificate block must be specified only for signed image (cert_block)&#34;)
+            if self._priv_key_pem_data:
+                raise ValueError(&#34;Private Key must be specified only for signed image (priv_key_path)&#34;)
+
+        if MasterBootImageType.is_encrypted(self.image_type):
+            if not self.ctr_init_vector or (len(self.ctr_init_vector) != self._CTR_INIT_VECTOR_SIZE):
+                raise ValueError(f&#34;Invalid length of CTR init vector, expected {str(self._CTR_INIT_VECTOR_SIZE)} bytes&#34;)
+
+        # hmac
+        if MasterBootImageType.has_hmac(self.image_type):
+            if not self.hmac_key:
+                raise ValueError(&#34;HMAC key must be specified for load-to-ram signed images (hmac_key)&#34;)
+        else:
+            if self.hmac_key:
+                raise ValueError(&#34;HMAC user key cannot be applied into selected image (hmac_user_key)&#34;)
+            if self.key_store:
+                raise ValueError(&#34;KeyStore cannot be applied into selected image (key_store)&#34;)
+
+    def _verify_private_key(self) -&gt; None:
+        &#34;&#34;&#34;Verifies private key.
+
+        :raise ValueError: if any parameter not valid
+        &#34;&#34;&#34;
+        if self._priv_key_pem_data:
+            cert_blk = self.cert_block
+            assert cert_blk is not None
+            if not cert_blk.verify_private_key(self._priv_key_pem_data):
+                raise ValueError(&#39;Signature verification failed, private key does not match to certificate&#39;)
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Text description of the instance.&#34;&#34;&#34;
+        msg = &#34;Master Boot Image&#34;
+        msg += &#34;Image type       : {}\n&#34;.format(MasterBootImageType.desc(self.image_type))
+        msg += &#34;Img load addr    : {}\n&#34;.format(hex(self.load_addr))
+        msg += &#34;Image length     : {}\n&#34;.format(len(self.data))
+        msg += &#34;HW user mode keys: {}\n&#34;.format(&#34;enabled&#34; if self.enable_hw_user_mode_keys else &#34;disabled&#34;)
+        msg += &#34;TrustZone        : {}\n&#34;.format(TrustZoneType.desc(self.trust_zone.type))
+        if self.cert_block:
+            msg += &#34;[Certificate Block]\n&#34;
+            msg += self.cert_block.info()
+        if self._priv_key_pem_data:
+            msg += &#34;Private Key  : {Yes}\n&#34;
+        return msg
+
+    def _update_ivt(self, data: bytes) -&gt; bytes:
+        data = bytearray(data)
+        data[self.IMAGE_LENGTH_OFFSET: self.IMAGE_LENGTH_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, self.total_len)
+        # flags
+        flags = (self.trust_zone.type &lt;&lt; 8) + self.image_type
+        if self.key_store and self.key_store.export():
+            flags |= self._KEY_STORE_FLAG
+        if self.app_table:
+            flags |= self._RELOC_TABLE_FLAG
+        if self.enable_hw_user_mode_keys:
+            flags |= self._HW_USER_KEY_EN_FLAG
+        data[self.IMAGE_FLAGS_OFFSET: self.IMAGE_FLAGS_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, flags)
+        #
+        data[self.LOAD_ADDR_OFFSET: self.LOAD_ADDR_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, self.load_addr)
+        if MasterBootImageType.is_signed(self.image_type):
+            data[self.CERTIFICATE_OFFSET: self.CERTIFICATE_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, self.app_len)
+        if MasterBootImageType.has_crc(self.image_type):
+            # calculate CRC using MPEG2 specification over all of data (app and trustzone)
+            # expect for 4 bytes at CRC_BLOCK_OFFSET and put the resulting CRC there
+            crc = Crc32Mpeg2.calc(data[:self.CRC_BLOCK_OFFSET])
+            crc = Crc32Mpeg2.calc(data[self.CRC_BLOCK_OFFSET + 4:], crc)
+            data[self.CRC_BLOCK_OFFSET: self.CRC_BLOCK_OFFSET + 4] = struct.pack(&#34;&lt;I&#34;, crc)
+        return bytes(data)
+
+    def _certificate(self, encr_data: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Create certificate optionally followed by encrypted image header and CTR init vector.
+
+        :param encr_data: encrypted data for encrypted image; plain data otherwise
+        :return:
+        - for encrypted image: certificate with encrypted image header and CTR init vector
+        - for signed image: certificate
+        - for plain image: empty bytes
+        &#34;&#34;&#34;
+        if not self.cert_block:
+            return bytes()
+
+        # for encrypted image create encrypted header located behind certificate
+        if MasterBootImageType.is_encrypted(self.image_type):
+            assert self.ctr_init_vector
+            encr_header = encr_data[:56] + self.ctr_init_vector
+        else:
+            encr_header = bytes()
+        self.cert_block.image_length = len(encr_data) + len(self.cert_block.export()) + len(encr_header)
+        return self.cert_block.export() + encr_header
+
+    def _hmac(self, data: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Calculate HMAC for provided data.
+
+        :param data: to calculate hmac
+        :return: calculated hmac; empty bytes if the block does not contain any HMAC
+        &#34;&#34;&#34;
+        if not MasterBootImageType.has_hmac(self.image_type):
+            return bytes()
+
+        assert self.hmac_key and len(self.hmac_key) == self._HMAC_KEY_LENGTH
+        key = KeyStore.derive_hmac_key(self.hmac_key)
+        assert len(key) == self._HMAC_DERIVED_KEY_LEN
+        result = crypto_backend().hmac(key, data)
+        assert len(result) == self.HMAC_SIZE
+        return result
+
+    def _encrypt(self, data: bytes) -&gt; bytes:
+        if not MasterBootImageType.is_encrypted(self.image_type):
+            return data
+
+        assert self.key_store, &#34;key_store must be specified for encrypted image&#34;
+        assert self.hmac_key and len(self.hmac_key) == self._HMAC_KEY_LENGTH
+        assert self.ctr_init_vector
+
+        if self.key_store.key_source == KeySourceType.KEYSTORE:
+            key = self.hmac_key  # user_key, the key not derived
+        elif self.key_store.key_source == KeySourceType.OTP:
+            key = self.key_store.derive_enc_image_key(self.hmac_key)
+        else:
+            assert False, &#34;Unsupported key_source&#34;
+
+        aes = AES.new(key, AES.MODE_CTR, initial_value=self.ctr_init_vector, nonce=bytes())
+        return aes.encrypt(data)
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Master boot image (binary).&#34;&#34;&#34;
+        data = self._update_ivt(self.data)
+
+        # signed or encrypted
+        if MasterBootImageType.is_signed(self.image_type):
+            assert self._priv_key_pem_data
+            cb = self.cert_block
+            assert (cb is not None) and cb.verify_private_key(self._priv_key_pem_data)
+            # encrypt
+            encr_data = self._encrypt(data)
+            encr_data = (self._update_ivt(encr_data[:self.HMAC_OFFSET]) +  # header
+                         encr_data[self.HMAC_OFFSET:self.app_len] +  # encrypted image
+                         self._certificate(encr_data) +  # certificate + encoded image header + CTR init vector
+                         encr_data[self.app_len:])  # TZ encoded data
+            encr_data += crypto_backend().rsa_sign(self._priv_key_pem_data, encr_data)  # signature
+            # hmac + key store
+            if MasterBootImageType.has_hmac(self.image_type):
+                hmac_keystore = self._hmac(encr_data[:self.HMAC_OFFSET])
+                if self.key_store:
+                    hmac_keystore += self.key_store.export()
+                encr_data = encr_data[:self.HMAC_OFFSET] + hmac_keystore + encr_data[self.HMAC_OFFSET:]
+            return bytes(encr_data)
+
+        return bytes(data)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0, **kwargs: Any) -&gt; None:
+        &#34;&#34;&#34;Parse.&#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImage.CERTIFICATE_OFFSET"><code class="name">var <span class="ident">CERTIFICATE_OFFSET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.CRC_BLOCK_OFFSET"><code class="name">var <span class="ident">CRC_BLOCK_OFFSET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.HMAC_OFFSET"><code class="name">var <span class="ident">HMAC_OFFSET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.HMAC_SIZE"><code class="name">var <span class="ident">HMAC_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.IMAGE_FLAGS_OFFSET"><code class="name">var <span class="ident">IMAGE_FLAGS_OFFSET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.IMAGE_LENGTH_OFFSET"><code class="name">var <span class="ident">IMAGE_LENGTH_OFFSET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.LOAD_ADDR_OFFSET"><code class="name">var <span class="ident">LOAD_ADDR_OFFSET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImage.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0, **kwargs: Any) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0, **kwargs: Any) -&gt; None:
+    &#34;&#34;&#34;Parse.&#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImage.app_len"><code class="name">var <span class="ident">app_len</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Length of binary app data; this includes also size of the relocation table.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def app_len(self) -&gt; int:
+    &#34;&#34;&#34;Length of binary app data; this includes also size of the relocation table.&#34;&#34;&#34;
+    result = len(self.app)
+    if self.app_table:
+        result += len(self.app_table.export(0))
+    return result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.data"><code class="name">var <span class="ident">data</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>Plain, unsigned binary data for the image.</p>
+<p>It consists of:
+- application image
+- optionally trust zone data
+Please mind the result does not contain: certification block, HMAC, keystore and signature</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def data(self) -&gt; bytes:
+    &#34;&#34;&#34;Plain, unsigned binary data for the image.
+
+    It consists of:
+    - application image
+    - optionally trust zone data
+    Please mind the result does not contain: certification block, HMAC, keystore and signature
+    &#34;&#34;&#34;
+    # binary image
+    data = self.app
+    if self.app_table:
+        data += self.app_table.export(len(data))
+    # trust zone data
+    data += self.trust_zone.export()
+    return data</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.total_len"><code class="name">var <span class="ident">total_len</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Total length of the image.</p>
+<p>It is sum of:
+- image length + length of trust zone data
+- HMAC length
+- KeyStore length
+- certificate length (+ for encrypted images also encrypted header and CRT init vector)
+- signature length</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def total_len(self) -&gt; int:
+    &#34;&#34;&#34;Total length of the image.
+
+    It is sum of:
+    - image length + length of trust zone data
+    - HMAC length
+    - KeyStore length
+    - certificate length (+ for encrypted images also encrypted header and CRT init vector)
+    - signature length
+    &#34;&#34;&#34;
+    plain_data = self.data
+    certificate_len = len(self._certificate(plain_data))
+    hmac_data_len = len(self._hmac(self.data))
+    key_store_len = len(self.key_store.export()) if self.key_store else 0
+    return len(plain_data) + hmac_data_len + key_store_len + certificate_len + self.signature_len</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImage.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Master boot image (binary).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Master boot image (binary).&#34;&#34;&#34;
+    data = self._update_ivt(self.data)
+
+    # signed or encrypted
+    if MasterBootImageType.is_signed(self.image_type):
+        assert self._priv_key_pem_data
+        cb = self.cert_block
+        assert (cb is not None) and cb.verify_private_key(self._priv_key_pem_data)
+        # encrypt
+        encr_data = self._encrypt(data)
+        encr_data = (self._update_ivt(encr_data[:self.HMAC_OFFSET]) +  # header
+                     encr_data[self.HMAC_OFFSET:self.app_len] +  # encrypted image
+                     self._certificate(encr_data) +  # certificate + encoded image header + CTR init vector
+                     encr_data[self.app_len:])  # TZ encoded data
+        encr_data += crypto_backend().rsa_sign(self._priv_key_pem_data, encr_data)  # signature
+        # hmac + key store
+        if MasterBootImageType.has_hmac(self.image_type):
+            hmac_keystore = self._hmac(encr_data[:self.HMAC_OFFSET])
+            if self.key_store:
+                hmac_keystore += self.key_store.export()
+            encr_data = encr_data[:self.HMAC_OFFSET] + hmac_keystore + encr_data[self.HMAC_OFFSET:]
+        return bytes(encr_data)
+
+    return bytes(data)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImage.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Text description of the instance.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Text description of the instance.&#34;&#34;&#34;
+    msg = &#34;Master Boot Image&#34;
+    msg += &#34;Image type       : {}\n&#34;.format(MasterBootImageType.desc(self.image_type))
+    msg += &#34;Img load addr    : {}\n&#34;.format(hex(self.load_addr))
+    msg += &#34;Image length     : {}\n&#34;.format(len(self.data))
+    msg += &#34;HW user mode keys: {}\n&#34;.format(&#34;enabled&#34; if self.enable_hw_user_mode_keys else &#34;disabled&#34;)
+    msg += &#34;TrustZone        : {}\n&#34;.format(TrustZoneType.desc(self.trust_zone.type))
+    if self.cert_block:
+        msg += &#34;[Certificate Block]\n&#34;
+        msg += self.cert_block.info()
+    if self._priv_key_pem_data:
+        msg += &#34;Private Key  : {Yes}\n&#34;
+    return msg</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType"><code class="flex name class">
+<span>class <span class="ident">MasterBootImageType</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumeration of various types of MBIs.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MasterBootImageType(Enum):
+    &#34;&#34;&#34;Enumeration of various types of MBIs.&#34;&#34;&#34;
+    PLAIN_IMAGE = (0x00, &#34;Plain Image (either XIP or Load-to-RAM)&#34;)
+    SIGNED_RAM_IMAGE = (0x01, &#34;Plain Signed Load-to-RAM Image&#34;)
+    CRC_RAM_IMAGE = (0x02, &#34;Plain CRC Load-to-RAM Image&#34;)
+    ENCRYPTED_RAM_IMAGE = (0x03, &#34;Encrypted Load-to-RAM Image&#34;)
+    SIGNED_XIP_IMAGE = (0x04, &#34;Plain Signed XIP Image&#34;)
+    CRC_XIP_IMAGE = (0x05, &#34;Plain CRC XIP Image&#34;)
+
+    @staticmethod
+    def is_xip(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is executed in place (XIP).&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.PLAIN_IMAGE,
+                              MasterBootImageType.SIGNED_XIP_IMAGE,
+                              MasterBootImageType.CRC_XIP_IMAGE]
+
+    @staticmethod
+    def is_copied_to_ram(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is copied and executed in RAM.&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.CRC_RAM_IMAGE,
+                              MasterBootImageType.SIGNED_RAM_IMAGE,
+                              MasterBootImageType.ENCRYPTED_RAM_IMAGE]
+
+    @staticmethod
+    def has_crc(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type contains CRC; False otherwise.&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.CRC_XIP_IMAGE, MasterBootImageType.CRC_RAM_IMAGE]
+
+    @staticmethod
+    def is_signed(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is signed; False otherwise.&#34;&#34;&#34;
+        return image_type in [MasterBootImageType.SIGNED_XIP_IMAGE,
+                              MasterBootImageType.SIGNED_RAM_IMAGE,
+                              MasterBootImageType.ENCRYPTED_RAM_IMAGE]
+
+    @staticmethod
+    def is_encrypted(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;True is the image type is encrypted; False otherwise.&#34;&#34;&#34;
+        return image_type == MasterBootImageType.ENCRYPTED_RAM_IMAGE
+
+    @staticmethod
+    def has_hmac(image_type: int) -&gt; bool:
+        &#34;&#34;&#34;Whether the image contains HMAC.&#34;&#34;&#34;
+        return MasterBootImageType.is_signed(image_type) and MasterBootImageType.is_copied_to_ram(image_type)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImageType.CRC_RAM_IMAGE"><code class="name">var <span class="ident">CRC_RAM_IMAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.CRC_XIP_IMAGE"><code class="name">var <span class="ident">CRC_XIP_IMAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.ENCRYPTED_RAM_IMAGE"><code class="name">var <span class="ident">ENCRYPTED_RAM_IMAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.PLAIN_IMAGE"><code class="name">var <span class="ident">PLAIN_IMAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.SIGNED_RAM_IMAGE"><code class="name">var <span class="ident">SIGNED_RAM_IMAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.SIGNED_XIP_IMAGE"><code class="name">var <span class="ident">SIGNED_XIP_IMAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MasterBootImageType.has_crc"><code class="name flex">
+<span>def <span class="ident">has_crc</span></span>(<span>image_type: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>True is the image type contains CRC; False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def has_crc(image_type: int) -&gt; bool:
+    &#34;&#34;&#34;True is the image type contains CRC; False otherwise.&#34;&#34;&#34;
+    return image_type in [MasterBootImageType.CRC_XIP_IMAGE, MasterBootImageType.CRC_RAM_IMAGE]</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.has_hmac"><code class="name flex">
+<span>def <span class="ident">has_hmac</span></span>(<span>image_type: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Whether the image contains HMAC.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def has_hmac(image_type: int) -&gt; bool:
+    &#34;&#34;&#34;Whether the image contains HMAC.&#34;&#34;&#34;
+    return MasterBootImageType.is_signed(image_type) and MasterBootImageType.is_copied_to_ram(image_type)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.is_copied_to_ram"><code class="name flex">
+<span>def <span class="ident">is_copied_to_ram</span></span>(<span>image_type: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>True is the image type is copied and executed in RAM.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def is_copied_to_ram(image_type: int) -&gt; bool:
+    &#34;&#34;&#34;True is the image type is copied and executed in RAM.&#34;&#34;&#34;
+    return image_type in [MasterBootImageType.CRC_RAM_IMAGE,
+                          MasterBootImageType.SIGNED_RAM_IMAGE,
+                          MasterBootImageType.ENCRYPTED_RAM_IMAGE]</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.is_encrypted"><code class="name flex">
+<span>def <span class="ident">is_encrypted</span></span>(<span>image_type: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>True is the image type is encrypted; False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def is_encrypted(image_type: int) -&gt; bool:
+    &#34;&#34;&#34;True is the image type is encrypted; False otherwise.&#34;&#34;&#34;
+    return image_type == MasterBootImageType.ENCRYPTED_RAM_IMAGE</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.is_signed"><code class="name flex">
+<span>def <span class="ident">is_signed</span></span>(<span>image_type: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>True is the image type is signed; False otherwise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def is_signed(image_type: int) -&gt; bool:
+    &#34;&#34;&#34;True is the image type is signed; False otherwise.&#34;&#34;&#34;
+    return image_type in [MasterBootImageType.SIGNED_XIP_IMAGE,
+                          MasterBootImageType.SIGNED_RAM_IMAGE,
+                          MasterBootImageType.ENCRYPTED_RAM_IMAGE]</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MasterBootImageType.is_xip"><code class="name flex">
+<span>def <span class="ident">is_xip</span></span>(<span>image_type: int) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>True is the image type is executed in place (XIP).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def is_xip(image_type: int) -&gt; bool:
+    &#34;&#34;&#34;True is the image type is executed in place (XIP).&#34;&#34;&#34;
+    return image_type in [MasterBootImageType.PLAIN_IMAGE,
+                          MasterBootImageType.SIGNED_XIP_IMAGE,
+                          MasterBootImageType.CRC_XIP_IMAGE]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry"><code class="flex name class">
+<span>class <span class="ident">MultipleImageEntry</span></span>
+<span>(</span><span>img: bytes, dst_addr: int, flags: int = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The class represents an entry in relocation table.</p>
+<p>It also contains a corresponding image (binary)</p>
+<p>Constructor.</p>
+<p>:param img: binary image data
+:param dst_addr: destination address
+:param flags: see LTI constants</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultipleImageEntry:
+    &#34;&#34;&#34;The class represents an entry in relocation table.
+
+    It also contains a corresponding image (binary)
+    &#34;&#34;&#34;
+    # flag to simply copy load segment into target memory
+    LTI_LOAD = (1 &lt;&lt; 0)
+
+    def __init__(self, img: bytes, dst_addr: int, flags: int = LTI_LOAD):
+        &#34;&#34;&#34;Constructor.
+
+        :param img: binary image data
+        :param dst_addr: destination address
+        :param flags: see LTI constants
+        &#34;&#34;&#34;
+        assert 0 &lt;= dst_addr &lt;= 0xFFFFFFFF
+        assert flags == self.LTI_LOAD  # for now, other section types (INIT) are not supported
+        self._img = img
+        self._src_addr = 0
+        self._dst_addr = dst_addr
+        self._flags = flags
+
+    @property
+    def image(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary image data.&#34;&#34;&#34;
+        return self._img
+
+    @property
+    def src_addr(self) -&gt; int:
+        &#34;&#34;&#34;Source address; this value is calculated automatically when building the image.&#34;&#34;&#34;
+        return self._src_addr
+
+    @src_addr.setter
+    def src_addr(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: to set
+        &#34;&#34;&#34;
+        self._src_addr = value
+
+    @property
+    def dst_addr(self) -&gt; int:
+        &#34;&#34;&#34;Destination address.&#34;&#34;&#34;
+        return self._dst_addr
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Size of the image (not aligned).&#34;&#34;&#34;
+        return len(self.image)
+
+    @property
+    def flags(self) -&gt; int:
+        &#34;&#34;&#34;Flags, currently not used.&#34;&#34;&#34;
+        return self._flags
+
+    @property
+    def is_load(self) -&gt; bool:
+        &#34;&#34;&#34;True if entry represents LOAD section.&#34;&#34;&#34;
+        return (self.flags &amp; self.LTI_LOAD) != 0
+
+    def export_entry(self) -&gt; bytes:
+        &#34;&#34;&#34;Export relocation table entry in binary form.&#34;&#34;&#34;
+        result = bytes()
+        result += struct.pack(&#34;&lt;I&#34;, self.src_addr)  # source address
+        result += struct.pack(&#34;&lt;I&#34;, self.dst_addr)  # dest address
+        result += struct.pack(&#34;&lt;I&#34;, self.size)  # length
+        result += struct.pack(&#34;&lt;I&#34;, self.flags)  # flags
+        return result
+
+    def export_image(self) -&gt; bytes:
+        &#34;&#34;&#34;Binary image aligned to the 4-bytes boundary.&#34;&#34;&#34;
+        return misc.align_block(self.image, 4)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.LTI_LOAD"><code class="name">var <span class="ident">LTI_LOAD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.dst_addr"><code class="name">var <span class="ident">dst_addr</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Destination address.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def dst_addr(self) -&gt; int:
+    &#34;&#34;&#34;Destination address.&#34;&#34;&#34;
+    return self._dst_addr</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.flags"><code class="name">var <span class="ident">flags</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Flags, currently not used.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def flags(self) -&gt; int:
+    &#34;&#34;&#34;Flags, currently not used.&#34;&#34;&#34;
+    return self._flags</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.image"><code class="name">var <span class="ident">image</span> : bytes</code></dt>
+<dd>
+<div class="desc"><p>Binary image data.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def image(self) -&gt; bytes:
+    &#34;&#34;&#34;Binary image data.&#34;&#34;&#34;
+    return self._img</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.is_load"><code class="name">var <span class="ident">is_load</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>True if entry represents LOAD section.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def is_load(self) -&gt; bool:
+    &#34;&#34;&#34;True if entry represents LOAD section.&#34;&#34;&#34;
+    return (self.flags &amp; self.LTI_LOAD) != 0</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.size"><code class="name">var <span class="ident">size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Size of the image (not aligned).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def size(self) -&gt; int:
+    &#34;&#34;&#34;Size of the image (not aligned).&#34;&#34;&#34;
+    return len(self.image)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.src_addr"><code class="name">var <span class="ident">src_addr</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Source address; this value is calculated automatically when building the image.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def src_addr(self) -&gt; int:
+    &#34;&#34;&#34;Source address; this value is calculated automatically when building the image.&#34;&#34;&#34;
+    return self._src_addr</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.export_entry"><code class="name flex">
+<span>def <span class="ident">export_entry</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export relocation table entry in binary form.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_entry(self) -&gt; bytes:
+    &#34;&#34;&#34;Export relocation table entry in binary form.&#34;&#34;&#34;
+    result = bytes()
+    result += struct.pack(&#34;&lt;I&#34;, self.src_addr)  # source address
+    result += struct.pack(&#34;&lt;I&#34;, self.dst_addr)  # dest address
+    result += struct.pack(&#34;&lt;I&#34;, self.size)  # length
+    result += struct.pack(&#34;&lt;I&#34;, self.flags)  # flags
+    return result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageEntry.export_image"><code class="name flex">
+<span>def <span class="ident">export_image</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Binary image aligned to the 4-bytes boundary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export_image(self) -&gt; bytes:
+    &#34;&#34;&#34;Binary image aligned to the 4-bytes boundary.&#34;&#34;&#34;
+    return misc.align_block(self.image, 4)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageTable"><code class="flex name class">
+<span>class <span class="ident">MultipleImageTable</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>The class allows to merge several images into single image and add relocation table.</p>
+<p>It can be used for multicore images (one image for each core)
+or trustzone images (merging secure and non-secure image)</p>
+<p>Initialize the Multiple Image Table.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MultipleImageTable:
+    &#34;&#34;&#34;The class allows to merge several images into single image and add relocation table.
+
+    It can be used for multicore images (one image for each core)
+    or trustzone images (merging secure and non-secure image)
+    &#34;&#34;&#34;
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize the Multiple Image Table.&#34;&#34;&#34;
+        self._entries: List[MultipleImageEntry] = list()
+
+    @property
+    def header_version(self) -&gt; int:
+        &#34;&#34;&#34;Format version of the structure for the header.&#34;&#34;&#34;
+        return 0
+
+    @property
+    def entries(self) -&gt; Sequence[MultipleImageEntry]:
+        &#34;&#34;&#34;List of all entries.&#34;&#34;&#34;
+        return self._entries
+
+    def add_entry(self, entry: MultipleImageEntry) -&gt; None:
+        &#34;&#34;&#34;Add entry into relocation table.
+
+        :param entry: to add
+        &#34;&#34;&#34;
+        self._entries.append(entry)
+
+    def reloc_table(self, start_addr: int) -&gt; bytes:
+        &#34;&#34;&#34;Relocate table.
+
+        :param start_addr: start address of the relocation table
+        :return: export relocation table in binary form
+        &#34;&#34;&#34;
+        result = bytes()
+        # export relocation entries table
+        for entry in self.entries:
+            result += entry.export_entry()
+        # export relocation table header
+        result += struct.pack(&#34;&lt;I&#34;, 0x4C54424C)  # header marker
+        result += struct.pack(&#34;&lt;I&#34;, self.header_version)  # version
+        result += struct.pack(&#34;&lt;I&#34;, len(self._entries))  # number of entries
+        result += struct.pack(&#34;&lt;I&#34;, start_addr)  # pointer to entries
+        return result
+
+    def export(self, start_addr: int) -&gt; bytes:
+        &#34;&#34;&#34;Export.
+
+        :param start_addr: start address where the images are exported;
+                        the value matches source address for the first image
+        :return: images with relocation table
+        &#34;&#34;&#34;
+        assert self._entries, &#39;There must be at least one entry for export&#39;
+        src_addr = start_addr
+        result = bytes()
+        for entry in self.entries:
+            if entry.is_load:
+                entry.src_addr = src_addr
+                entry_img = entry.export_image()
+                result += entry_img
+                src_addr += len(entry_img)
+        result += self.reloc_table(start_addr + len(result))
+        # TODO result += struct.pack(&#34;&lt;I&#34;, src_addr)  # pointer to relocation table
+        return result</code></pre>
+</details>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MultipleImageTable.entries"><code class="name">var <span class="ident">entries</span> : Sequence[<a title="spsdk.image.mbimg.MultipleImageEntry" href="#spsdk.image.mbimg.MultipleImageEntry">MultipleImageEntry</a>]</code></dt>
+<dd>
+<div class="desc"><p>List of all entries.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def entries(self) -&gt; Sequence[MultipleImageEntry]:
+    &#34;&#34;&#34;List of all entries.&#34;&#34;&#34;
+    return self._entries</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageTable.header_version"><code class="name">var <span class="ident">header_version</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Format version of the structure for the header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def header_version(self) -&gt; int:
+    &#34;&#34;&#34;Format version of the structure for the header.&#34;&#34;&#34;
+    return 0</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.image.mbimg.MultipleImageTable.add_entry"><code class="name flex">
+<span>def <span class="ident">add_entry</span></span>(<span>self, entry: <a title="spsdk.image.mbimg.MultipleImageEntry" href="#spsdk.image.mbimg.MultipleImageEntry">MultipleImageEntry</a>) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Add entry into relocation table.</p>
+<p>:param entry: to add</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_entry(self, entry: MultipleImageEntry) -&gt; None:
+    &#34;&#34;&#34;Add entry into relocation table.
+
+    :param entry: to add
+    &#34;&#34;&#34;
+    self._entries.append(entry)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageTable.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, start_addr: int) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Export.</p>
+<p>:param start_addr: start address where the images are exported;
+the value matches source address for the first image
+:return: images with relocation table</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, start_addr: int) -&gt; bytes:
+    &#34;&#34;&#34;Export.
+
+    :param start_addr: start address where the images are exported;
+                    the value matches source address for the first image
+    :return: images with relocation table
+    &#34;&#34;&#34;
+    assert self._entries, &#39;There must be at least one entry for export&#39;
+    src_addr = start_addr
+    result = bytes()
+    for entry in self.entries:
+        if entry.is_load:
+            entry.src_addr = src_addr
+            entry_img = entry.export_image()
+            result += entry_img
+            src_addr += len(entry_img)
+    result += self.reloc_table(start_addr + len(result))
+    # TODO result += struct.pack(&#34;&lt;I&#34;, src_addr)  # pointer to relocation table
+    return result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.mbimg.MultipleImageTable.reloc_table"><code class="name flex">
+<span>def <span class="ident">reloc_table</span></span>(<span>self, start_addr: int) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Relocate table.</p>
+<p>:param start_addr: start address of the relocation table
+:return: export relocation table in binary form</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def reloc_table(self, start_addr: int) -&gt; bytes:
+    &#34;&#34;&#34;Relocate table.
+
+    :param start_addr: start address of the relocation table
+    :return: export relocation table in binary form
+    &#34;&#34;&#34;
+    result = bytes()
+    # export relocation entries table
+    for entry in self.entries:
+        result += entry.export_entry()
+    # export relocation table header
+    result += struct.pack(&#34;&lt;I&#34;, 0x4C54424C)  # header marker
+    result += struct.pack(&#34;&lt;I&#34;, self.header_version)  # version
+    result += struct.pack(&#34;&lt;I&#34;, len(self._entries))  # number of entries
+    result += struct.pack(&#34;&lt;I&#34;, start_addr)  # pointer to entries
+    return result</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.image" href="index.html">spsdk.image</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.image.mbimg.MasterBootImage" href="#spsdk.image.mbimg.MasterBootImage">MasterBootImage</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.CERTIFICATE_OFFSET" href="#spsdk.image.mbimg.MasterBootImage.CERTIFICATE_OFFSET">CERTIFICATE_OFFSET</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.CRC_BLOCK_OFFSET" href="#spsdk.image.mbimg.MasterBootImage.CRC_BLOCK_OFFSET">CRC_BLOCK_OFFSET</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.HMAC_OFFSET" href="#spsdk.image.mbimg.MasterBootImage.HMAC_OFFSET">HMAC_OFFSET</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.HMAC_SIZE" href="#spsdk.image.mbimg.MasterBootImage.HMAC_SIZE">HMAC_SIZE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.IMAGE_FLAGS_OFFSET" href="#spsdk.image.mbimg.MasterBootImage.IMAGE_FLAGS_OFFSET">IMAGE_FLAGS_OFFSET</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.IMAGE_LENGTH_OFFSET" href="#spsdk.image.mbimg.MasterBootImage.IMAGE_LENGTH_OFFSET">IMAGE_LENGTH_OFFSET</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.LOAD_ADDR_OFFSET" href="#spsdk.image.mbimg.MasterBootImage.LOAD_ADDR_OFFSET">LOAD_ADDR_OFFSET</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.app_len" href="#spsdk.image.mbimg.MasterBootImage.app_len">app_len</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.data" href="#spsdk.image.mbimg.MasterBootImage.data">data</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.export" href="#spsdk.image.mbimg.MasterBootImage.export">export</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.info" href="#spsdk.image.mbimg.MasterBootImage.info">info</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.parse" href="#spsdk.image.mbimg.MasterBootImage.parse">parse</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImage.total_len" href="#spsdk.image.mbimg.MasterBootImage.total_len">total_len</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.mbimg.MasterBootImageType" href="#spsdk.image.mbimg.MasterBootImageType">MasterBootImageType</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.CRC_RAM_IMAGE" href="#spsdk.image.mbimg.MasterBootImageType.CRC_RAM_IMAGE">CRC_RAM_IMAGE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.CRC_XIP_IMAGE" href="#spsdk.image.mbimg.MasterBootImageType.CRC_XIP_IMAGE">CRC_XIP_IMAGE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.ENCRYPTED_RAM_IMAGE" href="#spsdk.image.mbimg.MasterBootImageType.ENCRYPTED_RAM_IMAGE">ENCRYPTED_RAM_IMAGE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.PLAIN_IMAGE" href="#spsdk.image.mbimg.MasterBootImageType.PLAIN_IMAGE">PLAIN_IMAGE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.SIGNED_RAM_IMAGE" href="#spsdk.image.mbimg.MasterBootImageType.SIGNED_RAM_IMAGE">SIGNED_RAM_IMAGE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.SIGNED_XIP_IMAGE" href="#spsdk.image.mbimg.MasterBootImageType.SIGNED_XIP_IMAGE">SIGNED_XIP_IMAGE</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.has_crc" href="#spsdk.image.mbimg.MasterBootImageType.has_crc">has_crc</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.has_hmac" href="#spsdk.image.mbimg.MasterBootImageType.has_hmac">has_hmac</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.is_copied_to_ram" href="#spsdk.image.mbimg.MasterBootImageType.is_copied_to_ram">is_copied_to_ram</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.is_encrypted" href="#spsdk.image.mbimg.MasterBootImageType.is_encrypted">is_encrypted</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.is_signed" href="#spsdk.image.mbimg.MasterBootImageType.is_signed">is_signed</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MasterBootImageType.is_xip" href="#spsdk.image.mbimg.MasterBootImageType.is_xip">is_xip</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.mbimg.MultipleImageEntry" href="#spsdk.image.mbimg.MultipleImageEntry">MultipleImageEntry</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.LTI_LOAD" href="#spsdk.image.mbimg.MultipleImageEntry.LTI_LOAD">LTI_LOAD</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.dst_addr" href="#spsdk.image.mbimg.MultipleImageEntry.dst_addr">dst_addr</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.export_entry" href="#spsdk.image.mbimg.MultipleImageEntry.export_entry">export_entry</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.export_image" href="#spsdk.image.mbimg.MultipleImageEntry.export_image">export_image</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.flags" href="#spsdk.image.mbimg.MultipleImageEntry.flags">flags</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.image" href="#spsdk.image.mbimg.MultipleImageEntry.image">image</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.is_load" href="#spsdk.image.mbimg.MultipleImageEntry.is_load">is_load</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.size" href="#spsdk.image.mbimg.MultipleImageEntry.size">size</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageEntry.src_addr" href="#spsdk.image.mbimg.MultipleImageEntry.src_addr">src_addr</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.mbimg.MultipleImageTable" href="#spsdk.image.mbimg.MultipleImageTable">MultipleImageTable</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.mbimg.MultipleImageTable.add_entry" href="#spsdk.image.mbimg.MultipleImageTable.add_entry">add_entry</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageTable.entries" href="#spsdk.image.mbimg.MultipleImageTable.entries">entries</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageTable.export" href="#spsdk.image.mbimg.MultipleImageTable.export">export</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageTable.header_version" href="#spsdk.image.mbimg.MultipleImageTable.header_version">header_version</a></code></li>
+<li><code><a title="spsdk.image.mbimg.MultipleImageTable.reloc_table" href="#spsdk.image.mbimg.MultipleImageTable.reloc_table">reloc_table</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

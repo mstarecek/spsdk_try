@@ -1,0 +1,1433 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.sbfile.sb1.headers API documentation</title>
+<meta name="description" content="Secure Boot Header." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.sbfile.sb1.headers</code></h1>
+</header>
+<section id="section-intro">
+<p>Secure Boot Header.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Secure Boot Header.&#34;&#34;&#34;
+
+from datetime import datetime
+from struct import calcsize, pack, unpack_from
+from typing import Optional
+
+from spsdk.utils.crypto.abstract import BaseClass
+from spsdk.utils.crypto.common import swap16, crypto_backend, pack_timestamp, unpack_timestamp
+from spsdk.utils.easy_enum import Enum
+from spsdk.utils.misc import DebugInfo
+from ..commands import CmdHeader, CmdTag
+from ..misc import BcdVersion3Format, SecBootBlckSize, BcdVersion3
+
+
+class SecureBootFlagsV1(Enum):
+    &#34;&#34;&#34;Flags for SectionHeader.&#34;&#34;&#34;
+    NONE = (0, &#39;No flags&#39;)
+    ROM_SECTION_BOOTABLE = (1, &#39;The section is bootable and contains a sequence of bootloader commands.&#39;)
+    ROM_SECTION_CLEARTEXT = (2, &#39;The section is unencrypted. Applies only if the rest of the boot image is encrypted.&#39;)
+
+
+########################################################################################################################
+# Secure Boot Header Class (Version SB1.x)
+########################################################################################################################
+# pylint: disable=too-many-instance-attributes
+class SecureBootHeaderV1(BaseClass):
+    &#34;&#34;&#34;Secure Boot Header V1.&#34;&#34;&#34;
+    # binary format of the header
+    _FORMAT = &#39;&lt;20s4s2BH3I5H2s4sQ13H6s&#39;
+    # size of the header in bytes
+    _SIZE = calcsize(_FORMAT)
+    # binary signature 1 for header identification
+    _SIGNATURE1 = b&#39;STMP&#39;
+    # binary signature 2 for header identification
+    _SIGNATURE2 = b&#39;sgtl&#39;
+
+    def __init__(self, version: str = &#39;1.0&#39;,
+                 product_version: BcdVersion3Format = BcdVersion3.DEFAULT,
+                 component_version: BcdVersion3Format = BcdVersion3.DEFAULT,
+                 flags: int = 0, drive_tag: int = 0, digest: bytes = b&#39;\0&#39; * 20,
+                 timestamp: Optional[datetime] = None) -&gt; None:
+        &#34;&#34;&#34;Initialize SecureBootHeaderV1.
+
+        :param version: of the format: 1.0 or 1.1 or 1.2
+        :param product_version: Product version.
+        :param component_version: Component version.
+        :param flags: Flags associated with the entire image.
+        :param drive_tag: Identifier for the disk drive or partition containing this image.
+        :param digest: SHA-1 digest of all fields of the header, 20 bytes
+                    The first 16 bytes (of 20 total) also act as the initialization vector for CBC-encrypted regions.
+        :param timestamp: datetime of the file creation, use None for current date/time
+                    Fixed value should be used only for regression testing to generate same results
+        &#34;&#34;&#34;
+        # SHA-1 digest of all fields of the header prior to this one.
+        self.digest = digest
+        # Major version of the boot image format, currently 1. Minor version of the boot image format, currently 1 or 2.
+        assert version in (&#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;)
+        self.version = version
+        self.flags = flags
+        # Size of the entire image in blocks.
+        self.image_blocks = 0
+        # Unique identifier of the section to start booting from.
+        self.first_boot_section_id = 0
+        # Number of entries in the DEK dictionary.
+        self.key_count = 0
+        # Size of the entire image header in blocks. This seems to be a constant.
+        self.header_blocks = SecBootBlckSize.to_num_blocks(self._SIZE)
+        # Number of sections.
+        self.section_count = 0
+        # Size in blocks of a section header. This seems to be a constant.
+        self.section_header_size = SecBootBlckSize.to_num_blocks(BootSectionHeaderV1.SIZE)
+        # Timestamp in microseconds size 1-1-2000 00:00 when the image was created.
+        self.timestamp = timestamp if timestamp else datetime.fromtimestamp(int(datetime.now().timestamp()))
+        # Product version in format #.#.#
+        self.product_version: BcdVersion3 = BcdVersion3.to_version(product_version)
+        # Component version in format #.#.#
+        self.component_version: BcdVersion3 = BcdVersion3.to_version(component_version)
+        # Identifier for the disk drive or partition containing this image.
+        self.drive_tag = drive_tag
+
+    def __str__(self) -&gt; str:
+        return &#34;Header: v{}, {}&#34;.format(self.version, self.image_blocks)
+
+    @property
+    def key_dictionary_block(self) -&gt; int:
+        &#34;&#34;&#34;Return key dictionary block.&#34;&#34;&#34;
+        return self.header_blocks + self.section_count * self.section_header_size
+
+    @property
+    def first_boot_tag_block(self) -&gt; int:
+        &#34;&#34;&#34;Return first boot tag block.&#34;&#34;&#34;
+        return self.key_dictionary_block + self.key_count * 2
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Return size of the header in bytes.&#34;&#34;&#34;
+        return self._SIZE
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Get info of Header as a string.&#34;&#34;&#34;
+        nfo = str()
+        nfo += &#34; Digest:               {}\n&#34;.format(self.digest.hex())
+        nfo += &#34; Version:              {}\n&#34;.format(self.version)
+        nfo += &#34; Flags:                0x{:04X}\n&#34;.format(self.flags)
+        nfo += &#34; Image Blocks:         {}\n&#34;.format(self.image_blocks)
+        nfo += &#34; First Boot Tag Block: {}\n&#34;.format(self.first_boot_tag_block)
+        nfo += &#34; First Boot SectionID: {}\n&#34;.format(self.first_boot_section_id)
+        nfo += &#34; Key Count:            {}\n&#34;.format(self.key_count)
+        nfo += &#34; Key Dictionary Block: {}\n&#34;.format(self.key_dictionary_block)
+        nfo += &#34; Header Blocks:        {}\n&#34;.format(self.header_blocks)
+        nfo += &#34; Section Count:        {}\n&#34;.format(self.section_count)
+        nfo += &#34; Section Header Size:  {}\n&#34;.format(self.section_header_size)
+        nfo += &#34; Timestamp:            {}\n&#34;.format(self.timestamp)
+        nfo += &#34; Product Version:      {}\n&#34;.format(self.product_version)
+        nfo += &#34; Component Version:    {}\n&#34;.format(self.component_version)
+        nfo += &#34; Drive Tag:            {}\n&#34;.format(self.drive_tag)
+        return nfo
+
+    def export(self, padding8: Optional[bytes] = None, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Serialization to binary form.
+
+        :param padding8: 8 padding bytes used for in the header, None to use random bytes
+                This value shall be used only for regression testing to generate same results
+        :param dbg_info: class allowing to debug output from the export
+        :return: Serialize object into bytes
+        &#34;&#34;&#34;
+        major_version, minor_version = [int(v) for v in self.version.split(&#39;.&#39;)]
+        product_version_words = [swap16(n) for n in self.product_version.nums]
+        component_version_words = [swap16(n) for n in self.component_version.nums]
+        signature2 = crypto_backend().random_bytes(4)
+        padding = padding8 if padding8 else crypto_backend().random_bytes(8)
+
+        if (major_version &gt; 1) or ((major_version == 1) and (minor_version &gt;= 2)):
+            signature2 = self._SIGNATURE2
+
+        dbg_info.append_section(&#39;SB-file-Header&#39;)
+
+        result = pack(
+            self._FORMAT,
+            self.digest,
+            self._SIGNATURE1,
+            # header version
+            major_version, minor_version,
+            self.flags,
+            self.image_blocks,
+            self.first_boot_tag_block,
+            self.first_boot_section_id,
+            self.key_count,
+            self.key_dictionary_block,
+            self.header_blocks,
+            self.section_count,
+            self.section_header_size,
+            padding[0:2],
+            signature2,
+            pack_timestamp(self.timestamp),
+            # product version
+            product_version_words[0], 0,
+            product_version_words[1], 0,
+            product_version_words[2], 0,
+            # component version
+            component_version_words[0], 0,
+            component_version_words[1], 0,
+            component_version_words[2], 0,
+            self.drive_tag,
+            padding[2:]
+        )
+
+        result = result[len(self.digest):]
+        self.digest = crypto_backend().hash(result, &#39;sha1&#39;)
+
+        dbg_info.append_binary_section(&#39;digest&#39;, self.digest)
+        dbg_info.append_binary_section(&#39;attrs&#39;, result)
+
+        return self.digest + result
+
+    # pylint: disable=too-many-locals
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;SecureBootHeaderV1&#39;:
+        &#34;&#34;&#34;Convert binary data into the instance (deserialization).
+
+        :param data: given binary data to be decoded
+        :param offset: to start parsing binary data; 0 by default
+        :return: the instance of secure boot header v1
+        :raise ValueError: raised when there is insufficient size
+        :raise ValueError: raised when there is invalid signature
+        :raise ValueError: raised when there is unexpected signature
+        &#34;&#34;&#34;
+        if SecureBootHeaderV1._SIZE &gt; len(data) - offset:
+            raise ValueError(&#39;Insufficient size&#39;)
+
+        (
+            digest,
+            signature1,
+            # header version
+            major_version, minor_version,
+            flags,
+            image_blocks,
+            _first_boot_tag_block,
+            first_boot_section_id,
+            key_count,
+            _key_dictionary_block,
+            header_blocks,
+            section_count,
+            section_header_size,
+            _,  # padding 2
+            signature2,
+            timestamp,
+            pv0, _, pv1, _, pv2, _,  # product version
+            cv0, _, cv1, _, cv2, _,  # component version
+            drive_tag,
+            _  # padding 6
+        ) = unpack_from(SecureBootHeaderV1._FORMAT, data, offset)
+
+        # check header signature 1
+        if signature1 != SecureBootHeaderV1._SIGNATURE1:
+            raise ValueError(&#39;Invalid signature&#39;)
+
+        # check header signature 2 for version 1.1 and greater
+        if (major_version &gt; 1) or ((major_version == 1) and (minor_version &gt;= 2)):
+            if signature2 != SecureBootHeaderV1._SIGNATURE2:
+                raise ValueError(&#39;Unexpected signature&#39;)
+
+        product_version = BcdVersion3(swap16(pv0), swap16(pv1), swap16(pv2))
+        component_version = BcdVersion3(swap16(cv0), swap16(cv1), swap16(cv2))
+
+        obj = SecureBootHeaderV1(digest=digest, version=f&#39;{major_version}.{minor_version}&#39;, flags=flags,
+                                 product_version=product_version,
+                                 component_version=component_version, drive_tag=drive_tag)
+
+        obj.image_blocks = image_blocks
+        obj.first_boot_section_id = first_boot_section_id
+        obj.key_count = key_count  # key_blob_block = key_count
+        obj.header_blocks = header_blocks
+        obj.section_count = section_count
+        obj.section_header_size = section_header_size
+        obj.timestamp = unpack_timestamp(timestamp)
+
+        return obj
+
+
+class SectionHeaderItemV1(BaseClass):
+    &#34;&#34;&#34;Section header item/row in section header table in in SB file V1.x.&#34;&#34;&#34;
+    FORMAT = &#39;&lt;4I&#39;
+    SIZE = calcsize(FORMAT)
+
+    def __init__(self, identifier: int = 0, offset: int = 0, num_blocks: int = 0,
+                 flags: SecureBootFlagsV1 = SecureBootFlagsV1.NONE):
+        &#34;&#34;&#34;Initialize SectionHeaderItemV1.
+
+        :param identifier: Unique 32-bit identifier for this section.
+        :param offset: The starting cipher block for this section&#39;s data from the beginning of the image.
+        :param num_blocks: The length of the section data in cipher blocks.
+        :param flags: Flags that apply to the entire section, see SectionHeaderV1Flags
+        &#34;&#34;&#34;
+        self.identifier = identifier
+        self.offset = offset
+        self.num_blocks = num_blocks
+        self._flags = flags
+
+    def __str__(self) -&gt; str:
+        return f&#34;SectionHeaderV1: ID={self.identifier}, Ofs={self.offset}, NumBlocks={self.num_blocks}, &#34; \
+               f&#34;Flag=0x{self._flags:X}&#34;
+
+    @property
+    def flags(self) -&gt; int:
+        &#34;&#34;&#34;Return flags, see SectionHeaderV1Flags.&#34;&#34;&#34;
+        return self._flags
+
+    @property
+    def bootable(self) -&gt; bool:
+        &#34;&#34;&#34;Return whether section is bootable.&#34;&#34;&#34;
+        return self._flags &amp; SecureBootFlagsV1.ROM_SECTION_BOOTABLE != 0
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Return size of expored data in bytes.&#34;&#34;&#34;
+        return self.SIZE
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return Get text info of Header.&#34;&#34;&#34;
+        nfo = str()
+        nfo += &#34; Identifier: 0x{:08X}\n&#34;.format(self.identifier)
+        nfo += &#34; Offset:     {}\n&#34;.format(self.offset)
+        nfo += &#34; NumBlocks:  {}\n&#34;.format(self.num_blocks)
+        nfo += &#34; Bootable:   {}\n&#34;.format(&#39;YES&#39; if self.bootable else &#39;NO&#39;)
+        return nfo
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Return serialization to binary format.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.identifier, self.offset, self.num_blocks, self._flags)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;SectionHeaderItemV1&#39;:
+        &#34;&#34;&#34;Parse binary data into the instance (deserialization).
+
+        :param data: to be parsed
+        :param offset: to start parsing the data
+        :return: the new instance
+        :raise ValueError: if size is not sufficient
+        &#34;&#34;&#34;
+        if cls.SIZE &gt; len(data) - offset:
+            raise ValueError(&#39;Insufficient size&#39;)
+        (identifier, offset, length, flags) = unpack_from(cls.FORMAT, data, offset)
+        return cls(identifier, offset, length, SecureBootFlagsV1.from_int(flags))
+
+
+class BootSectionHeaderV1(CmdTag):
+    &#34;&#34;&#34;Header of boot section derived from command TAG.
+
+    Note: Command TAG was reused to save some code in Boot ROM
+    &#34;&#34;&#34;
+
+    # size of the binary representation of the header in bytes
+    SIZE = CmdHeader.SIZE
+
+    # Mask for header flag, that identifies ROM_LAST_TAG flag
+    _ROM_LAST_TAG_MASK = 1
+
+    def __init__(self, section_id: int = 0, flags: SecureBootFlagsV1 = SecureBootFlagsV1.NONE):
+        &#34;&#34;&#34;Initialize BootSectionHeaderV1.
+
+        :param section_id: unique section ID, 32-bit int
+        :param flags: see SecureBootFlagsV1
+        &#34;&#34;&#34;
+        super().__init__()
+        self.header.address = section_id
+        self.header.flags = 0
+        self.header.data = flags  # not sure here, it seems flags are duplicates as 32-bit integer too???
+
+    @property
+    def section_id(self) -&gt; int:
+        &#34;&#34;&#34;Return unique ID of the section, 32 number.&#34;&#34;&#34;
+        return self.header.address
+
+    @property
+    def num_blocks(self) -&gt; int:
+        &#34;&#34;&#34;Return size of the section in number of cipher blocks.&#34;&#34;&#34;
+        return self.header.count
+
+    @num_blocks.setter
+    def num_blocks(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: size of the section in number of cipher blocks
+        &#34;&#34;&#34;
+        self.header.count = value
+
+    @property
+    def rom_last_tag(self) -&gt; bool:
+        &#34;&#34;&#34;Return ROM_LAST_TAG flag.
+
+        The last section header in an image always has its ROM_LAST_TAG flag set to help the ROM know at what point
+        to stop searching.
+        &#34;&#34;&#34;
+        return self.header.flags &amp; self._ROM_LAST_TAG_MASK != 0
+
+    @rom_last_tag.setter
+    def rom_last_tag(self, value: bool) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: ROM_LAST_TAG flag
+        &#34;&#34;&#34;
+        if value:
+            self.header.flags |= self._ROM_LAST_TAG_MASK
+        else:
+            self.header.flags &amp;= ~self._ROM_LAST_TAG_MASK
+
+    @property
+    def flags(self) -&gt; SecureBootFlagsV1:
+        &#34;&#34;&#34;Return section flags.&#34;&#34;&#34;
+        return SecureBootFlagsV1.from_int(self.header.data)
+
+    @property
+    def bootable(self) -&gt; bool:
+        &#34;&#34;&#34;Return whether section is bootable.&#34;&#34;&#34;
+        return self.flags &amp; SecureBootFlagsV1.ROM_SECTION_BOOTABLE != 0
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;BootSectionHeaderV1&#39;:
+        &#34;&#34;&#34;Parse from bytes into BootSectionHeaderV1 object.&#34;&#34;&#34;
+        cmd_tag = super(BootSectionHeaderV1, cls).parse(data, offset)
+        assert isinstance(cmd_tag, BootSectionHeaderV1)
+        return cmd_tag</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1"><code class="flex name class">
+<span>class <span class="ident">BootSectionHeaderV1</span></span>
+<span>(</span><span>section_id: int = 0, flags: <a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1">SecureBootFlagsV1</a> = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Header of boot section derived from command TAG.</p>
+<p>Note: Command TAG was reused to save some code in Boot ROM</p>
+<p>Initialize BootSectionHeaderV1.</p>
+<p>:param section_id: unique section ID, 32-bit int
+:param flags: see SecureBootFlagsV1</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BootSectionHeaderV1(CmdTag):
+    &#34;&#34;&#34;Header of boot section derived from command TAG.
+
+    Note: Command TAG was reused to save some code in Boot ROM
+    &#34;&#34;&#34;
+
+    # size of the binary representation of the header in bytes
+    SIZE = CmdHeader.SIZE
+
+    # Mask for header flag, that identifies ROM_LAST_TAG flag
+    _ROM_LAST_TAG_MASK = 1
+
+    def __init__(self, section_id: int = 0, flags: SecureBootFlagsV1 = SecureBootFlagsV1.NONE):
+        &#34;&#34;&#34;Initialize BootSectionHeaderV1.
+
+        :param section_id: unique section ID, 32-bit int
+        :param flags: see SecureBootFlagsV1
+        &#34;&#34;&#34;
+        super().__init__()
+        self.header.address = section_id
+        self.header.flags = 0
+        self.header.data = flags  # not sure here, it seems flags are duplicates as 32-bit integer too???
+
+    @property
+    def section_id(self) -&gt; int:
+        &#34;&#34;&#34;Return unique ID of the section, 32 number.&#34;&#34;&#34;
+        return self.header.address
+
+    @property
+    def num_blocks(self) -&gt; int:
+        &#34;&#34;&#34;Return size of the section in number of cipher blocks.&#34;&#34;&#34;
+        return self.header.count
+
+    @num_blocks.setter
+    def num_blocks(self, value: int) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: size of the section in number of cipher blocks
+        &#34;&#34;&#34;
+        self.header.count = value
+
+    @property
+    def rom_last_tag(self) -&gt; bool:
+        &#34;&#34;&#34;Return ROM_LAST_TAG flag.
+
+        The last section header in an image always has its ROM_LAST_TAG flag set to help the ROM know at what point
+        to stop searching.
+        &#34;&#34;&#34;
+        return self.header.flags &amp; self._ROM_LAST_TAG_MASK != 0
+
+    @rom_last_tag.setter
+    def rom_last_tag(self, value: bool) -&gt; None:
+        &#34;&#34;&#34;Setter.
+
+        :param value: ROM_LAST_TAG flag
+        &#34;&#34;&#34;
+        if value:
+            self.header.flags |= self._ROM_LAST_TAG_MASK
+        else:
+            self.header.flags &amp;= ~self._ROM_LAST_TAG_MASK
+
+    @property
+    def flags(self) -&gt; SecureBootFlagsV1:
+        &#34;&#34;&#34;Return section flags.&#34;&#34;&#34;
+        return SecureBootFlagsV1.from_int(self.header.data)
+
+    @property
+    def bootable(self) -&gt; bool:
+        &#34;&#34;&#34;Return whether section is bootable.&#34;&#34;&#34;
+        return self.flags &amp; SecureBootFlagsV1.ROM_SECTION_BOOTABLE != 0
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;BootSectionHeaderV1&#39;:
+        &#34;&#34;&#34;Parse from bytes into BootSectionHeaderV1 object.&#34;&#34;&#34;
+        cmd_tag = super(BootSectionHeaderV1, cls).parse(data, offset)
+        assert isinstance(cmd_tag, BootSectionHeaderV1)
+        return cmd_tag</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.sbfile.commands.CmdTag" href="../commands.html#spsdk.sbfile.commands.CmdTag">CmdTag</a></li>
+<li><a title="spsdk.sbfile.commands.CmdBaseClass" href="../commands.html#spsdk.sbfile.commands.CmdBaseClass">CmdBaseClass</a></li>
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.SIZE"><code class="name">var <span class="ident">SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1">BootSectionHeaderV1</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse from bytes into BootSectionHeaderV1 object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;BootSectionHeaderV1&#39;:
+    &#34;&#34;&#34;Parse from bytes into BootSectionHeaderV1 object.&#34;&#34;&#34;
+    cmd_tag = super(BootSectionHeaderV1, cls).parse(data, offset)
+    assert isinstance(cmd_tag, BootSectionHeaderV1)
+    return cmd_tag</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.bootable"><code class="name">var <span class="ident">bootable</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Return whether section is bootable.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bootable(self) -&gt; bool:
+    &#34;&#34;&#34;Return whether section is bootable.&#34;&#34;&#34;
+    return self.flags &amp; SecureBootFlagsV1.ROM_SECTION_BOOTABLE != 0</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.flags"><code class="name">var <span class="ident">flags</span> : <a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1">SecureBootFlagsV1</a></code></dt>
+<dd>
+<div class="desc"><p>Return section flags.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def flags(self) -&gt; SecureBootFlagsV1:
+    &#34;&#34;&#34;Return section flags.&#34;&#34;&#34;
+    return SecureBootFlagsV1.from_int(self.header.data)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.num_blocks"><code class="name">var <span class="ident">num_blocks</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return size of the section in number of cipher blocks.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def num_blocks(self) -&gt; int:
+    &#34;&#34;&#34;Return size of the section in number of cipher blocks.&#34;&#34;&#34;
+    return self.header.count</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.rom_last_tag"><code class="name">var <span class="ident">rom_last_tag</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Return ROM_LAST_TAG flag.</p>
+<p>The last section header in an image always has its ROM_LAST_TAG flag set to help the ROM know at what point
+to stop searching.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def rom_last_tag(self) -&gt; bool:
+    &#34;&#34;&#34;Return ROM_LAST_TAG flag.
+
+    The last section header in an image always has its ROM_LAST_TAG flag set to help the ROM know at what point
+    to stop searching.
+    &#34;&#34;&#34;
+    return self.header.flags &amp; self._ROM_LAST_TAG_MASK != 0</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.section_id"><code class="name">var <span class="ident">section_id</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return unique ID of the section, 32 number.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def section_id(self) -&gt; int:
+    &#34;&#34;&#34;Return unique ID of the section, 32 number.&#34;&#34;&#34;
+    return self.header.address</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.sbfile.commands.CmdTag" href="../commands.html#spsdk.sbfile.commands.CmdTag">CmdTag</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.sbfile.commands.CmdTag.export" href="../commands.html#spsdk.sbfile.commands.CmdBaseClass.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdTag.header" href="../commands.html#spsdk.sbfile.commands.CmdBaseClass.header">header</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdTag.info" href="../commands.html#spsdk.sbfile.commands.CmdBaseClass.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.commands.CmdTag.raw_size" href="../commands.html#spsdk.sbfile.commands.CmdBaseClass.raw_size">raw_size</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1"><code class="flex name class">
+<span>class <span class="ident">SectionHeaderItemV1</span></span>
+<span>(</span><span>identifier: int = 0, offset: int = 0, num_blocks: int = 0, flags: <a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1">SecureBootFlagsV1</a> = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Section header item/row in section header table in in SB file V1.x.</p>
+<p>Initialize SectionHeaderItemV1.</p>
+<p>:param identifier: Unique 32-bit identifier for this section.
+:param offset: The starting cipher block for this section's data from the beginning of the image.
+:param num_blocks: The length of the section data in cipher blocks.
+:param flags: Flags that apply to the entire section, see SectionHeaderV1Flags</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SectionHeaderItemV1(BaseClass):
+    &#34;&#34;&#34;Section header item/row in section header table in in SB file V1.x.&#34;&#34;&#34;
+    FORMAT = &#39;&lt;4I&#39;
+    SIZE = calcsize(FORMAT)
+
+    def __init__(self, identifier: int = 0, offset: int = 0, num_blocks: int = 0,
+                 flags: SecureBootFlagsV1 = SecureBootFlagsV1.NONE):
+        &#34;&#34;&#34;Initialize SectionHeaderItemV1.
+
+        :param identifier: Unique 32-bit identifier for this section.
+        :param offset: The starting cipher block for this section&#39;s data from the beginning of the image.
+        :param num_blocks: The length of the section data in cipher blocks.
+        :param flags: Flags that apply to the entire section, see SectionHeaderV1Flags
+        &#34;&#34;&#34;
+        self.identifier = identifier
+        self.offset = offset
+        self.num_blocks = num_blocks
+        self._flags = flags
+
+    def __str__(self) -&gt; str:
+        return f&#34;SectionHeaderV1: ID={self.identifier}, Ofs={self.offset}, NumBlocks={self.num_blocks}, &#34; \
+               f&#34;Flag=0x{self._flags:X}&#34;
+
+    @property
+    def flags(self) -&gt; int:
+        &#34;&#34;&#34;Return flags, see SectionHeaderV1Flags.&#34;&#34;&#34;
+        return self._flags
+
+    @property
+    def bootable(self) -&gt; bool:
+        &#34;&#34;&#34;Return whether section is bootable.&#34;&#34;&#34;
+        return self._flags &amp; SecureBootFlagsV1.ROM_SECTION_BOOTABLE != 0
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Return size of expored data in bytes.&#34;&#34;&#34;
+        return self.SIZE
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return Get text info of Header.&#34;&#34;&#34;
+        nfo = str()
+        nfo += &#34; Identifier: 0x{:08X}\n&#34;.format(self.identifier)
+        nfo += &#34; Offset:     {}\n&#34;.format(self.offset)
+        nfo += &#34; NumBlocks:  {}\n&#34;.format(self.num_blocks)
+        nfo += &#34; Bootable:   {}\n&#34;.format(&#39;YES&#39; if self.bootable else &#39;NO&#39;)
+        return nfo
+
+    def export(self) -&gt; bytes:
+        &#34;&#34;&#34;Return serialization to binary format.&#34;&#34;&#34;
+        return pack(self.FORMAT, self.identifier, self.offset, self.num_blocks, self._flags)
+
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;SectionHeaderItemV1&#39;:
+        &#34;&#34;&#34;Parse binary data into the instance (deserialization).
+
+        :param data: to be parsed
+        :param offset: to start parsing the data
+        :return: the new instance
+        :raise ValueError: if size is not sufficient
+        &#34;&#34;&#34;
+        if cls.SIZE &gt; len(data) - offset:
+            raise ValueError(&#39;Insufficient size&#39;)
+        (identifier, offset, length, flags) = unpack_from(cls.FORMAT, data, offset)
+        return cls(identifier, offset, length, SecureBootFlagsV1.from_int(flags))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.FORMAT"><code class="name">var <span class="ident">FORMAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.SIZE"><code class="name">var <span class="ident">SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1">SectionHeaderItemV1</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse binary data into the instance (deserialization).</p>
+<p>:param data: to be parsed
+:param offset: to start parsing the data
+:return: the new instance
+:raise ValueError: if size is not sufficient</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;SectionHeaderItemV1&#39;:
+    &#34;&#34;&#34;Parse binary data into the instance (deserialization).
+
+    :param data: to be parsed
+    :param offset: to start parsing the data
+    :return: the new instance
+    :raise ValueError: if size is not sufficient
+    &#34;&#34;&#34;
+    if cls.SIZE &gt; len(data) - offset:
+        raise ValueError(&#39;Insufficient size&#39;)
+    (identifier, offset, length, flags) = unpack_from(cls.FORMAT, data, offset)
+    return cls(identifier, offset, length, SecureBootFlagsV1.from_int(flags))</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.bootable"><code class="name">var <span class="ident">bootable</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Return whether section is bootable.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def bootable(self) -&gt; bool:
+    &#34;&#34;&#34;Return whether section is bootable.&#34;&#34;&#34;
+    return self._flags &amp; SecureBootFlagsV1.ROM_SECTION_BOOTABLE != 0</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.flags"><code class="name">var <span class="ident">flags</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return flags, see SectionHeaderV1Flags.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def flags(self) -&gt; int:
+    &#34;&#34;&#34;Return flags, see SectionHeaderV1Flags.&#34;&#34;&#34;
+    return self._flags</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.size"><code class="name">var <span class="ident">size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return size of expored data in bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def size(self) -&gt; int:
+    &#34;&#34;&#34;Return size of expored data in bytes.&#34;&#34;&#34;
+    return self.SIZE</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return serialization to binary format.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self) -&gt; bytes:
+    &#34;&#34;&#34;Return serialization to binary format.&#34;&#34;&#34;
+    return pack(self.FORMAT, self.identifier, self.offset, self.num_blocks, self._flags)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return Get text info of Header.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Return Get text info of Header.&#34;&#34;&#34;
+    nfo = str()
+    nfo += &#34; Identifier: 0x{:08X}\n&#34;.format(self.identifier)
+    nfo += &#34; Offset:     {}\n&#34;.format(self.offset)
+    nfo += &#34; NumBlocks:  {}\n&#34;.format(self.num_blocks)
+    nfo += &#34; Bootable:   {}\n&#34;.format(&#39;YES&#39; if self.bootable else &#39;NO&#39;)
+    return nfo</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootFlagsV1"><code class="flex name class">
+<span>class <span class="ident">SecureBootFlagsV1</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Flags for SectionHeader.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SecureBootFlagsV1(Enum):
+    &#34;&#34;&#34;Flags for SectionHeader.&#34;&#34;&#34;
+    NONE = (0, &#39;No flags&#39;)
+    ROM_SECTION_BOOTABLE = (1, &#39;The section is bootable and contains a sequence of bootloader commands.&#39;)
+    ROM_SECTION_CLEARTEXT = (2, &#39;The section is unencrypted. Applies only if the rest of the boot image is encrypted.&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootFlagsV1.NONE"><code class="name">var <span class="ident">NONE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootFlagsV1.ROM_SECTION_BOOTABLE"><code class="name">var <span class="ident">ROM_SECTION_BOOTABLE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootFlagsV1.ROM_SECTION_CLEARTEXT"><code class="name">var <span class="ident">ROM_SECTION_CLEARTEXT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1"><code class="flex name class">
+<span>class <span class="ident">SecureBootHeaderV1</span></span>
+<span>(</span><span>version: str = '1.0', product_version: Union[ForwardRef('BcdVersion3'), str] = '999.999.999', component_version: Union[ForwardRef('BcdVersion3'), str] = '999.999.999', flags: int = 0, drive_tag: int = 0, digest: bytes = b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00', timestamp: Union[datetime.datetime, NoneType] = None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Secure Boot Header V1.</p>
+<p>Initialize SecureBootHeaderV1.</p>
+<p>:param version: of the format: 1.0 or 1.1 or 1.2
+:param product_version: Product version.
+:param component_version: Component version.
+:param flags: Flags associated with the entire image.
+:param drive_tag: Identifier for the disk drive or partition containing this image.
+:param digest: SHA-1 digest of all fields of the header, 20 bytes
+The first 16 bytes (of 20 total) also act as the initialization vector for CBC-encrypted regions.
+:param timestamp: datetime of the file creation, use None for current date/time
+Fixed value should be used only for regression testing to generate same results</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SecureBootHeaderV1(BaseClass):
+    &#34;&#34;&#34;Secure Boot Header V1.&#34;&#34;&#34;
+    # binary format of the header
+    _FORMAT = &#39;&lt;20s4s2BH3I5H2s4sQ13H6s&#39;
+    # size of the header in bytes
+    _SIZE = calcsize(_FORMAT)
+    # binary signature 1 for header identification
+    _SIGNATURE1 = b&#39;STMP&#39;
+    # binary signature 2 for header identification
+    _SIGNATURE2 = b&#39;sgtl&#39;
+
+    def __init__(self, version: str = &#39;1.0&#39;,
+                 product_version: BcdVersion3Format = BcdVersion3.DEFAULT,
+                 component_version: BcdVersion3Format = BcdVersion3.DEFAULT,
+                 flags: int = 0, drive_tag: int = 0, digest: bytes = b&#39;\0&#39; * 20,
+                 timestamp: Optional[datetime] = None) -&gt; None:
+        &#34;&#34;&#34;Initialize SecureBootHeaderV1.
+
+        :param version: of the format: 1.0 or 1.1 or 1.2
+        :param product_version: Product version.
+        :param component_version: Component version.
+        :param flags: Flags associated with the entire image.
+        :param drive_tag: Identifier for the disk drive or partition containing this image.
+        :param digest: SHA-1 digest of all fields of the header, 20 bytes
+                    The first 16 bytes (of 20 total) also act as the initialization vector for CBC-encrypted regions.
+        :param timestamp: datetime of the file creation, use None for current date/time
+                    Fixed value should be used only for regression testing to generate same results
+        &#34;&#34;&#34;
+        # SHA-1 digest of all fields of the header prior to this one.
+        self.digest = digest
+        # Major version of the boot image format, currently 1. Minor version of the boot image format, currently 1 or 2.
+        assert version in (&#39;1.0&#39;, &#39;1.1&#39;, &#39;1.2&#39;)
+        self.version = version
+        self.flags = flags
+        # Size of the entire image in blocks.
+        self.image_blocks = 0
+        # Unique identifier of the section to start booting from.
+        self.first_boot_section_id = 0
+        # Number of entries in the DEK dictionary.
+        self.key_count = 0
+        # Size of the entire image header in blocks. This seems to be a constant.
+        self.header_blocks = SecBootBlckSize.to_num_blocks(self._SIZE)
+        # Number of sections.
+        self.section_count = 0
+        # Size in blocks of a section header. This seems to be a constant.
+        self.section_header_size = SecBootBlckSize.to_num_blocks(BootSectionHeaderV1.SIZE)
+        # Timestamp in microseconds size 1-1-2000 00:00 when the image was created.
+        self.timestamp = timestamp if timestamp else datetime.fromtimestamp(int(datetime.now().timestamp()))
+        # Product version in format #.#.#
+        self.product_version: BcdVersion3 = BcdVersion3.to_version(product_version)
+        # Component version in format #.#.#
+        self.component_version: BcdVersion3 = BcdVersion3.to_version(component_version)
+        # Identifier for the disk drive or partition containing this image.
+        self.drive_tag = drive_tag
+
+    def __str__(self) -&gt; str:
+        return &#34;Header: v{}, {}&#34;.format(self.version, self.image_blocks)
+
+    @property
+    def key_dictionary_block(self) -&gt; int:
+        &#34;&#34;&#34;Return key dictionary block.&#34;&#34;&#34;
+        return self.header_blocks + self.section_count * self.section_header_size
+
+    @property
+    def first_boot_tag_block(self) -&gt; int:
+        &#34;&#34;&#34;Return first boot tag block.&#34;&#34;&#34;
+        return self.key_dictionary_block + self.key_count * 2
+
+    @property
+    def size(self) -&gt; int:
+        &#34;&#34;&#34;Return size of the header in bytes.&#34;&#34;&#34;
+        return self._SIZE
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Get info of Header as a string.&#34;&#34;&#34;
+        nfo = str()
+        nfo += &#34; Digest:               {}\n&#34;.format(self.digest.hex())
+        nfo += &#34; Version:              {}\n&#34;.format(self.version)
+        nfo += &#34; Flags:                0x{:04X}\n&#34;.format(self.flags)
+        nfo += &#34; Image Blocks:         {}\n&#34;.format(self.image_blocks)
+        nfo += &#34; First Boot Tag Block: {}\n&#34;.format(self.first_boot_tag_block)
+        nfo += &#34; First Boot SectionID: {}\n&#34;.format(self.first_boot_section_id)
+        nfo += &#34; Key Count:            {}\n&#34;.format(self.key_count)
+        nfo += &#34; Key Dictionary Block: {}\n&#34;.format(self.key_dictionary_block)
+        nfo += &#34; Header Blocks:        {}\n&#34;.format(self.header_blocks)
+        nfo += &#34; Section Count:        {}\n&#34;.format(self.section_count)
+        nfo += &#34; Section Header Size:  {}\n&#34;.format(self.section_header_size)
+        nfo += &#34; Timestamp:            {}\n&#34;.format(self.timestamp)
+        nfo += &#34; Product Version:      {}\n&#34;.format(self.product_version)
+        nfo += &#34; Component Version:    {}\n&#34;.format(self.component_version)
+        nfo += &#34; Drive Tag:            {}\n&#34;.format(self.drive_tag)
+        return nfo
+
+    def export(self, padding8: Optional[bytes] = None, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+        &#34;&#34;&#34;Serialization to binary form.
+
+        :param padding8: 8 padding bytes used for in the header, None to use random bytes
+                This value shall be used only for regression testing to generate same results
+        :param dbg_info: class allowing to debug output from the export
+        :return: Serialize object into bytes
+        &#34;&#34;&#34;
+        major_version, minor_version = [int(v) for v in self.version.split(&#39;.&#39;)]
+        product_version_words = [swap16(n) for n in self.product_version.nums]
+        component_version_words = [swap16(n) for n in self.component_version.nums]
+        signature2 = crypto_backend().random_bytes(4)
+        padding = padding8 if padding8 else crypto_backend().random_bytes(8)
+
+        if (major_version &gt; 1) or ((major_version == 1) and (minor_version &gt;= 2)):
+            signature2 = self._SIGNATURE2
+
+        dbg_info.append_section(&#39;SB-file-Header&#39;)
+
+        result = pack(
+            self._FORMAT,
+            self.digest,
+            self._SIGNATURE1,
+            # header version
+            major_version, minor_version,
+            self.flags,
+            self.image_blocks,
+            self.first_boot_tag_block,
+            self.first_boot_section_id,
+            self.key_count,
+            self.key_dictionary_block,
+            self.header_blocks,
+            self.section_count,
+            self.section_header_size,
+            padding[0:2],
+            signature2,
+            pack_timestamp(self.timestamp),
+            # product version
+            product_version_words[0], 0,
+            product_version_words[1], 0,
+            product_version_words[2], 0,
+            # component version
+            component_version_words[0], 0,
+            component_version_words[1], 0,
+            component_version_words[2], 0,
+            self.drive_tag,
+            padding[2:]
+        )
+
+        result = result[len(self.digest):]
+        self.digest = crypto_backend().hash(result, &#39;sha1&#39;)
+
+        dbg_info.append_binary_section(&#39;digest&#39;, self.digest)
+        dbg_info.append_binary_section(&#39;attrs&#39;, result)
+
+        return self.digest + result
+
+    # pylint: disable=too-many-locals
+    @classmethod
+    def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;SecureBootHeaderV1&#39;:
+        &#34;&#34;&#34;Convert binary data into the instance (deserialization).
+
+        :param data: given binary data to be decoded
+        :param offset: to start parsing binary data; 0 by default
+        :return: the instance of secure boot header v1
+        :raise ValueError: raised when there is insufficient size
+        :raise ValueError: raised when there is invalid signature
+        :raise ValueError: raised when there is unexpected signature
+        &#34;&#34;&#34;
+        if SecureBootHeaderV1._SIZE &gt; len(data) - offset:
+            raise ValueError(&#39;Insufficient size&#39;)
+
+        (
+            digest,
+            signature1,
+            # header version
+            major_version, minor_version,
+            flags,
+            image_blocks,
+            _first_boot_tag_block,
+            first_boot_section_id,
+            key_count,
+            _key_dictionary_block,
+            header_blocks,
+            section_count,
+            section_header_size,
+            _,  # padding 2
+            signature2,
+            timestamp,
+            pv0, _, pv1, _, pv2, _,  # product version
+            cv0, _, cv1, _, cv2, _,  # component version
+            drive_tag,
+            _  # padding 6
+        ) = unpack_from(SecureBootHeaderV1._FORMAT, data, offset)
+
+        # check header signature 1
+        if signature1 != SecureBootHeaderV1._SIGNATURE1:
+            raise ValueError(&#39;Invalid signature&#39;)
+
+        # check header signature 2 for version 1.1 and greater
+        if (major_version &gt; 1) or ((major_version == 1) and (minor_version &gt;= 2)):
+            if signature2 != SecureBootHeaderV1._SIGNATURE2:
+                raise ValueError(&#39;Unexpected signature&#39;)
+
+        product_version = BcdVersion3(swap16(pv0), swap16(pv1), swap16(pv2))
+        component_version = BcdVersion3(swap16(cv0), swap16(cv1), swap16(cv2))
+
+        obj = SecureBootHeaderV1(digest=digest, version=f&#39;{major_version}.{minor_version}&#39;, flags=flags,
+                                 product_version=product_version,
+                                 component_version=component_version, drive_tag=drive_tag)
+
+        obj.image_blocks = image_blocks
+        obj.first_boot_section_id = first_boot_section_id
+        obj.key_count = key_count  # key_blob_block = key_count
+        obj.header_blocks = header_blocks
+        obj.section_count = section_count
+        obj.section_header_size = section_header_size
+        obj.timestamp = unpack_timestamp(timestamp)
+
+        return obj</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BaseClass" href="../../utils/crypto/abstract.html#spsdk.utils.crypto.abstract.BaseClass">BaseClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.parse"><code class="name flex">
+<span>def <span class="ident">parse</span></span>(<span>data: bytes, offset: int = 0) ‑> <a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1">SecureBootHeaderV1</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Convert binary data into the instance (deserialization).</p>
+<p>:param data: given binary data to be decoded
+:param offset: to start parsing binary data; 0 by default
+:return: the instance of secure boot header v1
+:raise ValueError: raised when there is insufficient size
+:raise ValueError: raised when there is invalid signature
+:raise ValueError: raised when there is unexpected signature</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def parse(cls, data: bytes, offset: int = 0) -&gt; &#39;SecureBootHeaderV1&#39;:
+    &#34;&#34;&#34;Convert binary data into the instance (deserialization).
+
+    :param data: given binary data to be decoded
+    :param offset: to start parsing binary data; 0 by default
+    :return: the instance of secure boot header v1
+    :raise ValueError: raised when there is insufficient size
+    :raise ValueError: raised when there is invalid signature
+    :raise ValueError: raised when there is unexpected signature
+    &#34;&#34;&#34;
+    if SecureBootHeaderV1._SIZE &gt; len(data) - offset:
+        raise ValueError(&#39;Insufficient size&#39;)
+
+    (
+        digest,
+        signature1,
+        # header version
+        major_version, minor_version,
+        flags,
+        image_blocks,
+        _first_boot_tag_block,
+        first_boot_section_id,
+        key_count,
+        _key_dictionary_block,
+        header_blocks,
+        section_count,
+        section_header_size,
+        _,  # padding 2
+        signature2,
+        timestamp,
+        pv0, _, pv1, _, pv2, _,  # product version
+        cv0, _, cv1, _, cv2, _,  # component version
+        drive_tag,
+        _  # padding 6
+    ) = unpack_from(SecureBootHeaderV1._FORMAT, data, offset)
+
+    # check header signature 1
+    if signature1 != SecureBootHeaderV1._SIGNATURE1:
+        raise ValueError(&#39;Invalid signature&#39;)
+
+    # check header signature 2 for version 1.1 and greater
+    if (major_version &gt; 1) or ((major_version == 1) and (minor_version &gt;= 2)):
+        if signature2 != SecureBootHeaderV1._SIGNATURE2:
+            raise ValueError(&#39;Unexpected signature&#39;)
+
+    product_version = BcdVersion3(swap16(pv0), swap16(pv1), swap16(pv2))
+    component_version = BcdVersion3(swap16(cv0), swap16(cv1), swap16(cv2))
+
+    obj = SecureBootHeaderV1(digest=digest, version=f&#39;{major_version}.{minor_version}&#39;, flags=flags,
+                             product_version=product_version,
+                             component_version=component_version, drive_tag=drive_tag)
+
+    obj.image_blocks = image_blocks
+    obj.first_boot_section_id = first_boot_section_id
+    obj.key_count = key_count  # key_blob_block = key_count
+    obj.header_blocks = header_blocks
+    obj.section_count = section_count
+    obj.section_header_size = section_header_size
+    obj.timestamp = unpack_timestamp(timestamp)
+
+    return obj</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.first_boot_tag_block"><code class="name">var <span class="ident">first_boot_tag_block</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return first boot tag block.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def first_boot_tag_block(self) -&gt; int:
+    &#34;&#34;&#34;Return first boot tag block.&#34;&#34;&#34;
+    return self.key_dictionary_block + self.key_count * 2</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.key_dictionary_block"><code class="name">var <span class="ident">key_dictionary_block</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return key dictionary block.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def key_dictionary_block(self) -&gt; int:
+    &#34;&#34;&#34;Return key dictionary block.&#34;&#34;&#34;
+    return self.header_blocks + self.section_count * self.section_header_size</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.size"><code class="name">var <span class="ident">size</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Return size of the header in bytes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def size(self) -&gt; int:
+    &#34;&#34;&#34;Return size of the header in bytes.&#34;&#34;&#34;
+    return self._SIZE</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.export"><code class="name flex">
+<span>def <span class="ident">export</span></span>(<span>self, padding8: Union[bytes, NoneType] = None, dbg_info: <a title="spsdk.utils.misc.DebugInfo" href="../../utils/misc.html#spsdk.utils.misc.DebugInfo">DebugInfo</a> = &lt;spsdk.utils.misc.DebugInfo object&gt;) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Serialization to binary form.</p>
+<p>:param padding8: 8 padding bytes used for in the header, None to use random bytes
+This value shall be used only for regression testing to generate same results
+:param dbg_info: class allowing to debug output from the export
+:return: Serialize object into bytes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def export(self, padding8: Optional[bytes] = None, dbg_info: DebugInfo = DebugInfo.disabled()) -&gt; bytes:
+    &#34;&#34;&#34;Serialization to binary form.
+
+    :param padding8: 8 padding bytes used for in the header, None to use random bytes
+            This value shall be used only for regression testing to generate same results
+    :param dbg_info: class allowing to debug output from the export
+    :return: Serialize object into bytes
+    &#34;&#34;&#34;
+    major_version, minor_version = [int(v) for v in self.version.split(&#39;.&#39;)]
+    product_version_words = [swap16(n) for n in self.product_version.nums]
+    component_version_words = [swap16(n) for n in self.component_version.nums]
+    signature2 = crypto_backend().random_bytes(4)
+    padding = padding8 if padding8 else crypto_backend().random_bytes(8)
+
+    if (major_version &gt; 1) or ((major_version == 1) and (minor_version &gt;= 2)):
+        signature2 = self._SIGNATURE2
+
+    dbg_info.append_section(&#39;SB-file-Header&#39;)
+
+    result = pack(
+        self._FORMAT,
+        self.digest,
+        self._SIGNATURE1,
+        # header version
+        major_version, minor_version,
+        self.flags,
+        self.image_blocks,
+        self.first_boot_tag_block,
+        self.first_boot_section_id,
+        self.key_count,
+        self.key_dictionary_block,
+        self.header_blocks,
+        self.section_count,
+        self.section_header_size,
+        padding[0:2],
+        signature2,
+        pack_timestamp(self.timestamp),
+        # product version
+        product_version_words[0], 0,
+        product_version_words[1], 0,
+        product_version_words[2], 0,
+        # component version
+        component_version_words[0], 0,
+        component_version_words[1], 0,
+        component_version_words[2], 0,
+        self.drive_tag,
+        padding[2:]
+    )
+
+    result = result[len(self.digest):]
+    self.digest = crypto_backend().hash(result, &#39;sha1&#39;)
+
+    dbg_info.append_binary_section(&#39;digest&#39;, self.digest)
+    dbg_info.append_binary_section(&#39;attrs&#39;, result)
+
+    return self.digest + result</code></pre>
+</details>
+</dd>
+<dt id="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get info of Header as a string.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Get info of Header as a string.&#34;&#34;&#34;
+    nfo = str()
+    nfo += &#34; Digest:               {}\n&#34;.format(self.digest.hex())
+    nfo += &#34; Version:              {}\n&#34;.format(self.version)
+    nfo += &#34; Flags:                0x{:04X}\n&#34;.format(self.flags)
+    nfo += &#34; Image Blocks:         {}\n&#34;.format(self.image_blocks)
+    nfo += &#34; First Boot Tag Block: {}\n&#34;.format(self.first_boot_tag_block)
+    nfo += &#34; First Boot SectionID: {}\n&#34;.format(self.first_boot_section_id)
+    nfo += &#34; Key Count:            {}\n&#34;.format(self.key_count)
+    nfo += &#34; Key Dictionary Block: {}\n&#34;.format(self.key_dictionary_block)
+    nfo += &#34; Header Blocks:        {}\n&#34;.format(self.header_blocks)
+    nfo += &#34; Section Count:        {}\n&#34;.format(self.section_count)
+    nfo += &#34; Section Header Size:  {}\n&#34;.format(self.section_header_size)
+    nfo += &#34; Timestamp:            {}\n&#34;.format(self.timestamp)
+    nfo += &#34; Product Version:      {}\n&#34;.format(self.product_version)
+    nfo += &#34; Component Version:    {}\n&#34;.format(self.component_version)
+    nfo += &#34; Drive Tag:            {}\n&#34;.format(self.drive_tag)
+    return nfo</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.sbfile.sb1" href="index.html">spsdk.sbfile.sb1</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1">BootSectionHeaderV1</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.SIZE" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.SIZE">SIZE</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.bootable" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.bootable">bootable</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.flags" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.flags">flags</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.num_blocks" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.num_blocks">num_blocks</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.parse" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.rom_last_tag" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.rom_last_tag">rom_last_tag</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.BootSectionHeaderV1.section_id" href="#spsdk.sbfile.sb1.headers.BootSectionHeaderV1.section_id">section_id</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1">SectionHeaderItemV1</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.FORMAT" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.FORMAT">FORMAT</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.SIZE" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.SIZE">SIZE</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.bootable" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.bootable">bootable</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.export" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.flags" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.flags">flags</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.info" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.parse" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SectionHeaderItemV1.size" href="#spsdk.sbfile.sb1.headers.SectionHeaderItemV1.size">size</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1">SecureBootFlagsV1</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1.NONE" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1.NONE">NONE</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1.ROM_SECTION_BOOTABLE" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1.ROM_SECTION_BOOTABLE">ROM_SECTION_BOOTABLE</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootFlagsV1.ROM_SECTION_CLEARTEXT" href="#spsdk.sbfile.sb1.headers.SecureBootFlagsV1.ROM_SECTION_CLEARTEXT">ROM_SECTION_CLEARTEXT</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1">SecureBootHeaderV1</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.export" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1.export">export</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.first_boot_tag_block" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1.first_boot_tag_block">first_boot_tag_block</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.info" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1.info">info</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.key_dictionary_block" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1.key_dictionary_block">key_dictionary_block</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.parse" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1.parse">parse</a></code></li>
+<li><code><a title="spsdk.sbfile.sb1.headers.SecureBootHeaderV1.size" href="#spsdk.sbfile.sb1.headers.SecureBootHeaderV1.size">size</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

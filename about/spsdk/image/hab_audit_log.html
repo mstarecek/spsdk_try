@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.image.hab_audit_log API documentation</title>
+<meta name="description" content="Utility allowing parsing of HAB audit log data." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.image.hab_audit_log</code></h1>
+</header>
+<section id="section-intro">
+<p>Utility allowing parsing of HAB audit log data.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;Utility allowing parsing of HAB audit log data.&#34;&#34;&#34;
+
+from typing import List, Type
+from struct import unpack_from
+
+from spsdk.utils.easy_enum import Enum
+from .header import CmdTag
+from .commands import parse_command
+
+
+class HabConfig(Enum):
+    &#34;&#34;&#34;HAB configurations.&#34;&#34;&#34;
+    HAB_CFG_RETURN = (0x33, &#39;Field Return IC&#39;)
+    HAB_CFG_OPEN = (0xf0, &#39;Non - secure IC&#39;)
+    HAB_CFG_CLOSED = (0xcc, &#39;Secure IC&#39;)
+
+
+class HabState(Enum):
+    &#34;&#34;&#34;HAB state definitions.&#34;&#34;&#34;
+    HAB_STATE_INITIAL = (0x33, &#39;Initialising state(transitory)&#39;)
+    HAB_STATE_CHECK = (0x55, &#39;Check state(non - secure)&#39;)
+    HAB_STATE_NONSECURE = (0x66, &#39;Non - secure state&#39;)
+    HAB_STATE_TRUSTED = (0x99, &#39;Trusted state&#39;)
+    HAB_STATE_SECURE = (0xaa, &#39;Secure state&#39;)
+    HAB_STATE_FAIL_SOFT = (0xcc, &#39;Soft fail state&#39;)
+    HAB_STATE_FAIL_HARD = (0xff, &#39;Hard fail state(terminal)&#39;)
+    HAB_STATE_NONE = (0xf0, &#39;No security state machine&#39;)
+
+
+class HabStatus(Enum):
+    &#34;&#34;&#34;HAB Status.&#34;&#34;&#34;
+    HAB_STS_ANY = (0, &#39;Match any status&#39;)
+    HAB_FAILURE = (0x33, &#39;Operation failed&#39;)
+    HAB_WARNING = (0x69, &#39;Operation completed with warning&#39;)
+    HAB_SUCCESS = (0xF0, &#39;Operation completed successfully&#39;)
+
+
+class HabReason(Enum):
+    &#34;&#34;&#34;Further reason of the status.&#34;&#34;&#34;
+    HAB_RSN_ANY = (0x00, &#39;Match any reason&#39;)
+    HAB_ENG_FAIL = (0x30, &#39;Engine failure&#39;)
+    HAB_INV_ADDRESS = (0x22, &#39;Invalid address: access denied&#39;)
+    HAB_INV_ASSERTION = (0x0c, &#39;Invalid assertion&#39;)
+    HAB_INV_CALL = (0x28, &#39;Function called out of sequence&#39;)
+    HAB_INV_CERTIFICATE = (0x21, &#39;Invalid certificate&#39;)
+    HAB_INV_COMMAND = (0x06, &#39;Invalid command: command malformed&#39;)
+    HAB_INV_CSF = (0x11, &#39;Invalid Command Sequence File&#39;)
+    HAB_INV_DCD = (0x27, &#39;Invalid Device Configuration Data&#39;)
+    HAB_INV_INDEX = (0x0f, &#39;Invalid index: access denied&#39;)
+    HAB_INV_IVT = (0x05, &#39;Invalid Image Vector Table&#39;)
+    HAB_INV_KEY = (0x1d, &#39;Invalid key&#39;)
+    HAB_INV_RETURN = (0x1e, &#39;Failed callback function&#39;)
+    HAB_INV_SIGNATURE = (0x18, &#39;Invalid signature&#39;)
+    HAB_INV_SIZE = (0x17, &#39;Invalid data size&#39;)
+    HAB_MEM_FAIL = (0x2e, &#39;Memory failure&#39;)
+    HAB_OVR_COUNT = (0x2b, &#39;Expired poll count&#39;)
+    HAB_OVR_STORAGE = (0x2d, &#39;Exhausted storage region&#39;)
+    HAB_UNS_ALGORITHM = (0x12, &#39;Unsupported algorithm&#39;)
+    HAB_UNS_COMMAND = (0x03, &#39;Unsupported command&#39;)
+    HAB_UNS_ENGINE = (0x0a, &#39;Unsupported engine&#39;)
+    HAB_UNS_ITEM = (0x24, &#39;Unsupported configuration item&#39;)
+    HAB_UNS_KEY = (0x1b, &#39;Unsupported key type or parameters&#39;)
+    HAB_UNS_PROTOCOL = (0x14, &#39;Unsupported protocol&#39;)
+    HAB_UNS_STATE = (0x09, &#39;Unsuitable state&#39;)
+
+
+class HabContext(Enum):
+    &#34;&#34;&#34;Context from which the event is logged.&#34;&#34;&#34;
+    HAB_CTX_ANY = (0x00, &#39;Match any context&#39;)
+    HAB_CTX_ENTRY = (0xe1, &#39;Event logged in hab_rvt.entry()&#39;)
+    HAB_CTX_TARGET = (0x33, &#39;Event logged in hab_rvt.check_target()&#39;)
+    HAB_CTX_AUTHENTICATE = (0x0a, &#39;Event logged in hab_rvt.authenticate_image()&#39;)
+    HAB_CTX_DCD = (0xdd, &#39;Event logged in hab_rvt.run_dcd()&#39;)
+    HAB_CTX_CSF = (0xcf, &#39;Event logged in hab_rvt.run_csf()&#39;)
+    HAB_CTX_COMMAND = (0xc0, &#39;Event logged executing CSF or DCD command&#39;)
+    HAB_CTX_AUT_DAT = (0xdb, &#39;Authenticated data block&#39;)
+    HAB_CTX_ASSERT = (0xa0, &#39;Event logged in hab_rvt.assert()&#39;)
+    HAB_CTX_EXIT = (0xee, &#39;Event logged in hab_rvt.exit()&#39;)
+
+
+class HabEngine(Enum):
+    &#34;&#34;&#34;Engine associated with the failure, or HAB_ENG_ANY if none.&#34;&#34;&#34;
+    HAB_ENG_ANY = (0x00, &#39;Any engine&#39;)
+    HAB_ENG_SCC = (0x03, &#39;Security controller&#39;)
+    HAB_ENG_RTIC = (0x05, &#39;Run-time integrity checker&#39;)
+    HAB_ENG_SAHARA = (0x06, &#39;Crypto accelerator&#39;)
+    HAB_ENG_CSU = (0x0a, &#39;Central Security Unit&#39;)
+    HAB_ENG_SRTC = (0x0c, &#39;Secure clock&#39;)
+    HAB_ENG_DCP = (0x1b, &#39;Data Co-Processor&#39;)
+    HAB_ENG_CAAM = (0x1d, &#39;Cryptographic Acceleration and Assurance Module&#39;)
+    HAB_ENG_SNVS = (0x1e, &#39;Secure Non-Volatile Storage&#39;)
+    HAB_ENG_OCOTP = (0x21, &#39;Fuse controller&#39;)
+    HAB_ENG_DTCP = (0x22, &#39;DTCP co-processor&#39;)
+    HAB_ENG_ROM = (0x36, &#39;Protected ROM area&#39;)
+    HAB_ENG_HDCP = (0x24, &#39;HDCP co-processor&#39;)
+    HAB_ENG_SW = (0xff, &#39;Software engine&#39;)
+
+
+def get_hab_enum_descr(enum_cls: Type[Enum], value: int) -&gt; str:
+    &#34;&#34;&#34;Converts integer value into description of the enumeration value.
+
+    If the value does not match any value from enumeration, it is reported as `Unknown value`
+
+    :param enum_cls: enumeration class used to convert integer to enum
+    :param value: to be converted
+    :return: description of the converted value
+    &#34;&#34;&#34;
+    if value in enum_cls:
+        return enum_cls.desc(enum_cls.from_int(value)) + f&#39;  ({hex(value)})&#39;
+    return f&#39;{hex(value)} = Unknown value&#39;
+
+
+def parse_hab_log(hab_sts: int, hab_cfg: int, hab_state: int, data: bytes) -&gt; List[str]:
+    &#34;&#34;&#34;Parse the HAB audit log.
+
+    :param hab_sts: HAB status; this is result of the HAB function `report_status`
+    :param hab_cfg: HAB configuration; this is result of the HAB function `report_status`
+    :param hab_state: HAB state; this is result of the HAB function `report_status`
+    :param data: HAB log data in binary format; result of the HAB function `report_event`
+    :return: list of lines to be displayed, that describes the HAB status and content of the LOG
+    :raise ValueError: If a record has invalid data length
+    &#34;&#34;&#34;
+    result = list()
+    result.append(&#39;=&#39; * 60)
+    result.append(f&#39;HAB Status:  {get_hab_enum_descr(HabStatus, hab_sts)}&#39;)
+    result.append(f&#39;HAB Config:  {get_hab_enum_descr(HabConfig, hab_cfg)}&#39;)
+    result.append(f&#39;HAB State :  {get_hab_enum_descr(HabState, hab_state)}&#39;)
+    offset = 0
+    while offset + 8 &lt;= len(data):
+        result.append(&#39;=&#39; * 60)
+        # parse header
+        (cmd, leng, ver) = unpack_from(&#34;&gt;BHB&#34;, data, offset)
+        if (cmd != 0xDB) or ((ver &lt; 0x40) or (ver &gt; 0x43)):
+            break
+        if (leng &lt; 8) or (leng &gt; 1024):
+            raise ValueError(&#39;invalid log length&#39;)
+        # parse data
+        (sts, rsn, ctx, eng) = unpack_from(&#34;4B&#34;, data, offset + 4)
+        # print results
+        result.append(f&#39;Status:  {get_hab_enum_descr(HabStatus, sts)}&#39;)
+        result.append(f&#39;Reason:  {get_hab_enum_descr(HabReason, rsn)}&#39;)
+        result.append(f&#39;Context: {get_hab_enum_descr(HabContext, ctx)}&#39;)
+        result.append(f&#39;Engine:  {get_hab_enum_descr(HabEngine, eng)}&#39;)
+        if leng &gt; 8:
+            result.append(f&#39;Data:    {data[offset + 8:offset + leng].hex().upper()}&#39;)
+            try:
+                cmd = parse_command(data, offset + 8)
+                result.append(f&#39;Cmd :    {CmdTag.desc(cmd.tag)}&#39;)
+                result.append(cmd.info())
+            except ValueError:
+                pass
+
+        offset += leng
+
+    return result</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.image.hab_audit_log.get_hab_enum_descr"><code class="name flex">
+<span>def <span class="ident">get_hab_enum_descr</span></span>(<span>enum_cls: Type[<a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a>], value: int) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts integer value into description of the enumeration value.</p>
+<p>If the value does not match any value from enumeration, it is reported as <code>Unknown value</code></p>
+<p>:param enum_cls: enumeration class used to convert integer to enum
+:param value: to be converted
+:return: description of the converted value</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_hab_enum_descr(enum_cls: Type[Enum], value: int) -&gt; str:
+    &#34;&#34;&#34;Converts integer value into description of the enumeration value.
+
+    If the value does not match any value from enumeration, it is reported as `Unknown value`
+
+    :param enum_cls: enumeration class used to convert integer to enum
+    :param value: to be converted
+    :return: description of the converted value
+    &#34;&#34;&#34;
+    if value in enum_cls:
+        return enum_cls.desc(enum_cls.from_int(value)) + f&#39;  ({hex(value)})&#39;
+    return f&#39;{hex(value)} = Unknown value&#39;</code></pre>
+</details>
+</dd>
+<dt id="spsdk.image.hab_audit_log.parse_hab_log"><code class="name flex">
+<span>def <span class="ident">parse_hab_log</span></span>(<span>hab_sts: int, hab_cfg: int, hab_state: int, data: bytes) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parse the HAB audit log.</p>
+<p>:param hab_sts: HAB status; this is result of the HAB function <code>report_status</code>
+:param hab_cfg: HAB configuration; this is result of the HAB function <code>report_status</code>
+:param hab_state: HAB state; this is result of the HAB function <code>report_status</code>
+:param data: HAB log data in binary format; result of the HAB function <code>report_event</code>
+:return: list of lines to be displayed, that describes the HAB status and content of the LOG
+:raise ValueError: If a record has invalid data length</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def parse_hab_log(hab_sts: int, hab_cfg: int, hab_state: int, data: bytes) -&gt; List[str]:
+    &#34;&#34;&#34;Parse the HAB audit log.
+
+    :param hab_sts: HAB status; this is result of the HAB function `report_status`
+    :param hab_cfg: HAB configuration; this is result of the HAB function `report_status`
+    :param hab_state: HAB state; this is result of the HAB function `report_status`
+    :param data: HAB log data in binary format; result of the HAB function `report_event`
+    :return: list of lines to be displayed, that describes the HAB status and content of the LOG
+    :raise ValueError: If a record has invalid data length
+    &#34;&#34;&#34;
+    result = list()
+    result.append(&#39;=&#39; * 60)
+    result.append(f&#39;HAB Status:  {get_hab_enum_descr(HabStatus, hab_sts)}&#39;)
+    result.append(f&#39;HAB Config:  {get_hab_enum_descr(HabConfig, hab_cfg)}&#39;)
+    result.append(f&#39;HAB State :  {get_hab_enum_descr(HabState, hab_state)}&#39;)
+    offset = 0
+    while offset + 8 &lt;= len(data):
+        result.append(&#39;=&#39; * 60)
+        # parse header
+        (cmd, leng, ver) = unpack_from(&#34;&gt;BHB&#34;, data, offset)
+        if (cmd != 0xDB) or ((ver &lt; 0x40) or (ver &gt; 0x43)):
+            break
+        if (leng &lt; 8) or (leng &gt; 1024):
+            raise ValueError(&#39;invalid log length&#39;)
+        # parse data
+        (sts, rsn, ctx, eng) = unpack_from(&#34;4B&#34;, data, offset + 4)
+        # print results
+        result.append(f&#39;Status:  {get_hab_enum_descr(HabStatus, sts)}&#39;)
+        result.append(f&#39;Reason:  {get_hab_enum_descr(HabReason, rsn)}&#39;)
+        result.append(f&#39;Context: {get_hab_enum_descr(HabContext, ctx)}&#39;)
+        result.append(f&#39;Engine:  {get_hab_enum_descr(HabEngine, eng)}&#39;)
+        if leng &gt; 8:
+            result.append(f&#39;Data:    {data[offset + 8:offset + leng].hex().upper()}&#39;)
+            try:
+                cmd = parse_command(data, offset + 8)
+                result.append(f&#39;Cmd :    {CmdTag.desc(cmd.tag)}&#39;)
+                result.append(cmd.info())
+            except ValueError:
+                pass
+
+        offset += leng
+
+    return result</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabConfig"><code class="flex name class">
+<span>class <span class="ident">HabConfig</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>HAB configurations.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HabConfig(Enum):
+    &#34;&#34;&#34;HAB configurations.&#34;&#34;&#34;
+    HAB_CFG_RETURN = (0x33, &#39;Field Return IC&#39;)
+    HAB_CFG_OPEN = (0xf0, &#39;Non - secure IC&#39;)
+    HAB_CFG_CLOSED = (0xcc, &#39;Secure IC&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabConfig.HAB_CFG_CLOSED"><code class="name">var <span class="ident">HAB_CFG_CLOSED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabConfig.HAB_CFG_OPEN"><code class="name">var <span class="ident">HAB_CFG_OPEN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabConfig.HAB_CFG_RETURN"><code class="name">var <span class="ident">HAB_CFG_RETURN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext"><code class="flex name class">
+<span>class <span class="ident">HabContext</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Context from which the event is logged.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HabContext(Enum):
+    &#34;&#34;&#34;Context from which the event is logged.&#34;&#34;&#34;
+    HAB_CTX_ANY = (0x00, &#39;Match any context&#39;)
+    HAB_CTX_ENTRY = (0xe1, &#39;Event logged in hab_rvt.entry()&#39;)
+    HAB_CTX_TARGET = (0x33, &#39;Event logged in hab_rvt.check_target()&#39;)
+    HAB_CTX_AUTHENTICATE = (0x0a, &#39;Event logged in hab_rvt.authenticate_image()&#39;)
+    HAB_CTX_DCD = (0xdd, &#39;Event logged in hab_rvt.run_dcd()&#39;)
+    HAB_CTX_CSF = (0xcf, &#39;Event logged in hab_rvt.run_csf()&#39;)
+    HAB_CTX_COMMAND = (0xc0, &#39;Event logged executing CSF or DCD command&#39;)
+    HAB_CTX_AUT_DAT = (0xdb, &#39;Authenticated data block&#39;)
+    HAB_CTX_ASSERT = (0xa0, &#39;Event logged in hab_rvt.assert()&#39;)
+    HAB_CTX_EXIT = (0xee, &#39;Event logged in hab_rvt.exit()&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_ANY"><code class="name">var <span class="ident">HAB_CTX_ANY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_ASSERT"><code class="name">var <span class="ident">HAB_CTX_ASSERT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_AUTHENTICATE"><code class="name">var <span class="ident">HAB_CTX_AUTHENTICATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_AUT_DAT"><code class="name">var <span class="ident">HAB_CTX_AUT_DAT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_COMMAND"><code class="name">var <span class="ident">HAB_CTX_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_CSF"><code class="name">var <span class="ident">HAB_CTX_CSF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_DCD"><code class="name">var <span class="ident">HAB_CTX_DCD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_ENTRY"><code class="name">var <span class="ident">HAB_CTX_ENTRY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_EXIT"><code class="name">var <span class="ident">HAB_CTX_EXIT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabContext.HAB_CTX_TARGET"><code class="name">var <span class="ident">HAB_CTX_TARGET</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine"><code class="flex name class">
+<span>class <span class="ident">HabEngine</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Engine associated with the failure, or HAB_ENG_ANY if none.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HabEngine(Enum):
+    &#34;&#34;&#34;Engine associated with the failure, or HAB_ENG_ANY if none.&#34;&#34;&#34;
+    HAB_ENG_ANY = (0x00, &#39;Any engine&#39;)
+    HAB_ENG_SCC = (0x03, &#39;Security controller&#39;)
+    HAB_ENG_RTIC = (0x05, &#39;Run-time integrity checker&#39;)
+    HAB_ENG_SAHARA = (0x06, &#39;Crypto accelerator&#39;)
+    HAB_ENG_CSU = (0x0a, &#39;Central Security Unit&#39;)
+    HAB_ENG_SRTC = (0x0c, &#39;Secure clock&#39;)
+    HAB_ENG_DCP = (0x1b, &#39;Data Co-Processor&#39;)
+    HAB_ENG_CAAM = (0x1d, &#39;Cryptographic Acceleration and Assurance Module&#39;)
+    HAB_ENG_SNVS = (0x1e, &#39;Secure Non-Volatile Storage&#39;)
+    HAB_ENG_OCOTP = (0x21, &#39;Fuse controller&#39;)
+    HAB_ENG_DTCP = (0x22, &#39;DTCP co-processor&#39;)
+    HAB_ENG_ROM = (0x36, &#39;Protected ROM area&#39;)
+    HAB_ENG_HDCP = (0x24, &#39;HDCP co-processor&#39;)
+    HAB_ENG_SW = (0xff, &#39;Software engine&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_ANY"><code class="name">var <span class="ident">HAB_ENG_ANY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_CAAM"><code class="name">var <span class="ident">HAB_ENG_CAAM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_CSU"><code class="name">var <span class="ident">HAB_ENG_CSU</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_DCP"><code class="name">var <span class="ident">HAB_ENG_DCP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_DTCP"><code class="name">var <span class="ident">HAB_ENG_DTCP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_HDCP"><code class="name">var <span class="ident">HAB_ENG_HDCP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_OCOTP"><code class="name">var <span class="ident">HAB_ENG_OCOTP</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_ROM"><code class="name">var <span class="ident">HAB_ENG_ROM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_RTIC"><code class="name">var <span class="ident">HAB_ENG_RTIC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SAHARA"><code class="name">var <span class="ident">HAB_ENG_SAHARA</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SCC"><code class="name">var <span class="ident">HAB_ENG_SCC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SNVS"><code class="name">var <span class="ident">HAB_ENG_SNVS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SRTC"><code class="name">var <span class="ident">HAB_ENG_SRTC</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SW"><code class="name">var <span class="ident">HAB_ENG_SW</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason"><code class="flex name class">
+<span>class <span class="ident">HabReason</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Further reason of the status.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HabReason(Enum):
+    &#34;&#34;&#34;Further reason of the status.&#34;&#34;&#34;
+    HAB_RSN_ANY = (0x00, &#39;Match any reason&#39;)
+    HAB_ENG_FAIL = (0x30, &#39;Engine failure&#39;)
+    HAB_INV_ADDRESS = (0x22, &#39;Invalid address: access denied&#39;)
+    HAB_INV_ASSERTION = (0x0c, &#39;Invalid assertion&#39;)
+    HAB_INV_CALL = (0x28, &#39;Function called out of sequence&#39;)
+    HAB_INV_CERTIFICATE = (0x21, &#39;Invalid certificate&#39;)
+    HAB_INV_COMMAND = (0x06, &#39;Invalid command: command malformed&#39;)
+    HAB_INV_CSF = (0x11, &#39;Invalid Command Sequence File&#39;)
+    HAB_INV_DCD = (0x27, &#39;Invalid Device Configuration Data&#39;)
+    HAB_INV_INDEX = (0x0f, &#39;Invalid index: access denied&#39;)
+    HAB_INV_IVT = (0x05, &#39;Invalid Image Vector Table&#39;)
+    HAB_INV_KEY = (0x1d, &#39;Invalid key&#39;)
+    HAB_INV_RETURN = (0x1e, &#39;Failed callback function&#39;)
+    HAB_INV_SIGNATURE = (0x18, &#39;Invalid signature&#39;)
+    HAB_INV_SIZE = (0x17, &#39;Invalid data size&#39;)
+    HAB_MEM_FAIL = (0x2e, &#39;Memory failure&#39;)
+    HAB_OVR_COUNT = (0x2b, &#39;Expired poll count&#39;)
+    HAB_OVR_STORAGE = (0x2d, &#39;Exhausted storage region&#39;)
+    HAB_UNS_ALGORITHM = (0x12, &#39;Unsupported algorithm&#39;)
+    HAB_UNS_COMMAND = (0x03, &#39;Unsupported command&#39;)
+    HAB_UNS_ENGINE = (0x0a, &#39;Unsupported engine&#39;)
+    HAB_UNS_ITEM = (0x24, &#39;Unsupported configuration item&#39;)
+    HAB_UNS_KEY = (0x1b, &#39;Unsupported key type or parameters&#39;)
+    HAB_UNS_PROTOCOL = (0x14, &#39;Unsupported protocol&#39;)
+    HAB_UNS_STATE = (0x09, &#39;Unsuitable state&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_ENG_FAIL"><code class="name">var <span class="ident">HAB_ENG_FAIL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_ADDRESS"><code class="name">var <span class="ident">HAB_INV_ADDRESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_ASSERTION"><code class="name">var <span class="ident">HAB_INV_ASSERTION</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_CALL"><code class="name">var <span class="ident">HAB_INV_CALL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_CERTIFICATE"><code class="name">var <span class="ident">HAB_INV_CERTIFICATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_COMMAND"><code class="name">var <span class="ident">HAB_INV_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_CSF"><code class="name">var <span class="ident">HAB_INV_CSF</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_DCD"><code class="name">var <span class="ident">HAB_INV_DCD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_INDEX"><code class="name">var <span class="ident">HAB_INV_INDEX</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_IVT"><code class="name">var <span class="ident">HAB_INV_IVT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_KEY"><code class="name">var <span class="ident">HAB_INV_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_RETURN"><code class="name">var <span class="ident">HAB_INV_RETURN</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_SIGNATURE"><code class="name">var <span class="ident">HAB_INV_SIGNATURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_INV_SIZE"><code class="name">var <span class="ident">HAB_INV_SIZE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_MEM_FAIL"><code class="name">var <span class="ident">HAB_MEM_FAIL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_OVR_COUNT"><code class="name">var <span class="ident">HAB_OVR_COUNT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_OVR_STORAGE"><code class="name">var <span class="ident">HAB_OVR_STORAGE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_RSN_ANY"><code class="name">var <span class="ident">HAB_RSN_ANY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_ALGORITHM"><code class="name">var <span class="ident">HAB_UNS_ALGORITHM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_COMMAND"><code class="name">var <span class="ident">HAB_UNS_COMMAND</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_ENGINE"><code class="name">var <span class="ident">HAB_UNS_ENGINE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_ITEM"><code class="name">var <span class="ident">HAB_UNS_ITEM</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_KEY"><code class="name">var <span class="ident">HAB_UNS_KEY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_PROTOCOL"><code class="name">var <span class="ident">HAB_UNS_PROTOCOL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabReason.HAB_UNS_STATE"><code class="name">var <span class="ident">HAB_UNS_STATE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState"><code class="flex name class">
+<span>class <span class="ident">HabState</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>HAB state definitions.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HabState(Enum):
+    &#34;&#34;&#34;HAB state definitions.&#34;&#34;&#34;
+    HAB_STATE_INITIAL = (0x33, &#39;Initialising state(transitory)&#39;)
+    HAB_STATE_CHECK = (0x55, &#39;Check state(non - secure)&#39;)
+    HAB_STATE_NONSECURE = (0x66, &#39;Non - secure state&#39;)
+    HAB_STATE_TRUSTED = (0x99, &#39;Trusted state&#39;)
+    HAB_STATE_SECURE = (0xaa, &#39;Secure state&#39;)
+    HAB_STATE_FAIL_SOFT = (0xcc, &#39;Soft fail state&#39;)
+    HAB_STATE_FAIL_HARD = (0xff, &#39;Hard fail state(terminal)&#39;)
+    HAB_STATE_NONE = (0xf0, &#39;No security state machine&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_CHECK"><code class="name">var <span class="ident">HAB_STATE_CHECK</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_FAIL_HARD"><code class="name">var <span class="ident">HAB_STATE_FAIL_HARD</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_FAIL_SOFT"><code class="name">var <span class="ident">HAB_STATE_FAIL_SOFT</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_INITIAL"><code class="name">var <span class="ident">HAB_STATE_INITIAL</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_NONE"><code class="name">var <span class="ident">HAB_STATE_NONE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_NONSECURE"><code class="name">var <span class="ident">HAB_STATE_NONSECURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_SECURE"><code class="name">var <span class="ident">HAB_STATE_SECURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabState.HAB_STATE_TRUSTED"><code class="name">var <span class="ident">HAB_STATE_TRUSTED</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabStatus"><code class="flex name class">
+<span>class <span class="ident">HabStatus</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>HAB Status.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HabStatus(Enum):
+    &#34;&#34;&#34;HAB Status.&#34;&#34;&#34;
+    HAB_STS_ANY = (0, &#39;Match any status&#39;)
+    HAB_FAILURE = (0x33, &#39;Operation failed&#39;)
+    HAB_WARNING = (0x69, &#39;Operation completed with warning&#39;)
+    HAB_SUCCESS = (0xF0, &#39;Operation completed successfully&#39;)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="spsdk.image.hab_audit_log.HabStatus.HAB_FAILURE"><code class="name">var <span class="ident">HAB_FAILURE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabStatus.HAB_STS_ANY"><code class="name">var <span class="ident">HAB_STS_ANY</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabStatus.HAB_SUCCESS"><code class="name">var <span class="ident">HAB_SUCCESS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="spsdk.image.hab_audit_log.HabStatus.HAB_WARNING"><code class="name">var <span class="ident">HAB_WARNING</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.utils.easy_enum.Enum" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum">Enum</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.utils.easy_enum.Enum.desc" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.desc">desc</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.from_int" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.from_int">from_int</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.get" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.get">get</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.name" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.name">name</a></code></li>
+<li><code><a title="spsdk.utils.easy_enum.Enum.tags" href="../utils/easy_enum.html#spsdk.utils.easy_enum.Enum.tags">tags</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.image" href="index.html">spsdk.image</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.image.hab_audit_log.get_hab_enum_descr" href="#spsdk.image.hab_audit_log.get_hab_enum_descr">get_hab_enum_descr</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.parse_hab_log" href="#spsdk.image.hab_audit_log.parse_hab_log">parse_hab_log</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.image.hab_audit_log.HabConfig" href="#spsdk.image.hab_audit_log.HabConfig">HabConfig</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.hab_audit_log.HabConfig.HAB_CFG_CLOSED" href="#spsdk.image.hab_audit_log.HabConfig.HAB_CFG_CLOSED">HAB_CFG_CLOSED</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabConfig.HAB_CFG_OPEN" href="#spsdk.image.hab_audit_log.HabConfig.HAB_CFG_OPEN">HAB_CFG_OPEN</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabConfig.HAB_CFG_RETURN" href="#spsdk.image.hab_audit_log.HabConfig.HAB_CFG_RETURN">HAB_CFG_RETURN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.hab_audit_log.HabContext" href="#spsdk.image.hab_audit_log.HabContext">HabContext</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_ANY" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_ANY">HAB_CTX_ANY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_ASSERT" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_ASSERT">HAB_CTX_ASSERT</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_AUTHENTICATE" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_AUTHENTICATE">HAB_CTX_AUTHENTICATE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_AUT_DAT" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_AUT_DAT">HAB_CTX_AUT_DAT</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_COMMAND" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_COMMAND">HAB_CTX_COMMAND</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_CSF" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_CSF">HAB_CTX_CSF</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_DCD" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_DCD">HAB_CTX_DCD</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_ENTRY" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_ENTRY">HAB_CTX_ENTRY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_EXIT" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_EXIT">HAB_CTX_EXIT</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabContext.HAB_CTX_TARGET" href="#spsdk.image.hab_audit_log.HabContext.HAB_CTX_TARGET">HAB_CTX_TARGET</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.hab_audit_log.HabEngine" href="#spsdk.image.hab_audit_log.HabEngine">HabEngine</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_ANY" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_ANY">HAB_ENG_ANY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_CAAM" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_CAAM">HAB_ENG_CAAM</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_CSU" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_CSU">HAB_ENG_CSU</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_DCP" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_DCP">HAB_ENG_DCP</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_DTCP" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_DTCP">HAB_ENG_DTCP</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_HDCP" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_HDCP">HAB_ENG_HDCP</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_OCOTP" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_OCOTP">HAB_ENG_OCOTP</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_ROM" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_ROM">HAB_ENG_ROM</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_RTIC" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_RTIC">HAB_ENG_RTIC</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SAHARA" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SAHARA">HAB_ENG_SAHARA</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SCC" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SCC">HAB_ENG_SCC</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SNVS" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SNVS">HAB_ENG_SNVS</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SRTC" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SRTC">HAB_ENG_SRTC</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SW" href="#spsdk.image.hab_audit_log.HabEngine.HAB_ENG_SW">HAB_ENG_SW</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.hab_audit_log.HabReason" href="#spsdk.image.hab_audit_log.HabReason">HabReason</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_ENG_FAIL" href="#spsdk.image.hab_audit_log.HabReason.HAB_ENG_FAIL">HAB_ENG_FAIL</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_ADDRESS" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_ADDRESS">HAB_INV_ADDRESS</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_ASSERTION" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_ASSERTION">HAB_INV_ASSERTION</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_CALL" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_CALL">HAB_INV_CALL</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_CERTIFICATE" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_CERTIFICATE">HAB_INV_CERTIFICATE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_COMMAND" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_COMMAND">HAB_INV_COMMAND</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_CSF" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_CSF">HAB_INV_CSF</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_DCD" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_DCD">HAB_INV_DCD</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_INDEX" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_INDEX">HAB_INV_INDEX</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_IVT" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_IVT">HAB_INV_IVT</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_KEY" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_KEY">HAB_INV_KEY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_RETURN" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_RETURN">HAB_INV_RETURN</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_SIGNATURE" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_SIGNATURE">HAB_INV_SIGNATURE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_INV_SIZE" href="#spsdk.image.hab_audit_log.HabReason.HAB_INV_SIZE">HAB_INV_SIZE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_MEM_FAIL" href="#spsdk.image.hab_audit_log.HabReason.HAB_MEM_FAIL">HAB_MEM_FAIL</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_OVR_COUNT" href="#spsdk.image.hab_audit_log.HabReason.HAB_OVR_COUNT">HAB_OVR_COUNT</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_OVR_STORAGE" href="#spsdk.image.hab_audit_log.HabReason.HAB_OVR_STORAGE">HAB_OVR_STORAGE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_RSN_ANY" href="#spsdk.image.hab_audit_log.HabReason.HAB_RSN_ANY">HAB_RSN_ANY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_ALGORITHM" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_ALGORITHM">HAB_UNS_ALGORITHM</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_COMMAND" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_COMMAND">HAB_UNS_COMMAND</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_ENGINE" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_ENGINE">HAB_UNS_ENGINE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_ITEM" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_ITEM">HAB_UNS_ITEM</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_KEY" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_KEY">HAB_UNS_KEY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_PROTOCOL" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_PROTOCOL">HAB_UNS_PROTOCOL</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabReason.HAB_UNS_STATE" href="#spsdk.image.hab_audit_log.HabReason.HAB_UNS_STATE">HAB_UNS_STATE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.hab_audit_log.HabState" href="#spsdk.image.hab_audit_log.HabState">HabState</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_CHECK" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_CHECK">HAB_STATE_CHECK</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_FAIL_HARD" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_FAIL_HARD">HAB_STATE_FAIL_HARD</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_FAIL_SOFT" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_FAIL_SOFT">HAB_STATE_FAIL_SOFT</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_INITIAL" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_INITIAL">HAB_STATE_INITIAL</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_NONE" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_NONE">HAB_STATE_NONE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_NONSECURE" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_NONSECURE">HAB_STATE_NONSECURE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_SECURE" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_SECURE">HAB_STATE_SECURE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabState.HAB_STATE_TRUSTED" href="#spsdk.image.hab_audit_log.HabState.HAB_STATE_TRUSTED">HAB_STATE_TRUSTED</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.image.hab_audit_log.HabStatus" href="#spsdk.image.hab_audit_log.HabStatus">HabStatus</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.image.hab_audit_log.HabStatus.HAB_FAILURE" href="#spsdk.image.hab_audit_log.HabStatus.HAB_FAILURE">HAB_FAILURE</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabStatus.HAB_STS_ANY" href="#spsdk.image.hab_audit_log.HabStatus.HAB_STS_ANY">HAB_STS_ANY</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabStatus.HAB_SUCCESS" href="#spsdk.image.hab_audit_log.HabStatus.HAB_SUCCESS">HAB_SUCCESS</a></code></li>
+<li><code><a title="spsdk.image.hab_audit_log.HabStatus.HAB_WARNING" href="#spsdk.image.hab_audit_log.HabStatus.HAB_WARNING">HAB_WARNING</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

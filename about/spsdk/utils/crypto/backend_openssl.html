@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.utils.crypto.backend_openssl API documentation</title>
+<meta name="description" content="OpenSSL implementation for security backend." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.utils.crypto.backend_openssl</code></h1>
+</header>
+<section id="section-intro">
+<p>OpenSSL implementation for security backend.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+
+&#34;&#34;&#34;OpenSSL implementation for security backend.&#34;&#34;&#34;
+
+# Used security modules
+from secrets import token_bytes
+from typing import Any, Union
+
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes, hmac, keywrap, serialization
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+# Abstract Class Interface
+from .abstract import BackendClass
+
+
+########################################################################################################################
+# SPSDK OpenSSL Backend
+########################################################################################################################
+class Backend(BackendClass):
+    &#34;&#34;&#34;OpenSSL implementation for security backend.&#34;&#34;&#34;
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;Name of the backend.&#34;&#34;&#34;
+        return &#39;SPSDK OpenSSL&#39;
+
+    @property
+    def version(self) -&gt; str:
+        &#34;&#34;&#34;Version of the backend.&#34;&#34;&#34;
+        return &#39;0.1&#39;
+
+    def random_bytes(self, length: int) -&gt; bytes:
+        &#34;&#34;&#34;Return a random byte string with specified length.
+
+        :param length: The length in bytes
+        :return: Random bytes
+        &#34;&#34;&#34;
+        return token_bytes(length)
+
+    @staticmethod
+    def _get_algorithm(name: str) -&gt; Any:
+        &#34;&#34;&#34;For specified name return hashes algorithm instance.
+
+        :param name: of the algorithm (class name), case insensitive
+        :return: instance of algorithm class
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        algo_cls = getattr(hashes, name.upper(), None)  # hack: get class object by name
+        if algo_cls is None:
+            raise ValueError(f&#39;Unsupported algorithm: hashes.{name}&#39;.format(name=name.upper()))
+
+        return algo_cls()  # pylint: disable=not-callable
+
+    def hash(self, data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+        &#34;&#34;&#34;Return a HASH from input data with specified algorithm.
+
+        :param data: Input data in bytes
+        :param algorithm: Algorithm type for HASH function
+        :return: Hash-ed bytes
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        hash_obj = hashes.Hash(self._get_algorithm(algorithm), default_backend())
+        hash_obj.update(data)
+        return hash_obj.finalize()
+
+    def hmac(self, key: bytes, data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+        &#34;&#34;&#34;Return a HMAC from data with specified key and algorithm.
+
+        :param key: The key in bytes format
+        :param data: Input data in bytes format
+        :param algorithm: Algorithm type for HASH function (sha256, sha384, sha512, ...)
+        :return: HMAC bytes
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        hmac_obj = hmac.HMAC(key, self._get_algorithm(algorithm), default_backend())
+        hmac_obj.update(data)
+        return hmac_obj.finalize()
+
+    def aes_key_wrap(self, kek: bytes, key_to_wrap: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Wraps a key using a key-encrypting key (KEK).
+
+        :param kek: The key-encrypting key
+        :param key_to_wrap: Plain data
+        :return: Wrapped key
+        &#34;&#34;&#34;
+        return keywrap.aes_key_wrap(kek, key_to_wrap, default_backend())
+
+    def aes_key_unwrap(self, kek: bytes, wrapped_key: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Unwraps a key using a key-encrypting key (KEK).
+
+        :param kek: The key-encrypting key
+        :param wrapped_key: Encrypted data
+        :return: Un-wrapped key
+        &#34;&#34;&#34;
+        return keywrap.aes_key_unwrap(kek, wrapped_key, default_backend())
+
+    def aes_ctr_encrypt(self, key: bytes, plain_data: bytes, nonce: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Encrypt plain data with AES in CTR mode.
+
+        :param key: The key for data encryption
+        :param plain_data: Input data
+        :param nonce: Nonce data with counter value
+        :return: Encrypted data
+        &#34;&#34;&#34;
+        cipher = Cipher(algorithms.AES(key), modes.CTR(nonce), default_backend())
+        enc = cipher.encryptor()
+        return enc.update(plain_data) + enc.finalize()
+
+    def aes_ctr_decrypt(self, key: bytes, encrypted_data: bytes, nonce: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Decrypt encrypted data with AES in CTR mode.
+
+        :param key: The key for data decryption
+        :param encrypted_data: Input data
+        :param nonce: Nonce data with counter value
+        :return: Decrypted data
+        &#34;&#34;&#34;
+        cipher = Cipher(algorithms.AES(key), modes.CTR(nonce), default_backend())
+        enc = cipher.decryptor()
+        return enc.update(encrypted_data) + enc.finalize()
+
+    def rsa_sign(self, priv_key: Union[rsa.RSAPrivateKey, bytes], data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+        &#34;&#34;&#34;Sign input data.
+
+        :param priv_key: The private key: either rsa.RSAPrivateKey or decrypted binary data in PEM format
+        :param data: Input data
+        :param algorithm: Used algorithm
+        :return: Signed data
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        if isinstance(priv_key, bytes):
+            priv_key = serialization.load_pem_private_key(priv_key, None, default_backend())
+        assert isinstance(priv_key, rsa.RSAPrivateKey)
+        return priv_key.sign(data=data, padding=padding.PKCS1v15(), algorithm=self._get_algorithm(algorithm))
+
+    def rsa_verify(self, pub_key_mod: int, pub_key_exp: int, signature: bytes, data: bytes,
+                   algorithm: str = &#39;sha256&#39;) -&gt; bool:
+        &#34;&#34;&#34;Verify input data.
+
+        :param pub_key_mod: The public key modulus
+        :param pub_key_exp: The public key exponent
+        :param signature: The signature of input data
+        :param data: Input data
+        :param algorithm: Used algorithm
+        :return: True if signature is valid, False otherwise
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        public_key = rsa.RSAPublicNumbers(pub_key_exp, pub_key_mod).public_key(default_backend())
+        assert isinstance(public_key, rsa.RSAPublicKey)
+        try:
+            public_key.verify(signature=signature, data=data, padding=padding.PKCS1v15(),
+                              algorithm=self._get_algorithm(algorithm))
+        except InvalidSignature:
+            return False
+
+        return True
+
+    def rsa_public_key(self, modulus: int, exponent: int) -&gt; rsa.RSAPublicKey:
+        &#34;&#34;&#34;Create RSA public key object from modulus and exponent.
+
+        :param modulus: The RSA public key modulus
+        :param exponent: The RSA public key exponent
+        :return: RSA Key instance
+        &#34;&#34;&#34;
+        return rsa.RSAPublicNumbers(exponent, modulus).public_key(default_backend())
+
+
+########################################################################################################################
+# SPSDK OpenSSL Backend instance
+########################################################################################################################
+openssl_backend = Backend()     # pylint: disable=invalid-name</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend"><code class="flex name class">
+<span>class <span class="ident">Backend</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>OpenSSL implementation for security backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Backend(BackendClass):
+    &#34;&#34;&#34;OpenSSL implementation for security backend.&#34;&#34;&#34;
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;Name of the backend.&#34;&#34;&#34;
+        return &#39;SPSDK OpenSSL&#39;
+
+    @property
+    def version(self) -&gt; str:
+        &#34;&#34;&#34;Version of the backend.&#34;&#34;&#34;
+        return &#39;0.1&#39;
+
+    def random_bytes(self, length: int) -&gt; bytes:
+        &#34;&#34;&#34;Return a random byte string with specified length.
+
+        :param length: The length in bytes
+        :return: Random bytes
+        &#34;&#34;&#34;
+        return token_bytes(length)
+
+    @staticmethod
+    def _get_algorithm(name: str) -&gt; Any:
+        &#34;&#34;&#34;For specified name return hashes algorithm instance.
+
+        :param name: of the algorithm (class name), case insensitive
+        :return: instance of algorithm class
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        algo_cls = getattr(hashes, name.upper(), None)  # hack: get class object by name
+        if algo_cls is None:
+            raise ValueError(f&#39;Unsupported algorithm: hashes.{name}&#39;.format(name=name.upper()))
+
+        return algo_cls()  # pylint: disable=not-callable
+
+    def hash(self, data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+        &#34;&#34;&#34;Return a HASH from input data with specified algorithm.
+
+        :param data: Input data in bytes
+        :param algorithm: Algorithm type for HASH function
+        :return: Hash-ed bytes
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        hash_obj = hashes.Hash(self._get_algorithm(algorithm), default_backend())
+        hash_obj.update(data)
+        return hash_obj.finalize()
+
+    def hmac(self, key: bytes, data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+        &#34;&#34;&#34;Return a HMAC from data with specified key and algorithm.
+
+        :param key: The key in bytes format
+        :param data: Input data in bytes format
+        :param algorithm: Algorithm type for HASH function (sha256, sha384, sha512, ...)
+        :return: HMAC bytes
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        hmac_obj = hmac.HMAC(key, self._get_algorithm(algorithm), default_backend())
+        hmac_obj.update(data)
+        return hmac_obj.finalize()
+
+    def aes_key_wrap(self, kek: bytes, key_to_wrap: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Wraps a key using a key-encrypting key (KEK).
+
+        :param kek: The key-encrypting key
+        :param key_to_wrap: Plain data
+        :return: Wrapped key
+        &#34;&#34;&#34;
+        return keywrap.aes_key_wrap(kek, key_to_wrap, default_backend())
+
+    def aes_key_unwrap(self, kek: bytes, wrapped_key: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Unwraps a key using a key-encrypting key (KEK).
+
+        :param kek: The key-encrypting key
+        :param wrapped_key: Encrypted data
+        :return: Un-wrapped key
+        &#34;&#34;&#34;
+        return keywrap.aes_key_unwrap(kek, wrapped_key, default_backend())
+
+    def aes_ctr_encrypt(self, key: bytes, plain_data: bytes, nonce: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Encrypt plain data with AES in CTR mode.
+
+        :param key: The key for data encryption
+        :param plain_data: Input data
+        :param nonce: Nonce data with counter value
+        :return: Encrypted data
+        &#34;&#34;&#34;
+        cipher = Cipher(algorithms.AES(key), modes.CTR(nonce), default_backend())
+        enc = cipher.encryptor()
+        return enc.update(plain_data) + enc.finalize()
+
+    def aes_ctr_decrypt(self, key: bytes, encrypted_data: bytes, nonce: bytes) -&gt; bytes:
+        &#34;&#34;&#34;Decrypt encrypted data with AES in CTR mode.
+
+        :param key: The key for data decryption
+        :param encrypted_data: Input data
+        :param nonce: Nonce data with counter value
+        :return: Decrypted data
+        &#34;&#34;&#34;
+        cipher = Cipher(algorithms.AES(key), modes.CTR(nonce), default_backend())
+        enc = cipher.decryptor()
+        return enc.update(encrypted_data) + enc.finalize()
+
+    def rsa_sign(self, priv_key: Union[rsa.RSAPrivateKey, bytes], data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+        &#34;&#34;&#34;Sign input data.
+
+        :param priv_key: The private key: either rsa.RSAPrivateKey or decrypted binary data in PEM format
+        :param data: Input data
+        :param algorithm: Used algorithm
+        :return: Signed data
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        if isinstance(priv_key, bytes):
+            priv_key = serialization.load_pem_private_key(priv_key, None, default_backend())
+        assert isinstance(priv_key, rsa.RSAPrivateKey)
+        return priv_key.sign(data=data, padding=padding.PKCS1v15(), algorithm=self._get_algorithm(algorithm))
+
+    def rsa_verify(self, pub_key_mod: int, pub_key_exp: int, signature: bytes, data: bytes,
+                   algorithm: str = &#39;sha256&#39;) -&gt; bool:
+        &#34;&#34;&#34;Verify input data.
+
+        :param pub_key_mod: The public key modulus
+        :param pub_key_exp: The public key exponent
+        :param signature: The signature of input data
+        :param data: Input data
+        :param algorithm: Used algorithm
+        :return: True if signature is valid, False otherwise
+        :raise ValueError: if algorithm not found
+        &#34;&#34;&#34;
+        public_key = rsa.RSAPublicNumbers(pub_key_exp, pub_key_mod).public_key(default_backend())
+        assert isinstance(public_key, rsa.RSAPublicKey)
+        try:
+            public_key.verify(signature=signature, data=data, padding=padding.PKCS1v15(),
+                              algorithm=self._get_algorithm(algorithm))
+        except InvalidSignature:
+            return False
+
+        return True
+
+    def rsa_public_key(self, modulus: int, exponent: int) -&gt; rsa.RSAPublicKey:
+        &#34;&#34;&#34;Create RSA public key object from modulus and exponent.
+
+        :param modulus: The RSA public key modulus
+        :param exponent: The RSA public key exponent
+        :return: RSA Key instance
+        &#34;&#34;&#34;
+        return rsa.RSAPublicNumbers(exponent, modulus).public_key(default_backend())</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.utils.crypto.abstract.BackendClass" href="abstract.html#spsdk.utils.crypto.abstract.BackendClass">BackendClass</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Name of the backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def name(self) -&gt; str:
+    &#34;&#34;&#34;Name of the backend.&#34;&#34;&#34;
+    return &#39;SPSDK OpenSSL&#39;</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.version"><code class="name">var <span class="ident">version</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Version of the backend.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def version(self) -&gt; str:
+    &#34;&#34;&#34;Version of the backend.&#34;&#34;&#34;
+    return &#39;0.1&#39;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.aes_ctr_decrypt"><code class="name flex">
+<span>def <span class="ident">aes_ctr_decrypt</span></span>(<span>self, key: bytes, encrypted_data: bytes, nonce: bytes) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Decrypt encrypted data with AES in CTR mode.</p>
+<p>:param key: The key for data decryption
+:param encrypted_data: Input data
+:param nonce: Nonce data with counter value
+:return: Decrypted data</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aes_ctr_decrypt(self, key: bytes, encrypted_data: bytes, nonce: bytes) -&gt; bytes:
+    &#34;&#34;&#34;Decrypt encrypted data with AES in CTR mode.
+
+    :param key: The key for data decryption
+    :param encrypted_data: Input data
+    :param nonce: Nonce data with counter value
+    :return: Decrypted data
+    &#34;&#34;&#34;
+    cipher = Cipher(algorithms.AES(key), modes.CTR(nonce), default_backend())
+    enc = cipher.decryptor()
+    return enc.update(encrypted_data) + enc.finalize()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.aes_ctr_encrypt"><code class="name flex">
+<span>def <span class="ident">aes_ctr_encrypt</span></span>(<span>self, key: bytes, plain_data: bytes, nonce: bytes) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Encrypt plain data with AES in CTR mode.</p>
+<p>:param key: The key for data encryption
+:param plain_data: Input data
+:param nonce: Nonce data with counter value
+:return: Encrypted data</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aes_ctr_encrypt(self, key: bytes, plain_data: bytes, nonce: bytes) -&gt; bytes:
+    &#34;&#34;&#34;Encrypt plain data with AES in CTR mode.
+
+    :param key: The key for data encryption
+    :param plain_data: Input data
+    :param nonce: Nonce data with counter value
+    :return: Encrypted data
+    &#34;&#34;&#34;
+    cipher = Cipher(algorithms.AES(key), modes.CTR(nonce), default_backend())
+    enc = cipher.encryptor()
+    return enc.update(plain_data) + enc.finalize()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.aes_key_unwrap"><code class="name flex">
+<span>def <span class="ident">aes_key_unwrap</span></span>(<span>self, kek: bytes, wrapped_key: bytes) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Unwraps a key using a key-encrypting key (KEK).</p>
+<p>:param kek: The key-encrypting key
+:param wrapped_key: Encrypted data
+:return: Un-wrapped key</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aes_key_unwrap(self, kek: bytes, wrapped_key: bytes) -&gt; bytes:
+    &#34;&#34;&#34;Unwraps a key using a key-encrypting key (KEK).
+
+    :param kek: The key-encrypting key
+    :param wrapped_key: Encrypted data
+    :return: Un-wrapped key
+    &#34;&#34;&#34;
+    return keywrap.aes_key_unwrap(kek, wrapped_key, default_backend())</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.aes_key_wrap"><code class="name flex">
+<span>def <span class="ident">aes_key_wrap</span></span>(<span>self, kek: bytes, key_to_wrap: bytes) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Wraps a key using a key-encrypting key (KEK).</p>
+<p>:param kek: The key-encrypting key
+:param key_to_wrap: Plain data
+:return: Wrapped key</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def aes_key_wrap(self, kek: bytes, key_to_wrap: bytes) -&gt; bytes:
+    &#34;&#34;&#34;Wraps a key using a key-encrypting key (KEK).
+
+    :param kek: The key-encrypting key
+    :param key_to_wrap: Plain data
+    :return: Wrapped key
+    &#34;&#34;&#34;
+    return keywrap.aes_key_wrap(kek, key_to_wrap, default_backend())</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.hash"><code class="name flex">
+<span>def <span class="ident">hash</span></span>(<span>self, data: bytes, algorithm: str = 'sha256') ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a HASH from input data with specified algorithm.</p>
+<p>:param data: Input data in bytes
+:param algorithm: Algorithm type for HASH function
+:return: Hash-ed bytes
+:raise ValueError: if algorithm not found</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hash(self, data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+    &#34;&#34;&#34;Return a HASH from input data with specified algorithm.
+
+    :param data: Input data in bytes
+    :param algorithm: Algorithm type for HASH function
+    :return: Hash-ed bytes
+    :raise ValueError: if algorithm not found
+    &#34;&#34;&#34;
+    hash_obj = hashes.Hash(self._get_algorithm(algorithm), default_backend())
+    hash_obj.update(data)
+    return hash_obj.finalize()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.hmac"><code class="name flex">
+<span>def <span class="ident">hmac</span></span>(<span>self, key: bytes, data: bytes, algorithm: str = 'sha256') ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a HMAC from data with specified key and algorithm.</p>
+<p>:param key: The key in bytes format
+:param data: Input data in bytes format
+:param algorithm: Algorithm type for HASH function (sha256, sha384, sha512, &hellip;)
+:return: HMAC bytes
+:raise ValueError: if algorithm not found</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hmac(self, key: bytes, data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+    &#34;&#34;&#34;Return a HMAC from data with specified key and algorithm.
+
+    :param key: The key in bytes format
+    :param data: Input data in bytes format
+    :param algorithm: Algorithm type for HASH function (sha256, sha384, sha512, ...)
+    :return: HMAC bytes
+    :raise ValueError: if algorithm not found
+    &#34;&#34;&#34;
+    hmac_obj = hmac.HMAC(key, self._get_algorithm(algorithm), default_backend())
+    hmac_obj.update(data)
+    return hmac_obj.finalize()</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.random_bytes"><code class="name flex">
+<span>def <span class="ident">random_bytes</span></span>(<span>self, length: int) ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return a random byte string with specified length.</p>
+<p>:param length: The length in bytes
+:return: Random bytes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def random_bytes(self, length: int) -&gt; bytes:
+    &#34;&#34;&#34;Return a random byte string with specified length.
+
+    :param length: The length in bytes
+    :return: Random bytes
+    &#34;&#34;&#34;
+    return token_bytes(length)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.rsa_public_key"><code class="name flex">
+<span>def <span class="ident">rsa_public_key</span></span>(<span>self, modulus: int, exponent: int) ‑> cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create RSA public key object from modulus and exponent.</p>
+<p>:param modulus: The RSA public key modulus
+:param exponent: The RSA public key exponent
+:return: RSA Key instance</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rsa_public_key(self, modulus: int, exponent: int) -&gt; rsa.RSAPublicKey:
+    &#34;&#34;&#34;Create RSA public key object from modulus and exponent.
+
+    :param modulus: The RSA public key modulus
+    :param exponent: The RSA public key exponent
+    :return: RSA Key instance
+    &#34;&#34;&#34;
+    return rsa.RSAPublicNumbers(exponent, modulus).public_key(default_backend())</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.rsa_sign"><code class="name flex">
+<span>def <span class="ident">rsa_sign</span></span>(<span>self, priv_key: Union[cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey, bytes], data: bytes, algorithm: str = 'sha256') ‑> bytes</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Sign input data.</p>
+<p>:param priv_key: The private key: either rsa.RSAPrivateKey or decrypted binary data in PEM format
+:param data: Input data
+:param algorithm: Used algorithm
+:return: Signed data
+:raise ValueError: if algorithm not found</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rsa_sign(self, priv_key: Union[rsa.RSAPrivateKey, bytes], data: bytes, algorithm: str = &#39;sha256&#39;) -&gt; bytes:
+    &#34;&#34;&#34;Sign input data.
+
+    :param priv_key: The private key: either rsa.RSAPrivateKey or decrypted binary data in PEM format
+    :param data: Input data
+    :param algorithm: Used algorithm
+    :return: Signed data
+    :raise ValueError: if algorithm not found
+    &#34;&#34;&#34;
+    if isinstance(priv_key, bytes):
+        priv_key = serialization.load_pem_private_key(priv_key, None, default_backend())
+    assert isinstance(priv_key, rsa.RSAPrivateKey)
+    return priv_key.sign(data=data, padding=padding.PKCS1v15(), algorithm=self._get_algorithm(algorithm))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.utils.crypto.backend_openssl.Backend.rsa_verify"><code class="name flex">
+<span>def <span class="ident">rsa_verify</span></span>(<span>self, pub_key_mod: int, pub_key_exp: int, signature: bytes, data: bytes, algorithm: str = 'sha256') ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Verify input data.</p>
+<p>:param pub_key_mod: The public key modulus
+:param pub_key_exp: The public key exponent
+:param signature: The signature of input data
+:param data: Input data
+:param algorithm: Used algorithm
+:return: True if signature is valid, False otherwise
+:raise ValueError: if algorithm not found</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rsa_verify(self, pub_key_mod: int, pub_key_exp: int, signature: bytes, data: bytes,
+               algorithm: str = &#39;sha256&#39;) -&gt; bool:
+    &#34;&#34;&#34;Verify input data.
+
+    :param pub_key_mod: The public key modulus
+    :param pub_key_exp: The public key exponent
+    :param signature: The signature of input data
+    :param data: Input data
+    :param algorithm: Used algorithm
+    :return: True if signature is valid, False otherwise
+    :raise ValueError: if algorithm not found
+    &#34;&#34;&#34;
+    public_key = rsa.RSAPublicNumbers(pub_key_exp, pub_key_mod).public_key(default_backend())
+    assert isinstance(public_key, rsa.RSAPublicKey)
+    try:
+        public_key.verify(signature=signature, data=data, padding=padding.PKCS1v15(),
+                          algorithm=self._get_algorithm(algorithm))
+    except InvalidSignature:
+        return False
+
+    return True</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.utils.crypto" href="index.html">spsdk.utils.crypto</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.utils.crypto.backend_openssl.Backend" href="#spsdk.utils.crypto.backend_openssl.Backend">Backend</a></code></h4>
+<ul class="two-column">
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.aes_ctr_decrypt" href="#spsdk.utils.crypto.backend_openssl.Backend.aes_ctr_decrypt">aes_ctr_decrypt</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.aes_ctr_encrypt" href="#spsdk.utils.crypto.backend_openssl.Backend.aes_ctr_encrypt">aes_ctr_encrypt</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.aes_key_unwrap" href="#spsdk.utils.crypto.backend_openssl.Backend.aes_key_unwrap">aes_key_unwrap</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.aes_key_wrap" href="#spsdk.utils.crypto.backend_openssl.Backend.aes_key_wrap">aes_key_wrap</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.hash" href="#spsdk.utils.crypto.backend_openssl.Backend.hash">hash</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.hmac" href="#spsdk.utils.crypto.backend_openssl.Backend.hmac">hmac</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.name" href="#spsdk.utils.crypto.backend_openssl.Backend.name">name</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.random_bytes" href="#spsdk.utils.crypto.backend_openssl.Backend.random_bytes">random_bytes</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.rsa_public_key" href="#spsdk.utils.crypto.backend_openssl.Backend.rsa_public_key">rsa_public_key</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.rsa_sign" href="#spsdk.utils.crypto.backend_openssl.Backend.rsa_sign">rsa_sign</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.rsa_verify" href="#spsdk.utils.crypto.backend_openssl.Backend.rsa_verify">rsa_verify</a></code></li>
+<li><code><a title="spsdk.utils.crypto.backend_openssl.Backend.version" href="#spsdk.utils.crypto.backend_openssl.Backend.version">version</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

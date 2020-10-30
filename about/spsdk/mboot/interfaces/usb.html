@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>spsdk.mboot.interfaces.usb API documentation</title>
+<meta name="description" content="Module for serial communication with a target device using MBoot protocol." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>spsdk.mboot.interfaces.usb</code></h1>
+</header>
+<section id="section-intro">
+<p>Module for serial communication with a target device using MBoot protocol.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#
+# Copyright 2016-2018 Martin Olejar
+# Copyright 2019-2020 NXP
+#
+# SPDX-License-Identifier: BSD-3-Clause
+&#34;&#34;&#34;Module for serial communication with a target device using MBoot protocol.&#34;&#34;&#34;
+
+# This violation is suppressed due to differences in Win/Linux implementation of USB
+# pylint: disable=E1101
+
+import collections
+import logging
+import os
+from struct import pack, unpack_from
+from time import time
+from typing import List, Tuple, Union
+
+from spsdk.exceptions import SPSDKError
+
+from ..commands import CmdPacket, CmdResponse, parse_cmd_response
+from .base import Interface
+
+logger = logging.getLogger(&#39;MBOOT:USB&#39;)
+
+# os.environ[&#39;PYUSB_DEBUG&#39;] = &#39;debug&#39;
+# os.environ[&#39;PYUSB_LOG_FILENAME&#39;] = &#39;usb.log&#39;
+
+########################################################################################################################
+# Devices
+########################################################################################################################
+
+USB_DEVICES = {
+    # NAME   | VID   | PID
+    &#39;MKL27&#39;: (0x15A2, 0x0073),
+    &#39;LPC55&#39;: (0x1FC9, 0x0021),
+    &#39;IMXRT&#39;: (0x1FC9, 0x0135),
+    &#39;MXRT20&#39;: (0x15A2, 0x0073),  # this is ID of flash-loader for RT102x
+    &#39;MXRT50&#39;: (0x15A2, 0x0073),  # this is ID of flash-loader for RT105x
+    &#39;MXRT60&#39;: (0x15A2, 0x0073),  # this is ID of flash-loader for RT106x
+    &#39;LPC55xx&#39;: (0x1FC9, 0x0020),
+    &#39;LPC551x&#39;: (0x1FC9, 0x0022),
+    &#39;RT6xx&#39;: (0x1FC9, 0x0021),
+    &#39;RT5xx&#39;: (0x1FC9, 0x0020),
+    &#39;RT6xxM&#39;: (0x1FC9, 0x0024)
+}
+
+
+def scan_usb(device_name: str = None) -&gt; List[Interface]:
+    &#34;&#34;&#34;Scan connected USB devices.
+
+    :param device_name: The specific device name (MKL27, LPC55, ...) or VID:PID
+    :return: list of matching RawHid devices
+    &#34;&#34;&#34;
+    devices = []
+
+    if device_name is None:
+        for _, value in USB_DEVICES.items():
+            devices += RawHid.enumerate(value[0], value[1])
+    else:
+        if &#39;:&#39; in device_name:
+            vid_str, pid_str = device_name.split(&#39;:&#39;)
+            devices = RawHid.enumerate(int(vid_str, 0), int(pid_str, 0))
+        else:
+            if device_name in USB_DEVICES:
+                vid = USB_DEVICES[device_name][0]
+                pid = USB_DEVICES[device_name][1]
+                devices = RawHid.enumerate(vid, pid)
+    return devices
+
+
+########################################################################################################################
+# USB HID Interface Base Class
+########################################################################################################################
+
+REPORT_ID = {
+    # USB HID Reports
+    &#39;CMD_OUT&#39;: 0x01,
+    &#39;CMD_IN&#39;: 0x03,
+    &#39;DATA_OUT&#39;: 0x02,
+    &#39;DATA_IN&#39;: 0x04
+}
+
+
+class RawHidBase(Interface):
+    &#34;&#34;&#34;Base class for OS specific RAW HID Interface classes.&#34;&#34;&#34;
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;Get the name of the device.
+
+        :return: Name of the device.
+        &#34;&#34;&#34;
+        for name, value in USB_DEVICES.items():
+            if value[0] == self.vid and value[1] == self.pid:
+                return name
+        return &#39;Unknown&#39;
+
+    @property
+    def is_opened(self) -&gt; bool:
+        &#34;&#34;&#34;Indicates whether device is open.
+
+        :return: True if device is open, False othervise.
+        &#34;&#34;&#34;
+        return self._opened
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize the USB interface object.&#34;&#34;&#34;
+        super().__init__()
+        self._opened = False
+        self.vid = 0
+        self.pid = 0
+        self.vendor_name = &#34;&#34;
+        self.product_name = &#34;&#34;
+        self.timeout = 2000
+
+    @staticmethod
+    def _encode_report(report_id: int, report_size: int, data: bytes, offset: int = 0) -&gt; Tuple[bytes, int]:
+        &#34;&#34;&#34;Encode the USB packet.
+
+        :param report_id: ID of the report (see: HID_REPORT)
+        :param report_size: Length of the report to send
+        :param data: Data to send
+        :param offset: offset within the &#39;data&#39; bytes
+        :return: Encoded bytes and length of the final report frame
+        &#34;&#34;&#34;
+        data_len = min(len(data) - offset, report_size - 4)
+        raw_data = pack(&#39;&lt;2BH&#39;, report_id, 0x00, data_len)
+        raw_data += data[offset: offset + data_len]
+        raw_data += bytes([0x00] * (report_size - len(raw_data)))
+        logger.debug(f&#34;OUT[{len(raw_data)}]: {&#39;, &#39;.join(f&#39;{b:02X}&#39; for b in raw_data)}&#34;)
+        return raw_data, offset + data_len
+
+    @staticmethod
+    def _decode_report(raw_data: bytes) -&gt; Union[CmdResponse, bytes]:
+        &#34;&#34;&#34;Decodes the data read on USB interface.
+
+        :param raw_data: Data received
+        :type raw_data: bytes
+        :return: CmdResponse object or data read
+        :raises SPSDKError: Transaction aborted by target
+        &#34;&#34;&#34;
+        logger.debug(f&#34;IN [{len(raw_data)}]: {&#39;, &#39;.join(f&#39;{b:02X}&#39; for b in raw_data)}&#34;)
+        report_id, _, plen = unpack_from(&#39;&lt;2BH&#39;, raw_data)
+        if plen == 0:
+            logger.debug(&#34;Received an abort package&#34;)
+            raise SPSDKError(&#39;Transaction aborted&#39;)
+        data = raw_data[4: 4 + plen]
+        if report_id == REPORT_ID[&#39;CMD_IN&#39;]:
+            return parse_cmd_response(data)
+        return data
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return information about the USB interface.&#34;&#34;&#34;
+        return f&#34;{self.product_name:s} (0x{self.vid:04X}, 0x{self.pid:04X})&#34;
+
+
+########################################################################################################################
+# USB Interface Classes
+########################################################################################################################
+if os.name == &#34;nt&#34;:
+    try:
+        import pywinusb.hid as hid
+    except:
+        raise Exception(&#34;PyWinUSB is required on a Windows Machine&#34;)
+
+
+    class RawHid(RawHidBase):
+        &#34;&#34;&#34;Provides basic functions to access a USB HID device using pywinusb.&#34;&#34;&#34;
+
+        def __init__(self) -&gt; None:
+            &#34;&#34;&#34;Initialize the USB interface object.&#34;&#34;&#34;
+            super().__init__()
+            # Vendor page and usage_id = 2
+            self.report: List[hid.core.HidReport] = []
+            # deque used here instead of synchronized Queue
+            # since read speeds are ~10-30% faster and are
+            # comparable to a based list implementation.
+            self.rcv_data: collections.deque = collections.deque()
+            self.device: hid.HidDevice = None
+
+        # handler called when a report is received
+        def rx_handler(self, data: bytes) -&gt; None:
+            &#34;&#34;&#34;Handler is called when a new USB report (data) is received.
+
+            :param data: Data received by the USB stack
+            &#34;&#34;&#34;
+            # logging.debug(&#34;rcv: %s&#34;, data[1:])
+            self.rcv_data.append(data)
+
+        def open(self) -&gt; None:
+            &#34;&#34;&#34;Open the interface.&#34;&#34;&#34;
+            logger.debug(&#34;Open Interface&#34;)
+            self.device.set_raw_data_handler(self.rx_handler)
+            self.device.open(shared=False)
+            self._opened = True
+
+        def close(self) -&gt; None:
+            &#34;&#34;&#34;Close the interface.&#34;&#34;&#34;
+            logger.debug(&#34;Close Interface&#34;)
+            self.device.close()
+            self._opened = False
+
+        def write(self, packet: Union[CmdPacket, bytes]) -&gt; None:
+            &#34;&#34;&#34;Write data on the OUT endpoint associated to the HID interface.
+
+            :param packet: HID packet data
+            :raises ValueError: Raises an error if packet type is incorrect
+            &#34;&#34;&#34;
+            if isinstance(packet, CmdPacket):
+                report_id = REPORT_ID[&#39;CMD_OUT&#39;]
+                data = packet.to_bytes()
+            elif isinstance(packet, (bytes, bytearray)):
+                report_id = REPORT_ID[&#39;DATA_OUT&#39;]
+                data = packet
+            else:
+                raise ValueError(&#34;Packet has to be either &#39;CmdPacket&#39; or &#39;bytes&#39;&#34;)
+
+            data_index = 0
+            # TODO: find alternative method to get the report size
+            # pylint: disable=protected-access
+            report_size = self.report[report_id - 1]._HidReport__raw_report_size
+            while data_index &lt; len(data):
+                raw_data, data_index = self._encode_report(report_id, report_size, data, data_index)
+                self.report[report_id - 1].send(raw_data)
+
+        def read(self) -&gt; Union[CmdResponse, bytes]:
+            &#34;&#34;&#34;Read data on the IN endpoint associated to the HID interfaces.
+
+            :return: Response to the last command
+            :raises TimeoutError: Exception caused by time-out
+            &#34;&#34;&#34;
+            start = time()
+            while len(self.rcv_data) == 0:
+                if ((time() - start) * 1000) &gt; self.timeout:
+                    raise TimeoutError()
+
+            raw_data = self.rcv_data.popleft()
+            return self._decode_report(bytes(raw_data))
+
+        @staticmethod
+        def enumerate(vid: int, pid: int) -&gt; List[Interface]:
+            &#34;&#34;&#34;Returns all the connected devices which matches PyWinUSB.vid/PyWinUSB.pid.
+
+            :param vid: USB Vendor ID
+            :param pid: USB Product ID
+            :return: List of interfaces found
+            &#34;&#34;&#34;
+            targets: List[Interface] = []
+            all_devices = hid.find_all_hid_devices()
+
+            # find devices with good vid/pid
+            for dev in all_devices:
+                if (dev.vendor_id == vid) and (dev.product_id == pid):
+                    try:
+                        dev.open(shared=False)
+                        report = dev.find_output_reports()
+
+                        if report:
+                            new_target = RawHid()
+                            new_target.report = report
+                            new_target.vendor_name = dev.vendor_name
+                            new_target.product_name = dev.product_name
+                            new_target.vid = dev.vendor_id
+                            new_target.pid = dev.product_id
+                            new_target.device = dev
+                            new_target.device.set_raw_data_handler(new_target.rx_handler)
+                            targets.append(new_target)
+
+                    except hid.HIDError as e:
+                        logger.error(f&#34;Receiving Exception: {str(e)}&#34;)
+                    finally:
+                        dev.close()
+
+            return targets
+
+
+else:
+    try:
+        import usb.core
+        import usb.util
+    except:
+        raise Exception(&#34;PyUSB is required on a Linux Machine&#34;)
+
+
+    class RawHid(RawHidBase):
+        &#34;&#34;&#34;Provides basic functions to access a USB HID device using pyusb.&#34;&#34;&#34;
+
+        def __init__(self) -&gt; None:
+            &#34;&#34;&#34;Initialize the USB interface object.&#34;&#34;&#34;
+            super().__init__()
+            self.ep_out = None
+            self.ep_in = None
+            self.device = None
+            self.interface_number = -1
+
+        def open(self) -&gt; None:
+            &#34;&#34;&#34;Open the interface.&#34;&#34;&#34;
+            logger.debug(&#34;Open Interface&#34;)
+            self._opened = True
+
+        def close(self) -&gt; None:
+            &#34;&#34;&#34;Close the interface.&#34;&#34;&#34;
+            logger.debug(&#34;Close Interface&#34;)
+            self._opened = False
+            try:
+                if self.device:
+                    usb.util.dispose_resources(self.device)
+            except usb.core.HIDError:
+                pass
+
+        def write(self, packet: Union[CmdPacket, bytes]) -&gt; None:
+            &#34;&#34;&#34;Write data on the OUT endpoint associated to the HID interfaces.
+
+            :param packet: Data to send
+            :raises ValueError: Raises an error if packet type is incorrect
+            &#34;&#34;&#34;
+            if isinstance(packet, CmdPacket):
+                report_id = REPORT_ID[&#39;CMD_OUT&#39;]
+                data = packet.to_bytes()
+            elif isinstance(packet, (bytes, bytearray)):
+                report_id = REPORT_ID[&#39;DATA_OUT&#39;]
+                data = packet
+            else:
+                raise ValueError(&#34;Packet has to be either &#39;CmdPacket&#39; or &#39;bytes&#39;&#34;)
+
+            data_index = 0
+            if self.ep_out:
+                report_size = self.ep_out.wMaxPacketSize
+                while data_index &lt; len(data):
+                    raw_data, data_index = self._encode_report(report_id, report_size, data, data_index)
+                    self.ep_out.write(raw_data)
+
+            else:
+                bm_request_type = 0x21  # ------ # Host to device request of type Class of Recipient Interface
+                bm_request = 0x09  # ----------- # Set_REPORT: HID class-specific request for transferring data over EP0
+                w_value = 0x200 + report_id  # - # Issuing an OUT report with specified ID
+                w_index = self.interface_number  # Interface number for HID
+                report_size = 36  # TODO: get the value from descriptor
+                while data_index &lt; len(data):
+                    raw_data, data_index = self._encode_report(report_id, report_size, data, data_index)
+                    self.device.ctrl_transfer(bm_request_type, bm_request, w_value, w_index, raw_data)
+
+        def read(self) -&gt; Union[CmdResponse, bytes]:
+            &#34;&#34;&#34;Read data on the IN endpoint associated to the HID interface.
+
+            :return: Return CmdResponse object.
+            &#34;&#34;&#34;
+            # TODO: test if self.ep_in.wMaxPacketSize is accessible in all Linux distributions
+            raw_data = self.ep_in.read(self.ep_in.wMaxPacketSize, self.timeout)
+            # TODO: why is the code commented-out? rawdata = self.ep_in.read(36, timeout)
+            return self._decode_report(raw_data)
+
+        @staticmethod
+        def enumerate(vid: int, pid: int) -&gt; List[Interface]:
+            &#34;&#34;&#34;Get list of all connected devices which matches PyUSB.vid and PyUSB.pid.
+
+            :param vid: USB Vendor ID
+            :param pid: USB Product ID
+            :return: List of interfaces found
+            &#34;&#34;&#34;
+            targets: List[Interface] = []
+            # find all devices matching the vid/pid specified
+            all_devices = usb.core.find(find_all=True, idVendor=vid, idProduct=pid)
+
+            if not all_devices:
+                logger.debug(&#34;No device connected&#34;)
+                return targets
+
+            # iterate on all devices found
+            for dev in all_devices:
+                interface = None
+                interface_number = -1
+
+                # get active config
+                config = dev.get_active_configuration()
+
+                # iterate on all interfaces:
+                for interface in config:
+                    if interface.bInterfaceClass == 0x03:  # HID Interface
+                        interface_number = interface.bInterfaceNumber
+                        break
+
+                if interface is None or interface_number == -1:
+                    continue
+
+                try:
+                    if dev.is_kernel_driver_active(interface_number):
+                        dev.detach_kernel_driver(interface_number)
+                except usb.core.USBError as e:
+                    logger.debug(str(e))
+
+                try:
+                    dev.set_configuration()
+                    dev.reset()
+
+                except usb.core.USBError as e:
+                    logger.debug(f&#34;Cannot set configuration for the device: {str(e)}&#34;)
+
+                ep_in, ep_out = None, None
+                for endpoint in interface:
+                    if endpoint.bEndpointAddress &amp; 0x80:
+                        ep_in = endpoint
+                    else:
+                        ep_out = endpoint
+
+                if not ep_in:
+                    logger.error(&#39;Endpoints not found&#39;)
+                    return targets
+
+                new_target = RawHid()
+                new_target.ep_in = ep_in
+                new_target.ep_out = ep_out
+                new_target.device = dev
+                new_target.vid = vid
+                new_target.pid = pid
+                new_target.interface_number = interface_number
+                new_target.vendor_name = usb.util.get_string(dev, 1).strip(&#39;\0&#39;)
+                new_target.product_name = usb.util.get_string(dev, 2).strip(&#39;\0&#39;)
+                targets.append(new_target)
+
+            return targets</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="spsdk.mboot.interfaces.usb.scan_usb"><code class="name flex">
+<span>def <span class="ident">scan_usb</span></span>(<span>device_name: str = None) ‑> List[<a title="spsdk.mboot.interfaces.base.Interface" href="base.html#spsdk.mboot.interfaces.base.Interface">Interface</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Scan connected USB devices.</p>
+<p>:param device_name: The specific device name (MKL27, LPC55, &hellip;) or VID:PID
+:return: list of matching RawHid devices</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def scan_usb(device_name: str = None) -&gt; List[Interface]:
+    &#34;&#34;&#34;Scan connected USB devices.
+
+    :param device_name: The specific device name (MKL27, LPC55, ...) or VID:PID
+    :return: list of matching RawHid devices
+    &#34;&#34;&#34;
+    devices = []
+
+    if device_name is None:
+        for _, value in USB_DEVICES.items():
+            devices += RawHid.enumerate(value[0], value[1])
+    else:
+        if &#39;:&#39; in device_name:
+            vid_str, pid_str = device_name.split(&#39;:&#39;)
+            devices = RawHid.enumerate(int(vid_str, 0), int(pid_str, 0))
+        else:
+            if device_name in USB_DEVICES:
+                vid = USB_DEVICES[device_name][0]
+                pid = USB_DEVICES[device_name][1]
+                devices = RawHid.enumerate(vid, pid)
+    return devices</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="spsdk.mboot.interfaces.usb.RawHid"><code class="flex name class">
+<span>class <span class="ident">RawHid</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Provides basic functions to access a USB HID device using pywinusb.</p>
+<p>Initialize the USB interface object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RawHid(RawHidBase):
+    &#34;&#34;&#34;Provides basic functions to access a USB HID device using pywinusb.&#34;&#34;&#34;
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize the USB interface object.&#34;&#34;&#34;
+        super().__init__()
+        # Vendor page and usage_id = 2
+        self.report: List[hid.core.HidReport] = []
+        # deque used here instead of synchronized Queue
+        # since read speeds are ~10-30% faster and are
+        # comparable to a based list implementation.
+        self.rcv_data: collections.deque = collections.deque()
+        self.device: hid.HidDevice = None
+
+    # handler called when a report is received
+    def rx_handler(self, data: bytes) -&gt; None:
+        &#34;&#34;&#34;Handler is called when a new USB report (data) is received.
+
+        :param data: Data received by the USB stack
+        &#34;&#34;&#34;
+        # logging.debug(&#34;rcv: %s&#34;, data[1:])
+        self.rcv_data.append(data)
+
+    def open(self) -&gt; None:
+        &#34;&#34;&#34;Open the interface.&#34;&#34;&#34;
+        logger.debug(&#34;Open Interface&#34;)
+        self.device.set_raw_data_handler(self.rx_handler)
+        self.device.open(shared=False)
+        self._opened = True
+
+    def close(self) -&gt; None:
+        &#34;&#34;&#34;Close the interface.&#34;&#34;&#34;
+        logger.debug(&#34;Close Interface&#34;)
+        self.device.close()
+        self._opened = False
+
+    def write(self, packet: Union[CmdPacket, bytes]) -&gt; None:
+        &#34;&#34;&#34;Write data on the OUT endpoint associated to the HID interface.
+
+        :param packet: HID packet data
+        :raises ValueError: Raises an error if packet type is incorrect
+        &#34;&#34;&#34;
+        if isinstance(packet, CmdPacket):
+            report_id = REPORT_ID[&#39;CMD_OUT&#39;]
+            data = packet.to_bytes()
+        elif isinstance(packet, (bytes, bytearray)):
+            report_id = REPORT_ID[&#39;DATA_OUT&#39;]
+            data = packet
+        else:
+            raise ValueError(&#34;Packet has to be either &#39;CmdPacket&#39; or &#39;bytes&#39;&#34;)
+
+        data_index = 0
+        # TODO: find alternative method to get the report size
+        # pylint: disable=protected-access
+        report_size = self.report[report_id - 1]._HidReport__raw_report_size
+        while data_index &lt; len(data):
+            raw_data, data_index = self._encode_report(report_id, report_size, data, data_index)
+            self.report[report_id - 1].send(raw_data)
+
+    def read(self) -&gt; Union[CmdResponse, bytes]:
+        &#34;&#34;&#34;Read data on the IN endpoint associated to the HID interfaces.
+
+        :return: Response to the last command
+        :raises TimeoutError: Exception caused by time-out
+        &#34;&#34;&#34;
+        start = time()
+        while len(self.rcv_data) == 0:
+            if ((time() - start) * 1000) &gt; self.timeout:
+                raise TimeoutError()
+
+        raw_data = self.rcv_data.popleft()
+        return self._decode_report(bytes(raw_data))
+
+    @staticmethod
+    def enumerate(vid: int, pid: int) -&gt; List[Interface]:
+        &#34;&#34;&#34;Returns all the connected devices which matches PyWinUSB.vid/PyWinUSB.pid.
+
+        :param vid: USB Vendor ID
+        :param pid: USB Product ID
+        :return: List of interfaces found
+        &#34;&#34;&#34;
+        targets: List[Interface] = []
+        all_devices = hid.find_all_hid_devices()
+
+        # find devices with good vid/pid
+        for dev in all_devices:
+            if (dev.vendor_id == vid) and (dev.product_id == pid):
+                try:
+                    dev.open(shared=False)
+                    report = dev.find_output_reports()
+
+                    if report:
+                        new_target = RawHid()
+                        new_target.report = report
+                        new_target.vendor_name = dev.vendor_name
+                        new_target.product_name = dev.product_name
+                        new_target.vid = dev.vendor_id
+                        new_target.pid = dev.product_id
+                        new_target.device = dev
+                        new_target.device.set_raw_data_handler(new_target.rx_handler)
+                        targets.append(new_target)
+
+                except hid.HIDError as e:
+                    logger.error(f&#34;Receiving Exception: {str(e)}&#34;)
+                finally:
+                    dev.close()
+
+        return targets</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.interfaces.usb.RawHidBase" href="#spsdk.mboot.interfaces.usb.RawHidBase">RawHidBase</a></li>
+<li><a title="spsdk.mboot.interfaces.base.Interface" href="base.html#spsdk.mboot.interfaces.base.Interface">Interface</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="spsdk.mboot.interfaces.usb.RawHid.enumerate"><code class="name flex">
+<span>def <span class="ident">enumerate</span></span>(<span>vid: int, pid: int) ‑> List[<a title="spsdk.mboot.interfaces.base.Interface" href="base.html#spsdk.mboot.interfaces.base.Interface">Interface</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns all the connected devices which matches PyWinUSB.vid/PyWinUSB.pid.</p>
+<p>:param vid: USB Vendor ID
+:param pid: USB Product ID
+:return: List of interfaces found</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def enumerate(vid: int, pid: int) -&gt; List[Interface]:
+    &#34;&#34;&#34;Returns all the connected devices which matches PyWinUSB.vid/PyWinUSB.pid.
+
+    :param vid: USB Vendor ID
+    :param pid: USB Product ID
+    :return: List of interfaces found
+    &#34;&#34;&#34;
+    targets: List[Interface] = []
+    all_devices = hid.find_all_hid_devices()
+
+    # find devices with good vid/pid
+    for dev in all_devices:
+        if (dev.vendor_id == vid) and (dev.product_id == pid):
+            try:
+                dev.open(shared=False)
+                report = dev.find_output_reports()
+
+                if report:
+                    new_target = RawHid()
+                    new_target.report = report
+                    new_target.vendor_name = dev.vendor_name
+                    new_target.product_name = dev.product_name
+                    new_target.vid = dev.vendor_id
+                    new_target.pid = dev.product_id
+                    new_target.device = dev
+                    new_target.device.set_raw_data_handler(new_target.rx_handler)
+                    targets.append(new_target)
+
+            except hid.HIDError as e:
+                logger.error(f&#34;Receiving Exception: {str(e)}&#34;)
+            finally:
+                dev.close()
+
+    return targets</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.interfaces.usb.RawHid.read"><code class="name flex">
+<span>def <span class="ident">read</span></span>(<span>self) ‑> Union[<a title="spsdk.mboot.commands.CmdResponse" href="../commands.html#spsdk.mboot.commands.CmdResponse">CmdResponse</a>, bytes]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Read data on the IN endpoint associated to the HID interfaces.</p>
+<p>:return: Response to the last command
+:raises TimeoutError: Exception caused by time-out</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read(self) -&gt; Union[CmdResponse, bytes]:
+    &#34;&#34;&#34;Read data on the IN endpoint associated to the HID interfaces.
+
+    :return: Response to the last command
+    :raises TimeoutError: Exception caused by time-out
+    &#34;&#34;&#34;
+    start = time()
+    while len(self.rcv_data) == 0:
+        if ((time() - start) * 1000) &gt; self.timeout:
+            raise TimeoutError()
+
+    raw_data = self.rcv_data.popleft()
+    return self._decode_report(bytes(raw_data))</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.interfaces.usb.RawHid.rx_handler"><code class="name flex">
+<span>def <span class="ident">rx_handler</span></span>(<span>self, data: bytes) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Handler is called when a new USB report (data) is received.</p>
+<p>:param data: Data received by the USB stack</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rx_handler(self, data: bytes) -&gt; None:
+    &#34;&#34;&#34;Handler is called when a new USB report (data) is received.
+
+    :param data: Data received by the USB stack
+    &#34;&#34;&#34;
+    # logging.debug(&#34;rcv: %s&#34;, data[1:])
+    self.rcv_data.append(data)</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.interfaces.usb.RawHid.write"><code class="name flex">
+<span>def <span class="ident">write</span></span>(<span>self, packet: Union[<a title="spsdk.mboot.commands.CmdPacket" href="../commands.html#spsdk.mboot.commands.CmdPacket">CmdPacket</a>, bytes]) ‑> NoneType</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Write data on the OUT endpoint associated to the HID interface.</p>
+<p>:param packet: HID packet data
+:raises ValueError: Raises an error if packet type is incorrect</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def write(self, packet: Union[CmdPacket, bytes]) -&gt; None:
+    &#34;&#34;&#34;Write data on the OUT endpoint associated to the HID interface.
+
+    :param packet: HID packet data
+    :raises ValueError: Raises an error if packet type is incorrect
+    &#34;&#34;&#34;
+    if isinstance(packet, CmdPacket):
+        report_id = REPORT_ID[&#39;CMD_OUT&#39;]
+        data = packet.to_bytes()
+    elif isinstance(packet, (bytes, bytearray)):
+        report_id = REPORT_ID[&#39;DATA_OUT&#39;]
+        data = packet
+    else:
+        raise ValueError(&#34;Packet has to be either &#39;CmdPacket&#39; or &#39;bytes&#39;&#34;)
+
+    data_index = 0
+    # TODO: find alternative method to get the report size
+    # pylint: disable=protected-access
+    report_size = self.report[report_id - 1]._HidReport__raw_report_size
+    while data_index &lt; len(data):
+        raw_data, data_index = self._encode_report(report_id, report_size, data, data_index)
+        self.report[report_id - 1].send(raw_data)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.interfaces.usb.RawHidBase" href="#spsdk.mboot.interfaces.usb.RawHidBase">RawHidBase</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.close" href="base.html#spsdk.mboot.interfaces.base.Interface.close">close</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.info" href="#spsdk.mboot.interfaces.usb.RawHidBase.info">info</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.is_opened" href="#spsdk.mboot.interfaces.usb.RawHidBase.is_opened">is_opened</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.name" href="#spsdk.mboot.interfaces.usb.RawHidBase.name">name</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.need_data_split" href="base.html#spsdk.mboot.interfaces.base.Interface.need_data_split">need_data_split</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.open" href="base.html#spsdk.mboot.interfaces.base.Interface.open">open</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="spsdk.mboot.interfaces.usb.RawHidBase"><code class="flex name class">
+<span>class <span class="ident">RawHidBase</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for OS specific RAW HID Interface classes.</p>
+<p>Initialize the USB interface object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RawHidBase(Interface):
+    &#34;&#34;&#34;Base class for OS specific RAW HID Interface classes.&#34;&#34;&#34;
+
+    @property
+    def name(self) -&gt; str:
+        &#34;&#34;&#34;Get the name of the device.
+
+        :return: Name of the device.
+        &#34;&#34;&#34;
+        for name, value in USB_DEVICES.items():
+            if value[0] == self.vid and value[1] == self.pid:
+                return name
+        return &#39;Unknown&#39;
+
+    @property
+    def is_opened(self) -&gt; bool:
+        &#34;&#34;&#34;Indicates whether device is open.
+
+        :return: True if device is open, False othervise.
+        &#34;&#34;&#34;
+        return self._opened
+
+    def __init__(self) -&gt; None:
+        &#34;&#34;&#34;Initialize the USB interface object.&#34;&#34;&#34;
+        super().__init__()
+        self._opened = False
+        self.vid = 0
+        self.pid = 0
+        self.vendor_name = &#34;&#34;
+        self.product_name = &#34;&#34;
+        self.timeout = 2000
+
+    @staticmethod
+    def _encode_report(report_id: int, report_size: int, data: bytes, offset: int = 0) -&gt; Tuple[bytes, int]:
+        &#34;&#34;&#34;Encode the USB packet.
+
+        :param report_id: ID of the report (see: HID_REPORT)
+        :param report_size: Length of the report to send
+        :param data: Data to send
+        :param offset: offset within the &#39;data&#39; bytes
+        :return: Encoded bytes and length of the final report frame
+        &#34;&#34;&#34;
+        data_len = min(len(data) - offset, report_size - 4)
+        raw_data = pack(&#39;&lt;2BH&#39;, report_id, 0x00, data_len)
+        raw_data += data[offset: offset + data_len]
+        raw_data += bytes([0x00] * (report_size - len(raw_data)))
+        logger.debug(f&#34;OUT[{len(raw_data)}]: {&#39;, &#39;.join(f&#39;{b:02X}&#39; for b in raw_data)}&#34;)
+        return raw_data, offset + data_len
+
+    @staticmethod
+    def _decode_report(raw_data: bytes) -&gt; Union[CmdResponse, bytes]:
+        &#34;&#34;&#34;Decodes the data read on USB interface.
+
+        :param raw_data: Data received
+        :type raw_data: bytes
+        :return: CmdResponse object or data read
+        :raises SPSDKError: Transaction aborted by target
+        &#34;&#34;&#34;
+        logger.debug(f&#34;IN [{len(raw_data)}]: {&#39;, &#39;.join(f&#39;{b:02X}&#39; for b in raw_data)}&#34;)
+        report_id, _, plen = unpack_from(&#39;&lt;2BH&#39;, raw_data)
+        if plen == 0:
+            logger.debug(&#34;Received an abort package&#34;)
+            raise SPSDKError(&#39;Transaction aborted&#39;)
+        data = raw_data[4: 4 + plen]
+        if report_id == REPORT_ID[&#39;CMD_IN&#39;]:
+            return parse_cmd_response(data)
+        return data
+
+    def info(self) -&gt; str:
+        &#34;&#34;&#34;Return information about the USB interface.&#34;&#34;&#34;
+        return f&#34;{self.product_name:s} (0x{self.vid:04X}, 0x{self.pid:04X})&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.interfaces.base.Interface" href="base.html#spsdk.mboot.interfaces.base.Interface">Interface</a></li>
+<li>abc.ABC</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="spsdk.mboot.interfaces.usb.RawHid" href="#spsdk.mboot.interfaces.usb.RawHid">RawHid</a></li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="spsdk.mboot.interfaces.usb.RawHidBase.is_opened"><code class="name">var <span class="ident">is_opened</span> : bool</code></dt>
+<dd>
+<div class="desc"><p>Indicates whether device is open.</p>
+<p>:return: True if device is open, False othervise.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def is_opened(self) -&gt; bool:
+    &#34;&#34;&#34;Indicates whether device is open.
+
+    :return: True if device is open, False othervise.
+    &#34;&#34;&#34;
+    return self._opened</code></pre>
+</details>
+</dd>
+<dt id="spsdk.mboot.interfaces.usb.RawHidBase.name"><code class="name">var <span class="ident">name</span> : str</code></dt>
+<dd>
+<div class="desc"><p>Get the name of the device.</p>
+<p>:return: Name of the device.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def name(self) -&gt; str:
+    &#34;&#34;&#34;Get the name of the device.
+
+    :return: Name of the device.
+    &#34;&#34;&#34;
+    for name, value in USB_DEVICES.items():
+        if value[0] == self.vid and value[1] == self.pid:
+            return name
+    return &#39;Unknown&#39;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="spsdk.mboot.interfaces.usb.RawHidBase.info"><code class="name flex">
+<span>def <span class="ident">info</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return information about the USB interface.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def info(self) -&gt; str:
+    &#34;&#34;&#34;Return information about the USB interface.&#34;&#34;&#34;
+    return f&#34;{self.product_name:s} (0x{self.vid:04X}, 0x{self.pid:04X})&#34;</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="spsdk.mboot.interfaces.base.Interface" href="base.html#spsdk.mboot.interfaces.base.Interface">Interface</a></b></code>:
+<ul class="hlist">
+<li><code><a title="spsdk.mboot.interfaces.base.Interface.close" href="base.html#spsdk.mboot.interfaces.base.Interface.close">close</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.base.Interface.need_data_split" href="base.html#spsdk.mboot.interfaces.base.Interface.need_data_split">need_data_split</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.base.Interface.open" href="base.html#spsdk.mboot.interfaces.base.Interface.open">open</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.base.Interface.read" href="base.html#spsdk.mboot.interfaces.base.Interface.read">read</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.base.Interface.write" href="base.html#spsdk.mboot.interfaces.base.Interface.write">write</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="spsdk.mboot.interfaces" href="index.html">spsdk.mboot.interfaces</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="spsdk.mboot.interfaces.usb.scan_usb" href="#spsdk.mboot.interfaces.usb.scan_usb">scan_usb</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="spsdk.mboot.interfaces.usb.RawHid" href="#spsdk.mboot.interfaces.usb.RawHid">RawHid</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHid.enumerate" href="#spsdk.mboot.interfaces.usb.RawHid.enumerate">enumerate</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHid.read" href="#spsdk.mboot.interfaces.usb.RawHid.read">read</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHid.rx_handler" href="#spsdk.mboot.interfaces.usb.RawHid.rx_handler">rx_handler</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHid.write" href="#spsdk.mboot.interfaces.usb.RawHid.write">write</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="spsdk.mboot.interfaces.usb.RawHidBase" href="#spsdk.mboot.interfaces.usb.RawHidBase">RawHidBase</a></code></h4>
+<ul class="">
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.info" href="#spsdk.mboot.interfaces.usb.RawHidBase.info">info</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.is_opened" href="#spsdk.mboot.interfaces.usb.RawHidBase.is_opened">is_opened</a></code></li>
+<li><code><a title="spsdk.mboot.interfaces.usb.RawHidBase.name" href="#spsdk.mboot.interfaces.usb.RawHidBase.name">name</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>
