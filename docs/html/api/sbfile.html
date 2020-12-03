@@ -1,0 +1,1980 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SBFile Module API &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SDP Module API" href="sdp.html" />
+    <link rel="prev" title="Protected Flash Region API" href="pfr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dat.html">Debug Authentication API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfr.html">Protected Flash Region API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SBFile Module API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sbfile.commands">SBFile Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sbfile.headers">SBFile Headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sbfile.sections">SBFile Segments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sbfile.images">SBFile Images</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sdp.html">SDP Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html#list-of-applications">List of applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>SBFile Module API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/sbfile.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sbfile-module-api">
+<h1>SBFile Module API<a class="headerlink" href="#sbfile-module-api" title="Permalink to this headline">¶</a></h1>
+<p>Module implementing SBFile.</p>
+<div class="section" id="module-spsdk.sbfile.commands">
+<span id="sbfile-commands"></span><h2>SBFile Commands<a class="headerlink" href="#module-spsdk.sbfile.commands" title="Permalink to this headline">¶</a></h2>
+<p>Commands used by SBFile module.</p>
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdBaseClass">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdBaseClass</code><span class="sig-paren">(</span><em class="sig-param">tag</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdBaseClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Base class for all commands.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdBaseClass.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">dbg_info=&lt;spsdk.utils.misc.DebugInfo object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdBaseClass.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return object serialized into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdBaseClass.header">
+<em class="property">property </em><code class="sig-name descname">header</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdBaseClass.header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdHeader" title="spsdk.sbfile.commands.CmdHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdHeader</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdBaseClass.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdBaseClass.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text info about the instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdBaseClass.parse">
+<em class="property">abstract classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdBaseClass.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize object from binary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdBaseClass</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdBaseClass.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdBaseClass.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return size of the command in binary format (including header).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdCall">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdCall</code><span class="sig-paren">(</span><em class="sig-param">address=0</em>, <em class="sig-param">argument=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdCall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Call.</p>
+<p>The call statement is used for inserting a bootloader command that executes a function
+from one of the files that are loaded into the memory.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdCall.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdCall.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdCall.argument">
+<em class="property">property </em><code class="sig-name descname">argument</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdCall.argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdCall.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdCall.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdCall" title="spsdk.sbfile.commands.CmdCall"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdCall</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Command Call object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdErase">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdErase</code><span class="sig-paren">(</span><em class="sig-param">address=0</em>, <em class="sig-param">length=0</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdErase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Erase class.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdErase.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdErase.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdErase.flags">
+<em class="property">property </em><code class="sig-name descname">flags</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdErase.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdErase.length">
+<em class="property">property </em><code class="sig-name descname">length</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdErase.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s count.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdErase.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdErase.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdErase" title="spsdk.sbfile.commands.CmdErase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdErase</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Command Erase object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdFill">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdFill</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Fill class.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.CmdFill.PADDING_VALUE">
+<code class="sig-name descname">PADDING_VALUE</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill.PADDING_VALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdFill.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return address of the command Fill.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdFill.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">dbg_info=&lt;spsdk.utils.misc.DebugInfo object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command in binary form (serialization).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdFill.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdFill" title="spsdk.sbfile.commands.CmdFill"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdFill</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Command Fill object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdFill.pattern">
+<em class="property">property </em><code class="sig-name descname">pattern</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill.pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return binary data to fill.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdFill.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdFill.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate raw size of header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdHeader">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdHeader</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">flags=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdHeader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>SBFile command header.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.CmdHeader.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&lt;2BH3L'</em><a class="headerlink" href="#spsdk.sbfile.commands.CmdHeader.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.CmdHeader.SIZE">
+<code class="sig-name descname">SIZE</code><em class="property"> = 16</em><a class="headerlink" href="#spsdk.sbfile.commands.CmdHeader.SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdHeader.crc">
+<em class="property">property </em><code class="sig-name descname">crc</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdHeader.crc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate CRC for the header data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdHeader.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdHeader.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export command header as bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdHeader.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdHeader.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command header from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdHeader" title="spsdk.sbfile.commands.CmdHeader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdHeader</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>CMDHeader object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – raised when size is incorrect</p></li>
+<li><p><strong>ValueError</strong> – raised when CRC is incorrect</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdJump">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdJump</code><span class="sig-paren">(</span><em class="sig-param">address=0</em>, <em class="sig-param">argument=0</em>, <em class="sig-param">spreg=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdJump" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Jump class.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdJump.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdJump.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return address of the command Jump.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdJump.argument">
+<em class="property">property </em><code class="sig-name descname">argument</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdJump.argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdJump.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdJump.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdJump" title="spsdk.sbfile.commands.CmdJump"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdJump</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Command Jump object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdJump.spreg">
+<em class="property">property </em><code class="sig-name descname">spreg</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdJump.spreg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s Stack Pointer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackup">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdKeyStoreBackup</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">controller_id</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore" title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdKeyStoreBackupRestore</span></code></a></p>
+<p>Command to backup keystore from non-volatile memory.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackup.cmd_id">
+<em class="property">classmethod </em><code class="sig-name descname">cmd_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackup.cmd_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command ID for backup operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.commands.EnumCmdTag" title="spsdk.sbfile.commands.EnumCmdTag"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnumCmdTag</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdKeyStoreBackupRestore</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">controller_id</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Shared, abstract implementation for key-store backup and restore command.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_MASK">
+<code class="sig-name descname">ROM_MEM_DEVICE_ID_MASK</code><em class="property"> = 65280</em><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_MASK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_SHIFT">
+<code class="sig-name descname">ROM_MEM_DEVICE_ID_SHIFT</code><em class="property"> = 8</em><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.ROM_MEM_DEVICE_ID_SHIFT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return address where to backup key-store or source for restoring key-store.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.cmd_id">
+<em class="property">abstract classmethod </em><code class="sig-name descname">cmd_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.cmd_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command ID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.commands.EnumCmdTag" title="spsdk.sbfile.commands.EnumCmdTag"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnumCmdTag</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id">
+<em class="property">property </em><code class="sig-name descname">controller_id</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.controller_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return controller ID of the memory to backup key-store or source memory to load key-store back.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore" title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdKeyStoreBackupRestore</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>CmdKeyStoreBackupRestore object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreRestore">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdKeyStoreRestore</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">controller_id</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreRestore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdKeyStoreBackupRestore" title="spsdk.sbfile.commands.CmdKeyStoreBackupRestore"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdKeyStoreBackupRestore</span></code></a></p>
+<p>Command to restore keystore into non-volatile memory.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdKeyStoreRestore.cmd_id">
+<em class="property">classmethod </em><code class="sig-name descname">cmd_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdKeyStoreRestore.cmd_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command ID for restore operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.commands.EnumCmdTag" title="spsdk.sbfile.commands.EnumCmdTag"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnumCmdTag</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdLoad">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdLoad</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdLoad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Load. The load statement is used to store data into the memory.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdLoad.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdLoad.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return address in target processor to load data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdLoad.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">dbg_info=&lt;spsdk.utils.misc.DebugInfo object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdLoad.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export command as binary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdLoad.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdLoad.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdLoad" title="spsdk.sbfile.commands.CmdLoad"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdLoad</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>CMD Load object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – raised when there is invalid CRC</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdLoad.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdLoad.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return aligned size of the command including header and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdMemEnable">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdMemEnable</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">size</em>, <em class="sig-param">mem_type</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdMemEnable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command to configure certain memory.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdMemEnable.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdMemEnable.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdMemEnable.mem_type">
+<em class="property">property </em><code class="sig-name descname">mem_type</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdMemEnable.mem_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return memory to be enabled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mboot.html#spsdk.mboot.memories.ExtMemId" title="spsdk.mboot.memories.ExtMemId"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExtMemId</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdMemEnable.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdMemEnable.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdMemEnable" title="spsdk.sbfile.commands.CmdMemEnable"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdMemEnable</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Command Memory Enable object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdMemEnable.size">
+<em class="property">property </em><code class="sig-name descname">size</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdMemEnable.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command’s size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdNop">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdNop</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdNop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command NOP class.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdNop.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdNop.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdNop" title="spsdk.sbfile.commands.CmdNop"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdNop</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>CMD Nop object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdProg">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdProg</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdProg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Program class.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdProg.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdProg.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdProg" title="spsdk.sbfile.commands.CmdProg"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdProg</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed command object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdReset">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdReset</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdReset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command Reset class.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdReset.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdReset.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdReset" title="spsdk.sbfile.commands.CmdReset"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdReset</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Cmd Reset object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdTag">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdTag</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdTag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>Command TAG class.</p>
+<p>It is also used as header for boot section for SB file 1.x.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdTag.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdTag.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdTag" title="spsdk.sbfile.commands.CmdTag"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdTag</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.CmdVersionCheck">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">CmdVersionCheck</code><span class="sig-paren">(</span><em class="sig-param">ver_type</em>, <em class="sig-param">version</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdVersionCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sbfile.commands.CmdBaseClass</span></code></a></p>
+<p>FW Version Check command class.</p>
+<p>Validates version of secure or non-secure firmware.
+The command fails if version is &lt; expected.</p>
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdVersionCheck.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.CmdVersionCheck.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdVersionCheck" title="spsdk.sbfile.commands.CmdVersionCheck"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdVersionCheck</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed command object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdVersionCheck.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdVersionCheck.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return type of the check version, see VersionCheckType enumeration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.commands.VersionCheckType" title="spsdk.sbfile.commands.VersionCheckType"><code class="xref py py-class docutils literal notranslate"><span class="pre">VersionCheckType</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.commands.CmdVersionCheck.version">
+<em class="property">property </em><code class="sig-name descname">version</code><a class="headerlink" href="#spsdk.sbfile.commands.CmdVersionCheck.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return minimal version expected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.EnumCmdTag">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">EnumCmdTag</code><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>Command tags.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.CALL">
+<code class="sig-name descname">CALL</code><em class="property"> = 5</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.CALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.ERASE">
+<code class="sig-name descname">ERASE</code><em class="property"> = 7</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.ERASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.FILL">
+<code class="sig-name descname">FILL</code><em class="property"> = 3</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.FILL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.FW_VERSION_CHECK">
+<code class="sig-name descname">FW_VERSION_CHECK</code><em class="property"> = 11</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.FW_VERSION_CHECK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.JUMP">
+<code class="sig-name descname">JUMP</code><em class="property"> = 4</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.JUMP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.LOAD">
+<code class="sig-name descname">LOAD</code><em class="property"> = 2</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.LOAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.MEM_ENABLE">
+<code class="sig-name descname">MEM_ENABLE</code><em class="property"> = 9</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.MEM_ENABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.NOP">
+<code class="sig-name descname">NOP</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.NOP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.PROG">
+<code class="sig-name descname">PROG</code><em class="property"> = 10</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.PROG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.RESET">
+<code class="sig-name descname">RESET</code><em class="property"> = 8</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.RESET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.TAG">
+<code class="sig-name descname">TAG</code><em class="property"> = 1</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.TAG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_FROM_NV">
+<code class="sig-name descname">WR_KEYSTORE_FROM_NV</code><em class="property"> = 13</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_FROM_NV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_TO_NV">
+<code class="sig-name descname">WR_KEYSTORE_TO_NV</code><em class="property"> = 12</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumCmdTag.WR_KEYSTORE_TO_NV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.EnumSectionFlag">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">EnumSectionFlag</code><a class="headerlink" href="#spsdk.sbfile.commands.EnumSectionFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>Section flags.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumSectionFlag.BOOTABLE">
+<code class="sig-name descname">BOOTABLE</code><em class="property"> = 1</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumSectionFlag.BOOTABLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumSectionFlag.CLEARTEXT">
+<code class="sig-name descname">CLEARTEXT</code><em class="property"> = 2</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumSectionFlag.CLEARTEXT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.EnumSectionFlag.LAST_SECT">
+<code class="sig-name descname">LAST_SECT</code><em class="property"> = 32768</em><a class="headerlink" href="#spsdk.sbfile.commands.EnumSectionFlag.LAST_SECT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.commands.VersionCheckType">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">VersionCheckType</code><a class="headerlink" href="#spsdk.sbfile.commands.VersionCheckType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>Select type of the version check: either secure or non-secure firmware to be checked.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.VersionCheckType.NON_SECURE_VERSION">
+<code class="sig-name descname">NON_SECURE_VERSION</code><em class="property"> = 1</em><a class="headerlink" href="#spsdk.sbfile.commands.VersionCheckType.NON_SECURE_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.commands.VersionCheckType.SECURE_VERSION">
+<code class="sig-name descname">SECURE_VERSION</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sbfile.commands.VersionCheckType.SECURE_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.sbfile.commands.parse_command">
+<code class="sig-prename descclassname">spsdk.sbfile.commands.</code><code class="sig-name descname">parse_command</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.commands.parse_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse SB 2.x command from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data to start parsing</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.commands.CmdBaseClass" title="spsdk.sbfile.commands.CmdBaseClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdBaseClass</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed command object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – raised when there is unsupported command provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sbfile.headers">
+<span id="sbfile-headers"></span><h2>SBFile Headers<a class="headerlink" href="#module-spsdk.sbfile.headers" title="Permalink to this headline">¶</a></h2>
+<p>Image header.</p>
+<dl class="class">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.headers.</code><code class="sig-name descname">ImageHeaderV2</code><span class="sig-paren">(</span><em class="sig-param">version='2.0'</em>, <em class="sig-param">product_version='1.0.0'</em>, <em class="sig-param">component_version='1.0.0'</em>, <em class="sig-param">build_number=0</em>, <em class="sig-param">flags=8</em>, <em class="sig-param">nonce=None</em>, <em class="sig-param">timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Image Header V2 class.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&lt;16s4s4s2BH4I4H4sQ12HI4s'</em><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.SIGNATURE1">
+<code class="sig-name descname">SIGNATURE1</code><em class="property"> = b'STMP'</em><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.SIGNATURE1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.SIGNATURE2">
+<code class="sig-name descname">SIGNATURE2</code><em class="property"> = b'sgtl'</em><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.SIGNATURE2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.SIZE">
+<code class="sig-name descname">SIZE</code><em class="property"> = 96</em><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">padding=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize object into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>padding</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]) – header padding 8 bytes (for testing purposes); None to use random value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>binary representation</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AttributeError</strong> – raised when format is incorrect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.flags_desc">
+<code class="sig-name descname">flags_desc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.flags_desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return flag description.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get info of Header as string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.headers.ImageHeaderV2.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.headers.ImageHeaderV2.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialization from binary form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – binary representation</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – to start parsing data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.headers.ImageHeaderV2" title="spsdk.sbfile.headers.ImageHeaderV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageHeaderV2</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed instance of the header</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – raised when size/signature is incorrect</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sbfile.sections">
+<span id="sbfile-segments"></span><h2>SBFile Segments<a class="headerlink" href="#module-spsdk.sbfile.sections" title="Permalink to this headline">¶</a></h2>
+<p>Sections within SBfile.</p>
+<dl class="class">
+<dt id="spsdk.sbfile.sections.BootSectionV2">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.sections.</code><code class="sig-name descname">BootSectionV2</code><span class="sig-paren">(</span><em class="sig-param">uid</em>, <em class="sig-param">*commands</em>, <em class="sig-param">hmac_count=1</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Boot Section V2.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.sections.BootSectionV2.HMAC_SIZE">
+<code class="sig-name descname">HMAC_SIZE</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.HMAC_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param">cmd</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add command to section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">dek=b''</em>, <em class="sig-param">mac=b''</em>, <em class="sig-param">counter=None</em>, <em class="sig-param">dbg_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize Boot Section object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The DEK value in bytes (required)</p></li>
+<li><p><strong>mac</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The MAC value in bytes (required)</p></li>
+<li><p><strong>counter</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Counter</span></code>]) – The counter object (required)</p></li>
+<li><p><strong>dbg_info</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – Optional[List[str]] optional list to export debug information about content in text format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>exported bytes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – raised when dek, mac, counter have invalid format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.hmac_count">
+<em class="property">property </em><code class="sig-name descname">hmac_count</code><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.hmac_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of HMACs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get object info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.is_last">
+<em class="property">property </em><code class="sig-name descname">is_last</code><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.is_last" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether the section is the last one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">plain_sect=False</em>, <em class="sig-param">dek=b''</em>, <em class="sig-param">mac=b''</em>, <em class="sig-param">counter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse Boot Section from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data of parsed image</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+<li><p><strong>plain_sect</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If the sections are not encrypted; It is used for debugging only, not supported by ROM code</p></li>
+<li><p><strong>dek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The DEK value in bytes (required)</p></li>
+<li><p><strong>mac</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The MAC value in bytes (required)</p></li>
+<li><p><strong>counter</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Counter</span></code>]) – The counter object (required)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.sections.BootSectionV2" title="spsdk.sbfile.sections.BootSectionV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">BootSectionV2</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>exported bytes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – raised when dek, mac, counter have invalid format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raw size of section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.BootSectionV2.uid">
+<em class="property">property </em><code class="sig-name descname">uid</code><a class="headerlink" href="#spsdk.sbfile.sections.BootSectionV2.uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Boot Section UID.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.sections.CertSectionV2">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.sections.</code><code class="sig-name descname">CertSectionV2</code><span class="sig-paren">(</span><em class="sig-param">cert_block</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Certificate Section V2 class.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.sections.CertSectionV2.HMAC_SIZE">
+<code class="sig-name descname">HMAC_SIZE</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.HMAC_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.sections.CertSectionV2.SECT_MARK">
+<code class="sig-name descname">SECT_MARK</code><em class="property"> = 1852270963</em><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.SECT_MARK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.CertSectionV2.cert_block">
+<em class="property">property </em><code class="sig-name descname">cert_block</code><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.cert_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return certification block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">CertBlockV2</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.CertSectionV2.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">dek=b''</em>, <em class="sig-param">mac=b''</em>, <em class="sig-param">counter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize Certificate Section object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The DEK value in bytes (required)</p></li>
+<li><p><strong>mac</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The MAC value in bytes (required)</p></li>
+<li><p><strong>counter</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Counter</span></code>]) – The counter object (required)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>exported bytes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – raised when dek, mac, counter have invalid format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.CertSectionV2.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get object info.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.CertSectionV2.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">dek=b''</em>, <em class="sig-param">mac=b''</em>, <em class="sig-param">counter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse Certificate Section from bytes array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data of parsed image</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+<li><p><strong>dek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The DEK value in bytes (required)</p></li>
+<li><p><strong>mac</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The MAC value in bytes (required)</p></li>
+<li><p><strong>counter</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Counter</span></code>]) – The counter object (required)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.sections.CertSectionV2" title="spsdk.sbfile.sections.CertSectionV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">CertSectionV2</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed cert section v2 object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AttributeError</strong> – raised when dek, mac, counter are not valid</p></li>
+<li><p><strong>Exception</strong> – raised when there is invalid header HMAC, TAG, FLAGS, Mark</p></li>
+<li><p><strong>Exception</strong> – raised when there is invalid certificate block HMAC</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.sections.CertSectionV2.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.sections.CertSectionV2.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate raw size of section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sbfile.images">
+<span id="sbfile-images"></span><h2>SBFile Images<a class="headerlink" href="#module-spsdk.sbfile.images" title="Permalink to this headline">¶</a></h2>
+<p>Boot Image V2.0, V2.1.</p>
+<dl class="class">
+<dt id="spsdk.sbfile.images.BootImageV20">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.images.</code><code class="sig-name descname">BootImageV20</code><span class="sig-paren">(</span><em class="sig-param">signed</em>, <em class="sig-param">kek</em>, <em class="sig-param">*sections</em>, <em class="sig-param">product_version='1.0.0'</em>, <em class="sig-param">component_version='1.0.0'</em>, <em class="sig-param">build_number=0</em>, <em class="sig-param">advanced_params=&lt;spsdk.sbfile.images.SBV2xAdvancedParams object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Boot Image V2.0 class.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.images.BootImageV20.DEK_MAC_SIZE">
+<code class="sig-name descname">DEK_MAC_SIZE</code><em class="property"> = 80</em><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.DEK_MAC_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.images.BootImageV20.HEADER_MAC_SIZE">
+<code class="sig-name descname">HEADER_MAC_SIZE</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.HEADER_MAC_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.images.BootImageV20.KEY_BLOB_SIZE">
+<code class="sig-name descname">KEY_BLOB_SIZE</code><em class="property"> = 80</em><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.KEY_BLOB_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.add_boot_section">
+<code class="sig-name descname">add_boot_section</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.add_boot_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add new Boot section into image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>section</strong> (<a class="reference internal" href="#spsdk.sbfile.sections.BootSectionV2" title="spsdk.sbfile.sections.BootSectionV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">BootSectionV2</span></code></a>) – Boot section</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – raised when section is not instance of BootSectionV2 class</p></li>
+<li><p><strong>ValueError</strong> – raise when boot section has duplicate UID</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.cert_block">
+<em class="property">property </em><code class="sig-name descname">cert_block</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.cert_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return certificate block; None if SB file not signed or block not assigned yet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">CertBlockV2</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.cert_header_size">
+<em class="property">property </em><code class="sig-name descname">cert_header_size</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.cert_header_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image raw size (not aligned) for certificate header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.dek">
+<em class="property">property </em><code class="sig-name descname">dek</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.dek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data encryption key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">padding=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize image object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>padding</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]) – header padding (8 bytes) for testing purpose; None to use random values (recommended)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>exported bytes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – raised when there are no boot sections or is not signed or private keys are missing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.header">
+<em class="property">property </em><code class="sig-name descname">header</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.headers.ImageHeaderV2" title="spsdk.sbfile.headers.ImageHeaderV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageHeaderV2</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text description of the instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.kek">
+<em class="property">property </em><code class="sig-name descname">kek</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.kek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return key for wrapping DEK and MAC keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.mac">
+<em class="property">property </em><code class="sig-name descname">mac</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Message authentication code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">kek=b''</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse image from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data of parsed image</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+<li><p><strong>kek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The Key for unwrapping DEK and MAC keys (required)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.images.BootImageV20" title="spsdk.sbfile.images.BootImageV20"><code class="xref py py-class docutils literal notranslate"><span class="pre">BootImageV20</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>parsed image object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – raised when header is in wrong format</p></li>
+<li><p><strong>Exception</strong> – raised when there is invalid header version</p></li>
+<li><p><strong>Exception</strong> – raised when signature is incorrect</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.private_key_pem_data">
+<em class="property">property </em><code class="sig-name descname">private_key_pem_data</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.private_key_pem_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return private key data for signed images, decrypted in PEM format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image raw size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.raw_size_without_signature">
+<em class="property">property </em><code class="sig-name descname">raw_size_without_signature</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.raw_size_without_signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image raw size without signature, used to calculate image blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.signed">
+<em class="property">property </em><code class="sig-name descname">signed</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.signed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether sb is signed + encrypted or only encrypted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV20.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV20.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update boot image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.images.BootImageV21">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.images.</code><code class="sig-name descname">BootImageV21</code><span class="sig-paren">(</span><em class="sig-param">kek</em>, <em class="sig-param">*sections</em>, <em class="sig-param">product_version='1.0.0'</em>, <em class="sig-param">component_version='1.0.0'</em>, <em class="sig-param">build_number=0</em>, <em class="sig-param">advanced_params=&lt;spsdk.sbfile.images.SBV2xAdvancedParams object&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Boot Image V2.1 class.</p>
+<dl class="attribute">
+<dt id="spsdk.sbfile.images.BootImageV21.HEADER_MAC_SIZE">
+<code class="sig-name descname">HEADER_MAC_SIZE</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.HEADER_MAC_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sbfile.images.BootImageV21.KEY_BLOB_SIZE">
+<code class="sig-name descname">KEY_BLOB_SIZE</code><em class="property"> = 80</em><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.KEY_BLOB_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.add_boot_section">
+<code class="sig-name descname">add_boot_section</code><span class="sig-paren">(</span><em class="sig-param">section</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.add_boot_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add new Boot section into image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>section</strong> (<a class="reference internal" href="#spsdk.sbfile.sections.BootSectionV2" title="spsdk.sbfile.sections.BootSectionV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">BootSectionV2</span></code></a>) – Boot section to be added</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – raised when section is not instance of BootSectionV2 class</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.cert_block">
+<em class="property">property </em><code class="sig-name descname">cert_block</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.cert_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return certificate block; None if SB file not signed or block not assigned yet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">CertBlockV2</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.cert_header_size">
+<em class="property">property </em><code class="sig-name descname">cert_header_size</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.cert_header_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image raw size (not aligned) for certificate header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.dek">
+<em class="property">property </em><code class="sig-name descname">dek</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.dek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data encryption key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">padding=None</em>, <em class="sig-param">dbg_info=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize image object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>padding</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]) – header padding (8 bytes) for testing purpose; None to use random values (recommended)</p></li>
+<li><p><strong>dbg_info</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]) – optional list, where debug info is exported in text form</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>exported bytes</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – raised when there is no boot section to be added</p></li>
+<li><p><strong>ValueError</strong> – raise when certificate is not assigned</p></li>
+<li><p><strong>ValueError</strong> – raise when private key is not assigned</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.header">
+<em class="property">property </em><code class="sig-name descname">header</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sbfile.headers.ImageHeaderV2" title="spsdk.sbfile.headers.ImageHeaderV2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageHeaderV2</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return text description of the instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.kek">
+<em class="property">property </em><code class="sig-name descname">kek</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.kek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return key to wrap DEC and MAC keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.mac">
+<em class="property">property </em><code class="sig-name descname">mac</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Message authentication code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">kek=b''</em>, <em class="sig-param">plain_sections=False</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse image from bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data of parsed image</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The offset of input data</p></li>
+<li><p><strong>kek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The Key for unwrapping DEK and MAC keys (required)</p></li>
+<li><p><strong>plain_sections</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – Sections are not encrypted; this is used only for debugging, not supported by ROM code</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.sbfile.images.BootImageV21" title="spsdk.sbfile.images.BootImageV21"><code class="xref py py-class docutils literal notranslate"><span class="pre">BootImageV21</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>BootImageV21 parsed object</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – raised when header is in incorrect format</p></li>
+<li><p><strong>Exception</strong> – raised when signature is incorrect</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.private_key_pem_data">
+<em class="property">property </em><code class="sig-name descname">private_key_pem_data</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.private_key_pem_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return binary data of private key for signing; decrypted binary data in PEM format.</p>
+<p>None if not assigned yet or image not signed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return image raw size (not aligned).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.signed">
+<em class="property">property </em><code class="sig-name descname">signed</code><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.signed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return flag whether SB file is signed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.BootImageV21.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.BootImageV21.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update BootImageV21.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sbfile.images.SBV2xAdvancedParams">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sbfile.images.</code><code class="sig-name descname">SBV2xAdvancedParams</code><span class="sig-paren">(</span><em class="sig-param">dek=None</em>, <em class="sig-param">mac=None</em>, <em class="sig-param">nonce=None</em>, <em class="sig-param">timestamp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sbfile.images.SBV2xAdvancedParams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class holds advanced parameters for the SB file encryption.</p>
+<p>These parameters are used for the tests; for production, use can use default values (random keys + current time)</p>
+<dl class="method">
+<dt id="spsdk.sbfile.images.SBV2xAdvancedParams.dek">
+<em class="property">property </em><code class="sig-name descname">dek</code><a class="headerlink" href="#spsdk.sbfile.images.SBV2xAdvancedParams.dek" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return DEK key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.SBV2xAdvancedParams.mac">
+<em class="property">property </em><code class="sig-name descname">mac</code><a class="headerlink" href="#spsdk.sbfile.images.SBV2xAdvancedParams.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return MAC key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.SBV2xAdvancedParams.nonce">
+<em class="property">property </em><code class="sig-name descname">nonce</code><a class="headerlink" href="#spsdk.sbfile.images.SBV2xAdvancedParams.nonce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return NONCE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sbfile.images.SBV2xAdvancedParams.timestamp">
+<em class="property">property </em><code class="sig-name descname">timestamp</code><a class="headerlink" href="#spsdk.sbfile.images.SBV2xAdvancedParams.timestamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return timestamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sdp.html" class="btn btn-neutral float-right" title="SDP Module API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pfr.html" class="btn btn-neutral float-left" title="Protected Flash Region API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

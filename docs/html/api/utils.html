@@ -1,0 +1,1571 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Utils Module API &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Summary" href="../apps/overview.html" />
+    <link rel="prev" title="Exceptions" href="exceptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dat.html">Debug Authentication API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfr.html">Protected Flash Region API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sbfile.html">SBFile Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdp.html">SDP Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utils Module API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.utils.easy_enum">Utils easy enum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.utils.crypto">Utils crypto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.utils.misc">General utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.utils.serial_proxy">Serial Proxy</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html#list-of-applications">List of applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Utils Module API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utils-module-api">
+<h1>Utils Module API<a class="headerlink" href="#utils-module-api" title="Permalink to this headline">¶</a></h1>
+<p>Module containing various functions/modules used throughout the SPSDK.</p>
+<div class="section" id="module-spsdk.utils.easy_enum">
+<span id="utils-easy-enum"></span><h2>Utils easy enum<a class="headerlink" href="#module-spsdk.utils.easy_enum" title="Permalink to this headline">¶</a></h2>
+<p>EasyEnum allows numerical value, string tag and description to an enum element.</p>
+<dl class="class">
+<dt id="spsdk.utils.easy_enum.Enum">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.easy_enum.</code><code class="sig-name descname">Enum</code><a class="headerlink" href="#spsdk.utils.easy_enum.Enum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Enum Type Class.</p>
+<dl class="method">
+<dt id="spsdk.utils.easy_enum.Enum.desc">
+<em class="property">classmethod </em><code class="sig-name descname">desc</code><span class="sig-paren">(</span><em class="sig-param">default=''</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.easy_enum.Enum.desc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Description of the specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – either value or name (name is case INSENSITIVE)</p></li>
+<li><p><strong>default</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – value in case key does not exist</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>description of the value; empty string if description was not specified</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – Key is nor string or int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.easy_enum.Enum.from_int">
+<em class="property">classmethod </em><code class="sig-name descname">from_int</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.easy_enum.Enum.from_int" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts integer value into enumeration.</p>
+<p>Note: the method does two things:
+- checks whether given integer value is defined within the enumeration
+- formally converts value into enumeration (for type hints), even the returned value is same as input
+:type value: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>
+:param value: integer value to be converted
+:rtype: <a class="reference internal" href="#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a>
+:return: corresponding enumeration
+:raises ValueError: if specified value does not match any enumeration value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.easy_enum.Enum.get">
+<em class="property">classmethod </em><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.easy_enum.Enum.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts enumeration value to name OR name to enumeration value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – either value or name (name is case INSENSITIVE)</p></li>
+<li><p><strong>default</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>]) – value in case key does not exist</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name for value; value for name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.easy_enum.Enum.name">
+<em class="property">classmethod </em><code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param">default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.easy_enum.Enum.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns name of selected enumeration tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – enumeration tag</p></li>
+<li><p><strong>default</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – value to return of tag not found; if not defined, KeyError exception will be raised</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name of the corresponding enumeration tag</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>KeyError</strong> – if tag not supported and default value not provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.easy_enum.Enum.tags">
+<em class="property">classmethod </em><code class="sig-name descname">tags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.easy_enum.Enum.tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sequence of all enumerations tags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.utils.crypto">
+<span id="utils-crypto"></span><h2>Utils crypto<a class="headerlink" href="#module-spsdk.utils.crypto" title="Permalink to this headline">¶</a></h2>
+<p>Module for cryptographic utilities.</p>
+<dl class="function">
+<dt id="spsdk.utils.crypto.matches_key_and_cert">
+<code class="sig-prename descclassname">spsdk.utils.crypto.</code><code class="sig-name descname">matches_key_and_cert</code><span class="sig-paren">(</span><em class="sig-param">priv_key</em>, <em class="sig-param">cert</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.matches_key_and_cert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify that given private key matches the public certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>priv_key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – to be tested; decrypted binary data in PEM format</p></li>
+<li><p><strong>cert</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Certificate</span></code>) – to be used for verification</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if yes; False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.crypto.crypto_backend">
+<code class="sig-prename descclassname">spsdk.utils.crypto.</code><code class="sig-name descname">crypto_backend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.crypto_backend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return default crypto backend instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BackendClass</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.utils.crypto.Counter">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.crypto.</code><code class="sig-name descname">Counter</code><span class="sig-paren">(</span><em class="sig-param">nonce</em>, <em class="sig-param">ctr_value=None</em>, <em class="sig-param">ctr_byteorder_encoding='little'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.Counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>AES counter with specified counter byte ordering and customizable increment.</p>
+<dl class="method">
+<dt id="spsdk.utils.crypto.Counter.increment">
+<code class="sig-name descname">increment</code><span class="sig-paren">(</span><em class="sig-param">value=1</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.Counter.increment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increment counter by specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – to add to counter</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Counter.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#spsdk.utils.crypto.Counter.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initial vector for AES encryption.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.utils.crypto.BackendClass">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.crypto.</code><code class="sig-name descname">BackendClass</code><a class="headerlink" href="#spsdk.utils.crypto.BackendClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Abstract Class for Security Backend.</p>
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.aes_ctr_decrypt">
+<em class="property">abstract </em><code class="sig-name descname">aes_ctr_decrypt</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">encrypted_data</em>, <em class="sig-param">nonce</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.aes_ctr_decrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decrypt encrypted data with AES in CTR mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The key for data decryption</p></li>
+<li><p><strong>encrypted_data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data</p></li>
+<li><p><strong>nonce</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Nonce data with counter value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.aes_ctr_encrypt">
+<em class="property">abstract </em><code class="sig-name descname">aes_ctr_encrypt</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">plain_data</em>, <em class="sig-param">nonce</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.aes_ctr_encrypt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encrypt plain data with AES in CTR mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The key for data encryption</p></li>
+<li><p><strong>plain_data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data</p></li>
+<li><p><strong>nonce</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Nonce data with counter value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.aes_key_unwrap">
+<em class="property">abstract </em><code class="sig-name descname">aes_key_unwrap</code><span class="sig-paren">(</span><em class="sig-param">kek</em>, <em class="sig-param">wrapped_key</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.aes_key_unwrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unwraps a key using a key-encrypting key (KEK).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The key-encrypting key</p></li>
+<li><p><strong>wrapped_key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Encrypted data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.aes_key_wrap">
+<em class="property">abstract </em><code class="sig-name descname">aes_key_wrap</code><span class="sig-paren">(</span><em class="sig-param">kek</em>, <em class="sig-param">key_to_wrap</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.aes_key_wrap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps a key using a key-encrypting key (KEK).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kek</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The key-encrypting key</p></li>
+<li><p><strong>key_to_wrap</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Plain data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.hash">
+<em class="property">abstract </em><code class="sig-name descname">hash</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">algorithm='sha256'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a HASH from input data with specified algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data in bytes</p></li>
+<li><p><strong>algorithm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Algorithm type for HASH function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.hmac">
+<em class="property">abstract </em><code class="sig-name descname">hmac</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">data</em>, <em class="sig-param">algorithm='sha256'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.hmac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a HMAC from data with specified key and algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The key in bytes format</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data in bytes format</p></li>
+<li><p><strong>algorithm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Algorithm type for HASH function (sha256, sha384, sha512, …)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.name">
+<em class="property">abstract property </em><code class="sig-name descname">name</code><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backend Name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.random_bytes">
+<em class="property">abstract </em><code class="sig-name descname">random_bytes</code><span class="sig-paren">(</span><em class="sig-param">length</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.random_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a random byte string with specified length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The length in bytes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.rsa_public_key">
+<code class="sig-name descname">rsa_public_key</code><span class="sig-paren">(</span><em class="sig-param">modulus</em>, <em class="sig-param">exponent</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.rsa_public_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create RSA public key object from modulus and exponent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>modulus</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The RSA public key modulus</p></li>
+<li><p><strong>exponent</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The RSA public key exponent</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.rsa_sign">
+<code class="sig-name descname">rsa_sign</code><span class="sig-paren">(</span><em class="sig-param">private_key</em>, <em class="sig-param">data</em>, <em class="sig-param">algorithm='sha256'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.rsa_sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sign input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>private_key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The private key</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data</p></li>
+<li><p><strong>algorithm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Used algorithm</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.rsa_verify">
+<code class="sig-name descname">rsa_verify</code><span class="sig-paren">(</span><em class="sig-param">pub_key_mod</em>, <em class="sig-param">pub_key_exp</em>, <em class="sig-param">signature</em>, <em class="sig-param">data</em>, <em class="sig-param">algorithm='sha256'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.rsa_verify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pub_key_mod</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The private key modulus</p></li>
+<li><p><strong>pub_key_exp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The private key exponent</p></li>
+<li><p><strong>signature</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The signature of input data</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Input data</p></li>
+<li><p><strong>algorithm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Used algorithm</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.BackendClass.version">
+<em class="property">abstract property </em><code class="sig-name descname">version</code><a class="headerlink" href="#spsdk.utils.crypto.BackendClass.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backend Version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.utils.crypto.CertBlockV2">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.crypto.</code><code class="sig-name descname">CertBlockV2</code><span class="sig-paren">(</span><em class="sig-param">version='1.0'</em>, <em class="sig-param">flags=0</em>, <em class="sig-param">build_number=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.crypto.abstract.BaseClass</span></code></p>
+<p>Certificate block.</p>
+<p>Shared for SB file and for MasterBootImage</p>
+<dl class="attribute">
+<dt id="spsdk.utils.crypto.CertBlockV2.DEFAULT_ALIGNMENT">
+<code class="sig-name descname">DEFAULT_ALIGNMENT</code><em class="property"> = 16</em><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.DEFAULT_ALIGNMENT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.utils.crypto.CertBlockV2.RKHT_SIZE">
+<code class="sig-name descname">RKHT_SIZE</code><em class="property"> = 4</em><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.RKHT_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.utils.crypto.CertBlockV2.RKH_SIZE">
+<code class="sig-name descname">RKH_SIZE</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.RKH_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.add_certificate">
+<code class="sig-name descname">add_certificate</code><span class="sig-paren">(</span><em class="sig-param">cert</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.add_certificate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add certificate.</p>
+<p>First call adds root certificate. Additional calls add chain certificates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cert</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Certificate</span></code>]) – The certificate itself in DER format</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if certificate cannot be added</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.alignment">
+<em class="property">property </em><code class="sig-name descname">alignment</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alignment of the binary output, by default it is DEFAULT_ALIGNMENT but can be customized.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.certificates">
+<em class="property">property </em><code class="sig-name descname">certificates</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.certificates" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of certificates in header.</p>
+<p>First certificate is root certificate and followed by optional chain certificates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Certificate</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize Certificate Block V2 object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.header">
+<em class="property">property </em><code class="sig-name descname">header</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Certificate block header.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">CertBlockHeader</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.image_length">
+<em class="property">property </em><code class="sig-name descname">image_length</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.image_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image length in bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text info about certificate block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deserialize CertBlockV2 from binary file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Binary data</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Offset within the data, where the Certificate block begins, defaults to 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">CertBlockV2</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Certificate Block instance</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>Exception</strong> – Length of the data doesn’t match Certificate Block length</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Aligned size of the certificate block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.rkh">
+<em class="property">property </em><code class="sig-name descname">rkh</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.rkh" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of root keys hashes (SHA-256), each hash as 32 bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.rkh_index">
+<em class="property">property </em><code class="sig-name descname">rkh_index</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.rkh_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Index of the hash that matches the certificate; None if does not match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.rkht">
+<em class="property">property </em><code class="sig-name descname">rkht</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.rkht" title="Permalink to this definition">¶</a></dt>
+<dd><p>32-byte hash (SHA-256) of SHA-256 hashes of up to four root public keys.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.rkht_fuses">
+<em class="property">property </em><code class="sig-name descname">rkht_fuses</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.rkht_fuses" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of RKHT fuses, ordered from highest bit to lowest.</p>
+<p>Note: Returned values are in format that should be passed for blhost</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.set_root_key_hash">
+<code class="sig-name descname">set_root_key_hash</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">key_hash</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.set_root_key_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Root Key Hash into RKH at specified index.</p>
+<p>Note: Multiple root public keys are supported to allow for key revocation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The index of Root Key Hash in the table</p></li>
+<li><p><strong>key_hash</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Certificate</span></code>]) – The Root Key Hash value (32 bytes, SHA-256);
+or Certificate where the hash can be created from public key</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.signature_size">
+<em class="property">property </em><code class="sig-name descname">signature_size</code><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.signature_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size of the signature in bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.verify_data">
+<code class="sig-name descname">verify_data</code><span class="sig-paren">(</span><em class="sig-param">signature</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.verify_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signature verification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signature</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – to be verified</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – that has been signed</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the data signature can be confirmed using the certificate; False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.CertBlockV2.verify_private_key">
+<code class="sig-name descname">verify_private_key</code><span class="sig-paren">(</span><em class="sig-param">private_key_pem_data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.CertBlockV2.verify_private_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify that given private key matches the public certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>private_key_pem_data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – to be tested; decrypted binary data in PEM format</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if yes; False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.utils.crypto.Certificate">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.crypto.</code><code class="sig-name descname">Certificate</code><span class="sig-paren">(</span><em class="sig-param">certificate</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.Certificate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Internally used representation of a Certificate.</p>
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.ca">
+<em class="property">property </em><code class="sig-name descname">ca</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.ca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Certification Authority flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.Certificate.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialized Certificate data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.hash_algo">
+<em class="property">property </em><code class="sig-name descname">hash_algo</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.hash_algo" title="Permalink to this definition">¶</a></dt>
+<dd><p>HASH algorithm used in the Certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.Certificate.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text information about the Certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.issuer">
+<em class="property">property </em><code class="sig-name descname">issuer</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.issuer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Certificate issuer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.max_path_length">
+<em class="property">property </em><code class="sig-name descname">max_path_length</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.max_path_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum length of derived Certificate chain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.not_valid_after">
+<em class="property">property </em><code class="sig-name descname">not_valid_after</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.not_valid_after" title="Permalink to this definition">¶</a></dt>
+<dd><p>End of the Certificate valid period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.not_valid_before">
+<em class="property">property </em><code class="sig-name descname">not_valid_before</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.not_valid_before" title="Permalink to this definition">¶</a></dt>
+<dd><p>Begging of the Certificate valid period.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.public_key_exponent">
+<em class="property">property </em><code class="sig-name descname">public_key_exponent</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.public_key_exponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponent of the public key of the certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.public_key_hash">
+<em class="property">property </em><code class="sig-name descname">public_key_hash</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.public_key_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>32 bytes hash (SHA-256) of public key (modulus and exponent).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.public_key_modulus">
+<em class="property">property </em><code class="sig-name descname">public_key_modulus</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.public_key_modulus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modulus of the public key of the certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.public_key_usage">
+<em class="property">property </em><code class="sig-name descname">public_key_usage</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.public_key_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Usage of the Certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Set</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.raw_size">
+<em class="property">property </em><code class="sig-name descname">raw_size</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.raw_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Size of the Certificate data (aligned to 4 bytes).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.self_issued">
+<em class="property">property </em><code class="sig-name descname">self_issued</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.self_issued" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is the Certificate self-issued (subject and issuer are the same).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.self_signed">
+<em class="property">property </em><code class="sig-name descname">self_signed</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.self_signed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indication whether the Certificate is self-signed.</p>
+<p>A unicode string of “no” or “maybe”. The “maybe” result will
+be returned if the certificate issuer and subject are the same.
+If a key identifier and authority key identifier are present,
+they will need to match otherwise “no” will be returned.</p>
+<p>To verify is a certificate is truly self-signed, the signature
+will need to be verified. See the certvalidator package for
+one possible solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.serial_number">
+<em class="property">property </em><code class="sig-name descname">serial_number</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.serial_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serial number of the Certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.signature">
+<em class="property">property </em><code class="sig-name descname">signature</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Certificate signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.signature_algo">
+<em class="property">property </em><code class="sig-name descname">signature_algo</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.signature_algo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Certificate signature algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.verify">
+<code class="sig-name descname">verify</code><span class="sig-paren">(</span><em class="sig-param">public_key_modulus</em>, <em class="sig-param">public_key_exponent</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.crypto.Certificate.verify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use given public key to verify the certificate is signed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>public_key_modulus</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – modulus of the public key to be verified</p></li>
+<li><p><strong>public_key_exponent</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – exponent of the public key to be verified</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if verification pass; False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.crypto.Certificate.version">
+<em class="property">property </em><code class="sig-name descname">version</code><a class="headerlink" href="#spsdk.utils.crypto.Certificate.version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Version of the Certificate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.utils.misc">
+<span id="general-utils"></span><h2>General utils<a class="headerlink" href="#module-spsdk.utils.misc" title="Permalink to this headline">¶</a></h2>
+<p>Miscellaneous functions used throughout the SPSDK.</p>
+<dl class="class">
+<dt id="spsdk.utils.misc.DebugInfo">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">DebugInfo</code><span class="sig-paren">(</span><em class="sig-param">enabled=True</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class is used to provide detailed information about export process and exported data.</p>
+<p>It is handy for analyzing content and debugging changes in the exported binary output.</p>
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.append">
+<code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param">line</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Appends the line to the log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>line</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – text to be added</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.append_binary_data">
+<code class="sig-name descname">append_binary_data</code><span class="sig-paren">(</span><em class="sig-param">data_name</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.append_binary_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append short section with binary data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the name</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – binary data (up to 8 bytes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.append_binary_section">
+<code class="sig-name descname">append_binary_section</code><span class="sig-paren">(</span><em class="sig-param">section_name</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.append_binary_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append section and binary data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the name</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – binary data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.append_hex_data">
+<code class="sig-name descname">append_hex_data</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.append_hex_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append binary data in HEX form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – to be logged</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.append_section">
+<code class="sig-name descname">append_section</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.append_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append new section to the debug log.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – of the section</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.disabled">
+<em class="property">classmethod </em><code class="sig-name descname">disabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.disabled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an instance of DebugInfo with disabled message collecting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.utils.misc.DebugInfo" title="spsdk.utils.misc.DebugInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugInfo</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.enabled">
+<em class="property">property </em><code class="sig-name descname">enabled</code><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.enabled" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>whether debugging enabled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.info" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>multi-line text with log; empty string if nothing logged or log disabled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.misc.DebugInfo.lines">
+<em class="property">property </em><code class="sig-name descname">lines</code><a class="headerlink" href="#spsdk.utils.misc.DebugInfo.lines" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of logged lines; empty list if nothing logged or log disabled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.align">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">align</code><span class="sig-paren">(</span><em class="sig-param">number</em>, <em class="sig-param">alignment=4</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align number (size or address) size to specified alignment, typically 4, 8 or 16 bytes boundary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – input to be aligned</p></li>
+<li><p><strong>alignment</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – the boundary to align; typical value is power of 2</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>aligned number; result is always &gt;= size (e.g. aligned up)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.align_block">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">align_block</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">alignment=4</em>, <em class="sig-param">padding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.align_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align binary data block length to specified boundary by adding padding bytes to the end.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – to be aligned</p></li>
+<li><p><strong>alignment</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – boundary alignment (typically 2, 4, 16, 64 or 256 boundary)</p></li>
+<li><p><strong>padding</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – byte to be added, use -1 to fill with random data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>aligned block</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.align_block_fill_random">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">align_block_fill_random</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">alignment=4</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.align_block_fill_random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as <cite>align_block</cite>, just parameter <cite>padding</cite> is fixed to <cite>-1</cite> to fill with random data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.extend_block">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">extend_block</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">length</em>, <em class="sig-param">padding=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.extend_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add padding to the binary data block to extend the length to specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – block to be extended</p></li>
+<li><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – requested block length; the value must be &gt;= current block length</p></li>
+<li><p><strong>padding</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – 8-bit value value to be used as a padding</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>block extended with padding</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.find_first">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">find_first</code><span class="sig-paren">(</span><em class="sig-param">iterable</em>, <em class="sig-param">predicate</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.find_first" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find first element from the list, that matches the condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iterable</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code>[~T]) – list of elements</p></li>
+<li><p><strong>predicate</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>[[~T], <code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>]) – function for selection of the element</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[~T]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>found element; None if not found</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.load_binary">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">load_binary</code><span class="sig-paren">(</span><em class="sig-param">*args</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.load_binary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads binary file into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – list that consists of:
+- absolute path
+- optional sub-directory (any number)
+- file name including file extension
+All the fields together represents absolute path to the file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>content of the binary file as bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.load_file">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">load_file</code><span class="sig-paren">(</span><em class="sig-param">*path_segments</em>, <em class="sig-param">mode='r'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.load_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a file into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_segments</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – list that consists of:
+- absolute path
+- optional sub-directory (any number)
+- file name including file extension
+All the fields together represents absolute path to the file</p></li>
+<li><p><strong>mode</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – mode for reading the file ‘r’/’rb’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>content of the binary file as bytes or str (based on mode)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.use_working_directory">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">use_working_directory</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.use_working_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute the block in given directory.</p>
+<p>Cd into specific directory.
+Execute the block.
+Change the directory back into the original one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – the path, where the current directory will be changed to</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterator</span></code>[<code class="docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.utils.misc.write_file">
+<code class="sig-prename descclassname">spsdk.utils.misc.</code><code class="sig-name descname">write_file</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">*path_segments</em>, <em class="sig-param">mode='w'</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.misc.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes data into a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]) – data to write</p></li>
+<li><p><strong>path_segments</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – pieces of path to the file, might be just a single str</p></li>
+<li><p><strong>mode</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – writing mode, ‘w’ for text, ‘wb’ for binary data, defaults to ‘w’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of written elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.utils.serial_proxy">
+<span id="serial-proxy"></span><h2>Serial Proxy<a class="headerlink" href="#module-spsdk.utils.serial_proxy" title="Permalink to this headline">¶</a></h2>
+<p>SerialProxy serves as patch replacement for serial.Serial class.</p>
+<dl class="class">
+<dt id="spsdk.utils.serial_proxy.SerialProxy">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.utils.serial_proxy.</code><code class="sig-name descname">SerialProxy</code><span class="sig-paren">(</span><em class="sig-param">port</em>, <em class="sig-param">timeout</em>, <em class="sig-param">baudrate</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>SerialProxy is used to simulate communication with serial device.</p>
+<p>It can be used as mock.patch for serial.Serial class.
+&#64;patch(&lt;your.package&gt;.Serial, SerialProxy.init_proxy(pre_recorded_responses))</p>
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates closing a serial port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.flush">
+<code class="sig-name descname">flush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.flush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates flushing input buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Text information about the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.init_proxy">
+<em class="property">classmethod </em><code class="sig-name descname">init_proxy</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.init_proxy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialized response dictionary of write and read bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]) – Dictionary of write and read bytes</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Type</span></code>[<a class="reference internal" href="#spsdk.utils.serial_proxy.SerialProxy" title="spsdk.utils.serial_proxy.SerialProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">SerialProxy</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>SerialProxy class with configured data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates opening a serial port.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">length</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read portion of pre-configured data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Amount of data to read from buffer</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Data read</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.reset_input_buffer">
+<code class="sig-name descname">reset_input_buffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.reset_input_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates reseting input buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.reset_output_buffer">
+<code class="sig-name descname">reset_output_buffer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.reset_output_buffer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates reseting output buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.responses">
+<code class="sig-name descname">responses</code><em class="property">: Dict[bytes, bytes]</em><em class="property"> = {}</em><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.responses" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.utils.serial_proxy.SerialProxy.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.utils.serial_proxy.SerialProxy.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulates a write, currently just pick up response from responses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Bytes to write, key in responses</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../apps/overview.html" class="btn btn-neutral float-right" title="Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="exceptions.html" class="btn btn-neutral float-left" title="Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

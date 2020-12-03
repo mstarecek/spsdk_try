@@ -1,0 +1,1037 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Debug Authentication API &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Image Module API" href="image.html" />
+    <link rel="prev" title="Crypto Module API" href="crypto.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Debug Authentication API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.dat.debug_credential">Module for generating debug credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.dat.dac_packet">Module with Debug Authentication Challenge (DAC) Packet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.dat.dar_packet">Module with Debug Authentication Response (DAR) Packet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.dat.debug_mailbox">Module for NXP SPDK DebugMailbox support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.dat.dm_commands">Module with commands for Debug Mailbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.dat.utils">Module with common utils for DAT module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfr.html">Protected Flash Region API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sbfile.html">SBFile Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdp.html">SDP Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html#list-of-applications">List of applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Debug Authentication API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/dat.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="debug-authentication-api">
+<h1>Debug Authentication API<a class="headerlink" href="#debug-authentication-api" title="Permalink to this headline">¶</a></h1>
+<p>Debug Authentication module provides debugging for securely provisioned devices.</p>
+<div class="section" id="module-spsdk.dat.debug_credential">
+<span id="module-for-generating-debug-credentials"></span><h2>Module for generating debug credentials<a class="headerlink" href="#module-spsdk.dat.debug_credential" title="Permalink to this headline">¶</a></h2>
+<p>Module with Debugcredential class.</p>
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredential">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredential</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for DebugCredential.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredential.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = 'INVALID_FORMAT'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredential.FORMAT_NO_SIG">
+<code class="sig-name descname">FORMAT_NO_SIG</code><em class="property"> = 'INVALID_FORMAT'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.FORMAT_NO_SIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredential.VERSION">
+<code class="sig-name descname">VERSION</code><em class="property"> = '0.0'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.DebugCredential.create_from_yaml_config">
+<em class="property">classmethod </em><code class="sig-name descname">create_from_yaml_config</code><span class="sig-paren">(</span><em class="sig-param">version</em>, <em class="sig-param">yaml_config</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.create_from_yaml_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a debugcredential object out of yaml configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredential" title="spsdk.dat.debug_credential.DebugCredential"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugCredential</span></code></a></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>DebugCredential object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.DebugCredential.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export to binary form (serialization).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>binary representation of the debug credential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.DebugCredential.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of DebugCredential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>binary representation of the debug credential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.DebugCredential.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the debug credential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredential" title="spsdk.dat.debug_credential.DebugCredential"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugCredential</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DebugCredential object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.DebugCredential.sign">
+<code class="sig-name descname">sign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredential.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sign the DC data using SignatureProvider.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialECC</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredential" title="spsdk.dat.debug_credential.DebugCredential"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredential</span></code></a></p>
+<p>Class for ECC specific of DebugCredential.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC.CORD_LENGTH">
+<code class="sig-name descname">CORD_LENGTH</code><em class="property"> = 66</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC.CORD_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC.CURVE">
+<code class="sig-name descname">CURVE</code><em class="property">: Any</em><em class="property"> = &lt;cryptography.hazmat.primitives.asymmetric.ec.SECP256R1 object&gt;</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC.CURVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&lt;2HL16s528s132s3L4s132s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC.FORMAT_NO_SIG">
+<code class="sig-name descname">FORMAT_NO_SIG</code><em class="property"> = '&lt;2HL16s528s132s3L4s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC.FORMAT_NO_SIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC.sign">
+<code class="sig-name descname">sign</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC.sign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sign the DC data using SignatureProvider.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialECC256</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredentialECC" title="spsdk.dat.debug_credential.DebugCredentialECC"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredentialECC</span></code></a></p>
+<p>DebugCredential class for ECC 256.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256.CURVE">
+<code class="sig-name descname">CURVE</code><em class="property">: Any</em><em class="property"> = &lt;cryptography.hazmat.primitives.asymmetric.ec.SECP256R1 object&gt;</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256.CURVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256.VERSION">
+<code class="sig-name descname">VERSION</code><em class="property"> = '2.0'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256N4Analog">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialECC256N4Analog</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256N4Analog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.N4AnalogMixin" title="spsdk.dat.debug_credential.N4AnalogMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.N4AnalogMixin</span></code></a></p>
+<p>DebugCredential class for Niobe4Analog for version 2.0 (p256).</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256N4Analog.CORD_LENGTH">
+<code class="sig-name descname">CORD_LENGTH</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256N4Analog.CORD_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256N4Analog.HASH_LENGTH">
+<code class="sig-name descname">HASH_LENGTH</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256N4Analog.HASH_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC256N4Analog.KEY_LENGTH">
+<code class="sig-name descname">KEY_LENGTH</code><em class="property"> = 256</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC256N4Analog.KEY_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialECC384</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredentialECC" title="spsdk.dat.debug_credential.DebugCredentialECC"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredentialECC</span></code></a></p>
+<p>DebugCredential class for ECC 384.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384.CURVE">
+<code class="sig-name descname">CURVE</code><em class="property">: Any</em><em class="property"> = &lt;cryptography.hazmat.primitives.asymmetric.ec.SECP384R1 object&gt;</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384.CURVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384.VERSION">
+<code class="sig-name descname">VERSION</code><em class="property"> = '2.1'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384N4Analog">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialECC384N4Analog</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384N4Analog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.N4AnalogMixin" title="spsdk.dat.debug_credential.N4AnalogMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.N4AnalogMixin</span></code></a></p>
+<p>DebugCredential class for Niobe4Analog for version 2.1 (p384).</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384N4Analog.CORD_LENGTH">
+<code class="sig-name descname">CORD_LENGTH</code><em class="property"> = 48</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384N4Analog.CORD_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384N4Analog.HASH_LENGTH">
+<code class="sig-name descname">HASH_LENGTH</code><em class="property"> = 48</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384N4Analog.HASH_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC384N4Analog.KEY_LENGTH">
+<code class="sig-name descname">KEY_LENGTH</code><em class="property"> = 384</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC384N4Analog.KEY_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC521">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialECC521</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC521" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredentialECC" title="spsdk.dat.debug_credential.DebugCredentialECC"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredentialECC</span></code></a></p>
+<p>DebugCredential class for ECC 521.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC521.CURVE">
+<code class="sig-name descname">CURVE</code><em class="property">: Any</em><em class="property"> = &lt;cryptography.hazmat.primitives.asymmetric.ec.SECP521R1 object&gt;</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC521.CURVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialECC521.VERSION">
+<code class="sig-name descname">VERSION</code><em class="property"> = '2.2'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialECC521.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialRSA</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredential" title="spsdk.dat.debug_credential.DebugCredential"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredential</span></code></a></p>
+<p>Class for RSA specific of DebugCredential.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&lt;2HL16s128s260s3L260s256s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA.FORMAT_NO_SIG">
+<code class="sig-name descname">FORMAT_NO_SIG</code><em class="property"> = '&lt;2HL16s128s260s3L260s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA.FORMAT_NO_SIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA2048">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialRSA2048</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA2048" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredentialRSA" title="spsdk.dat.debug_credential.DebugCredentialRSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredentialRSA</span></code></a></p>
+<p>DebugCredential class for RSA 2048.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA2048.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&lt;2HL16s128s260s3L260s256s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA2048.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA2048.FORMAT_NO_SIG">
+<code class="sig-name descname">FORMAT_NO_SIG</code><em class="property"> = '&lt;2HL16s128s260s3L260s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA2048.FORMAT_NO_SIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA2048.VERSION">
+<code class="sig-name descname">VERSION</code><em class="property"> = '1.0'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA2048.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA4096">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">DebugCredentialRSA4096</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA4096" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredentialRSA" title="spsdk.dat.debug_credential.DebugCredentialRSA"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredentialRSA</span></code></a></p>
+<p>DebugCredential class for RSA 4096.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA4096.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&lt;2HL16s128s516s3L516s512s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA4096.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA4096.FORMAT_NO_SIG">
+<code class="sig-name descname">FORMAT_NO_SIG</code><em class="property"> = '&lt;2HL16s128s516s3L516s'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA4096.FORMAT_NO_SIG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.DebugCredentialRSA4096.VERSION">
+<code class="sig-name descname">VERSION</code><em class="property"> = '1.1'</em><a class="headerlink" href="#spsdk.dat.debug_credential.DebugCredentialRSA4096.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_credential.</code><code class="sig-name descname">N4AnalogMixin</code><span class="sig-paren">(</span><em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rot_meta</em>, <em class="sig-param">dck_pub</em>, <em class="sig-param">cc_socu</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">cc_beacon</em>, <em class="sig-param">rot_pub</em>, <em class="sig-param">signature=None</em>, <em class="sig-param">signature_provider=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredentialECC" title="spsdk.dat.debug_credential.DebugCredentialECC"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.debug_credential.DebugCredentialECC</span></code></a></p>
+<p>Niobe4Analog Class.</p>
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.CORD_LENGTH">
+<code class="sig-name descname">CORD_LENGTH</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.CORD_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.FORMAT">
+<em class="property">property </em><code class="sig-name descname">FORMAT</code><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formatting string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.FORMAT_NO_SIG">
+<em class="property">property </em><code class="sig-name descname">FORMAT_NO_SIG</code><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.FORMAT_NO_SIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Formatting string without signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.HASH_LENGTH">
+<code class="sig-name descname">HASH_LENGTH</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.HASH_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.KEY_LENGTH">
+<code class="sig-name descname">KEY_LENGTH</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.KEY_LENGTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.calculate_flags">
+<em class="property">static </em><code class="sig-name descname">calculate_flags</code><span class="sig-paren">(</span><em class="sig-param">used_root_cert</em>, <em class="sig-param">rot_pub_keys</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.calculate_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates flags in rotmeta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.create_ctrk_table">
+<em class="property">static </em><code class="sig-name descname">create_ctrk_table</code><span class="sig-paren">(</span><em class="sig-param">rot_pub_keys</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.create_ctrk_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates ctrk table.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export to binary form (serialization).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of DebugCredential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>binary representation of the debug credential</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_credential.N4AnalogMixin.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_credential.N4AnalogMixin.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the debug credential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredential" title="spsdk.dat.debug_credential.DebugCredential"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugCredential</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DebugCredential object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.dat.dac_packet">
+<span id="module-with-debug-authentication-challenge-dac-packet"></span><h2>Module with Debug Authentication Challenge (DAC) Packet<a class="headerlink" href="#module-spsdk.dat.dac_packet" title="Permalink to this headline">¶</a></h2>
+<p>Module with Debug Authentication Challenge (DAC) Packet.</p>
+<dl class="class">
+<dt id="spsdk.dat.dac_packet.DebugAuthenticationChallenge">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dac_packet.</code><code class="sig-name descname">DebugAuthenticationChallenge</code><span class="sig-paren">(</span><em class="sig-param">version</em>, <em class="sig-param">socc</em>, <em class="sig-param">uuid</em>, <em class="sig-param">rotid_rkh_revocation</em>, <em class="sig-param">rotid_rkth_hash</em>, <em class="sig-param">cc_soc_pinned</em>, <em class="sig-param">cc_soc_default</em>, <em class="sig-param">cc_vu</em>, <em class="sig-param">challenge</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dac_packet.DebugAuthenticationChallenge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for DebugAuthenticationChallenge.</p>
+<dl class="method">
+<dt id="spsdk.dat.dac_packet.DebugAuthenticationChallenge.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dac_packet.DebugAuthenticationChallenge.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports the DebugAuthenticationChallenge into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.dac_packet.DebugAuthenticationChallenge.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dac_packet.DebugAuthenticationChallenge.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of DebugCredential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.dac_packet.DebugAuthenticationChallenge.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dac_packet.DebugAuthenticationChallenge.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the data into a DebugAuthenticationChallenge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Offset within the input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.dat.dac_packet.DebugAuthenticationChallenge" title="spsdk.dat.dac_packet.DebugAuthenticationChallenge"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugAuthenticationChallenge</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DebugAuthenticationChallenge object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.dat.dar_packet">
+<span id="module-with-debug-authentication-response-dar-packet"></span><h2>Module with Debug Authentication Response (DAR) Packet<a class="headerlink" href="#module-spsdk.dat.dar_packet" title="Permalink to this headline">¶</a></h2>
+<p>Module with Debug Authentication Response (DAR) Packet.</p>
+<dl class="class">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponse">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dar_packet.</code><code class="sig-name descname">DebugAuthenticateResponse</code><span class="sig-paren">(</span><em class="sig-param">debug_credential</em>, <em class="sig-param">auth_beacon</em>, <em class="sig-param">dac</em>, <em class="sig-param">path_dck_private</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for DAR packet.</p>
+<dl class="method">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponse.create">
+<em class="property">classmethod </em><code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param">version</em>, <em class="sig-param">socc</em>, <em class="sig-param">dc</em>, <em class="sig-param">auth_beacon</em>, <em class="sig-param">dac</em>, <em class="sig-param">dck</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a dar object out of input parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>version</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – protocol version</p></li>
+<li><p><strong>socc</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – SoC Class</p></li>
+<li><p><strong>dc</strong> (<a class="reference internal" href="#spsdk.dat.debug_credential.DebugCredential" title="spsdk.dat.debug_credential.DebugCredential"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugCredential</span></code></a>) – debug credential object</p></li>
+<li><p><strong>auth_beacon</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – authentication beacon value</p></li>
+<li><p><strong>dac</strong> (<a class="reference internal" href="#spsdk.dat.dac_packet.DebugAuthenticationChallenge" title="spsdk.dat.dac_packet.DebugAuthenticationChallenge"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugAuthenticationChallenge</span></code></a>) – DebugAuthenticationChallenge object</p></li>
+<li><p><strong>dck</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – string containing path to dck key</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="spsdk.dat.dar_packet.DebugAuthenticateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugAuthenticateResponse</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DAR object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponse.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export to binary form (serialization).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the exported bytes from object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponse.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of DebugAuthenticateResponse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponse.parse">
+<em class="property">classmethod </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the DAR.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Raw data as bytes</p></li>
+<li><p><strong>offset</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Offset of input data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="spsdk.dat.dar_packet.DebugAuthenticateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">DebugAuthenticateResponse</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>DebugAuthenticateResponse object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponseECC">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dar_packet.</code><code class="sig-name descname">DebugAuthenticateResponseECC</code><span class="sig-paren">(</span><em class="sig-param">debug_credential</em>, <em class="sig-param">auth_beacon</em>, <em class="sig-param">dac</em>, <em class="sig-param">path_dck_private</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponseECC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="spsdk.dat.dar_packet.DebugAuthenticateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dar_packet.DebugAuthenticateResponse</span></code></a></p>
+<p>Class for ECC specific of DAR.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponseN4A_256">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dar_packet.</code><code class="sig-name descname">DebugAuthenticateResponseN4A_256</code><span class="sig-paren">(</span><em class="sig-param">debug_credential</em>, <em class="sig-param">auth_beacon</em>, <em class="sig-param">dac</em>, <em class="sig-param">path_dck_private</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponseN4A_256" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="spsdk.dat.dar_packet.DebugAuthenticateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dar_packet.DebugAuthenticateResponse</span></code></a></p>
+<p>Class for N4A specific of DAR.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponseN4A_384">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dar_packet.</code><code class="sig-name descname">DebugAuthenticateResponseN4A_384</code><span class="sig-paren">(</span><em class="sig-param">debug_credential</em>, <em class="sig-param">auth_beacon</em>, <em class="sig-param">dac</em>, <em class="sig-param">path_dck_private</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponseN4A_384" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="spsdk.dat.dar_packet.DebugAuthenticateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dar_packet.DebugAuthenticateResponse</span></code></a></p>
+<p>Class for N4A specific of DAR.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dar_packet.DebugAuthenticateResponseRSA">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dar_packet.</code><code class="sig-name descname">DebugAuthenticateResponseRSA</code><span class="sig-paren">(</span><em class="sig-param">debug_credential</em>, <em class="sig-param">auth_beacon</em>, <em class="sig-param">dac</em>, <em class="sig-param">path_dck_private</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dar_packet.DebugAuthenticateResponseRSA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dar_packet.DebugAuthenticateResponse" title="spsdk.dat.dar_packet.DebugAuthenticateResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dar_packet.DebugAuthenticateResponse</span></code></a></p>
+<p>Class for RSA specifics of DAR packet.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.dat.debug_mailbox">
+<span id="module-for-nxp-spdk-debugmailbox-support"></span><h2>Module for NXP SPDK DebugMailbox support<a class="headerlink" href="#module-spsdk.dat.debug_mailbox" title="Permalink to this headline">¶</a></h2>
+<p>Module for NXP SPDK DebugMailbox support.</p>
+<dl class="class">
+<dt id="spsdk.dat.debug_mailbox.DebugMailbox">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.debug_mailbox.</code><code class="sig-name descname">DebugMailbox</code><span class="sig-paren">(</span><em class="sig-param">debug_probe</em>, <em class="sig-param">reset=True</em>, <em class="sig-param">moredelay=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_mailbox.DebugMailbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for DebugMailbox.</p>
+<dl class="method">
+<dt id="spsdk.dat.debug_mailbox.DebugMailbox.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_mailbox.DebugMailbox.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_mailbox.DebugMailbox.spin_read">
+<code class="sig-name descname">spin_read</code><span class="sig-paren">(</span><em class="sig-param">reg</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_mailbox.DebugMailbox.spin_read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.dat.debug_mailbox.DebugMailbox.spin_write">
+<code class="sig-name descname">spin_write</code><span class="sig-paren">(</span><em class="sig-param">reg</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.debug_mailbox.DebugMailbox.spin_write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="spsdk.dat.debug_mailbox.DebugMailboxError">
+<em class="property">exception </em><code class="sig-prename descclassname">spsdk.dat.debug_mailbox.</code><code class="sig-name descname">DebugMailboxError</code><a class="headerlink" href="#spsdk.dat.debug_mailbox.DebugMailboxError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></p>
+<p>Class for DebugMailboxError.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.dat.dm_commands">
+<span id="module-with-commands-for-debug-mailbox"></span><h2>Module with commands for Debug Mailbox<a class="headerlink" href="#module-spsdk.dat.dm_commands" title="Permalink to this headline">¶</a></h2>
+<p>Commands for Debug Mailbox.</p>
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.DebugAuthenticationResponse">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">DebugAuthenticationResponse</code><span class="sig-paren">(</span><em class="sig-param">dm</em>, <em class="sig-param">paramlen</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.DebugAuthenticationResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for DebugAuthenticationResponse.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.DebugAuthenticationStart">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">DebugAuthenticationStart</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.DebugAuthenticationStart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for DebugAuthenticationStart.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.DebugMailboxCommand">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">DebugMailboxCommand</code><span class="sig-paren">(</span><em class="sig-param">dm</em>, <em class="sig-param">id</em>, <em class="sig-param">name=''</em>, <em class="sig-param">paramlen=0</em>, <em class="sig-param">resplen=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for DebugMailboxCommand.</p>
+<dl class="method">
+<dt id="spsdk.dat.dm_commands.DebugMailboxCommand.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">params=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.DebugMailboxCommand.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run DebugMailboxCommand.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.EnterISPMode">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">EnterISPMode</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.EnterISPMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for EnterISPMode.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.EraseFlash">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">EraseFlash</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.EraseFlash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for Erase Flash.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.ExitDebugMailbox">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">ExitDebugMailbox</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.ExitDebugMailbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for ExitDebugMailbox.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.GetCRPLevel">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">GetCRPLevel</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.GetCRPLevel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for Get CRP Level.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.SetFaultAnalysisMode">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">SetFaultAnalysisMode</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.SetFaultAnalysisMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for SetFaultAnalysisMode.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.dat.dm_commands.StartDebugMailbox">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.dat.dm_commands.</code><code class="sig-name descname">StartDebugMailbox</code><span class="sig-paren">(</span><em class="sig-param">dm</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.dm_commands.StartDebugMailbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.dat.dm_commands.DebugMailboxCommand" title="spsdk.dat.dm_commands.DebugMailboxCommand"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.dat.dm_commands.DebugMailboxCommand</span></code></a></p>
+<p>Class for StartDebugMailbox.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.dat.utils">
+<span id="module-with-common-utils-for-dat-module"></span><h2>Module with common utils for DAT module<a class="headerlink" href="#module-spsdk.dat.utils" title="Permalink to this headline">¶</a></h2>
+<p>Common utils for DAT module.</p>
+<dl class="function">
+<dt id="spsdk.dat.utils.ecc_key_to_bytes">
+<code class="sig-prename descclassname">spsdk.dat.utils.</code><code class="sig-name descname">ecc_key_to_bytes</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.utils.ecc_key_to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts key into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">EllipticCurvePublicKey</span></code>) – instance of ECC Public Key</p></li>
+<li><p><strong>length</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – length of bytes object to use</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bytes representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.dat.utils.ecc_public_numbers_to_bytes">
+<code class="sig-prename descclassname">spsdk.dat.utils.</code><code class="sig-name descname">ecc_public_numbers_to_bytes</code><span class="sig-paren">(</span><em class="sig-param">public_numbers</em>, <em class="sig-param">length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.utils.ecc_public_numbers_to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts public numbers from ECC key into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>public_numbers</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">EllipticCurvePublicNumbers</span></code>) – instance of ecc public numbers</p></li>
+<li><p><strong>length</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – length of bytes object to use</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>bytes representation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.dat.utils.reconstruct_signature">
+<code class="sig-prename descclassname">spsdk.dat.utils.</code><code class="sig-name descname">reconstruct_signature</code><span class="sig-paren">(</span><em class="sig-param">signature_bytes</em>, <em class="sig-param">size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.utils.reconstruct_signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reconstructs signature.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signature_bytes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – signature’s bytes</p></li>
+<li><p><strong>size</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – size of r and s bytes (from signature)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>reconstructed signature</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="spsdk.dat.utils.rsa_key_to_bytes">
+<code class="sig-prename descclassname">spsdk.dat.utils.</code><code class="sig-name descname">rsa_key_to_bytes</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">exp_length=None</em>, <em class="sig-param">modulus_length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.dat.utils.rsa_key_to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts RSA key into bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">RSAPublicKey</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">RSAPrivateKeyWithSerialization</span></code>]) – Union of types: RSAPublicKey, RSAPrivateKeyWithSerialization</p></li>
+<li><p><strong>exp_length</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Length of exponent’s bytes to use if none it will be calculated</p></li>
+<li><p><strong>modulus_length</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Length of modulus’s bytes to use if none it will be calculated</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Combined modulus and exponent bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="image.html" class="btn btn-neutral float-right" title="Image Module API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="crypto.html" class="btn btn-neutral float-left" title="Crypto Module API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

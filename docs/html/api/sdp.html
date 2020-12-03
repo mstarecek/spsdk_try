@@ -1,0 +1,1081 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SDP Module API &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SDP Interfaces" href="sdp_interfaces.html" />
+    <link rel="prev" title="SBFile Module API" href="sbfile.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dat.html">Debug Authentication API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfr.html">Protected Flash Region API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sbfile.html">SBFile Module API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SDP Module API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sdp_interfaces.html">SDP Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sdp.sdp">SDP Communication protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sdp.commands">SDP Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sdp.sdps">SDPS communication protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.sdp.error_codes">SDP Error/Status codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html#list-of-applications">List of applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>SDP Module API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/sdp.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sdp-module-api">
+<h1>SDP Module API<a class="headerlink" href="#sdp-module-api" title="Permalink to this headline">¶</a></h1>
+<p>Module implementing the SDP communication protocol.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="sdp_interfaces.html">SDP Interfaces</a></li>
+</ul>
+</div>
+<div class="section" id="module-spsdk.sdp.sdp">
+<span id="sdp-communication-protocol"></span><h2>SDP Communication protocol<a class="headerlink" href="#module-spsdk.sdp.sdp" title="Permalink to this headline">¶</a></h2>
+<p>Module implementing the SDP communication protocol.</p>
+<dl class="class">
+<dt id="spsdk.sdp.sdp.SDP">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.sdp.</code><code class="sig-name descname">SDP</code><span class="sig-paren">(</span><em class="sig-param">device</em>, <em class="sig-param">cmd_exception=False</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Serial Downloader Protocol.</p>
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect i.MX device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.is_opened">
+<em class="property">property </em><code class="sig-name descname">is_opened</code><a class="headerlink" href="#spsdk.sdp.sdp.SDP.is_opened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the underlying interface is open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if device is open, False if it’s closed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.jump_and_run">
+<code class="sig-name descname">jump_and_run</code><span class="sig-paren">(</span><em class="sig-param">address</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.jump_and_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Jump to specified address and run code from there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Destination address</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return True if success else False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to i.MX device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">length</em>, <em class="sig-param">data_format=32</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read value from reg/mem at specified address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start address of first register</p></li>
+<li><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Count of bytes</p></li>
+<li><p><strong>data_format</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Register access format 8, 16, 32 bits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return bytes if success else None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.read_safe">
+<code class="sig-name descname">read_safe</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">length</em>, <em class="sig-param">data_format=32</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.read_safe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read value from reg/mem at specified address.</p>
+<p>This method is safe, because is validating input arguments and prevents fault execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start address of first register</p></li>
+<li><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Count of bytes</p></li>
+<li><p><strong>data_format</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Register access format 8, 16, 32 bits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return bytes if success else None.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the address is not properly aligned</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.read_status">
+<code class="sig-name descname">read_status</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.read_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read Error Status.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return status value if success else None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.response_value">
+<em class="property">property </em><code class="sig-name descname">response_value</code><a class="headerlink" href="#spsdk.sdp.sdp.SDP.response_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the response value from last operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.skip_dcd">
+<code class="sig-name descname">skip_dcd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.skip_dcd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skip DCD blob from loaded file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return True if success else False.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#spsdk.sdp.exceptions.SdpCommandError" title="spsdk.sdp.exceptions.SdpCommandError"><strong>SdpCommandError</strong></a> – If command failed and the ‘cmd_exception’ is set to True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.status_code">
+<em class="property">property </em><code class="sig-name descname">status_code</code><a class="headerlink" href="#spsdk.sdp.sdp.SDP.status_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get status code of the last operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#spsdk.sdp.error_codes.StatusCode" title="spsdk.sdp.error_codes.StatusCode"><code class="xref py py-class docutils literal notranslate"><span class="pre">StatusCode</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">value</em>, <em class="sig-param">count=4</em>, <em class="sig-param">data_format=32</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write value into reg/mem at specified address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start address of first register</p></li>
+<li><p><strong>value</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Register value</p></li>
+<li><p><strong>count</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Count of bytes (max 4)</p></li>
+<li><p><strong>data_format</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Register access format 8, 16, 32 bits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return True if success else False.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#spsdk.sdp.exceptions.SdpCommandError" title="spsdk.sdp.exceptions.SdpCommandError"><strong>SdpCommandError</strong></a> – If command failed and the ‘cmd_exception’ is set to True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.write_csf">
+<code class="sig-name descname">write_csf</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.write_csf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write CSF Data at specified address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start Address</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The CSF data in binary format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return True if success else False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.write_dcd">
+<code class="sig-name descname">write_dcd</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.write_dcd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write DCD values at specified address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start Address</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The DCD data in binary format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return True if success else False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.write_file">
+<code class="sig-name descname">write_file</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write File/Data at specified address.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start Address</p></li>
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The boot image data in binary format</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return True if success else False.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdp.SDP.write_safe">
+<code class="sig-name descname">write_safe</code><span class="sig-paren">(</span><em class="sig-param">address</em>, <em class="sig-param">value</em>, <em class="sig-param">count=4</em>, <em class="sig-param">data_format=32</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdp.SDP.write_safe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write value into reg/mem at specified address.</p>
+<p>This method is safe, because is validating input arguments and prevents fault execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Start address of first register</p></li>
+<li><p><strong>value</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Register value</p></li>
+<li><p><strong>count</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Count of bytes (max 4)</p></li>
+<li><p><strong>data_format</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Register access format 8, 16, 32 bits</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return True if success else False.</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the address is not properly aligned</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sdp.commands">
+<span id="sdp-commands"></span><h2>SDP Commands<a class="headerlink" href="#module-spsdk.sdp.commands" title="Permalink to this headline">¶</a></h2>
+<p>Commands and responses used by SDP module.</p>
+<dl class="class">
+<dt id="spsdk.sdp.commands.CmdPacket">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.commands.</code><code class="sig-name descname">CmdPacket</code><span class="sig-paren">(</span><em class="sig-param">tag</em>, <em class="sig-param">address</em>, <em class="sig-param">pformat</em>, <em class="sig-param">count</em>, <em class="sig-param">value=0</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.commands.CmdPacket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class representing a command packet to be sent to device.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CmdPacket.EMPTY_VALUE">
+<code class="sig-name descname">EMPTY_VALUE</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sdp.commands.CmdPacket.EMPTY_VALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CmdPacket.FORMAT">
+<code class="sig-name descname">FORMAT</code><em class="property"> = '&gt;HIB2IB'</em><a class="headerlink" href="#spsdk.sdp.commands.CmdPacket.FORMAT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.commands.CmdPacket.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.commands.CmdPacket.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>String representation of the command packet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.commands.CmdPacket.to_bytes">
+<code class="sig-name descname">to_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.commands.CmdPacket.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return command packet as bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.commands.CmdResponse">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.commands.</code><code class="sig-name descname">CmdResponse</code><span class="sig-paren">(</span><em class="sig-param">hab</em>, <em class="sig-param">raw_data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.commands.CmdResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Response on the previously issued command.</p>
+<dl class="method">
+<dt id="spsdk.sdp.commands.CmdResponse.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.commands.CmdResponse.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return stringified information about the command response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.commands.CmdResponse.value">
+<em class="property">property </em><code class="sig-name descname">value</code><a class="headerlink" href="#spsdk.sdp.commands.CmdResponse.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a integer representation of the response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.commands.CommandTag">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.commands.</code><code class="sig-name descname">CommandTag</code><a class="headerlink" href="#spsdk.sdp.commands.CommandTag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>SDP Commands.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.ERROR_STATUS">
+<code class="sig-name descname">ERROR_STATUS</code><em class="property"> = 1285</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.ERROR_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.JUMP_ADDRESS">
+<code class="sig-name descname">JUMP_ADDRESS</code><em class="property"> = 2827</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.JUMP_ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.PING">
+<code class="sig-name descname">PING</code><em class="property"> = 23206</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.PING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.READ_REGISTER">
+<code class="sig-name descname">READ_REGISTER</code><em class="property"> = 257</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.READ_REGISTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.SET_BAUDRATE">
+<code class="sig-name descname">SET_BAUDRATE</code><em class="property"> = 3341</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.SET_BAUDRATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.SKIP_DCD_HEADER">
+<code class="sig-name descname">SKIP_DCD_HEADER</code><em class="property"> = 3084</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.SKIP_DCD_HEADER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_CSF">
+<code class="sig-name descname">WRITE_CSF</code><em class="property"> = 1542</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.WRITE_CSF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_DCD">
+<code class="sig-name descname">WRITE_DCD</code><em class="property"> = 2570</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.WRITE_DCD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_FILE">
+<code class="sig-name descname">WRITE_FILE</code><em class="property"> = 1028</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.WRITE_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.CommandTag.WRITE_REGISTER">
+<code class="sig-name descname">WRITE_REGISTER</code><em class="property"> = 514</em><a class="headerlink" href="#spsdk.sdp.commands.CommandTag.WRITE_REGISTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.commands.ResponseValue">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.commands.</code><code class="sig-name descname">ResponseValue</code><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>SDP Response Values.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.ResponseValue.HAB_SUCCESS">
+<code class="sig-name descname">HAB_SUCCESS</code><em class="property"> = 4042322160</em><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue.HAB_SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.ResponseValue.LOCKED">
+<code class="sig-name descname">LOCKED</code><em class="property"> = 305411090</em><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue.LOCKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.ResponseValue.SKIP_DCD_HEADER_OK">
+<code class="sig-name descname">SKIP_DCD_HEADER_OK</code><em class="property"> = 2416824329</em><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue.SKIP_DCD_HEADER_OK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.ResponseValue.UNLOCKED">
+<code class="sig-name descname">UNLOCKED</code><em class="property"> = 1450735702</em><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue.UNLOCKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.ResponseValue.WRITE_DATA_OK">
+<code class="sig-name descname">WRITE_DATA_OK</code><em class="property"> = 311069202</em><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue.WRITE_DATA_OK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.commands.ResponseValue.WRITE_FILE_OK">
+<code class="sig-name descname">WRITE_FILE_OK</code><em class="property"> = 2290649224</em><a class="headerlink" href="#spsdk.sdp.commands.ResponseValue.WRITE_FILE_OK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sdp.sdps">
+<span id="sdps-communication-protocol"></span><h2>SDPS communication protocol<a class="headerlink" href="#module-spsdk.sdp.sdps" title="Permalink to this headline">¶</a></h2>
+<p>Module implementing the SDPS communication protocol.</p>
+<dl class="class">
+<dt id="spsdk.sdp.sdps.SDPS">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.sdps.</code><code class="sig-name descname">SDPS</code><span class="sig-paren">(</span><em class="sig-param">device</em>, <em class="sig-param">device_name</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdps.SDPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Secure Serial Downloader Protocol.</p>
+<dl class="method">
+<dt id="spsdk.sdp.sdps.SDPS.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdps.SDPS.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect i.MX device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdps.SDPS.is_opened">
+<em class="property">property </em><code class="sig-name descname">is_opened</code><a class="headerlink" href="#spsdk.sdp.sdps.SDPS.is_opened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the underlying interface is open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if device is open, False if it’s closed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdps.SDPS.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#spsdk.sdp.sdps.SDPS.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdps.SDPS.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdps.SDPS.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to i.MX device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdps.SDPS.swap32">
+<em class="property">static </em><code class="sig-name descname">swap32</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdps.SDPS.swap32" title="Permalink to this definition">¶</a></dt>
+<dd><p>Swap 32 bit integer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – integer to be swapped</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>swapped value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.sdps.SDPS.write_file">
+<code class="sig-name descname">write_file</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.sdps.SDPS.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to the target.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – The boot image data in binary format</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#spsdk.sdp.exceptions.SdpConnectionError" title="spsdk.sdp.exceptions.SdpConnectionError"><strong>SdpConnectionError</strong></a> – Timeout or Connection error</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sdp.error_codes">
+<span id="sdp-error-status-codes"></span><h2>SDP Error/Status codes<a class="headerlink" href="#module-spsdk.sdp.error_codes" title="Permalink to this headline">¶</a></h2>
+<p>Error codes defined by the SDP protocol.</p>
+<dl class="class">
+<dt id="spsdk.sdp.error_codes.HabErrorContext">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.error_codes.</code><code class="sig-name descname">HabErrorContext</code><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>HAB Error Context.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.AUTH_DATA_BLOCK">
+<code class="sig-name descname">AUTH_DATA_BLOCK</code><em class="property"> = 219</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.AUTH_DATA_BLOCK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.HAB_CTX_ANY">
+<code class="sig-name descname">HAB_CTX_ANY</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.HAB_CTX_ANY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.HAB_FAB_TEST">
+<code class="sig-name descname">HAB_FAB_TEST</code><em class="property"> = 255</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.HAB_FAB_TEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.HAB_RVT_ENTRY">
+<code class="sig-name descname">HAB_RVT_ENTRY</code><em class="property"> = 225</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.HAB_RVT_ENTRY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_ASSERT">
+<code class="sig-name descname">RVT_ASSERT</code><em class="property"> = 160</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_ASSERT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_AUTHENTICATE_IMG">
+<code class="sig-name descname">RVT_AUTHENTICATE_IMG</code><em class="property"> = 10</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_AUTHENTICATE_IMG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_CHECK_TARGET">
+<code class="sig-name descname">RVT_CHECK_TARGET</code><em class="property"> = 51</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_CHECK_TARGET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_CSF_DCD_CMD">
+<code class="sig-name descname">RVT_CSF_DCD_CMD</code><em class="property"> = 192</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_CSF_DCD_CMD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_EXIT">
+<code class="sig-name descname">RVT_EXIT</code><em class="property"> = 238</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_EXIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_RUN_CSF">
+<code class="sig-name descname">RVT_RUN_CSF</code><em class="property"> = 207</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_RUN_CSF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorContext.RVT_RUN_DCD">
+<code class="sig-name descname">RVT_RUN_DCD</code><em class="property"> = 221</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorContext.RVT_RUN_DCD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.error_codes.HabErrorReason">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.error_codes.</code><code class="sig-name descname">HabErrorReason</code><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>HAB Error Reason.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.CALL_OUT_OF_SEQUENCE">
+<code class="sig-name descname">CALL_OUT_OF_SEQUENCE</code><em class="property"> = 40</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.CALL_OUT_OF_SEQUENCE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.ENGINE_FAILURE">
+<code class="sig-name descname">ENGINE_FAILURE</code><em class="property"> = 48</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.ENGINE_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.EXHAUSTED_STORAGE_REGION">
+<code class="sig-name descname">EXHAUSTED_STORAGE_REGION</code><em class="property"> = 45</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.EXHAUSTED_STORAGE_REGION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.EXPIRED_POLL_COUNT">
+<code class="sig-name descname">EXPIRED_POLL_COUNT</code><em class="property"> = 43</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.EXPIRED_POLL_COUNT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.FAILED_CALLBACK">
+<code class="sig-name descname">FAILED_CALLBACK</code><em class="property"> = 30</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.FAILED_CALLBACK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_ADDRESS">
+<code class="sig-name descname">INVALID_ADDRESS</code><em class="property"> = 34</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_ASSERTION">
+<code class="sig-name descname">INVALID_ASSERTION</code><em class="property"> = 12</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_ASSERTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_BLOB">
+<code class="sig-name descname">INVALID_BLOB</code><em class="property"> = 49</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_BLOB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_CERTIFICATE">
+<code class="sig-name descname">INVALID_CERTIFICATE</code><em class="property"> = 33</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_CERTIFICATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_COMMAND">
+<code class="sig-name descname">INVALID_COMMAND</code><em class="property"> = 6</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_CSF">
+<code class="sig-name descname">INVALID_CSF</code><em class="property"> = 17</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_CSF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_DATA_SIZE">
+<code class="sig-name descname">INVALID_DATA_SIZE</code><em class="property"> = 23</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_DATA_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_DCD">
+<code class="sig-name descname">INVALID_DCD</code><em class="property"> = 39</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_DCD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_INDEX">
+<code class="sig-name descname">INVALID_INDEX</code><em class="property"> = 15</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_INDEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_IVT">
+<code class="sig-name descname">INVALID_IVT</code><em class="property"> = 5</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_IVT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_KEY">
+<code class="sig-name descname">INVALID_KEY</code><em class="property"> = 29</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_KEY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_MAC">
+<code class="sig-name descname">INVALID_MAC</code><em class="property"> = 50</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_MAC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.INVALID_SIGNATURE">
+<code class="sig-name descname">INVALID_SIGNATURE</code><em class="property"> = 24</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.INVALID_SIGNATURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.MEMORY_FAILURE">
+<code class="sig-name descname">MEMORY_FAILURE</code><em class="property"> = 46</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.MEMORY_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNKNOWN">
+<code class="sig-name descname">UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUITABLE_STATE">
+<code class="sig-name descname">UNSUITABLE_STATE</code><em class="property"> = 9</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUITABLE_STATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_ALGORITHM">
+<code class="sig-name descname">UNSUPPORTED_ALGORITHM</code><em class="property"> = 18</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_ALGORITHM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_COMMAND">
+<code class="sig-name descname">UNSUPPORTED_COMMAND</code><em class="property"> = 3</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_CONF_ITEM">
+<code class="sig-name descname">UNSUPPORTED_CONF_ITEM</code><em class="property"> = 36</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_CONF_ITEM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_ENGINE">
+<code class="sig-name descname">UNSUPPORTED_ENGINE</code><em class="property"> = 10</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_ENGINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_KEY_OR_PARAM">
+<code class="sig-name descname">UNSUPPORTED_KEY_OR_PARAM</code><em class="property"> = 27</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_KEY_OR_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_PROTOCOL">
+<code class="sig-name descname">UNSUPPORTED_PROTOCOL</code><em class="property"> = 20</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabErrorReason.UNSUPPORTED_PROTOCOL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.error_codes.HabStatusInfo">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.error_codes.</code><code class="sig-name descname">HabStatusInfo</code><a class="headerlink" href="#spsdk.sdp.error_codes.HabStatusInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>HAB status codes.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabStatusInfo.ERROR">
+<code class="sig-name descname">ERROR</code><em class="property"> = 51</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabStatusInfo.ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabStatusInfo.SUCCESS">
+<code class="sig-name descname">SUCCESS</code><em class="property"> = 240</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabStatusInfo.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabStatusInfo.UNKNOWN">
+<code class="sig-name descname">UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabStatusInfo.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.HabStatusInfo.WARNING">
+<code class="sig-name descname">WARNING</code><em class="property"> = 105</em><a class="headerlink" href="#spsdk.sdp.error_codes.HabStatusInfo.WARNING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.error_codes.StatusCode">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.error_codes.</code><code class="sig-name descname">StatusCode</code><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="utils.html#spsdk.utils.easy_enum.Enum" title="spsdk.utils.easy_enum.Enum"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.utils.easy_enum.Enum</span></code></a></p>
+<p>SDP status codes.</p>
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.CMD_FAILURE">
+<code class="sig-name descname">CMD_FAILURE</code><em class="property"> = 1</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.CMD_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.HAB_IS_LOCKED">
+<code class="sig-name descname">HAB_IS_LOCKED</code><em class="property"> = 2</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.HAB_IS_LOCKED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.READ_DATA_FAILURE">
+<code class="sig-name descname">READ_DATA_FAILURE</code><em class="property"> = 10</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.READ_DATA_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.SKIP_DCD_HEADER_FAILURE">
+<code class="sig-name descname">SKIP_DCD_HEADER_FAILURE</code><em class="property"> = 15</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.SKIP_DCD_HEADER_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.SUCCESS">
+<code class="sig-name descname">SUCCESS</code><em class="property"> = 0</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.SUCCESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.WRITE_CSF_FAILURE">
+<code class="sig-name descname">WRITE_CSF_FAILURE</code><em class="property"> = 14</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.WRITE_CSF_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.WRITE_DCD_FAILURE">
+<code class="sig-name descname">WRITE_DCD_FAILURE</code><em class="property"> = 13</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.WRITE_DCD_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.WRITE_IMAGE_FAILURE">
+<code class="sig-name descname">WRITE_IMAGE_FAILURE</code><em class="property"> = 12</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.WRITE_IMAGE_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.error_codes.StatusCode.WRITE_REGISTER_FAILURE">
+<code class="sig-name descname">WRITE_REGISTER_FAILURE</code><em class="property"> = 11</em><a class="headerlink" href="#spsdk.sdp.error_codes.StatusCode.WRITE_REGISTER_FAILURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sdp_interfaces.html" class="btn btn-neutral float-right" title="SDP Interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sbfile.html" class="btn btn-neutral float-left" title="SBFile Module API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

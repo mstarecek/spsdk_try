@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Summary &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Image Module" href="../usage/image.html" />
+    <link rel="prev" title="Utils Module API" href="../api/utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/dat.html">Debug Authentication API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/pfr.html">Protected Flash Region API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sbfile.html">SBFile Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/sdp.html">SDP Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/utils.html">Utils Module API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#list-of-applications">List of applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nxpkeygen">nxpkeygen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nxpdebugmbox">nxpdebugmbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pfr">pfr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pfrc">pfrc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdphost">sdphost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdpshost">sdpshost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#blhost">blhost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elftosb">elftosb</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Summary</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apps/overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h1>
+<p>Applications shipped with SPSDK are available in <code class="docutils literal notranslate"><span class="pre">PATH</span></code> after activating a virtual environment with SPSDK installed in it.
+If you don’t use virtual environments, the availability is not guaranteed (you’d need to add Python’s Scripts folder to PATH first).</p>
+<p>SPSDK has a special application called <code class="docutils literal notranslate"><span class="pre">spsdk</span></code>. It holds references to all available applications.
+To see the list run: <code class="docutils literal notranslate"><span class="pre">spsdk</span> <span class="pre">--help</span></code>.
+Each application could be executed separately or via spsdk (e.g. running <code class="docutils literal notranslate"><span class="pre">pfr</span></code> is equal to running <code class="docutils literal notranslate"><span class="pre">spsdk</span> <span class="pre">pfr</span></code>).</p>
+<p>Options and flags for each application and their respective sub-commands are available using <code class="docutils literal notranslate"><span class="pre">--help</span></code> flag.</p>
+</div>
+<div class="section" id="list-of-applications">
+<h1>List of applications<a class="headerlink" href="#list-of-applications" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nxpkeygen">
+<h2>nxpkeygen<a class="headerlink" href="#nxpkeygen" title="Permalink to this headline">¶</a></h2>
+<p>The nxpkeygen application allows user to:</p>
+<ul class="simple">
+<li><p>generate RSA/ECC key pairs (private and public) with various key’s attributes</p></li>
+<li><p>generate debug credential files based on YAML configuration file</p></li>
+</ul>
+<p>For complete list of operations run: <code class="docutils literal notranslate"><span class="pre">nxpkeygen</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="nxpdebugmbox">
+<h2>nxpdebugmbox<a class="headerlink" href="#nxpdebugmbox" title="Permalink to this headline">¶</a></h2>
+<p>The nxpkeygen application allows user to:</p>
+<ul class="simple">
+<li><p>perform the Debug Authentication</p></li>
+<li><p>start/stop Debug Mailbox</p></li>
+<li><p>enter ISP mode</p></li>
+<li><p>set Fault Analysis Mode</p></li>
+</ul>
+<p>For complete list of operations run: <code class="docutils literal notranslate"><span class="pre">nxpdebugmbox</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="pfr">
+<h2>pfr<a class="headerlink" href="#pfr" title="Permalink to this headline">¶</a></h2>
+<p>The pfr application is  a utility for generating and parsing Protected Flash Region data (CMPA, CFPA).</p>
+<p>It allows user to:</p>
+<ul class="simple">
+<li><p>generate user configuration</p></li>
+<li><p>parse binary a extract configuration</p></li>
+<li><p>generate binary data.</p></li>
+<li><p>generate HTML page with brief description of CMPA/CFPA configuration fields</p></li>
+<li><p>list supported devices</p></li>
+</ul>
+<p>For complete list of operations run: <code class="docutils literal notranslate"><span class="pre">pfr</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="pfrc">
+<h2>pfrc<a class="headerlink" href="#pfrc" title="Permalink to this headline">¶</a></h2>
+<p>The pfrc application is a utility for searching for brick-conditions in PFR settings.</p>
+<p>Note: THIS IS AN EXPERIMENTAL UTILITY! USE WITH CAUTION !!!</p>
+<p>For complete list of operations run: <code class="docutils literal notranslate"><span class="pre">pfrc</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="sdphost">
+<h2>sdphost<a class="headerlink" href="#sdphost" title="Permalink to this headline">¶</a></h2>
+<p>The sdphost application is a utility for communication with ROM on i.MX targets.</p>
+<p>It allows user to:</p>
+<ul class="simple">
+<li><p>get error code of last operation</p></li>
+<li><p>jump to entry point of image with IVT at specified address</p></li>
+<li><p>write file at address</p></li>
+<li><p>read one or more registers</p></li>
+</ul>
+<p>For complete list of operations run: <code class="docutils literal notranslate"><span class="pre">sdphost</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="sdpshost">
+<h2>sdpshost<a class="headerlink" href="#sdpshost" title="Permalink to this headline">¶</a></h2>
+<p>The sdpshost application is a utility for communication with ROM on i.MX targets.</p>
+<p>It allows user to write boot image data from provided binary file.</p>
+<p>Note: THIS IS AN EXPERIMENTAL UTILITY! USE WITH CAUTION !!!</p>
+<p>For complete list of operations run: <code class="docutils literal notranslate"><span class="pre">sdphosts</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="blhost">
+<h2>blhost<a class="headerlink" href="#blhost" title="Permalink to this headline">¶</a></h2>
+<p>The blhost application  is  a utility for communication with bootloader on target.</p>
+<p>It allows user to:</p>
+<ul class="simple">
+<li><p>apply configuration block at internal memory address to memory with ID</p></li>
+<li><p>program one word of OCOTP Field.</p></li>
+<li><p>read one word of OCOTP Field</p></li>
+<li><p>erase region of the flash</p></li>
+<li><p>fill memory with pattern</p></li>
+<li><p>get bootloader-specific property</p></li>
+<li><p>write/read memory</p></li>
+<li><p>reset the device</p></li>
+<li><p>generate the Key Blob for a given DEK</p></li>
+</ul>
+<p>For complete list run: <code class="docutils literal notranslate"><span class="pre">blhost</span> <span class="pre">--help</span></code></p>
+</div>
+<div class="section" id="elftosb">
+<h2>elftosb<a class="headerlink" href="#elftosb" title="Permalink to this headline">¶</a></h2>
+<p>The tool for generating TrustZone, MasterBootImage and SecureBinary images.</p>
+<ul class="simple">
+<li><p>generate TrustZone</p></li>
+<li><p>generate MasterBootImage</p></li>
+<li><p>generate SecureBinary</p></li>
+</ul>
+<p>For complete list run: <code class="docutils literal notranslate"><span class="pre">elftosb</span> <span class="pre">--help</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../usage/image.html" class="btn btn-neutral float-right" title="Image Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../api/utils.html" class="btn btn-neutral float-left" title="Utils Module API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

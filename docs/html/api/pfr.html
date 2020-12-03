@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Protected Flash Region API &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SBFile Module API" href="sbfile.html" />
+    <link rel="prev" title="MBoot Interfaces" href="mboot_interfaces.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dat.html">Debug Authentication API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Protected Flash Region API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-spsdk.pfr.pfr">Protected Flash Region</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sbfile.html">SBFile Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdp.html">SDP Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html#list-of-applications">List of applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Protected Flash Region API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/pfr.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="protected-flash-region-api">
+<h1>Protected Flash Region API<a class="headerlink" href="#protected-flash-region-api" title="Permalink to this headline">¶</a></h1>
+<p>Support for Protected Flash Region areas (CMPA, CFPA).</p>
+<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="module-spsdk.pfr.pfr">
+<span id="protected-flash-region"></span><h2>Protected Flash Region<a class="headerlink" href="#module-spsdk.pfr.pfr" title="Permalink to this headline">¶</a></h2>
+<p>Module provides support for Protected Flash Region areas (CMPA, CFPA).</p>
+<dl class="class">
+<dt id="spsdk.pfr.pfr.BaseConfigArea">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.pfr.pfr.</code><code class="sig-name descname">BaseConfigArea</code><span class="sig-paren">(</span><em class="sig-param">device</em>, <em class="sig-param">keys=None</em>, <em class="sig-param">revision=None</em>, <em class="sig-param">user_config=None</em>, <em class="sig-param">rotkh=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base for CMPA and CFPA classes.</p>
+<dl class="attribute">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.BINARY_SIZE">
+<code class="sig-name descname">BINARY_SIZE</code><em class="property"> = 512</em><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.BINARY_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.CONFIG_FILE">
+<code class="sig-name descname">CONFIG_FILE</code><em class="property"> = 'database.json'</em><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.CONFIG_FILE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.HAS_ROTKH">
+<code class="sig-name descname">HAS_ROTKH</code><em class="property"> = True</em><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.HAS_ROTKH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.MARK">
+<code class="sig-name descname">MARK</code><em class="property"> = b'SEAL'</em><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.MARK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.ROTKH_SIZE">
+<code class="sig-name descname">ROTKH_SIZE</code><em class="property"> = 32</em><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.ROTKH_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.ROTKH_START_REGISTER">
+<code class="sig-name descname">ROTKH_START_REGISTER</code><em class="property"> = 'ROTKH0'</em><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.ROTKH_START_REGISTER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.devices">
+<em class="property">classmethod </em><code class="sig-name descname">devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classmethod to get list of supported devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">add_seal=False</em>, <em class="sig-param">compute_inverses=False</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate binary output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.generate_config">
+<code class="sig-name descname">generate_config</code><span class="sig-paren">(</span><em class="sig-param">exclude_computed=True</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.generate_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate configuration structure for user configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.get_address">
+<code class="sig-name descname">get_address</code><span class="sig-paren">(</span><em class="sig-param">remove_underscore=False</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.get_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the area address in chip memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.get_devices">
+<code class="sig-name descname">get_devices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.get_devices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of supported devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.get_revisions">
+<code class="sig-name descname">get_revisions</code><span class="sig-paren">(</span><em class="sig-param">device</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.get_revisions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get list of revisions for given device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.pfr.pfr.BaseConfigArea.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">exclude_computed=True</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.pfr.pfr.BaseConfigArea.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a user config JSON object based on input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sbfile.html" class="btn btn-neutral float-right" title="SBFile Module API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mboot_interfaces.html" class="btn btn-neutral float-left" title="MBoot Interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

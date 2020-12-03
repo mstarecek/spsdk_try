@@ -1,0 +1,656 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SDP Interfaces &mdash; SPSDK  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exceptions" href="exceptions.html" />
+    <link rel="prev" title="SDP Module API" href="sdp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> SPSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spsdk.html#dependencies">Dependencies</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">Crypto Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dat.html">Debug Authentication API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mboot.html">MBoot Module API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pfr.html">Protected Flash Region API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sbfile.html">SBFile Module API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="sdp.html">SDP Module API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SDP Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-spsdk.sdp.interfaces.uart">SDP UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-spsdk.sdp.interfaces.usb">SDP USB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-spsdk.sdp.interfaces.base">SDP Interface Class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sdp.html#module-spsdk.sdp.sdp">SDP Communication protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdp.html#module-spsdk.sdp.commands">SDP Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdp.html#module-spsdk.sdp.sdps">SDPS communication protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sdp.html#module-spsdk.sdp.error_codes">SDP Error/Status codes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils Module API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK APPS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html">Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps/overview.html#list-of-applications">List of applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SPSDK Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sbfile.html">SBFile Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/mboot.html">MBoot Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/sdp.html">SDP Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/crypto.html">Crypto examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/general.html">General examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/dat.html">Creating Debug Credential with remote signing example</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SPSDK</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="sdp.html">SDP Module API</a> &raquo;</li>
+        
+      <li>SDP Interfaces</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/sdp_interfaces.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sdp-interfaces">
+<h1>SDP Interfaces<a class="headerlink" href="#sdp-interfaces" title="Permalink to this headline">¶</a></h1>
+<p>Connection options for SDP.</p>
+<div class="section" id="module-spsdk.sdp.interfaces.uart">
+<span id="sdp-uart"></span><h2>SDP UART<a class="headerlink" href="#module-spsdk.sdp.interfaces.uart" title="Permalink to this headline">¶</a></h2>
+<p>Module for serial communication with a target device using SDP protocol.</p>
+<dl class="function">
+<dt id="spsdk.sdp.interfaces.uart.scan_uart">
+<code class="sig-prename descclassname">spsdk.sdp.interfaces.uart.</code><code class="sig-name descname">scan_uart</code><span class="sig-paren">(</span><em class="sig-param">port=None</em>, <em class="sig-param">baudrate=115200</em>, <em class="sig-param">timeout=5000</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.scan_uart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan connected serial ports.</p>
+<p>Returns list of serial ports with devices that respond to PING command.
+If ‘port’ is specified, only that serial port is checked
+If no devices are found, return an empty list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – name of preferred serial port, defaults to None</p></li>
+<li><p><strong>baudrate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – speed of the UART interface, defaults to 56700</p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – timeout in milliseconds</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of interfaces responding to the PING command</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[<a class="reference internal" href="#spsdk.sdp.interfaces.base.Interface" title="spsdk.sdp.interfaces.base.Interface">spsdk.sdp.interfaces.base.Interface</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.interfaces.uart.Uart">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.interfaces.uart.</code><code class="sig-name descname">Uart</code><span class="sig-paren">(</span><em class="sig-param">port=None</em>, <em class="sig-param">timeout=5000</em>, <em class="sig-param">baudrate=115200</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sdp.interfaces.base.Interface" title="spsdk.sdp.interfaces.base.Interface"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sdp.interfaces.base.Interface</span></code></a></p>
+<p>UART interface.</p>
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.is_opened">
+<em class="property">property </em><code class="sig-name descname">is_opened</code><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.is_opened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if device is open, False othervise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the UART interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the UART interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return information about the UART interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.conf">
+<code class="sig-name descname">conf</code><span class="sig-paren">(</span><em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – parameters dictionary</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>data read from device</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="sdp.html#spsdk.sdp.commands.CmdResponse" title="spsdk.sdp.commands.CmdResponse">spsdk.sdp.commands.CmdResponse</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.uart.Uart.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">packet</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.uart.Uart.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data to the device; data might be in format of ‘CmdPacket’ or bytes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>packet</strong> (<em>Union</em><em>[</em><a class="reference internal" href="sdp.html#spsdk.sdp.commands.CmdPacket" title="spsdk.sdp.commands.CmdPacket"><em>spsdk.sdp.commands.CmdPacket</em></a><em>, </em><em>bytes</em><em>]</em>) – Packet to send</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sdp.interfaces.usb">
+<span id="sdp-usb"></span><h2>SDP USB<a class="headerlink" href="#module-spsdk.sdp.interfaces.usb" title="Permalink to this headline">¶</a></h2>
+<p>Module for USB communication with a terget using SDP protocol.</p>
+<dl class="function">
+<dt id="spsdk.sdp.interfaces.usb.scan_usb">
+<code class="sig-prename descclassname">spsdk.sdp.interfaces.usb.</code><code class="sig-name descname">scan_usb</code><span class="sig-paren">(</span><em class="sig-param">device_name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.scan_usb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan connected USB devices. Return a list of all founded devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>device_name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – The specific device name (MX8QM, MX8QXP, …) or VID:PID</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#spsdk.sdp.interfaces.base.Interface" title="spsdk.sdp.interfaces.base.Interface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Interface</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of found interfaces</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.interfaces.usb.RawHidBase">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.interfaces.usb.</code><code class="sig-name descname">RawHidBase</code><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHidBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sdp.interfaces.base.Interface" title="spsdk.sdp.interfaces.base.Interface"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sdp.interfaces.base.Interface</span></code></a></p>
+<p>Base class for OS specific RAW HID Interface classes.</p>
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHidBase.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHidBase.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Name of the device.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHidBase.is_opened">
+<em class="property">property </em><code class="sig-name descname">is_opened</code><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHidBase.is_opened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether device is open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if device is open, False othervise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHidBase.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHidBase.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return information about the USB interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHidBase.conf">
+<code class="sig-name descname">conf</code><span class="sig-paren">(</span><em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHidBase.conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set HID report data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>config</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – parameters dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="spsdk.sdp.interfaces.usb.RawHid">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.interfaces.usb.</code><code class="sig-name descname">RawHid</code><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#spsdk.sdp.interfaces.usb.RawHidBase" title="spsdk.sdp.interfaces.usb.RawHidBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">spsdk.sdp.interfaces.usb.RawHidBase</span></code></a></p>
+<p>Provides basic functions to access a USB HID device using pywinusb.</p>
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHid.rx_handler">
+<code class="sig-name descname">rx_handler</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid.rx_handler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handler is called when a new USB report (data) is received.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – Data received by the USB stack</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHid.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHid.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHid.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">packet</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data on the OUT endpoint associated to the HID interfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>packet</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="sdp.html#spsdk.sdp.commands.CmdPacket" title="spsdk.sdp.commands.CmdPacket"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdPacket</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>]) – HID packet data</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Raises an error if packet type is incorrect</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHid.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data on the IN endpoint associated to the HID interfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>length</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – Count of bytes (NOT USED)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="sdp.html#spsdk.sdp.commands.CmdResponse" title="spsdk.sdp.commands.CmdResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">CmdResponse</span></code></a></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Response to the last command</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#spsdk.sdp.exceptions.SdpConnectionError" title="spsdk.sdp.exceptions.SdpConnectionError"><strong>SdpConnectionError</strong></a> – Exception caused by time-out</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.usb.RawHid.enumerate">
+<em class="property">static </em><code class="sig-name descname">enumerate</code><span class="sig-paren">(</span><em class="sig-param">vid</em>, <em class="sig-param">pid</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.usb.RawHid.enumerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the connected devices which matches PyWinUSB.vid/PyWinUSB.pid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vid</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – USB Vendor ID</p></li>
+<li><p><strong>pid</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – USB Product ID</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#spsdk.sdp.interfaces.base.Interface" title="spsdk.sdp.interfaces.base.Interface"><code class="xref py py-class docutils literal notranslate"><span class="pre">Interface</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of interfaces found</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-spsdk.sdp.interfaces.base">
+<span id="sdp-interface-class"></span><h2>SDP Interface Class<a class="headerlink" href="#module-spsdk.sdp.interfaces.base" title="Permalink to this headline">¶</a></h2>
+<p>Module for functionality shared accross all interfaces.</p>
+<dl class="class">
+<dt id="spsdk.sdp.interfaces.base.Interface">
+<em class="property">class </em><code class="sig-prename descclassname">spsdk.sdp.interfaces.base.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for all Interface classes.</p>
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.conf">
+<code class="sig-name descname">conf</code><span class="sig-paren">(</span><em class="sig-param">config</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.conf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="spsdk.sdp.interfaces.base.Interface.expect_status">
+<code class="sig-name descname">expect_status</code><em class="property"> = True</em><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.expect_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.info">
+<code class="sig-name descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return string containing information about the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.is_opened">
+<em class="property">property </em><code class="sig-name descname">is_opened</code><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.is_opened" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether interface is open.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.open">
+<code class="sig-name descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param">length=None</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="spsdk.sdp.interfaces.base.Interface.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param">packet</em><span class="sig-paren">)</span><a class="headerlink" href="#spsdk.sdp.interfaces.base.Interface.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a packet to the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="exceptions.html" class="btn btn-neutral float-right" title="Exceptions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sdp.html" class="btn btn-neutral float-left" title="SDP Module API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2019-2020, NXP
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
